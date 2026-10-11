@@ -41,6 +41,9 @@ CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_HSTS_PRELOAD = False
+# Deliberately do not commit unknown future subdomains or browsers' preload list
+# to HTTPS. The served host still has one-year HSTS. Other security checks stay on.
+SILENCED_SYSTEM_CHECKS = ["security.W005", "security.W021"]
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = "same-origin"
 X_FRAME_OPTIONS = "DENY"

@@ -5,12 +5,12 @@
   "license": "Public Domain",
   "source": "https://smpldsnds.github.io/sfzinstruments-splendid-grand-piano/samples/",
   "mapping": "smplr@1.1.0 LAYERS",
-  "total_bytes": 19895719,
+  "total_bytes": 19895517,
   "files": [
     {
       "path": "/audio/dattorro.worklet.js",
-      "bytes": 7294,
-      "sha256": "630513ddd9dbcc7630e8a3dc4c04626cc74b2303045aa4d9479e4b489bab3129"
+      "bytes": 7092,
+      "sha256": "043ed83bcd986dfffd3614e73c5a652009a198e4c3f23b31fa6673c47e3fc906"
     },
     {
       "path": "/audio/splendid/ff-a0.ogg",

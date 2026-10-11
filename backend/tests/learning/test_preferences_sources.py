@@ -40,7 +40,9 @@ class PreferencesAndFullSourceTests(APITestCase):
         self.assertEqual(pdf["X-Frame-Options"], "SAMEORIGIN")
         self.assertIn("frame-ancestors 'self'", pdf["Content-Security-Policy"])
         self.assertEqual(hashlib.sha256(b"".join(pdf.streaming_content)).hexdigest(), FULL_SOURCE_SHA256)
-        pdf.close()
+        # Exhausting the test client's streaming iterator already closes it.
+        # A second close emits request_finished inside TestCase's transaction,
+        # closing a PostgreSQL connection that later assertions still need.
         hashes = set()
         for page in arrangement["full_score_pages"]:
             response = self.client.get(page["url"])
@@ -49,7 +51,6 @@ class PreferencesAndFullSourceTests(APITestCase):
             content = b"".join(response.streaming_content)
             self.assertTrue(content.startswith(b"\x89PNG\r\n\x1a\n"))
             hashes.add(hashlib.sha256(content).hexdigest())
-            response.close()
         self.assertEqual(len(hashes), 4)
         self.assertEqual(self.client.get(f"/api/arrangements/{self.arrangement.id}/full-score/pages/0/").status_code, 404)
         self.assertEqual(self.client.get(f"/api/arrangements/{self.arrangement.id}/full-score/pages/5/").status_code, 404)

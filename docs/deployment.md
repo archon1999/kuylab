@@ -41,7 +41,7 @@ current remote main SHA. The account is not in the Docker group. Use SSH host
 keys verified during provisioning, not unchecked `ssh-keyscan` during deployment.
 
 Base images are pinned by digest and application dependencies are locked. The
-deploy script takes a lock, builds release-tagged images, backs up PostgreSQL,
+deploy script takes a lock, builds release-tagged images,
 runs migrations and the idempotent curated seed, and waits for container health.
 It restores the previous application images if startup fails. **Schema rollback is
 not automatic**: migrations must remain compatible with the previous release.
@@ -77,9 +77,17 @@ bash /opt/kuylab/repository/ops/backup.sh
 ```
 
 This saves a custom-format `pg_dump`, a media archive, release SHA and checksums.
-The supplied systemd timer runs daily; retention keeps seven successful full
-backups and ten pre-deployment dumps, confined to KuyLab's backup directory.
-Database and media belong together. Deployment also saves a pre-migration DB dump.
+Automatic host-local backups are disabled on this deployment at the owner's
+request to conserve disk space. The supplied systemd timer is disabled; the
+command above remains available for an explicit manual backup. Retention keeps
+seven successful full backups and ten pre-deployment dumps, confined to KuyLab's
+backup directory. Database and media belong together.
+
+Pre-migration dumps are also disabled by default. To opt in, an administrator
+must create `/etc/kuylab/enable-local-backups`. To separately enable daily full
+backups, install the supplied units and enable `kuylab-backup.timer`. Neither
+is re-enabled by a deployment. Without backups, deleted data cannot be restored
+from this host.
 Host-local backups do not protect against loss of the host; arrange encrypted
 off-host storage and a retention policy before relying on this for public users.
 No external storage credentials are assumed or embedded in the repository.

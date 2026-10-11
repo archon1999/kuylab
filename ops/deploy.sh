@@ -21,9 +21,12 @@ git checkout --detach --force "$sha"
 export RELEASE_SHA=$sha
 docker compose build
 docker compose up -d --wait db
-mkdir -p "$root/backups"
-stamp=$(date -u +%Y%m%dT%H%M%SZ)
-docker compose exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc' > "$root/backups/$stamp.dump"
+# Host-local backups are opt-in; production's disk policy disables them.
+if [[ -f /etc/kuylab/enable-local-backups ]]; then
+    mkdir -p "$root/backups"
+    stamp=$(date -u +%Y%m%dT%H%M%SZ)
+    docker compose exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc' > "$root/backups/$stamp.dump"
+fi
 docker compose run --rm --no-deps backend python manage.py check --deploy --fail-level WARNING
 docker compose run --rm --no-deps backend python manage.py migrate --noinput
 docker compose run --rm --no-deps backend python manage.py createcachetable

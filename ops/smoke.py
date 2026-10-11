@@ -7,13 +7,33 @@ import hashlib
 import json
 import secrets
 import base64
-import re
+from html.parser import HTMLParser
 import urllib.request
 import urllib.error
 from http.cookies import SimpleCookie
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.models import Session
 from django.utils import timezone
+
+
+class StartupScripts(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.current = None
+        self.scripts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "script" and "src" not in dict(attrs):
+            self.current = []
+
+    def handle_data(self, data):
+        if self.current is not None:
+            self.current.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self.current is not None:
+            self.scripts.append("".join(self.current))
+            self.current = None
 
 
 class Browser:
@@ -73,8 +93,11 @@ try:
     status, page, headers = a.request(f"/practice/{original.arrangement.composition_id}")
     assert status == 200, "SPA deep link failed"
     csp = headers["Content-Security-Policy"]
-    for attributes, script in re.findall(r"<script\b([^>]*)>([\s\S]*?)</script\s*>", page.decode(), re.I):
-        if "src=" not in attributes and script.strip():
+    startup = StartupScripts()
+    startup.feed(page.decode())
+    assert len(startup.scripts) == 2
+    for script in startup.scripts:
+        if script.strip():
             digest = base64.b64encode(hashlib.sha256(script.replace("\r\n", "\n").encode()).digest()).decode()
             assert f"'sha256-{digest}'" in csp, "CSP blocks a startup script"
     assert "__BOOT_CSP_HASHES__" not in csp

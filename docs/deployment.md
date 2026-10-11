@@ -40,8 +40,8 @@ agent, X11, or TCP forwarding. It can only ask a root-owned wrapper to deploy th
 current remote main SHA. The account is not in the Docker group. Use SSH host
 keys verified during provisioning, not unchecked `ssh-keyscan` during deployment.
 
-The deploy script takes a lock, builds release-tagged images, backs up PostgreSQL,
-with base images pinned by digest and application dependencies locked,
+Base images are pinned by digest and application dependencies are locked. The
+deploy script takes a lock, builds release-tagged images, backs up PostgreSQL,
 runs migrations and the idempotent curated seed, and waits for container health.
 It restores the previous application images if startup fails. **Schema rollback is
 not automatic**: migrations must remain compatible with the previous release.

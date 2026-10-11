@@ -35,7 +35,7 @@
     "@vitejs/plugin-react": "^4.4.0",
     "parse5": "8.0.1",
     "prettier": "3.9.10",
-    "typescript": "^5.8.0",
+    "typescript": "^7.0.2",
     "vite": "^6.3.0"
   }
 }

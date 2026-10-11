@@ -6,6 +6,8 @@ then removes only those accounts. Never prints credentials or personal responses
 import hashlib
 import json
 import secrets
+import base64
+import re
 import urllib.request
 import urllib.error
 from http.cookies import SimpleCookie
@@ -68,7 +70,19 @@ try:
     status, content, _ = a.request(f"/api/scores/{original.pk}/file/")
     assert status == 200
     assert hashlib.sha256(content).hexdigest() == original.content_sha256
-    assert a.request(f"/practice/{original.arrangement.composition_id}")[0] == 200, "SPA deep link failed"
+    status, page, headers = a.request(f"/practice/{original.arrangement.composition_id}")
+    assert status == 200, "SPA deep link failed"
+    csp = headers["Content-Security-Policy"]
+    for attributes, script in re.findall(r"<script\b([^>]*)>([\s\S]*?)</script>", page.decode(), re.I):
+        if "src=" not in attributes and script.strip():
+            digest = base64.b64encode(hashlib.sha256(script.replace("\r\n", "\n").encode()).digest()).decode()
+            assert f"'sha256-{digest}'" in csp, "CSP blocks a startup script"
+    assert "__BOOT_CSP_HASHES__" not in csp
+    status, manifest, _ = a.request("/audio/splendid/manifest.json")
+    assert status == 200
+    for asset in manifest["files"][:2]:
+        status, content, _ = a.request(asset["path"])
+        assert status == 200 and hashlib.sha256(content).hexdigest() == asset["sha256"]
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None

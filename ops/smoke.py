@@ -6,12 +6,34 @@ then removes only those accounts. Never prints credentials or personal responses
 import hashlib
 import json
 import secrets
+import base64
+from html.parser import HTMLParser
 import urllib.request
 import urllib.error
 from http.cookies import SimpleCookie
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.models import Session
 from django.utils import timezone
+
+
+class StartupScripts(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.current = None
+        self.scripts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "script" and "src" not in dict(attrs):
+            self.current = []
+
+    def handle_data(self, data):
+        if self.current is not None:
+            self.current.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self.current is not None:
+            self.scripts.append("".join(self.current))
+            self.current = None
 
 
 class Browser:
@@ -68,7 +90,22 @@ try:
     status, content, _ = a.request(f"/api/scores/{original.pk}/file/")
     assert status == 200
     assert hashlib.sha256(content).hexdigest() == original.content_sha256
-    assert a.request(f"/practice/{original.arrangement.composition_id}")[0] == 200, "SPA deep link failed"
+    status, page, headers = a.request(f"/practice/{original.arrangement.composition_id}")
+    assert status == 200, "SPA deep link failed"
+    csp = headers["Content-Security-Policy"]
+    startup = StartupScripts()
+    startup.feed(page.decode())
+    assert len(startup.scripts) == 2
+    for script in startup.scripts:
+        if script.strip():
+            digest = base64.b64encode(hashlib.sha256(script.replace("\r\n", "\n").encode()).digest()).decode()
+            assert f"'sha256-{digest}'" in csp, "CSP blocks a startup script"
+    assert "__BOOT_CSP_HASHES__" not in csp
+    status, manifest, _ = a.request("/audio/splendid/manifest.json")
+    assert status == 200
+    for asset in manifest["files"][:2]:
+        status, content, _ = a.request(asset["path"])
+        assert status == 200 and hashlib.sha256(content).hexdigest() == asset["sha256"]
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None

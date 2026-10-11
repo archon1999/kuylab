@@ -41,6 +41,7 @@ current remote main SHA. The account is not in the Docker group. Use SSH host
 keys verified during provisioning, not unchecked `ssh-keyscan` during deployment.
 
 The deploy script takes a lock, builds release-tagged images, backs up PostgreSQL,
+with base images pinned by digest and application dependencies locked,
 runs migrations and the idempotent curated seed, and waits for container health.
 It restores the previous application images if startup fails. **Schema rollback is
 not automatic**: migrations must remain compatible with the previous release.

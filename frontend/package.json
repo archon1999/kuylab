@@ -1,0 +1,40 @@
+{
+  "name": "kuylab-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:score": "node --experimental-strip-types --test tests/scoreTimeline.test.mjs tests/midiTempo.test.mjs",
+    "lint:architecture": "node scripts/check-architecture.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" vite.config.ts tsconfig.json package.json",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" vite.config.ts tsconfig.json package.json",
+    "lint": "npm run lint:architecture && npm run format:check",
+    "typecheck": "tsc --noEmit",
+    "check:architecture": "node scripts/check-architecture.mjs"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource-variable/alan-sans": "^5.3.1",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/lora": "^5.3.0",
+    "@mui/icons-material": "^7.3.0",
+    "@mui/material": "^7.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "smplr": "1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "prettier": "3.9.10",
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0"
+  }
+}

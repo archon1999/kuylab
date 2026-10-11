@@ -1,0 +1,608 @@
+:root {
+  --canvas: #faf8f5;
+  --surface: #fffdfa;
+  --soft: #f2eee8;
+  --ink: #4b5563;
+  --heading: #252e3b;
+  --secondary: #737c8b;
+  --accent: #a47148;
+  --orange: #d39054;
+  --chrome-line: #eae5df;
+  --logo-key: #faf8f5;
+  --font-ui: 'Alan Sans Variable', 'Inter Variable', sans-serif;
+  --font-display: 'Lora Variable', Georgia, serif;
+  --sidebar-width: 240px;
+  --header-height: 84px;
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --canvas: #18122b;
+  --surface: #292043;
+  --soft: #32284e;
+  --ink: #f5edc9;
+  --heading: #f5edc9;
+  --secondary: #bcb3ce;
+  --accent: #eba165;
+  --orange: #eba165;
+  --chrome-line: #3a3053;
+  --logo-key: #292043;
+  color-scheme: dark;
+}
+body {
+  background: var(--canvas) !important;
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.app-shell {
+  display: block;
+  min-height: 100dvh;
+  background: var(--canvas);
+}
+.app-header {
+  height: var(--header-height);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--chrome-line);
+  gap: 24px;
+}
+.app-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.app-header .brand {
+  font: 600 31px/1 var(--font-display);
+  color: var(--accent);
+  gap: 10px;
+  letter-spacing: -1.4px;
+}
+.app-header .brand-light {
+  color: inherit;
+  font-weight: 600;
+}
+.piano-logo {
+  color: var(--accent);
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-actions .MuiButton-root {
+  min-height: 42px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.header-actions .MuiButton-startIcon svg,
+.header-actions .MuiButton-endIcon svg {
+  font-size: 20px;
+}
+.header-actions .theme-control {
+  color: var(--orange);
+  padding: 10px;
+}
+.header-actions .profile-control {
+  background: var(--soft);
+  color: var(--accent);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.header-actions .profile-control .MuiButton-startIcon {
+  margin-right: 9px;
+}
+.profile-control > span:not(.MuiButton-startIcon):not(.MuiButton-endIcon) {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.language-code {
+  font-size: 11px;
+  color: var(--secondary);
+  margin-left: 22px;
+  letter-spacing: 0.5px;
+}
+.language-short {
+  display: none;
+}
+.profile-menu-heading {
+  padding: 12px 18px 15px;
+  min-width: 190px;
+}
+.profile-menu-heading strong {
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+  max-width: 260px;
+  overflow-wrap: anywhere;
+}
+.profile-menu-heading small {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  color: var(--secondary);
+}
+.sidebar-toggle {
+  display: none !important;
+}
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100dvh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 26px 18px 22px;
+  gap: 0;
+  background: var(--canvas);
+  border-right: 1px solid var(--chrome-line);
+  z-index: 1100;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.sidebar .sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: static;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+  gap: 0;
+  flex: 1;
+}
+.sidebar-section-label {
+  font-size: 11px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  color: var(--secondary);
+  opacity: 0.75;
+  font-weight: 650;
+  padding: 8px 14px;
+  margin-top: 26px;
+  margin-bottom: 7px;
+}
+.sidebar-section-label:first-child {
+  margin-top: 0;
+}
+.sidebar .MuiList-root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+.sidebar .MuiStack-root > .MuiList-root:last-child {
+  margin: 0;
+}
+.sidebar .MuiListItem-root {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.sidebar .MuiListItemButton-root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 46px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--ink);
+}
+.sidebar .MuiListItemButton-root:hover {
+  background: var(--soft);
+}
+.sidebar .MuiListItemButton-root.Mui-selected {
+  background: color-mix(in srgb, var(--accent) 6%, var(--canvas));
+  color: var(--orange);
+}
+.sidebar .MuiListItemIcon-root {
+  display: flex;
+  min-width: 34px !important;
+  color: var(--orange);
+}
+.sidebar .MuiListItemIcon-root svg {
+  font-size: 23px;
+}
+.sidebar .MuiListItemText-root {
+  display: block !important;
+  margin: 0;
+}
+.sidebar .MuiListItemText-root span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: inherit;
+}
+.sidebar .instrument-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 22px 14px 0;
+  margin: 24px 0 0;
+  flex-shrink: 0;
+}
+.instrument-card > svg {
+  font-size: 22px;
+  color: var(--orange);
+}
+.instrument-card strong {
+  font-size: 12px;
+  color: var(--secondary);
+  font-weight: 500;
+  display: block;
+  overflow-wrap: anywhere;
+}
+.instrument-card span {
+  font-size: 11px;
+  color: var(--secondary);
+  opacity: 0.75;
+  display: block;
+  margin-top: 4px;
+}
+.main-content {
+  margin: 0 0 0 var(--sidebar-width);
+  padding-top: var(--header-height);
+  width: calc(100% - var(--sidebar-width));
+  max-width: none;
+  min-height: 100dvh;
+  background: var(--canvas);
+}
+.page-body {
+  padding: 40px 48px 48px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+h1 {
+  font: 600 38px/1.22 var(--font-display);
+  letter-spacing: -1.1px;
+  color: var(--heading);
+}
+.page-body h2,
+.page-body h3,
+.page-body h4 {
+  color: var(--heading);
+}
+.section-heading p,
+.page-body .muted {
+  color: var(--secondary);
+}
+.topbar,
+.sidebar-label,
+.sidebar-profile {
+  display: none !important;
+}
+.nav-scrim {
+  display: none;
+}
+.settings-panel {
+  background: var(--surface);
+  border: 0;
+  box-shadow: none;
+  border-radius: 14px;
+}
+.settings-section + .settings-section {
+  border-color: var(--chrome-line);
+}
+.settings-section > p {
+  color: var(--secondary);
+  font-size: 14px;
+}
+.settings-panel .MuiOutlinedInput-root {
+  background: var(--surface);
+  font-size: 14px;
+  border-radius: 10px;
+}
+.settings-panel .MuiInputLabel-root {
+  font-size: 14px;
+}
+.settings-panel .MuiOutlinedInput-notchedOutline {
+  border-color: var(--chrome-line);
+}
+.settings-section h3 {
+  font-weight: 600;
+  font-size: 18px;
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 1500;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+#main-content:focus {
+  outline: none;
+}
+.sidebar.mobile-sidebar {
+  top: 0;
+  bottom: 0;
+  height: 100dvh;
+  width: min(280px, calc(100vw - 48px));
+  padding: 16px 20px 24px;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+}
+.mobile-sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 0 16px 14px;
+  flex-shrink: 0;
+}
+.mobile-sidebar-heading > span {
+  font: 600 26px var(--font-display);
+  color: var(--accent);
+}
+.page-error {
+  padding: 32px;
+}
+.page-error h1 {
+  font-size: 30px;
+}
+.page-error p {
+  margin: 16px 0 24px;
+  color: var(--secondary);
+}
+.page-error > div {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 1100px) {
+  :root {
+    --sidebar-width: 218px;
+    --header-height: 78px;
+  }
+  .app-header {
+    padding-inline: 24px;
+  }
+  .page-body {
+    padding: 34px 30px 42px;
+  }
+  .sidebar {
+    padding-inline: 14px;
+  }
+  .sidebar .MuiListItemButton-root {
+    padding-inline: 12px;
+  }
+  .sidebar .MuiListItemText-root span {
+    font-size: 13px;
+  }
+}
+@media (max-width: 820px) {
+  :root {
+    --sidebar-width: 205px;
+  }
+  .header-actions {
+    gap: 5px;
+  }
+  .header-actions .profile-control > span:not(.MuiButton-startIcon):not(.MuiButton-endIcon),
+  .header-actions .profile-control .MuiButton-endIcon {
+    display: none;
+  }
+  .header-actions .profile-control .MuiButton-startIcon {
+    margin: 0;
+  }
+  .header-actions .MuiButton-root {
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+  .page-body {
+    padding-inline: 26px;
+  }
+}
+@media (max-width: 680px) {
+  :root {
+    --header-height: 70px;
+    --sidebar-width: 246px;
+  }
+  .app-header {
+    padding: 0 14px 0 8px;
+    gap: 8px;
+  }
+  .app-header-brand {
+    gap: 2px;
+  }
+  .sidebar-toggle {
+    display: inline-flex !important;
+    color: var(--accent) !important;
+  }
+  .app-header .brand {
+    font-size: 26px;
+    gap: 5px;
+  }
+  .piano-logo {
+    width: 36px;
+    height: 36px;
+  }
+  .header-actions .language-control {
+    padding-inline: 6px;
+    min-width: 0;
+  }
+  .header-actions .language-control .MuiButton-startIcon {
+    display: none;
+  }
+  .header-actions .language-control .MuiButton-endIcon {
+    margin-left: 3px;
+  }
+  .header-actions .theme-control {
+    padding: 6px;
+  }
+  .header-actions .theme-control svg {
+    font-size: 21px;
+  }
+  .header-actions .profile-control {
+    padding: 5px;
+    min-width: 0;
+    background: none;
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-top: var(--header-height);
+  }
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar .sidebar-navigation {
+    display: flex;
+    position: static;
+    align-items: stretch;
+    flex-direction: column;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  .sidebar .MuiListItemText-root span {
+    font-size: 14px;
+  }
+  .page-body {
+    padding: 28px 21px 36px;
+  }
+  .settings-section > p {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+}
+@media (max-width: 420px) {
+  .language-full {
+    display: none;
+  }
+  .language-short {
+    display: inline;
+  }
+  .app-header .brand {
+    font-size: 24px;
+  }
+  .piano-logo {
+    width: 31px;
+  }
+  .header-actions {
+    gap: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* The document and header stay fixed; only the workspace content scrolls. */
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+.main-content {
+  position: fixed;
+  inset: var(--header-height) 0 0 var(--sidebar-width);
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.page-body {
+  flex: 1 0 auto;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--secondary) 32%, transparent) transparent;
+}
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--secondary) 30%, transparent);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--secondary) 55%, transparent);
+}
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@media (max-width: 680px) {
+  .main-content {
+    left: 0;
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+}

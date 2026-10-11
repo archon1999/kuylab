@@ -1,0 +1,131 @@
+.error-state {
+  display: grid;
+  place-items: center;
+  min-height: min(620px, calc(100dvh - 160px));
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text, #26303d);
+}
+.error-state-full {
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--bg, #faf8f5);
+}
+.error-state-inner {
+  width: min(100%, 460px);
+}
+.error-state-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 42px;
+  color: var(--primary, #a47148);
+  font:
+    600 30px 'Lora Variable',
+    Georgia,
+    serif;
+}
+.error-state-brand svg {
+  width: 50px;
+  height: 50px;
+}
+.error-state-code {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted, #7c8490);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+.error-state h1 {
+  font:
+    550 clamp(25px, 3vw, 36px)/1.25 'Alan Sans Variable',
+    'Inter Variable',
+    sans-serif;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px;
+}
+.error-state p {
+  margin: 0 auto;
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted, #7c8490);
+}
+.error-state-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.error-state-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 44px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  font:
+    600 14px 'Alan Sans Variable',
+    'Inter Variable',
+    sans-serif;
+  cursor: pointer;
+}
+.error-state-actions .error-state-primary {
+  color: #fff;
+  background: var(--primary, #a47148);
+}
+.error-state-actions button:focus-visible {
+  outline: 2px solid var(--primary, #a47148);
+  outline-offset: 4px;
+}
+[data-theme='dark'] .error-state {
+  color: #f5edc9;
+}
+[data-theme='dark'] .error-state-full {
+  background: #18122b;
+}
+[data-theme='dark'] .error-state-brand {
+  color: #eba165;
+}
+[data-theme='dark'] .error-state p,
+[data-theme='dark'] .error-state-code {
+  color: #b9b2cf;
+}
+@media (max-width: 680px) {
+  .error-state {
+    padding: 32px 20px;
+    min-height: calc(100dvh - 180px);
+  }
+  .error-state-full {
+    min-height: 100dvh;
+  }
+}
+
+.error-layout {
+  height: 100dvh;
+  overflow: auto;
+  background: var(--bg, #faf8f5);
+}
+.error-layout-content,
+.error-layout-body {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.error-layout .error-state {
+  min-height: 100dvh;
+}
+.error-layout .studio-player-fallback {
+  padding: 0;
+}
+.error-layout .studio-player-fallback > .MuiButton-root {
+  display: none;
+}

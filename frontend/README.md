@@ -1,0 +1,85 @@
+# KuyLab frontend
+
+The personal piano studio uses React, TypeScript, Vite and MUI. Deenly's feature
+module structure is the architecture reference. Ivory provides the visual
+reference; no Deenly template components or licensed Minimal assets are copied.
+
+## Development
+
+Run the Django API on `127.0.0.1:8000`. In this directory:
+
+```powershell
+npm ci
+npm run dev
+```
+
+Open `http://127.0.0.1:5173`. Vite proxies `/api` to Django. A production preview
+uses `npm run build` followed by `npm run preview` on port 4173.
+
+## Structure
+
+```text
+src/
+  app/
+    layouts/studio/                header, sidebar and application shell
+    providers/                     application composition
+    routes/                        lazy page routing and error boundary
+    theme/                         MUI theme
+    styles/                        global styles and bundled fonts
+  shared/
+    api/                           HTTP transport
+    i18n/                          UZ, RU and EN
+    lib/                           generic storage helpers
+    offline/                       cached catalog and score support
+    routing/                       route parsing and navigation
+    ui/                            reusable domain-independent UI
+  modules/<feature>/
+    application/                   providers, query/mutation hooks, controllers
+    domain/
+      entities/                    application types
+      contracts/                   repository and platform ports
+      *.logic.ts                   pure rules and transformations
+    data-access/
+      dto/                         API response and payload shapes
+      mappers/                     transport normalization
+      repository/                  API and local-storage implementations
+      adapters/                    audio/MIDI adapters in the practice module
+    ui/
+      pages/<PageName>/             page component and route entry
+      shared/                      reusable UI within that feature
+    index.ts                       module public API
+```
+
+UI calls application hooks. Hooks depend on domain contracts. The module or app
+composition injects data-access repositories, which call `shared/api`. DTOs and
+API field normalization remain in data-access. Parsed MIDI uses the canonical
+score model; musical timing rules remain pure domain functions.
+
+The architecture checker resolves TypeScript imports, including aliases and lazy
+imports. Cross-feature imports use public barrels. Only app routes can import a
+page's `index.ts`; feature modules cannot reach its implementation. Domain code
+cannot depend on React or browser services, and UI/application cannot call HTTP.
+
+The catalog is curated and read-only. Each Still lesson has three independent
+MIDI stages. Main playback remains separate from lesson explanations. Player
+preferences and playback positions persist independently; playback stops at the
+end and the timeline is used for seeking.
+
+Offline content caching remains available after content has loaded. The UI does
+not display an offline-ready badge. The production service worker and local piano
+sample bank remain part of the build.
+
+## Verification
+
+```powershell
+npm run check:architecture
+npm run typecheck
+npm test
+npm run lint
+npm run build
+```
+
+`lint` checks module boundaries and Prettier formatting. `lint:architecture` is
+retained as an alias for existing workflows. Tests use Node's TypeScript stripping
+support and cover transport timing, preferences, offline behavior, repository
+mapping, lesson stage selection, navigation and activity accounting.

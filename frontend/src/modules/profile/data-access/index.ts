@@ -1,0 +1,1 @@
+export { createProfileRepository } from './repository';

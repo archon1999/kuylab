@@ -1,0 +1,67 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 264px;
+  padding: 32px 20px;
+  text-align: center;
+  width: 100%;
+}
+.empty-state-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 6px;
+  border-radius: 20px;
+  background: var(--soft);
+  color: var(--accent);
+}
+.empty-state-icon > svg {
+  width: 30px;
+  height: 30px;
+}
+.empty-state-icon .empty-state-badge {
+  position: absolute;
+  bottom: 9px;
+  right: 8px;
+  width: 19px;
+  height: 19px;
+  padding: 2px;
+  background: var(--soft);
+  border-radius: 50%;
+}
+.empty-state h3 {
+  margin: 0;
+  font: 550 17px/1.4 var(--font-ui);
+  color: var(--heading);
+  letter-spacing: -0.015em;
+}
+.empty-state p {
+  max-width: 320px;
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.empty-state .MuiButton-root {
+  margin-top: 2px;
+  min-height: 40px;
+  font-size: 13px;
+}
+.empty-state-compact {
+  min-height: 204px;
+  padding: 24px 16px;
+}
+@media (max-width: 680px) {
+  .empty-state {
+    min-height: 232px;
+    padding: 28px 16px;
+  }
+  .empty-state-compact {
+    min-height: 196px;
+  }
+}

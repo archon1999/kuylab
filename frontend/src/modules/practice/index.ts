@@ -1,0 +1,11 @@
+export * from './application';
+export * from './application/Sessions';
+export { createMidiInput, createPlaybackAudio } from './data-access/adapters/playback.adapter';
+export { createScoreRepository } from './data-access/repository/score.repository.impl';
+export { createSessionRepository } from './data-access/repository/session.repository.impl';
+export * from './domain';
+export * from './domain/session';
+export { default as ScoreWorkspace } from './ui/shared/ScoreWorkspace';
+export { StudioPlayer } from './studio';
+export type { StudioPlayerProps } from './application/useStudioPlayer';
+export { PIANO_SAMPLE_FILES } from './data-access/adapters/sampled-piano.adapter';

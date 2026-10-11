@@ -1,0 +1,460 @@
+{
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "license": "CC BY 3.0",
+  "name": "Salamander Grand Piano V3",
+  "author": "Alexander Holm",
+  "total_bytes": 16815297,
+  "files": [
+    {
+      "bytes": 323525,
+      "sha256": "33893e8f004614f8950eb1e40bd2be58e406e7ca038aa61e0d0de8fb9c19c770",
+      "path": "/audio/salamander/A0v10.mp3"
+    },
+    {
+      "bytes": 322331,
+      "sha256": "0f0eed938e1b9cf42ba62b5f88ac21b09afcad108e841a7bc9f9d8921ef6e2a8",
+      "path": "/audio/salamander/A0v15.mp3"
+    },
+    {
+      "bytes": 310761,
+      "sha256": "1310ef24d336459f6b27b0a030272f47495d890b831cd919162e05f5b46d3b24",
+      "path": "/audio/salamander/A0v5.mp3"
+    },
+    {
+      "bytes": 315415,
+      "sha256": "49218bc8f9fdce607b10510115a7a5535bc3a1676f18ddf6fd302dbea2d2849c",
+      "path": "/audio/salamander/A1v10.mp3"
+    },
+    {
+      "bytes": 322730,
+      "sha256": "82eb853eb8fc86a58977b4dbeb0ed44f22c910477deb866e6fb0e972baedce04",
+      "path": "/audio/salamander/A1v15.mp3"
+    },
+    {
+      "bytes": 286696,
+      "sha256": "464964728a38646e413bd330b12d69782ec7ac7f4b8ad0f4382db2d62283d312",
+      "path": "/audio/salamander/A1v5.mp3"
+    },
+    {
+      "bytes": 240832,
+      "sha256": "45a57f5a8c44ad3cb6f0676ed44c103f853f9f11f14a94339b2bd1545edaf7fc",
+      "path": "/audio/salamander/A2v10.mp3"
+    },
+    {
+      "bytes": 245422,
+      "sha256": "f92c8bdf0c3640e7bca2b204f6f9168a436824f33c93b182948afd9b16f45bc5",
+      "path": "/audio/salamander/A2v15.mp3"
+    },
+    {
+      "bytes": 239292,
+      "sha256": "eca1b96d5e504977bad0780e193b41a061664591233368621de66e4c072bf089",
+      "path": "/audio/salamander/A2v5.mp3"
+    },
+    {
+      "bytes": 223080,
+      "sha256": "525d4fc49b4d0b7e3a0a676c201a7e40340f86437c341e7710dcfe53f0f3b3fd",
+      "path": "/audio/salamander/A3v10.mp3"
+    },
+    {
+      "bytes": 233254,
+      "sha256": "09ec2ccbb4e975a5478387523f95447fac524b26524841a25a8edc8b35b7b3eb",
+      "path": "/audio/salamander/A3v15.mp3"
+    },
+    {
+      "bytes": 222200,
+      "sha256": "8d5479958b7b073068205893df5796a88ca3bed27531a61baf63eb6524197b42",
+      "path": "/audio/salamander/A3v5.mp3"
+    },
+    {
+      "bytes": 178497,
+      "sha256": "2ba71edc52020f7a87cd1434acbe6204af6a5d21d24cadf75e4ae402ef5a2e43",
+      "path": "/audio/salamander/A4v10.mp3"
+    },
+    {
+      "bytes": 185823,
+      "sha256": "da21a8bb6a08eb02b000b00c09589c342a897fc6b1624633d11d735382c26bf2",
+      "path": "/audio/salamander/A4v15.mp3"
+    },
+    {
+      "bytes": 171443,
+      "sha256": "738d45a85bfa5792fa813d21e9cec122d78941a9022442f99a1ed2b1b650c2d6",
+      "path": "/audio/salamander/A4v5.mp3"
+    },
+    {
+      "bytes": 134557,
+      "sha256": "886456b0e9c70a2801d52124846179893edd6a8a8c7ddc720019dcc824f37515",
+      "path": "/audio/salamander/A5v10.mp3"
+    },
+    {
+      "bytes": 135307,
+      "sha256": "9e93dbefceb91cd7b389356d289a7120398f165b8c0c54ad69d10d2aff955d3e",
+      "path": "/audio/salamander/A5v15.mp3"
+    },
+    {
+      "bytes": 109882,
+      "sha256": "9c617030871599e32770f48546129dca6670399b8eff578277006a4987fc3b25",
+      "path": "/audio/salamander/A5v5.mp3"
+    },
+    {
+      "bytes": 77649,
+      "sha256": "068da9450280abb4a12738f6e2e229c0dc1134ed64ba752379d17e6362b0d86f",
+      "path": "/audio/salamander/A6v10.mp3"
+    },
+    {
+      "bytes": 81454,
+      "sha256": "88e2dd2696c08a35daee51153ed5748ca8212ca0c43b57f8562a19f7d2869590",
+      "path": "/audio/salamander/A6v15.mp3"
+    },
+    {
+      "bytes": 74993,
+      "sha256": "e5bcacec6b4e29e3266f0fc2c206ff1fadc1162bbd8ff9f1487fd7cf5e003130",
+      "path": "/audio/salamander/A6v5.mp3"
+    },
+    {
+      "bytes": 42627,
+      "sha256": "cebd01c78fc6f5e4621b0372e0ff95c5bbed27a04ba78f3d2e3954e927111d02",
+      "path": "/audio/salamander/A7v10.mp3"
+    },
+    {
+      "bytes": 43197,
+      "sha256": "9db6a670841489cc46cbf9ad15d6aa9f259560da57c5cb75399240bc5ccee14d",
+      "path": "/audio/salamander/A7v15.mp3"
+    },
+    {
+      "bytes": 42705,
+      "sha256": "61b7ac28b57430f71028b014e443ae5b0a3157d1121a97b7e6f3888ad25690b1",
+      "path": "/audio/salamander/A7v5.mp3"
+    },
+    {
+      "bytes": 291745,
+      "sha256": "c258f27bb544888ce3e019dcdb3e42d06ae6f443a9bcb2fec7a1a2db416c37f6",
+      "path": "/audio/salamander/C1v10.mp3"
+    },
+    {
+      "bytes": 299423,
+      "sha256": "b747c6fbec7eac981ab4db66ca81d0b9786796ebbc83c4295977bfcd810ef042",
+      "path": "/audio/salamander/C1v15.mp3"
+    },
+    {
+      "bytes": 289121,
+      "sha256": "6c938cf29e858262508db584f281f555443b9e6d9756981e45c4ec8384ea8b90",
+      "path": "/audio/salamander/C1v5.mp3"
+    },
+    {
+      "bytes": 314793,
+      "sha256": "67da2d8ad4c80306b0352fbf8cad3603c2579d2e7fb78cba86a0473b5ee10ac9",
+      "path": "/audio/salamander/C2v10.mp3"
+    },
+    {
+      "bytes": 321639,
+      "sha256": "a7b8712b123f6a19b3664ccfb21abeb0f0cda9115a2c9bd9b8ba79ea8cbf1712",
+      "path": "/audio/salamander/C2v15.mp3"
+    },
+    {
+      "bytes": 310562,
+      "sha256": "b1a1bde357ad51b08150eecc8278d27b83c24d42aaaed4c496e5398c16077171",
+      "path": "/audio/salamander/C2v5.mp3"
+    },
+    {
+      "bytes": 209704,
+      "sha256": "492de98c92ff3548abdc736668b0bbd2ee95834fc4b0826255d63fa55911be2b",
+      "path": "/audio/salamander/C3v10.mp3"
+    },
+    {
+      "bytes": 217840,
+      "sha256": "ce03c4cf331d47c1ba88e069444e84ca4daad6cd4f5e31ab3a059c97a460a731",
+      "path": "/audio/salamander/C3v15.mp3"
+    },
+    {
+      "bytes": 216511,
+      "sha256": "97b6c5128bc1cfa7d90e1e829f5b0c83c4580b563ea7b256236485143f67a771",
+      "path": "/audio/salamander/C3v5.mp3"
+    },
+    {
+      "bytes": 208316,
+      "sha256": "2a985eb2ad62114b7b4f8669c1f42ab783c5e8dd20c4ccb88117809a950ea5fc",
+      "path": "/audio/salamander/C4v10.mp3"
+    },
+    {
+      "bytes": 222281,
+      "sha256": "dfac0c1e503c3fd00329dbe9b68cdc7d352fdcddd9f3212575f004de1dca063f",
+      "path": "/audio/salamander/C4v15.mp3"
+    },
+    {
+      "bytes": 208016,
+      "sha256": "140d7e6be024a7b5ca69b3a20fe5011bcb2b6d4b50c0e5d07db8f549e60495a0",
+      "path": "/audio/salamander/C4v5.mp3"
+    },
+    {
+      "bytes": 175299,
+      "sha256": "ef47d0d2ec4663c4025e21fb8b8c46d081e638b0dcbe7cee4cbe20bb4c72fa6b",
+      "path": "/audio/salamander/C5v10.mp3"
+    },
+    {
+      "bytes": 170240,
+      "sha256": "325502f1b4ea638f49ca351b339180d6363cbb4f92430120c99960e34fc75624",
+      "path": "/audio/salamander/C5v15.mp3"
+    },
+    {
+      "bytes": 178501,
+      "sha256": "fb87f870b239e33d2bb4567f18356f530888e0ac24a3a742aeb211150ac33767",
+      "path": "/audio/salamander/C5v5.mp3"
+    },
+    {
+      "bytes": 93546,
+      "sha256": "addc057c3420bec01ae6ba99ad6ede2c70c9382d519c065ba2faeebda9745b89",
+      "path": "/audio/salamander/C6v10.mp3"
+    },
+    {
+      "bytes": 96262,
+      "sha256": "89193bd272fd40710ff832efe540e947f79d4131d1d732cb8ac78abc49cf1b1c",
+      "path": "/audio/salamander/C6v15.mp3"
+    },
+    {
+      "bytes": 87986,
+      "sha256": "fc3ff7a8ba166f601b717dfe09fcfa96dbe503ef7490c35455f2d4aa93215274",
+      "path": "/audio/salamander/C6v5.mp3"
+    },
+    {
+      "bytes": 54249,
+      "sha256": "69806c6b8e6f81b11bdcbc378188aed9171e62210ce9541d42f6187d03601bc7",
+      "path": "/audio/salamander/C7v10.mp3"
+    },
+    {
+      "bytes": 53515,
+      "sha256": "df5f19be54dd73487791b26ea6bb63edc35b207de62656d9d0626b9c32d67ed8",
+      "path": "/audio/salamander/C7v15.mp3"
+    },
+    {
+      "bytes": 48906,
+      "sha256": "646ba5395772e5feffe007b09fc25527ce3ab902f697a3110dd160015727f45f",
+      "path": "/audio/salamander/C7v5.mp3"
+    },
+    {
+      "bytes": 53887,
+      "sha256": "f193c9f0ec82efc6c31e128dc4f4550c5938249a75c35810a18b61ed33eef810",
+      "path": "/audio/salamander/C8v10.mp3"
+    },
+    {
+      "bytes": 60721,
+      "sha256": "a4fa35e3758f73c5044338ad58ef29df2f02c11e0367c1811508a7ab9666667b",
+      "path": "/audio/salamander/C8v15.mp3"
+    },
+    {
+      "bytes": 40123,
+      "sha256": "137ae9aa2f4aee9a76ce125babf3ec5c53f51e801c5d003daa6c17997bdba4fc",
+      "path": "/audio/salamander/C8v5.mp3"
+    },
+    {
+      "bytes": 344860,
+      "sha256": "7f20e752abd3a4dee64ce0b82154629f57c617c89a7bf45eaf197cb755ec9a2c",
+      "path": "/audio/salamander/Ds1v10.mp3"
+    },
+    {
+      "bytes": 353469,
+      "sha256": "b3f3489fd90eabec687e5edb931f9cdae714e7461741e4a48820fe6fbc8e1a84",
+      "path": "/audio/salamander/Ds1v15.mp3"
+    },
+    {
+      "bytes": 340096,
+      "sha256": "88c45f53ee07d14571db3813f801c9d639c18c8c416e69423ea1d59f68a87889",
+      "path": "/audio/salamander/Ds1v5.mp3"
+    },
+    {
+      "bytes": 321324,
+      "sha256": "381f0f7dc26afeb8bffb8fa507055877d61c7635456be7d3aa6d4667582fcf22",
+      "path": "/audio/salamander/Ds2v10.mp3"
+    },
+    {
+      "bytes": 327886,
+      "sha256": "7709980438bc15da61855d7c5d4d60b73c44efdcad585d8e461660880342c85b",
+      "path": "/audio/salamander/Ds2v15.mp3"
+    },
+    {
+      "bytes": 319698,
+      "sha256": "ce0eadc721c48326170b68e172392664842ff503b2d1f608baba75e2942a15c6",
+      "path": "/audio/salamander/Ds2v5.mp3"
+    },
+    {
+      "bytes": 227384,
+      "sha256": "c9767569e1014aaca315e982656cf0cdceab7f562a1a835fe61e940b27efe3cf",
+      "path": "/audio/salamander/Ds3v10.mp3"
+    },
+    {
+      "bytes": 227600,
+      "sha256": "251169e948b43f1c3baf2c961143e96f0b6ce03076ecf8690229d626d59b3208",
+      "path": "/audio/salamander/Ds3v15.mp3"
+    },
+    {
+      "bytes": 218903,
+      "sha256": "4809718cc5c453d55082da031984e5c8f9f07ec87b51bc09c80d7ed2516c69e0",
+      "path": "/audio/salamander/Ds3v5.mp3"
+    },
+    {
+      "bytes": 181706,
+      "sha256": "c55b5e273b3a49ec5d8bf061288b71d9070e8717d72f76bf92532c4d828154a5",
+      "path": "/audio/salamander/Ds4v10.mp3"
+    },
+    {
+      "bytes": 181330,
+      "sha256": "122640899d88cbf3afc79aa3e4ea0f3b5d3a49c77d7d3c12a828f9096e3cbc75",
+      "path": "/audio/salamander/Ds4v15.mp3"
+    },
+    {
+      "bytes": 181866,
+      "sha256": "13701af2fe364f54baf0e5c34952f94c14a07ad45bff6efd9227a170ff8da9e8",
+      "path": "/audio/salamander/Ds4v5.mp3"
+    },
+    {
+      "bytes": 144409,
+      "sha256": "890b0555169b2d5d797f8a728f10123c92a9e3eb1c6d81af8e8c0cba9fc271f7",
+      "path": "/audio/salamander/Ds5v10.mp3"
+    },
+    {
+      "bytes": 150927,
+      "sha256": "b3695f9ad1e251aadf8bde8c534365394e5e0a80fdd2f702e5ee04bbd83c0372",
+      "path": "/audio/salamander/Ds5v15.mp3"
+    },
+    {
+      "bytes": 135331,
+      "sha256": "bc23b0d8ecfe1959b7a3b78ae91864cc23c3e190755d2460e9908fbeb33c7f87",
+      "path": "/audio/salamander/Ds5v5.mp3"
+    },
+    {
+      "bytes": 100626,
+      "sha256": "531bec3f5b1ccdf01bd01f15f187b274e42b7d54f6de23e454694ac5cf893172",
+      "path": "/audio/salamander/Ds6v10.mp3"
+    },
+    {
+      "bytes": 107496,
+      "sha256": "98adcf1319f0ee8a86076c84df2bf79e1b7af9e459c737b7489b7729c76ee8dd",
+      "path": "/audio/salamander/Ds6v15.mp3"
+    },
+    {
+      "bytes": 107417,
+      "sha256": "11ad4f6149a81fb88f7715f83dbc9c48ab2ff2aaf35e3209d954d2ce0fc3e132",
+      "path": "/audio/salamander/Ds6v5.mp3"
+    },
+    {
+      "bytes": 58399,
+      "sha256": "e8515af573566b17987c1fa8f985034f5e2e4b6906484b140220b6d90315bfe0",
+      "path": "/audio/salamander/Ds7v10.mp3"
+    },
+    {
+      "bytes": 65331,
+      "sha256": "1b6a59073a401c32a14aae62b0c2d4954ef94a27c2e5e99932081c77686d379f",
+      "path": "/audio/salamander/Ds7v15.mp3"
+    },
+    {
+      "bytes": 57120,
+      "sha256": "fb4bc00c787f539e3481afc8a1ce9fa3d4ddf1a7aadd5c890c62a8d338f0eed9",
+      "path": "/audio/salamander/Ds7v5.mp3"
+    },
+    {
+      "bytes": 304865,
+      "sha256": "adbc074b5d525b2f775e0f60fa2ba02f32fe4a9115fb7fb64281bfda5f237edb",
+      "path": "/audio/salamander/Fs1v10.mp3"
+    },
+    {
+      "bytes": 310951,
+      "sha256": "2ef301a79755eed22870f278447d55d74034c2143c6fc6d8373b451f69ccd97a",
+      "path": "/audio/salamander/Fs1v15.mp3"
+    },
+    {
+      "bytes": 300935,
+      "sha256": "621dbd7cc86b92158d68ae4fb243517ca68d89a9b73a5b63735a13fd48958036",
+      "path": "/audio/salamander/Fs1v5.mp3"
+    },
+    {
+      "bytes": 289099,
+      "sha256": "50c818f268bbd2a18ac3e5080e1ee987bf0d25928f21675481bdbaac6e500db0",
+      "path": "/audio/salamander/Fs2v10.mp3"
+    },
+    {
+      "bytes": 296286,
+      "sha256": "853dd6b4c0cdb6a57bd9dca6d7f49d711add454f955fca2b2237470dc77d1e39",
+      "path": "/audio/salamander/Fs2v15.mp3"
+    },
+    {
+      "bytes": 293755,
+      "sha256": "f947d85ecd86cc5a4a62a6c089d1fefbf702eac8658e10dc773bc13934823d68",
+      "path": "/audio/salamander/Fs2v5.mp3"
+    },
+    {
+      "bytes": 225220,
+      "sha256": "713aabea33dcdb40e7cbbf121bc33eb45bffcd5d7a08e7a1556081889119f788",
+      "path": "/audio/salamander/Fs3v10.mp3"
+    },
+    {
+      "bytes": 225253,
+      "sha256": "b0d824952988ff9af2cda5372bf33e3dfa83f2d75fc7fd3b2b201afe2d222dae",
+      "path": "/audio/salamander/Fs3v15.mp3"
+    },
+    {
+      "bytes": 222453,
+      "sha256": "9082928c209872af1be825f15d3fe4697244bce4ab77cb3b37d70bfb4a40203c",
+      "path": "/audio/salamander/Fs3v5.mp3"
+    },
+    {
+      "bytes": 176780,
+      "sha256": "3fba4d0adcf381a13494674ea5fb4cc0e60704e46650517c4f85b28bb0895df4",
+      "path": "/audio/salamander/Fs4v10.mp3"
+    },
+    {
+      "bytes": 181346,
+      "sha256": "36e6c5d53739b0558d7dd1d30c1076e01752f31340d8ac28b264ea519ebe42ea",
+      "path": "/audio/salamander/Fs4v15.mp3"
+    },
+    {
+      "bytes": 170066,
+      "sha256": "47d81553643f9a697e1585056745232615d2913cbe4bb90903485312951d2a21",
+      "path": "/audio/salamander/Fs4v5.mp3"
+    },
+    {
+      "bytes": 128471,
+      "sha256": "12ad25f6f419db3ac387473f5cf838dbcd52cfe6b9b5af9bec989b0d4e0b0aff",
+      "path": "/audio/salamander/Fs5v10.mp3"
+    },
+    {
+      "bytes": 133736,
+      "sha256": "5456e5aab75ea80f365e11688f097b32cf04c5c00397315ea6cab26d9fd4c09c",
+      "path": "/audio/salamander/Fs5v15.mp3"
+    },
+    {
+      "bytes": 129211,
+      "sha256": "ccf1a2183f8f623173a91bbcc8972fead95e89d54b96c28af956b040ab562dbc",
+      "path": "/audio/salamander/Fs5v5.mp3"
+    },
+    {
+      "bytes": 85523,
+      "sha256": "4792d6b8d534def9114e3f18c59f7dc7f46d0e5d08ef82dbf546ad41dcd99695",
+      "path": "/audio/salamander/Fs6v10.mp3"
+    },
+    {
+      "bytes": 78250,
+      "sha256": "c2342f0fb0eea4ec47746862b46e6dc4636ecd28b2f11de87f48080adf631af6",
+      "path": "/audio/salamander/Fs6v15.mp3"
+    },
+    {
+      "bytes": 78555,
+      "sha256": "19afbf1e771a6e3cca364c4bf4153198c0e77aa4176881a9abbc22a963ca1d0b",
+      "path": "/audio/salamander/Fs6v5.mp3"
+    },
+    {
+      "bytes": 83310,
+      "sha256": "7e1e394a794b33ac5ebb452e5ba52f0045ad68d4dadfc9868a3c96c167cee26e",
+      "path": "/audio/salamander/Fs7v10.mp3"
+    },
+    {
+      "bytes": 83223,
+      "sha256": "459e13b1d2fe50571b096923f58093df071a46a234be832d1b96b52cacc3f41f",
+      "path": "/audio/salamander/Fs7v15.mp3"
+    },
+    {
+      "bytes": 77973,
+      "sha256": "37c949cc2ad6548afa0ca6112e6da59a60dd1677e6799bd0996a2b684c1a979e",
+      "path": "/audio/salamander/Fs7v5.mp3"
+    }
+  ],
+  "source": "https://github.com/tambien/Piano/tree/0cd2c034f820c53e83ab22f5c13bd490b9e4de85/audio"
+}

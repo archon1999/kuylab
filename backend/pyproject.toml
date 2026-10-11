@@ -1,0 +1,28 @@
+[project]
+name = "kuylab-platform"
+version = "0.1.0"
+description = "Personal composition-first piano studio"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "Django==5.2.18",
+    "django-cors-headers==4.9.0",
+    "djangorestframework==3.18.3",
+    "mido==1.3.3",
+    "asgiref==3.12.1",
+    "sqlparse==0.6.0",
+    "tzdata==2026.5",
+    "gunicorn (>=23,<24)",
+    "psycopg[binary] (>=3.2,<4)",
+    "whitenoise (>=6.9,<7)",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

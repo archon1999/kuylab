@@ -1,0 +1,9 @@
+.venv
+__pycache__
+**/__pycache__
+*.sqlite3*
+.env*
+media
+staticfiles
+*.log
+apps/learning/reference_assets/unpianiste-pirate

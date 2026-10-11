@@ -1,0 +1,70 @@
+name: kuylab
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: "3"
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: /etc/kuylab/production.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [database]
+    restart: unless-stopped
+    shm_size: 128mb
+    mem_limit: 512m
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    logging: *logging
+  backend:
+    image: kuylab-backend:${RELEASE_SHA:-local}
+    build: ./backend
+    env_file: /etc/kuylab/production.env
+    volumes:
+      - media:/data/media
+    networks: [database, web]
+    depends_on:
+      db: {condition: service_healthy}
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs: [/tmp:size=64m,mode=1777]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/health/ready/', headers={'Host':'kuylab.uz'}), timeout=4)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    logging: *logging
+  frontend:
+    image: kuylab-frontend:${RELEASE_SHA:-local}
+    build: ./frontend
+    ports: ["127.0.0.1:18280:8080"]
+    networks: [web]
+    depends_on:
+      backend: {condition: service_healthy}
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp:size=32m,mode=1777]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8080/healthz]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    logging: *logging
+networks:
+  database: {internal: true}
+  web:
+volumes:
+  postgres_data:
+  media:

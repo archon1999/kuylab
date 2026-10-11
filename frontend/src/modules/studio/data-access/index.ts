@@ -1,0 +1,1 @@
+export { createStudioRepository } from './repository';

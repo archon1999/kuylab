@@ -1,0 +1,1 @@
+export { createActivityRepository } from './repository';

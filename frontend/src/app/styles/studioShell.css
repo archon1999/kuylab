@@ -1,0 +1,42 @@
+.focused-studio .main-content {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 0;
+  height: 100dvh;
+  inset: 0;
+  overflow: hidden;
+  scrollbar-gutter: auto;
+}
+.focused-studio .page-body {
+  padding: 0;
+  max-width: none;
+  width: 100%;
+}
+.focused-studio .page-error {
+  margin: 30px;
+}
+.studio-shell-status {
+  padding: 32px;
+  font-size: 13px;
+  color: var(--secondary);
+}
+.studio-offline-notice {
+  color: var(--secondary);
+  font-size: 12px;
+  padding: 11px 42px;
+  background: var(--soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.studio-offline-notice .MuiButton-root {
+  font-size: 11px;
+  min-height: 30px;
+}
+@media (max-width: 680px) {
+  .studio-offline-notice {
+    padding-inline: 20px;
+  }
+}

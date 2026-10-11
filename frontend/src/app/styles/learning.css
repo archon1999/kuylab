@@ -1,0 +1,890 @@
+.learning-plan {
+  padding: 27px 30px;
+}
+.learning-plan .MuiButton-root {
+  font-size: 11px;
+  padding-inline: 13px;
+  white-space: nowrap;
+}
+.adaptive-list {
+  margin-top: 17px;
+}
+.adaptive-list > button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  background: none;
+  border: 0;
+  width: 100%;
+  color: #726956;
+  text-align: left;
+}
+.adaptive-list > button + button {
+  border-top: 1px solid #f2ede5;
+}
+.adaptive-list > button:disabled {
+  color: #998974;
+  cursor: default;
+}
+.adaptive-list strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #625d50;
+}
+.adaptive-list small {
+  display: block;
+  line-height: 1.7;
+  color: #9e9280;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.adaptive-list > button > span:nth-child(2) {
+  flex: 1;
+}
+.learning-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f3eee4;
+  color: #ac8964;
+  font-size: 10px;
+}
+.learning-time {
+  white-space: nowrap;
+  font-size: 11px;
+  color: #a49175;
+}
+.learning-caption {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #9b8d78;
+  margin-top: 14px;
+}
+.curriculum-overview {
+  margin-top: 25px;
+}
+.skill-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  padding: 25px 0;
+}
+.skill-strip > div {
+  padding: 13px 15px;
+  background: #f4efe7;
+  border-radius: 15px;
+  min-width: 0;
+}
+.skill-strip span {
+  font-size: 11px;
+  color: #9e8e74;
+  display: block;
+}
+.skill-strip strong {
+  display: block;
+  font:
+    700 24px Georgia,
+    serif;
+  color: #867254;
+  margin: 7px 0;
+}
+.skill-strip small {
+  font-size: 9px;
+  color: #a19177;
+  line-height: 1.7;
+  display: block;
+}
+.curriculum-lessons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.curriculum-lesson {
+  padding: 25px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  border: 0;
+  color: #9e8667;
+}
+.curriculum-lesson > span:nth-child(2) {
+  flex: 1;
+}
+.curriculum-lesson small {
+  font-size: 10px;
+  display: block;
+  color: #aa987c;
+}
+.curriculum-lesson strong {
+  display: block;
+  font:
+    700 21px Georgia,
+    serif;
+  color: #716b5b;
+  margin: 8px 0;
+}
+.curriculum-lesson > span > span {
+  display: block;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #a1947d;
+}
+.lesson-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(270px, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.lesson-reading {
+  padding: 34px 36px;
+}
+.lesson-reading h2,
+.lesson-drill h2 {
+  font:
+    700 25px/1.3 Georgia,
+    serif;
+  color: #696754;
+  margin: 24px 0 15px;
+}
+.lesson-reading section:first-of-type h2 {
+  margin-top: 22px;
+}
+.lesson-reading p {
+  font-size: 14px;
+  line-height: 1.95;
+  color: #838475;
+}
+.lesson-context {
+  font-size: 12px !important;
+  line-height: 1.9 !important;
+  color: #ac9576 !important;
+}
+.lesson-check {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #f2ece1;
+}
+.lesson-questions {
+  margin: 15px 0 22px;
+}
+.lesson-question + .lesson-question {
+  margin-top: 24px;
+}
+.lesson-question h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #77705d;
+  line-height: 1.8;
+  margin: 0 0 9px;
+}
+.lesson-question .MuiFormControlLabel-root {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.lesson-question .MuiFormControlLabel-label {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #91846d;
+}
+.quiz-feedback {
+  margin-top: 12px;
+  padding: 14px 18px;
+  border-radius: 13px;
+  background: #f3f4e9;
+}
+.quiz-feedback.incorrect {
+  background: #f6eee4;
+}
+.quiz-feedback strong {
+  font-size: 11px;
+  color: #76815d;
+}
+.quiz-feedback.incorrect strong {
+  color: #a58260;
+}
+.quiz-feedback p {
+  font-size: 12px !important;
+  line-height: 1.8 !important;
+  margin: 5px 0 0;
+}
+.quiz-score {
+  font-size: 12px !important;
+  color: #998364 !important;
+  margin-bottom: 15px;
+}
+.lesson-reading .MuiButton-root {
+  font-size: 12px;
+}
+.lesson-drill {
+  padding: 29px 28px;
+  background: #f2ecdf;
+}
+.lesson-drill h2 {
+  font-size: 24px;
+  margin-top: 14px;
+}
+.drill-notes {
+  padding: 20px;
+  background: #faf7ef;
+  border-radius: 15px;
+  text-align: center;
+  font:
+    400 23px/1.6 Georgia,
+    serif;
+  color: #947a56;
+  margin-top: 20px;
+  word-break: break-word;
+}
+.drill-counting {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #9c865f;
+  margin-top: 13px;
+}
+.lesson-drill ol {
+  padding-left: 21px;
+  margin: 22px 0;
+}
+.lesson-drill li {
+  padding-left: 6px;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #b19c78;
+}
+.lesson-drill li strong {
+  font-size: 12px;
+  color: #8d795b;
+  font-weight: 500;
+}
+.lesson-drill li p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #a19071;
+  margin-top: 5px;
+}
+.drill-criterion {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #8e835f;
+  margin-bottom: 18px;
+}
+.lesson-drill .MuiButton-root {
+  font-size: 11px;
+  padding-inline: 17px;
+  min-height: 37px;
+}
+.practice-report {
+  padding-top: 25px;
+  margin-top: 25px;
+  border-top: 1px solid #e6ddcb;
+}
+.practice-report h3 {
+  font:
+    700 23px Georgia,
+    serif;
+  margin-bottom: 22px;
+  color: #827151;
+}
+.practice-report .control-label {
+  font-size: 9px;
+}
+.practice-report .MuiTextField-root {
+  margin-top: 12px;
+  background: #faf7f0;
+  border-radius: 12px;
+}
+.practice-report .MuiOutlinedInput-root {
+  font-size: 12px;
+}
+.practice-report .MuiInputLabel-root {
+  font-size: 11px;
+}
+.practice-report .MuiOutlinedInput-notchedOutline {
+  border-color: #e4d8c2;
+}
+.practice-report .learning-caption {
+  font-size: 10px;
+  margin: 13px 0;
+}
+.score-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+  padding: 25px 28px;
+}
+.score-toolbar h3 {
+  font:
+    700 24px/1.3 Georgia,
+    serif;
+  color: #686853;
+  margin-top: 8px;
+}
+.score-toolbar p {
+  font-size: 11px;
+  line-height: 1.85;
+  color: #a2967d;
+  margin-top: 10px;
+  max-width: 650px;
+}
+.score-toolbar .MuiButton-root {
+  font-size: 11px;
+  white-space: nowrap;
+  padding-inline: 18px;
+  min-height: 37px;
+}
+.actual-score {
+  margin-top: 18px;
+  padding: 23px 20px 17px;
+  overflow: hidden;
+}
+.score-subbar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #a18b69;
+  padding: 0 8px 12px;
+}
+.notation-wrap {
+  min-height: 170px;
+}
+.score-notation {
+  width: 100%;
+  min-height: 160px;
+}
+.score-notation svg {
+  max-width: 100%;
+}
+.score-progress {
+  height: 3px;
+  border-radius: 4px;
+  background: #f0e9dd;
+  margin: 17px 9px 0;
+  overflow: hidden;
+}
+.score-progress > span {
+  display: block;
+  height: 100%;
+  background: #ac8554;
+}
+.score-controls {
+  padding: 25px 28px;
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.3fr;
+  gap: 25px;
+  background: #f2ede3;
+}
+.score-controls .control-label {
+  font-size: 8px;
+  margin-bottom: 12px;
+}
+.score-tempo strong {
+  font:
+    700 28px Georgia,
+    serif;
+  color: #937449;
+}
+.score-tempo small {
+  font:
+    400 10px 'Segoe UI',
+    sans-serif;
+  color: #a7977c;
+}
+.score-tempo .MuiSlider-root {
+  padding: 10px 0;
+}
+.score-controls .MuiToggleButtonGroup-root {
+  background: #faf7f0;
+  border-radius: 99px;
+}
+.score-controls .MuiToggleButton-root {
+  border: 0;
+  border-radius: 99px !important;
+  min-width: 40px;
+  padding: 9px 11px;
+  font-size: 10px;
+  color: #a18a65;
+}
+.score-controls .Mui-selected {
+  background: #b28a60 !important;
+  color: #fff !important;
+}
+.score-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ac997a;
+}
+.score-range .MuiOutlinedInput-root {
+  font-size: 11px;
+  background: #faf7f0;
+  border-radius: 99px;
+}
+.score-range .MuiOutlinedInput-notchedOutline {
+  border: 0;
+}
+.score-range .MuiSelect-select {
+  padding: 8px 28px 8px 14px;
+}
+.score-audio-actions {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.score-audio-actions .MuiButton-root {
+  font-size: 11px;
+  min-height: 37px;
+  padding-inline: 17px;
+}
+.score-audio-actions .MuiFormControlLabel-label {
+  font-size: 11px;
+  color: #998363;
+}
+.score-audio-actions .MuiFormControlLabel-root {
+  margin-left: auto;
+}
+.score-version {
+  margin: 15px 0 0 !important;
+  background: #fff;
+  font-size: 12px !important;
+  min-width: 230px;
+}
+.score-details {
+  padding: 20px 25px;
+  background: #f3eee4;
+  border-radius: 16px;
+  margin-top: 18px;
+}
+.score-details summary {
+  color: #998061;
+  font-size: 12px;
+  cursor: pointer;
+}
+.score-staff-assignments {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-top: 17px;
+}
+.score-staff-assignments > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.score-staff-assignments label {
+  font-size: 11px;
+  color: #9d8b70;
+}
+.score-staff-assignments .MuiOutlinedInput-root {
+  font-size: 11px;
+  background: #fbf8f2;
+}
+.score-staff-assignments .MuiOutlinedInput-notchedOutline {
+  border-color: #e7dccb;
+}
+.score-saved-sections {
+  margin-top: 13px;
+}
+.score-saved-sections .MuiButton-root {
+  font-size: 10px;
+  min-height: 30px;
+  padding-inline: 12px;
+}
+.save-score-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.save-score-section .MuiTextField-root {
+  max-width: 320px;
+}
+.save-score-section .MuiOutlinedInput-root,
+.save-score-section .MuiInputLabel-root {
+  font-size: 11px;
+}
+.save-score-section .MuiOutlinedInput-notchedOutline {
+  border-color: #e5daca;
+}
+.save-score-section .MuiButton-root {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.wait-panel {
+  padding: 25px 28px;
+  margin-top: 18px;
+}
+.wait-panel .MuiButton-root {
+  font-size: 11px;
+  min-height: 37px;
+  padding-inline: 17px;
+}
+.wait-panel .learning-caption {
+  margin-top: 12px;
+  max-width: 580px;
+}
+.wait-active {
+  background: #f4efe5;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+.wait-active > strong {
+  font:
+    700 26px Georgia,
+    serif;
+  color: #9b7c50;
+}
+.wait-active > span {
+  float: right;
+  font-size: 12px;
+  color: #ac9670;
+}
+.wait-active > p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #a18e6f;
+  margin: 14px 0;
+}
+.screen-note-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wait-active small {
+  display: block;
+  font-size: 10px;
+  color: #aa9675;
+  margin-top: 15px;
+  line-height: 1.8;
+}
+.score-midi {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 22px;
+}
+.score-midi > svg {
+  color: #ab9471;
+  font-size: 23px;
+}
+.score-midi > div {
+  flex: 1;
+}
+.score-midi strong {
+  font-size: 11px;
+  font-weight: 500;
+  color: #968871;
+}
+.score-midi span {
+  display: block;
+  font-size: 12px;
+  color: #af8556;
+  margin-top: 6px;
+}
+.musicxml-input {
+  display: block;
+  margin: 22px 0;
+  font-size: 12px;
+  max-width: 100%;
+  color: #927f60;
+}
+.musicxml-input::file-selector-button {
+  padding: 10px 17px;
+  border: 0;
+  border-radius: 99px;
+  background: #f0e8d8;
+  color: #91734c;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.reference-video {
+  margin: 20px 0;
+  padding: 20px 25px;
+  background: #f4efe7;
+  border-radius: 17px;
+}
+.reference-video summary {
+  font-size: 12px;
+  color: #a17e54;
+  cursor: pointer;
+}
+.reference-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 14px;
+  margin-top: 17px;
+}
+.reference-video p {
+  font-size: 11px;
+  color: #a29075;
+  line-height: 1.8;
+  margin-top: 13px;
+}
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #a47148;
+  outline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .lesson-layout {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+  }
+  .lesson-reading {
+    padding: 30px;
+  }
+  .lesson-drill {
+    padding: 26px 23px;
+  }
+  .score-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+  .score-tempo {
+    grid-column: 1/-1;
+  }
+  .score-tempo strong {
+    float: right;
+    margin-top: -28px;
+  }
+  .skill-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .lesson-layout {
+    grid-template-columns: 1fr;
+  }
+  .lesson-drill {
+    padding: 27px 29px;
+  }
+  .curriculum-lessons {
+    grid-template-columns: 1fr;
+  }
+  .score-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .score-toolbar .MuiButton-root {
+    align-self: flex-end;
+  }
+  .learning-plan {
+    padding: 25px;
+  }
+  .score-workspace {
+    min-width: 0;
+  }
+  .skill-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .learning-plan {
+    padding: 23px;
+  }
+  .learning-plan .panel-heading {
+    align-items: flex-start;
+  }
+  .learning-plan .MuiButton-root {
+    font-size: 9px;
+    padding-inline: 9px;
+    min-height: 33px;
+  }
+  .adaptive-list > button {
+    gap: 11px;
+  }
+  .adaptive-list strong {
+    font-size: 12px;
+  }
+  .adaptive-list small {
+    font-size: 10px;
+  }
+  .learning-time {
+    font-size: 10px;
+  }
+  .adaptive-list > button > svg {
+    display: none;
+  }
+  .lesson-reading {
+    padding: 27px 23px;
+  }
+  .lesson-reading h2 {
+    font-size: 23px;
+  }
+  .lesson-reading p {
+    font-size: 13px;
+  }
+  .lesson-drill {
+    padding: 26px 24px;
+  }
+  .skill-strip {
+    gap: 10px;
+  }
+  .skill-strip > div {
+    padding: 13px;
+  }
+  .curriculum-lesson {
+    padding: 24px;
+  }
+  .curriculum-lesson strong {
+    font-size: 21px;
+  }
+  .score-toolbar,
+  .wait-panel {
+    padding: 24px 22px;
+  }
+  .score-toolbar h3 {
+    font-size: 22px;
+  }
+  .actual-score {
+    padding: 20px 11px 14px;
+  }
+  .score-controls {
+    padding: 23px;
+    gap: 23px 15px;
+    grid-template-columns: 1fr;
+  }
+  .score-tempo {
+    grid-column: auto;
+  }
+  .score-range .MuiOutlinedInput-root {
+    flex: 1;
+  }
+  .score-audio-actions .MuiFormControlLabel-root {
+    margin-left: 0;
+  }
+  .score-audio-actions .MuiButton-root {
+    font-size: 10px;
+  }
+  .score-midi {
+    gap: 10px;
+  }
+  .score-midi strong {
+    font-size: 10px;
+  }
+  .score-midi .MuiButton-root {
+    font-size: 10px;
+    padding-inline: 11px;
+  }
+  .wait-panel .panel-heading .MuiButton-root {
+    font-size: 10px;
+    padding-inline: 12px;
+  }
+  .save-score-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .score-staff-assignments {
+    display: block;
+  }
+  .score-staff-assignments > div + div {
+    margin-top: 12px;
+  }
+  .score-staff-assignments label {
+    flex: 1;
+  }
+  .save-score-section .MuiTextField-root {
+    max-width: none;
+  }
+  .reference-video {
+    padding: 19px 22px;
+  }
+}
+
+.adaptive-static {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  color: #998974;
+}
+.adaptive-static > span:nth-child(2) {
+  flex: 1;
+}
+.adaptive-static strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #797361;
+}
+.adaptive-static small {
+  display: block;
+  line-height: 1.7;
+  font-size: 11px;
+  color: #a0927b;
+  margin-top: 4px;
+}
+.adaptive-static,
+.adaptive-list > button:not(:first-child) {
+  border-top: 1px solid #f2ede5;
+}
+.lesson-transfer {
+  padding-top: 22px;
+  margin-top: 23px;
+  border-top: 1px solid #e6ddcb;
+}
+.lesson-transfer h3 {
+  font:
+    700 23px Georgia,
+    serif;
+  color: #827151;
+  margin-bottom: 13px;
+}
+.lesson-transfer p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #9b8b6c;
+}
+.lesson-transfer .MuiButton-root {
+  padding-left: 0;
+  margin-top: 10px;
+}
+.score-tempo .learning-caption {
+  font-size: 9px;
+}
+
+.adaptive-list small,
+.adaptive-static small {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.lesson-source {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f2ece1;
+}
+.lesson-source summary {
+  font-size: 11px;
+  color: #a18c6b;
+  cursor: pointer;
+}
+.lesson-source .lesson-context {
+  margin-top: 14px;
+}
+.lesson-source-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 17px;
+}
+.lesson-source-links a {
+  font-size: 11px;
+  color: #977248;
+  text-decoration-color: #d0b68c;
+  text-underline-offset: 4px;
+}

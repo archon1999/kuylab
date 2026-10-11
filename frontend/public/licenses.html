@@ -1,0 +1,249 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="color-scheme" content="light dark" />
+
+    <title>Licenses · KuyLab</title>
+
+    <script>
+      try {
+        const mode = localStorage.getItem('kuylab-theme');
+
+        if (mode === 'light' || mode === 'dark') document.documentElement.dataset.theme = mode;
+      } catch {}
+    </script>
+
+    <style>
+      :root {
+        color-scheme: light;
+
+        --canvas: #faf8f5;
+
+        --text: #4b5563;
+
+        --muted: #737c8b;
+
+        --accent: #a47148;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          color-scheme: dark;
+
+          --canvas: #18122b;
+
+          --text: #f5edc9;
+
+          --muted: #bcb3ce;
+
+          --accent: #eba165;
+        }
+      }
+
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+
+        --canvas: #18122b;
+
+        --text: #f5edc9;
+
+        --muted: #bcb3ce;
+
+        --accent: #eba165;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+
+        background: var(--canvas);
+
+        color: var(--text);
+
+        font:
+          15px/1.7 system-ui,
+          sans-serif;
+      }
+
+      main {
+        width: min(100% - 48px, 720px);
+
+        margin: 56px auto 80px;
+      }
+
+      a {
+        color: var(--accent);
+
+        text-underline-offset: 4px;
+      }
+
+      a:focus-visible {
+        outline: 2px solid currentColor;
+
+        outline-offset: 5px;
+      }
+
+      .back {
+        font-size: 14px;
+
+        text-decoration: none;
+      }
+
+      h1 {
+        font:
+          500 36px/1.2 Georgia,
+          serif;
+
+        margin: 36px 0 40px;
+      }
+
+      h2 {
+        font: inherit;
+
+        font-size: 19px;
+
+        font-weight: 600;
+
+        margin: 0 0 12px;
+      }
+
+      section + section {
+        margin-top: 36px;
+      }
+
+      p {
+        margin: 8px 0;
+      }
+
+      .detail {
+        color: var(--muted);
+
+        font-size: 14px;
+      }
+
+      ul {
+        padding: 0;
+
+        list-style: none;
+      }
+
+      li + li {
+        margin-top: 16px;
+      }
+
+      @media (max-width: 480px) {
+        main {
+          margin-top: 28px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <a class="back" href="/?page=settings">← KuyLab</a>
+
+      <h1 id="heading">Licenses</h1>
+
+      <section aria-labelledby="audio-heading">
+        <h2 id="audio-heading">Piano audio</h2>
+
+        <p>
+          <a href="https://sfzinstruments.github.io/pianos/splendid_grand_piano/"
+            >Splendid Grand Piano</a
+          >
+
+          — AKAI Steinway recordings, Public Domain. All four recorded velocity layers, 226 local
+          OGG samples.
+        </p>
+
+        <p class="detail">
+          Piano mapping: <a href="https://github.com/danigb/smplr">smplr 1.1.0</a> (MIT). Stereo
+          room: <a href="https://github.com/khoin/DattorroReverbNode">DattorroReverbNode</a> (Public
+          Domain), with reset/dispose lifecycle additions.
+          <a href="/audio/splendid/LICENSE.txt">Licenses and sources</a>.
+        </p>
+
+        <p class="detail">Archived sample bank (not used by the current player):</p>
+
+        <p>
+          <a href="https://archive.org/details/SalamanderGrandPianoV3">Salamander Grand Piano V3</a>
+
+          by Alexander Holm, licensed under
+
+          <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0 Unported</a>.
+
+          <a href="/audio/salamander/LICENSE.txt">Full license</a>.
+        </p>
+
+        <p class="detail">
+          Includes 90 unmodified MP3 samples from
+
+          <a
+            href="https://github.com/tambien/Piano/tree/0cd2c034f820c53e83ab22f5c13bd490b9e4de85/audio"
+            >Tone Piano</a
+          >. Playback applies pitch shifting, velocity, note duration and optional synthetic reverb.
+          No endorsement by the author is implied.
+        </p>
+      </section>
+
+      <section aria-labelledby="fonts-heading">
+        <h2 id="fonts-heading">Fonts</h2>
+
+        <p class="detail">Bundled through Fontsource under the SIL Open Font License 1.1.</p>
+
+        <ul>
+          <li>
+            <a href="https://github.com/alan-eu/Alan-Sans">Alan Sans</a> — © 2025 The Alan Sans
+            Project Authors. <a href="/fonts/licenses/alan-sans-OFL.txt">License</a>.
+          </li>
+
+          <li>
+            <a href="https://github.com/cyrealtype/Lora-Cyrillic">Lora</a> — © 2011 The Lora Project
+            Authors. Reserved Font Name “Lora”. <a href="/fonts/licenses/lora-OFL.txt">License</a>.
+          </li>
+
+          <li>
+            <a href="https://github.com/rsms/inter">Inter</a> — © 2016 The Inter Project Authors.
+
+            <a href="/fonts/licenses/inter-OFL.txt">License</a>.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      try {
+        const language = localStorage.getItem('kuylab-language');
+
+        const labels = {
+          uz: ['Litsenziyalar', 'Pianino ovozi', 'Shriftlar'],
+
+          ru: ['Лицензии', 'Звук фортепиано', 'Шрифты'],
+        }[language];
+
+        if (labels) {
+          document.documentElement.lang = language;
+
+          document.title = `${labels[0]} · KuyLab`;
+
+          ['heading', 'audio-heading', 'fonts-heading'].forEach((id, index) => {
+            document.getElementById(id).textContent = labels[index];
+          });
+        }
+      } catch {}
+    </script>
+  </body>
+</html>

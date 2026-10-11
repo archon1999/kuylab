@@ -6,10 +6,11 @@ for executable in docker git python3 nginx sudo; do command -v "$executable" >/d
 install -d -m 700 /etc/kuylab /opt/kuylab /opt/kuylab/backups
 install -d -m 755 /var/www/kuylab-acme
 python3 - <<'PY'
-import os, secrets
+import os, secrets, shlex
 from pathlib import Path
 directory = Path('/etc/kuylab')
 files = {
+    'build.env': ''.join(f'{name}={shlex.quote(os.environ[name])}\n' for name in ['HTTP_PROXY','HTTPS_PROXY','NO_PROXY','http_proxy','https_proxy','no_proxy','ALL_PROXY'] if name in os.environ),
     'database.env': 'POSTGRES_DB=kuylab\nPOSTGRES_USER=postgres\nPOSTGRES_PASSWORD=' + secrets.token_urlsafe(48) + '\n',
     'production.env': 'DJANGO_SETTINGS_MODULE=config.settings.production\nDJANGO_ALLOWED_HOSTS=kuylab.uz,www.kuylab.uz\nDJANGO_SECRET_KEY=' + secrets.token_urlsafe(64) + '\nPOSTGRES_DB=kuylab\nPOSTGRES_USER=kuylab\nPOSTGRES_PASSWORD=' + secrets.token_urlsafe(48) + '\nPOSTGRES_HOST=db\nMEDIA_ROOT=/data/media\n',
 }

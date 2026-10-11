@@ -22,7 +22,13 @@ services:
     logging: *logging
   backend:
     image: kuylab-backend:${RELEASE_SHA:-local}
-    build: ./backend
+    build:
+      context: ./backend
+      network: host
+      args:
+        HTTP_PROXY:
+        HTTPS_PROXY:
+        NO_PROXY:
     env_file: /etc/kuylab/production.env
     volumes:
       - media:/data/media
@@ -32,7 +38,7 @@ services:
     restart: unless-stopped
     init: true
     read_only: true
-    tmpfs: [/tmp:size=64m,mode=1777]
+    tmpfs: ["/tmp:size=64m,mode=1777"]
     cap_drop: [ALL]
     security_opt: [no-new-privileges:true]
     mem_limit: 512m
@@ -45,14 +51,20 @@ services:
     logging: *logging
   frontend:
     image: kuylab-frontend:${RELEASE_SHA:-local}
-    build: ./frontend
+    build:
+      context: ./frontend
+      network: host
+      args:
+        HTTP_PROXY:
+        HTTPS_PROXY:
+        NO_PROXY:
     ports: ["127.0.0.1:18280:8080"]
     networks: [web]
     depends_on:
       backend: {condition: service_healthy}
     restart: unless-stopped
     read_only: true
-    tmpfs: [/tmp:size=32m,mode=1777]
+    tmpfs: ["/tmp:size=32m,mode=1777"]
     cap_drop: [ALL]
     security_opt: [no-new-privileges:true]
     mem_limit: 128m

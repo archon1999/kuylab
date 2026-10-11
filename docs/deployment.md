@@ -13,6 +13,7 @@ Paths on the host:
 
 - `/opt/kuylab/repository`: checkout (deployment pins a main commit).
 - `/etc/kuylab/production.env`: root-owned secrets, mode 600; see the example.
+- `/etc/kuylab/database.env`: separate PostgreSQL administrator secret, mode 600.
 - `/opt/kuylab/backups`: private database and media backups.
 - `/opt/kuylab/current-release`, `previous-release`: image tags for recovery.
 - `/etc/nginx/conf.d/kuylab.conf`: only KuyLab's virtual host.

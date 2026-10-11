@@ -5,6 +5,11 @@ umask 077
 [[ $# == 1 && $1 =~ ^[a-f0-9]{40}$ ]] || { echo 'Expected a commit SHA'; exit 2; }
 sha=$1
 root=/opt/kuylab
+if [[ -f /etc/kuylab/build.env ]]; then
+    set -a
+    source /etc/kuylab/build.env
+    set +a
+fi
 exec 9>/run/lock/kuylab-deploy.lock
 flock -w 600 9
 cd "$root/repository"

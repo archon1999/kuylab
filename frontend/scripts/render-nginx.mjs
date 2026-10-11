@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 // Permit only the exact startup scripts emitted by this build. Do not weaken
 // script-src with unsafe-inline: the theme/splash scripts run before React.
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
-const hashes = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
+const hashes = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)]
   .filter(([, attributes, source]) => !/\bsrc\s*=/i.test(attributes) && source.trim())
   .map(([, , source]) => {
     const digest = createHash('sha256').update(source.replace(/\r\n?/g, '\n')).digest('base64');

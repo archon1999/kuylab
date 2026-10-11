@@ -73,7 +73,7 @@ try:
     status, page, headers = a.request(f"/practice/{original.arrangement.composition_id}")
     assert status == 200, "SPA deep link failed"
     csp = headers["Content-Security-Policy"]
-    for attributes, script in re.findall(r"<script\b([^>]*)>([\s\S]*?)</script>", page.decode(), re.I):
+    for attributes, script in re.findall(r"<script\b([^>]*)>([\s\S]*?)</script\s*>", page.decode(), re.I):
         if "src=" not in attributes and script.strip():
             digest = base64.b64encode(hashlib.sha256(script.replace("\r\n", "\n").encode()).digest()).decode()
             assert f"'sha256-{digest}'" in csp, "CSP blocks a startup script"

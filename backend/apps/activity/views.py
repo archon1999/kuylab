@@ -24,5 +24,5 @@ def visits(request):
     serializer.is_valid(raise_exception=True)
     try:
         return Response(save_visit(learner, serializer.validated_data))
-    except ValueError as error:
-        return Response({"detail": str(error)}, status=400)
+    except ValueError:
+        return Response({"detail": "The activity record is invalid or belongs to another account."}, status=400)

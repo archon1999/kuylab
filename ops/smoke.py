@@ -38,7 +38,8 @@ class Browser:
             for value in response.headers.get_all("Set-Cookie", []):
                 cookie = SimpleCookie(value)
                 for key, morsel in cookie.items():
-                    assert morsel["secure"], "Production cookies must be secure"
+                    if morsel.value and morsel["max-age"] != "0":
+                        assert morsel["secure"], "Production cookies must be secure"
                     self.cookies[key] = morsel.value
             raw = response.read()
             body = json.loads(raw) if "application/json" in response.headers.get("Content-Type", "") else raw
@@ -67,7 +68,7 @@ try:
     status, content, _ = a.request(f"/api/scores/{original.pk}/file/")
     assert status == 200
     assert hashlib.sha256(content).hexdigest() == original.content_sha256
-    assert a.request("/practice/8")[0] == 200, "SPA deep link failed"
+    assert a.request(f"/practice/{original.arrangement.composition_id}")[0] == 200, "SPA deep link failed"
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None

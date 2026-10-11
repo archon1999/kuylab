@@ -257,8 +257,8 @@ def lesson_exercise(request, pk):
         return Response(response)
     try:
         xml = drill_xml(lesson)
-    except ValueError as error:
-        return Response({"detail": str(error)}, status=404)
+    except ValueError:
+        return Response({"detail": "This lesson has no available practice example."}, status=404)
     parsed = parse_musicxml(xml)
     known_hands = authored_hands(lesson)
     hands = {event["id"]: event["hand"] if event["hand"] in ["right", "left"] else known_hands[0] for event in parsed["events"] if not event["rest"]}
@@ -276,8 +276,8 @@ def lesson_exercise_musicxml(request, pk):
     lesson = get_object_or_404(LearningLesson, pk=pk)
     try:
         return xml_response(drill_xml(lesson))
-    except ValueError as error:
-        return Response({"detail": str(error)}, status=404)
+    except ValueError:
+        return Response({"detail": "This lesson has no available practice example."}, status=404)
 
 
 @api_view(["GET"])

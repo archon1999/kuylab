@@ -13,4 +13,5 @@ docker compose exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -
 docker compose exec -T backend tar -C /data -czf - media > "$destination/media.tar.gz"
 cp "$root/current-release" "$destination/release"
 sha256sum "$destination"/* > "$destination/SHA256SUMS"
+python3 ops/prune_backups.py
 echo "Backup saved: $destination"

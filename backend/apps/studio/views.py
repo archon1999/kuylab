@@ -14,8 +14,8 @@ def catalog(request):
     language = request_language(request, profile)
     try:
         result = studio_catalog(language)
-    except CatalogNotPrepared as error:
-        return Response({"detail": str(error)}, status=503)
+    except CatalogNotPrepared:
+        return Response({"detail": "The learning library is temporarily unavailable."}, status=503)
     response = Response(result)
     response["Content-Language"] = language
     response["Vary"] = "Accept-Language"

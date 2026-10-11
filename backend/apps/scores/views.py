@@ -50,8 +50,8 @@ def scores(request):
         else:
             content = extract_musicxml(content, uploaded.name)
             parsed = parse_musicxml(content)
-    except ScoreImportError as exc:
-        return Response({"file": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+    except ScoreImportError:
+        return Response({"file": "The MIDI or MusicXML file could not be read. Check its format and size."}, status=status.HTTP_400_BAD_REQUEST)
     score = None
     def remove_failed_file():
         if score is not None and score.musicxml:

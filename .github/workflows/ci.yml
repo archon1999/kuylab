@@ -74,6 +74,12 @@ jobs:
       - run: poetry install --no-interaction --no-root
       - run: poetry run python manage.py makemigrations --check --dry-run --settings=config.settings.test
       - run: poetry run python manage.py test tests --settings=config.settings.test --noinput
+      - name: Audit locked Python dependencies
+        if: matrix.database == 'sqlite'
+        run: |
+          pip install pip-audit==2.10.1
+          python ../ops/audit_dependencies.py /tmp/kuylab-requirements.txt
+          pip-audit --disable-pip --no-deps -r /tmp/kuylab-requirements.txt
       - name: Production security checks
         env:
           DJANGO_SECRET_KEY: ci-only-security-check-00000000000000000000000000000000000000

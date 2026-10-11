@@ -76,6 +76,8 @@ bash /opt/kuylab/repository/ops/backup.sh
 ```
 
 This saves a custom-format `pg_dump`, a media archive, release SHA and checksums.
+The supplied systemd timer runs daily; retention keeps seven successful full
+backups and ten pre-deployment dumps, confined to KuyLab's backup directory.
 Database and media belong together. Deployment also saves a pre-migration DB dump.
 Host-local backups do not protect against loss of the host; arrange encrypted
 off-host storage and a retention policy before relying on this for public users.

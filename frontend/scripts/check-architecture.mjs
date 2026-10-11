@@ -144,7 +144,7 @@ export function analyzeArchitecture(files, { root = process.cwd(), compilerOptio
   };
   const resolvesInternally = (specifier) =>
     specifier.startsWith('.') ||
-    Object.keys(options.paths || {}).some((alias) => specifier.startsWith(alias.replace('*', '')));
+    Object.keys(options.paths || {}).some((alias) => specifier.startsWith(alias.replaceAll('*', '')));
   for (const filename of sources.keys()) {
     const source = program.getSourceFile(filename);
     const info = classification(filename, root);

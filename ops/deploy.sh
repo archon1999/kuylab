@@ -36,7 +36,7 @@ if ! docker compose up -d --wait --wait-timeout 120; then
     fi
     exit 1
 fi
-curl --fail --silent --show-error -H 'Host: kuylab.uz' -H 'X-Forwarded-Proto: https' http://127.0.0.1:18280/health/ready/
+curl --noproxy '*' --fail --silent --show-error -H 'Host: kuylab.uz' -H 'X-Forwarded-Proto: https' http://127.0.0.1:18280/health/ready/
 printf '%s\n' "$sha" > "$root/current-release"
 [[ -z $previous ]] || printf '%s\n' "$previous" > "$root/previous-release"
 echo "Deployed $sha"

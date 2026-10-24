@@ -36,6 +36,7 @@ def prepared_assets():
             "hand_assignment": "Reviewed unnamed export layers: track 0 upper => right, track 1 lower => left; not literal fingering or physical hand metadata.",
             "unknown_metadata": ["arranger", "key_signature", "time_signature"] + ([] if source.composer else ["composer"]),
             "composer_evidence": "user_supplied_filename" if source.composer else "not_supplied",
+            "note_release_basis": "User's replacement performance export without pedal-extended note durations; no CC64 events supplied.",
         }))
     for item in all_items():
         provenance = {"kind":"original_authored_study", "catalog_id":item["id"], "revision":REVISION}
@@ -57,6 +58,7 @@ def prepared_assets():
                     "transformation_description": stage["instruction"]["en"]}
                 if source_code != "still":
                     stage_provenance["composition_code"] = source_code
+                    stage_provenance["note_release_basis"] = "Replacement source note-off, uniformly scaled; no pedal tail baked into key holds."
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
                 assets.append((stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance))
             continue

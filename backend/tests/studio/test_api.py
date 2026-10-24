@@ -129,6 +129,55 @@ class StudioTests(TestCase):
                     self.assertEqual(Score.objects.get(pk=stage["score_id"]).arrangement.composition_id, composition["id"])
             self.assertEqual(journeys[-1]["stages"][-1]["score_id"], original.pk)
 
+    def test_source_replacement_keeps_content_ids_progress_notes_and_historical_files(self):
+        from django.core.files.base import ContentFile
+        from django.db.models import Max
+        from django.utils import timezone
+        from apps.activity.models import PersonalLibrary, PracticeNote
+        from apps.studio.midi_authoring import midi_bytes
+        from apps.studio.repertoire import SOURCE_BY_CODE
+        from apps.studio.services import studio_catalog
+
+        composition_ids = dict(Composition.objects.values_list("seed_key", "pk"))
+        still_id = StudioAsset.objects.get(pk="composition:still:original").score_id
+        asset = StudioAsset.objects.select_related("score").get(pk="composition:memories:original")
+        legacy_bytes = midi_bytes([(0, 8, 60, "right", 70)], end_quarters=8)
+        legacy = Score.objects.create(
+            arrangement=asset.score.arrangement,
+            version=Score.objects.filter(arrangement=asset.score.arrangement).aggregate(last=Max("version"))["last"] + 1,
+            file_format="midi", title="Previous performance export", original_filename="previous.mid",
+            content_sha256=hashlib.sha256(legacy_bytes).hexdigest(), parsed=parse_midi(legacy_bytes),
+            rights_confirmed_at=timezone.now(), source_provenance={"kind": "previous_performance_export"})
+        legacy.musicxml.save("previous.mid", ContentFile(legacy_bytes))
+        asset.score = legacy
+        asset.save(update_fields=["score"])
+        stage_id = "lesson:memories:sparse-opening:stage:3"
+        library = PersonalLibrary.objects.create(profile_id=1, progress={stage_id: "mastered"},
+            last_stages={"lesson:memories:sparse-opening": stage_id}, comfortable_speeds={stage_id: 70},
+            favorites=[f"composition:{asset.score.arrangement.composition_id}", "lesson:memories:sparse-opening"], positions={stage_id: 3.5})
+        before = {field: getattr(library, field) for field in ["progress", "last_stages", "comfortable_speeds", "favorites", "positions"]}
+        note = PracticeNote.objects.create(profile_id=1, content_id=stage_id, position_seconds=3.5, text="Keep my note")
+
+        call_command("seed_studio", stdout=io.StringIO())
+        asset.refresh_from_db()
+        self.assertNotEqual(asset.score_id, legacy.pk)
+        self.assertEqual(asset.score.content_sha256, SOURCE_BY_CODE["memories"].sha256)
+        self.assertEqual(dict(Composition.objects.values_list("seed_key", "pk")), composition_ids)
+        self.assertEqual(StudioAsset.objects.get(pk="composition:still:original").score_id, still_id)
+        library.refresh_from_db()
+        self.assertEqual({field: getattr(library, field) for field in before}, before)
+        note.refresh_from_db()
+        self.assertEqual((note.content_id, note.text, note.position_seconds), (stage_id, "Keep my note", 3.5))
+        legacy.refresh_from_db()
+        with legacy.musicxml.open("rb") as handle:
+            self.assertEqual(handle.read(), legacy_bytes)
+        course = next(item for item in studio_catalog("en")["lessons"] if item["id"] == "lesson:memories:sparse-opening")
+        self.assertEqual(course["stages"][-1]["id"], stage_id)
+        self.assertEqual(course["stages"][-1]["source_speed_percent"], 100)
+        replacement_id = asset.score_id
+        call_command("seed_studio", stdout=io.StringIO())
+        self.assertEqual(StudioAsset.objects.get(pk=asset.pk).score_id, replacement_id)
+
     def test_catalog_does_not_fetch_all_parsed_study_graphs(self):
         from apps.studio.services import studio_catalog
         with self.assertNumQueries(2):
@@ -173,13 +222,14 @@ class StudioTests(TestCase):
             self.assertLessEqual(selections[1], selections[2], key)
             self.assertEqual(selections[2], {e["id"] for e in source["events"] if lesson["start"] <= e["onset_seconds"] < lesson["end"]})
 
-    def test_all_36_stages_resolve_in_each_language_without_private_generator_fields(self):
+    def test_all_stages_resolve_in_each_language_without_private_generator_fields(self):
         for language in ["uz","ru","en"]:
             catalog = self.client.get("/api/studio/catalog/",HTTP_ACCEPT_LANGUAGE=language).json()
             for lesson in catalog["lessons"]:
-                self.assertEqual(len(lesson["stages"]),3)
+                speeds = [60,80,100] if lesson["id"].startswith("lesson:still:") else [60,80,60,80,100]
+                self.assertEqual(len(lesson["stages"]),len(speeds))
                 self.assertEqual(lesson["score_id"],lesson["stages"][0]["score_id"])
-                self.assertEqual([s["source_speed_percent"] for s in lesson["stages"]],[60,80,100])
+                self.assertEqual([s["source_speed_percent"] for s in lesson["stages"]],speeds)
                 self.assertTrue(lesson["ready_when"])
                 self.assertGreaterEqual(len(lesson["explanation"]),3)
                 for stage in lesson["stages"]:

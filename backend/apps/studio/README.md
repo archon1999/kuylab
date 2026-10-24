@@ -20,7 +20,7 @@ The current API is `GET /api/studio/catalog/` plus the existing score GET endpoi
   MIDI 28–69, lower texture. Assigning these to right and left hand respectively
   is a curated role inference, not a label recovered from the source.
 
-All source bytes are preserved. The source is structurally complete and all its
+All currently selected source bytes are preserved. The source is structurally complete and all its
 events are included; correspondence to any published full arrangement has not
 been independently verified. The file's personal-use provision does not establish
 a redistribution license. No arranger/composer identity is invented.
@@ -148,17 +148,33 @@ Upper/lower track roles are reviewed inferences, not literal physical fingering.
 | Source | Notes | File duration | Main teaching observations |
 | --- | ---: | ---: | --- |
 | What Is a Youth | 833 | 179.375 s | Octaves, changing thirds, broken F♯–A–C♯ support, opposing register moves at 151.75 s |
-| Star | 597 | 208.427 s | Long melody holds, D–F–A / A–C♯–E shapes, F6 entry, sparse ending |
-| Tears in Your Eyes | 688 | 198.370 s | E♭/E contrast, repeated eight-note upper motif, final B5→C6 and held layers |
+| Star | 597 | 207.714 s | Long melody holds, D–F–A / A–C♯–E shapes, F6 entry, sparse ending |
+| Tears in Your Eyes | 688 | 198.391 s | E♭/E contrast, repeated eight-note upper motif, final B5→C6 and held layers |
 | My Memory | 1058 | 272.063 s | Staggered opening, recurring theme, high G6, dense lower texture and independent ending |
 | Premonition | 784 | 229.089 s | C–B–B♭–A–A♭–G bass, broken triads, B–C–C♯ figures, closing C–E♭–G rise |
 | Memories | 500 | 175.990 s | Sparse responses, A–C–E support, repeated A4 under the upper melody and E6 register change |
 
 `repertoire_courses.py` contains 36 individually authored lesson plans in UZ/RU/EN.
-`repertoire_studies.py` compiles source-only selections into 60%, 80% and 100%
-stages. Melody studies keep selected upper attacks, then the whole upper track;
+`repertoire_pedagogy.py` adds reviewed listening/keyboard tasks, common pitfalls
+and a source-checked onset/release example for **every** lesson. These expand each
+lesson into six teaching sections. The theory distinguishes pitch collection,
+actual attack order, note release, silence, voice balance and keyboard movement.
+
+The six active files are the user's `(1).mid` replacement exports. They preserve
+all 4,460 original pitches, attack times and velocities while correcting the
+previous pedal-extended key holds. They still contain no CC64 messages: no pedal
+curve is invented, and genuinely long notes remain intact. Exact hashes and the
+lesson-by-lesson audit are in [the reexport review](reexport-review.md).
+
+`repertoire_studies.py` compiles source-only selections into **five** stages:
+landmarks at 60%, focused texture at 80%, complete texture back at 60%, complete
+texture at 80%, and the original at 100%. The deliberate speed drop separates
+combining hands from increasing tempo. Existing `:stage:1`, `:stage:2` and
+`:stage:3` identities retain their meanings; the new `combined-slow` and
+`combined-flow` stages are inserted before the original `:stage:3`.
+Melody studies keep selected upper attacks, then the whole upper track;
 bass studies do the equivalent for the lower track. Coordination studies restore
-the full upper layer before the lower inner notes. The first Memories two-voice
+the full upper layer before the lower inner notes. The Memories two-voice
 study specifically omits upper-track pitches below C5 to expose its A–G–F–E–D
 line; the original A4 time slots are preserved.
 
@@ -173,5 +189,8 @@ scaling. The last complete-file stage reuses the original score and its bytes.
 The complete catalog has 7 compositions, 48 lessons, 56 continuity studies, 36
 independent exercises and 18 theory topics with 19 optional activities. The catalog
 queries IDs and seven scalar metadata rows, avoiding every study's parsed graph.
-Tests verify the exact musical landmarks, all 252 new stage selections, original
-hashes, piece ownership, localization, complete coverage and stable reseeding.
+Tests verify the exact musical landmarks, all 420 stage selections for these six
+pieces, release evidence, original hashes, piece ownership, localization,
+complete coverage and stable reseeding. An active source replacement creates a
+new immutable Score version and retargets StudioAsset; existing composition IDs,
+personal notes, progress, comfortable speeds and historical source files remain.

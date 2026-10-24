@@ -3,7 +3,7 @@
 UZ teaching intentionally includes Russian terminology; translations are authored,
 not a claim that the MIDI contains words, theory, fingerings or formal sections.
 """
-REVISION = "curated-repertoire-2026-10-v6"
+REVISION = "key-release-curriculum-2026-10-v7"
 
 
 def tr(uz, ru, en):

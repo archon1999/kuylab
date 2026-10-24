@@ -98,7 +98,11 @@ Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 The curated repertoire contains seven supplied MIDI performances: Still, What Is
 a Youth, Star, Tears in Your Eyes, My Memory, Premonition and Memories. The six
 new pieces each include six source-specific lessons and eight continuity studies,
-all with three MIDI stages. Still retains its twelve lessons and eight studies.
+all with five MIDI stages: sparse landmarks, focused layer, complete hands at
+60%, complete hands at 80%, and the 100% original. The six current files are the
+user's replacement exports without pedal-extended key durations; every original
+pitch, attack time and velocity is preserved. Still retains its twelve lessons
+and eight studies with their existing three-stage progression.
 Every complete-piece path ends with the unchanged supplied original. General
 exercises are independently authored examples. Source bytes and
 provenance are documented in [the studio notes](backend/apps/studio/README.md).

@@ -1,4 +1,8 @@
-"""Reviewed source registry. Original files are immutable; hand roles are authored."""
+"""Versioned user-supplied exports. Hand roles are authored, not fingerings.
+
+The six (1) exports replace pedal-extended key holds with the user's note releases.
+All 4,460 pitches, attack times and velocities match the previous exports.
+"""
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -33,12 +37,12 @@ class Source:
 
 SOURCES = (
     Source("still", "Winter Sonata — Still", "Winter Sonata Classics - Still.mid", SOURCE_SHA256, "winter-sonata-still"),
-    Source("youth", "What Is a Youth", "What Is A Youth - Nino Rota - OST R&J 1968 (Piano Cover).mid", "b84c06c831ff7ec243fa52cd26db14621be1e67a50c75bd33545289c8279bdf9", "what-is-a-youth", "Nino Rota", "Romeo & Juliet · 1968"),
-    Source("star", "Winter Sonata — Star", "Winter Sonata Classics -  (Star).mid", "50f86da8673d4ceab53e1ae615d7dbb81bc6357d5256b206802b448f9850f91a", "winter-sonata-star"),
-    Source("tears", "Winter Sonata — Tears in Your Eyes", "Winter Sonata Classics - Tears In Your Eyes.mid", "88c8e868dda9aacda5394a77485bab247f575d267b9c588975d6339ffe32e671", "winter-sonata-tears-in-your-eyes"),
-    Source("my-memory", "Winter Sonata — My Memory", "Winter Sonata Classics - My Memory (Piano Version).mid", "43672ee0d84f112105ac13fb6d6351663548ad83bde869541ffbe40fb35e10bf", "winter-sonata-my-memory"),
-    Source("premonition", "Winter Sonata — Premonition", "Winter Sonata Classics -  (Premonition).mid", "bb9eadf09eba71b169124be8e95e90deadd2355266ad0c2d4716e093b1a4ed4c", "winter-sonata-premonition"),
-    Source("memories", "Memories", "Memories.mid", "191363d0b4ec805e5d5be6d683ec4e6855f4350ece060be704db2f364cf79aa1", "memories", collection=""),
+    Source("youth", "What Is a Youth", "What Is A Youth - Nino Rota - OST R&J 1968 (Piano Cover) (1).mid", "816534970835b9b0d0d7543f0ba97c1fb68e7edd1583d5cf0bd40b082ae2cd00", "what-is-a-youth", "Nino Rota", "Romeo & Juliet · 1968"),
+    Source("star", "Winter Sonata — Star", "Winter Sonata Classics -  (Star) (1).mid", "12f3da5ccdb9ed4d0e4c80934a51d72f2fffdf7fd93cd94bff24c07b1b33ffd4", "winter-sonata-star"),
+    Source("tears", "Winter Sonata — Tears in Your Eyes", "Winter Sonata Classics - Tears In Your Eyes (1).mid", "26c9b8d40d93af50a75684824d47e33067fa6daa237f97d9b7a0bf3d80662570", "winter-sonata-tears-in-your-eyes"),
+    Source("my-memory", "Winter Sonata — My Memory", "Winter Sonata Classics - My Memory (Piano Version) (1).mid", "fa9282b92aa5c69ec9499a7a983d701382ce86bbc7f7b653c707d609257fa835", "winter-sonata-my-memory"),
+    Source("premonition", "Winter Sonata — Premonition", "Winter Sonata Classics -  (Premonition) (1).mid", "fca75f473fdb6b0ff2cf15ecba81b26705fc8ff03370c9382d495d796c9bacee", "winter-sonata-premonition"),
+    Source("memories", "Memories", "Memories (1).mid", "b61395b473e13d2ebf2a9070e8829e6d3aa7fba72b7d10b46ae994e1a2e672b7", "memories", collection=""),
 )
 SOURCE_BY_CODE = {source.code: source for source in SOURCES}
 

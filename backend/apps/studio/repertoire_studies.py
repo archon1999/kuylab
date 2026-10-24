@@ -2,6 +2,7 @@
 from functools import lru_cache
 from .repertoire import SOURCES, repertoire_source
 from .repertoire_courses import COURSES, tr
+from .repertoire_pedagogy import review_blocks
 
 
 def landmarks(parsed, start, end, floor=0):
@@ -54,7 +55,19 @@ def stages(source, parsed, item_id, start, end, mode, floor=0, complete=False):
             tr("Ikki qatlamdan tanlangan tayanchlar 60% asl tezlikda. Birga keladigan va navbat bilan kiradigan tovushlarni ajrating; bo‘shliqlar asl vaqtini saqlaydi.", "Выбранные опоры обоих слоёв на 60%. Различайте совместные и последовательные вступления; промежутки сохраняют исходное время.", "Selected landmarks in both layers at 60%. Distinguish shared attacks from staggered entries; gaps preserve the source timing."),
             tr("Yuqori qatlam to‘liq, pastda siyrak asl tayanchlar: 80% tezlik. Band yuqori yo‘l yangi bassning vaqtini o‘zgartirmasin.", "Полный верх над редкими исходными нижними опорами на 80%. Активный верх не должен менять время нового баса.", "The complete upper layer over sparse source bass landmarks at 80%. A busier upper line should not change bass arrival times."),
         ]
-    selections.append({"right": "all", "left": "all"})
+    selections.extend({"right": "all", "left": "all"} for _ in range(3))
+    titles.extend([
+        tr("Ikki qo‘l · sekin", "Две руки · медленно", "Both hands · slow"),
+        tr("Ikki qo‘l · ravon", "Две руки · плавно", "Both hands · flowing"),
+    ])
+    instructions.extend([
+        tr("Ikkala qatlamning barcha asl notalari birinchi marta birga: tezlik yana 60% ga tushadi. Oldin ajratib o‘rgangan yo‘lni birlashtiring. Bir qo‘lning notasi tugaganda uni pedal dumi kabi cho‘zib ushlamang; ikkinchi qo‘l davom etishi mumkin. Uchta xotirjam urinishdan keyin keyingi bosqichga o‘ting.",
+           "Все исходные ноты обоих слоёв впервые вместе, скорость снова снижена до 60%. Соедините изученные отдельно линии. Не продлевайте закончившуюся ноту как педальный хвост: другая рука может продолжать. После трёх спокойных попыток переходите дальше.",
+           "Every original note in both layers is now present, with speed lowered back to 60%. Combine the lines you studied separately. Release each note at its own end rather than extending it like a pedal tail; the other hand may continue. Move on after three unhurried attempts."),
+        tr("O‘sha to‘liq faktura 80% tezlikda. Yangi nota qo‘shilmaydi: e’tibor endi kirishlar, klavishni bo‘shatish va kuy–jo‘rlik balansida. Qayerda to‘xtasangiz, playerni qo‘lda shu joydan oldinroqqa qaytaring. Ravonlik yo‘qolsa, oldingi sekin bosqichga qayting.",
+           "Та же полная фактура на 80%, без новых нот. Работайте над вступлениями, отпусканием клавиш и балансом мелодии с сопровождением. При остановке вручную вернитесь немного раньше этого места. Если плавность теряется, вернитесь к медленному этапу.",
+           "The same complete texture at 80%, with no added notes. Focus on attacks, releases and melody/accompaniment balance. If you stop, manually seek to just before that point. Return to the slow stage if continuity breaks."),
+    ])
     titles.append(tr("Original faktura", "Исходная фактура", "Original texture"))
     instructions.append(tr(
         "Ikkala qatlamning shu oraliqdagi barcha asl kirishlari 100% manba tezligida. Zarur bo‘lsa player tezligini pasaytiring; ravon ijro tezlikdan oldin keladi.",
@@ -62,23 +75,26 @@ def stages(source, parsed, item_id, start, end, mode, floor=0, complete=False):
         "Every original attack in both layers of this passage at 100% source speed. Lower player speed if needed; fluency comes before speed."))
     result = []
     for index, selection in enumerate(selections):
-        reuse = complete and index == 2
+        # Keep existing progress/deep links: the original remains :stage:3.
+        suffix = ["1", "2", "combined-slow", "combined-flow", "3"][index]
+        speed = [60, 80, 60, 80, 100][index]
+        reuse = complete and index == 4
         result.append({
-            "id": f"{item_id}:stage:{index + 1}", "title": titles[index],
-            "instruction": instructions[index], "source_speed_percent": [60, 80, 100][index],
-            "_asset_key": source.asset_key if reuse else item_id if index == 0 else f"{item_id}:stage:{index + 1}",
+            "id": f"{item_id}:stage:{suffix}", "title": titles[index],
+            "instruction": instructions[index], "source_speed_percent": speed,
+            "_asset_key": source.asset_key if reuse else item_id if index == 0 else f"{item_id}:stage:{suffix}",
             "_reuse_original": reuse,
             "_generator": {"start": start, "end": end, "selection": selection,
-                           "speed_percent": [60, 80, 100][index], "title": source.title.replace("—", "-") + " | " + titles[index]["en"]},
+                           "speed_percent": speed, "title": source.title.replace("—", "-") + " | " + titles[index]["en"]},
         })
     return result
 
 
 def source_window(start, end):
     return {"start_seconds": start, "end_seconds": end,
-            "transformation": tr("Asl tayanchlar → to‘liq qatlam → original faktura",
-                                 "Исходные опоры → полный слой → исходная фактура",
-                                 "Source landmarks → complete layer → original texture")}
+            "transformation": tr("Tayanchlar → alohida qatlam → ikki qo‘l sekin → ravon → original",
+                                 "Опоры → отдельный слой → две руки медленно → плавно → оригинал",
+                                 "Landmarks → focused layer → both hands slowly → fluently → original")}
 
 
 def time_range(start, end):
@@ -109,11 +125,7 @@ def repertoire_items():
                 "title": plan["title"], "subtitle": {language: time_range(start, end) + " · " + text for language, text in layer.items()}, "intro": plan["task"],
                 "category": "harmony" if "triads" in plan["related"] else "expression" if plan["mode"] == "melody" else "coordination",
                 "goals": ["accuracy", "understanding", "musicality"], "level": None, "minutes": 10,
-                "explanation": [
-                    {"title": tr("Shu ijrodagi joy", "Место в этом исполнении", "In this performance"), "text": plan["observation"]},
-                    {"title": tr("Nazariy ma’nosi", "Музыкальный смысл", "The musical idea"), "text": plan["theory"]},
-                    {"title": tr("Mashq usuli", "Как заниматься", "How to practise"), "text": plan["task"]},
-                ],
+                "explanation": review_blocks(source.code, plan, parsed),
                 "steps": [{"title": stage["title"], "instruction": stage["instruction"]} for stage in variants],
                 "stages": variants, "source": source_window(start, end), "ready_when": plan["ready"],
                 "related_ids": ["theory:" + topic for topic in plan["related"]],

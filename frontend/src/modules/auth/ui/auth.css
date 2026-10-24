@@ -93,11 +93,6 @@
 .auth-language button[aria-pressed='true'] {
   background: var(--soft);
 }
-.auth-pulse {
-  height: 4px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #e6e0d9, #a47148, #e6e0d9);
-}
 .auth-card [role='alert'] {
   color: #a33a35;
 }

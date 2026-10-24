@@ -5,12 +5,12 @@ import { useProfile } from '@modules/profile';
 import { allStudyItems, useStudio } from '@modules/studio';
 import { CloseRounded, PianoRounded } from '@mui/icons-material';
 import { Button, Drawer, IconButton, useMediaQuery } from '@mui/material';
-import { PageSkeleton, PlayerSkeleton } from '@shared/ui/Loading';
 import { useTranslation } from '@shared/i18n';
 import { useOnlineStatus } from '@shared/offline';
 import { navigate, useRoute, type Page } from '@shared/routing';
 import { useEffect, useRef, useState } from 'react';
 import Router from '../../routes';
+import RouteLoading from '../../routes/RouteLoading';
 import AppHeader from './AppHeader';
 import MenuContent from './MenuContent';
 import '../../styles/studioShell.css';
@@ -98,21 +98,7 @@ export default function AppLayout() {
     page === 'settings' || page === 'notFound' ? (
       <Router />
     ) : !catalog && loading ? (
-      focused ? (
-        <PlayerSkeleton />
-      ) : (
-        <PageSkeleton
-          variant={
-            page === 'dashboard'
-              ? 'page'
-              : page === 'statistics'
-                ? 'statistics'
-                : page === 'study'
-                  ? 'study'
-                  : 'library'
-          }
-        />
-      )
+      <RouteLoading page={page} />
     ) : !catalog ? (
       <ErrorState
         title={tr('Kontentni ochib bo‘lmadi.')}

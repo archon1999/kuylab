@@ -40,8 +40,9 @@ class JourneyTests(SimpleTestCase):
                     value=localize(task,language)
                     self.assertIsInstance(value['prompt'],str)
                     self.assertIsInstance(value['explanation'],str)
+                    self.assertGreater(len(value['preparation']),80)
                     if task['mode']=='choice': self.assertIn(task['answerChoice'],[choice['id'] for choice in value['choices']])
                     else: self.assertTrue(all(60<=pitch<=84 for pitch in task['answerPitches']))
                 for note in task['audio']:
                     self.assertTrue(21<=note['pitch']<=108 and 0<note['velocity']<=127 and note['duration']>0 and note['onset']>=0)
-        self.assertEqual(total,19)
+        self.assertEqual(total,25)

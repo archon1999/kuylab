@@ -4,8 +4,10 @@ import { ArrowBackRounded, PlayArrowRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useStudio } from '../../../application';
+import { filterByStudyStatus, type StudyStatusFilter as StatusFilter } from '../../../domain';
+import { StudyStatusFilter } from '../../shared/StudyStatus';
 import {
   Favorite,
   Heading,
@@ -19,7 +21,8 @@ export default function DetailPage() {
   const { params } = useRoute();
   const { catalog } = useStudio();
   const tr = useTranslation();
-  const { recordOpen } = useActivity();
+  const { recordOpen, progress } = useActivity();
+  const [status, setStatus] = useState<StatusFilter>('');
   const composition = params.has('composition')
     ? catalog?.compositions.find((item) => item.id === Number(params.get('composition')))
     : catalog?.compositions[0];
@@ -28,6 +31,10 @@ export default function DetailPage() {
   }, [composition?.id, recordOpen]);
   if (!composition) return <StudioError message={tr('Kompozitsiya topilmadi.')} />;
   const lessons = catalog?.lessons.filter((item) => composition.lesson_ids.includes(item.id)) || [];
+  const journeys =
+    catalog?.journeys?.filter((item) => item.composition_id === composition.id) || [];
+  const shownLessons = filterByStudyStatus(lessons, status, progress);
+  const shownJourneys = filterByStudyStatus(journeys, status, progress);
   return (
     <div className="studio-page">
       <Button
@@ -59,6 +66,10 @@ export default function DetailPage() {
           )}
         </div>
       </div>
+      <div className="studio-lesson-filter">
+        <span>{tr('Darslarni holat bo‘yicha ko‘rsatish')}</span>
+        <StudyStatusFilter value={status} onChange={setStatus} />
+      </div>
       <section>
         <SectionTitle title={tr('Kompozitsiya darslari')} />
         {!lessons.length && (
@@ -68,22 +79,40 @@ export default function DetailPage() {
             action={{ label: tr('Playerni ochish'), onClick: () => openComposition(composition) }}
           />
         )}
+        {!!lessons.length && !shownLessons.length && (
+          <EmptyState
+            compact
+            kind="search"
+            title={tr('Bu holatda darslar yo‘q')}
+            action={{ label: tr('Barcha darslar'), onClick: () => setStatus('') }}
+          />
+        )}
         <div className="studio-card-grid">
-          {lessons.map((item, index) => (
-            <StudyCard key={item.id} item={item} number={index + 1} />
+          {shownLessons.map((item) => (
+            <StudyCard
+              key={item.id}
+              item={item}
+              number={lessons.findIndex((value) => value.id === item.id) + 1}
+            />
           ))}
         </div>
       </section>
-      {!!catalog?.journeys?.length && (
+      {!!journeys.length && (
         <section id="whole-performance" style={{ scrollMarginTop: 24 }}>
           <SectionTitle title={tr('To‘liq ijroga tayyorgarlik')} />
           <div className="studio-card-grid">
-            {catalog.journeys
-              .filter((item) => item.composition_id === composition.id)
-              .map((item) => (
-                <StudyCard key={item.id} item={item} />
-              ))}
+            {shownJourneys.map((item) => (
+              <StudyCard key={item.id} item={item} />
+            ))}
           </div>
+          {!shownJourneys.length && (
+            <EmptyState
+              compact
+              kind="search"
+              title={tr('Bu holatda darslar yo‘q')}
+              action={{ label: tr('Barcha darslar'), onClick: () => setStatus('') }}
+            />
+          )}
         </section>
       )}
     </div>

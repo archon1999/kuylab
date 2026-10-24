@@ -8,7 +8,7 @@ from django.utils import timezone
 from apps.learning.models import Arrangement, Composition
 from apps.scores.models import Score
 from apps.scores.midi import parse_midi
-from apps.studio.comparisons import definitions, comparison_midi
+from apps.studio.comparisons import COMPARISONS, definitions, comparison_midi
 from apps.studio.content import REVISION, all_items
 from apps.studio.midi_authoring import SOURCE_SHA256, source_data, lesson_stage_midi, exercise_notes, theory_midi
 from apps.studio.models import StudioAsset
@@ -69,7 +69,7 @@ def prepared_assets():
         else:
             data = theory_midi(spec["topic"])
         assets.append((item["id"], item["title"]["uz"], data, parse_midi(data,item["title"]["uz"]), provenance))
-    for topic in ["voicing", "meter", "legato", "dynamics"]:
+    for topic in COMPARISONS:
         for variant in definitions(topic):
             data = comparison_midi(topic, variant["id"].split(":")[-1])
             title = variant["title"]["uz"]
@@ -139,4 +139,4 @@ class Command(BaseCommand):
                 try: storage.delete(name)
                 except OSError: pass
             raise
-        self.stdout.write(self.style.SUCCESS("Curated studio ready: 7 original compositions, 48 lessons, 56 continuity studies, 36 exercises, 18 theory topics / 19 interactive activities. Users and existing sources preserved."))
+        self.stdout.write(self.style.SUCCESS("Curated studio ready: 7 original compositions, 48 lessons, 56 continuity studies, 48 exercises, 24 theory topics / 25 interactive activities. Users and existing sources preserved."))

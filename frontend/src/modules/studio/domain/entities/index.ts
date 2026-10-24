@@ -4,4 +4,7 @@ export type {
   Composition,
   StudioCatalog,
   StudyFilter,
+  StudyStatus,
+  StudyStatusFilter,
+  StudyProgressMap,
 } from './studio.types.ts';

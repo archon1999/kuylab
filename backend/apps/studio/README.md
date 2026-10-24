@@ -27,12 +27,15 @@ a redistribution license. No arranger/composer identity is invented.
 
 ## Authored material
 
-The Still course contains 12 lessons with **three MIDI stages each**, 36 general
-exercises and 18 practical theory topics: 91 current MIDI assets including the
-original. Every lesson has a concept, a verified source-note example, listening
+The Still course contains 12 lessons with **three MIDI stages each**. The independent
+curriculum contains **48 exercises in 16 families and 24 practical theory topics**,
+with 25 optional activities and five paired listening comparisons. Every lesson
+has a concept, a verified source-note example, listening
 guidance, three practice instructions and a self-check. Uzbek includes Russian
 terminology; RU and EN are authored too. Reviewed lessons live in
-`still_lessons.py`; independent studies remain in `content.py`.
+`still_lessons.py`; independent study definitions live in `content.py`, with
+reviewed coaching in `practice_reviews.py` and `theory_reviews.py` and additional
+original MIDI in `practical_midi.py`. See the [independent curriculum audit](../../../docs/practical-curriculum-review-2026-10.md).
 
 The 12 lessons use source ranges 0–16, 0–20, 16–32, 48–64, 112–128,
 196–214.604 and 0–10 seconds. These are teaching selections, not asserted formal
@@ -76,15 +79,17 @@ Theory reference cross-checks: [intervals](https://musictheory.pugetsound.edu/mt
 These references do not supply the Still analysis; note names and timings above
 come from the user's actual file.
 
-General exercises are independently authored, with 12 families × 3 different
+General exercises are independently authored, with 16 families × 3 different
 levels: five-finger control, scales, arpeggios, chord changes, hand coordination,
-rhythm, leaps, octaves, articulation, balance, pedal and continuity. Difficulty
+rhythm, leaps, octaves, articulation, balance, pedal, continuity, double notes,
+Alberti-style accompaniment, held syncopation and within-hand voicing. Difficulty
 changes musical texture/rhythm/range as well as example length. Pedal studies
 include actual CC64 messages; pedal is never retroactively attributed to Still.
 
 Theory examples cover keyboard intervals, pulse, durations, rests, intervals,
 major/minor, triads, inversions, tonic/dominant, arpeggios, meter, syncopation,
-legato, dynamics, voicing, pedal, phrasing and fragment practice.
+legato, dynamics, voicing, pedal, phrasing, fragment practice, major scales,
+natural/harmonic minor, seventh chords, voice leading, compound meter and cadences.
 
 ## Prepare or update
 
@@ -186,8 +191,8 @@ These transparent reductions do not infer chord roots. All variants preserve the
 selected source pitches, velocities, onsets and clipped holds under uniform time
 scaling. The last complete-file stage reuses the original score and its bytes.
 
-The complete catalog has 7 compositions, 48 lessons, 56 continuity studies, 36
-independent exercises and 18 theory topics with 19 optional activities. The catalog
+The complete catalog has 7 compositions, 48 lessons, 56 continuity studies, 48
+independent exercises and 24 theory topics with 25 optional activities. The catalog
 queries IDs and seven scalar metadata rows, avoiding every study's parsed graph.
 Tests verify the exact musical landmarks, all 420 stage selections for these six
 pieces, release evidence, original hashes, piece ownership, localization,

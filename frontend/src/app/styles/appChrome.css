@@ -281,6 +281,7 @@ a:focus-visible {
   max-width: none;
   min-height: 100dvh;
   background: var(--canvas);
+  background-image: url('../../shared/ui/assets/music-paper.svg');
 }
 .page-body {
   padding: 40px 48px 48px;

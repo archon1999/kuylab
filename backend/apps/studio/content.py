@@ -3,7 +3,10 @@
 UZ teaching intentionally includes Russian terminology; translations are authored,
 not a claim that the MIDI contains words, theory, fingerings or formal sections.
 """
-REVISION = "key-release-curriculum-2026-10-v7"
+from .practice_reviews import EXTRA_FAMILIES, exercise_review
+from .theory_reviews import EXTRA_THEORY, theory_review
+
+REVISION = "independent-curriculum-2026-10-v8"
 
 
 def tr(uz, ru, en):
@@ -56,7 +59,7 @@ FAMILIES = [
     ("arpeggios", "technique", ["fluency", "accuracy"],
      tr("Do major arpejiosi", "Арпеджио до мажор", "C major arpeggio"),
      tr("Arpejio — арпеджио: akkord tovushlari ketma-ket chalinadi. Keyingi tovushga barmoqni cho‘zib yetish o‘rniga butun qo‘lni siljiting.", "Арпеджио — последовательные звуки аккорда. Перемещайте всю руку вместо чрезмерного растяжения пальцев к следующему звуку.", "An arpeggio unfolds a chord one note at a time. Move the hand to the next position instead of stretching fingers excessively."),
-     [tr("C–E–G–E, bir pozitsiyada teng tovush.", "C–E–G–E в одной позиции, ровное звучание.", "C–E–G–E in one position, with an even sound."),
+     [tr("C–E–G–E–C: bir pozitsiyadan boshlang‘ich C ga ravon qaytish.", "C–E–G–E–C: ровное возвращение к начальному C в одной позиции.", "C–E–G–E–C: return evenly to the starting C within one position."),
       tr("C–E–G–C yo‘li, ikki qo‘l; yuqoridagi C ga aksent bermang.", "C–E–G–C обеими руками; без акцента на верхнем C.", "C–E–G–C with both hands; avoid accenting the top C."),
       tr("Ikki oktava; qo‘l harakati va bosh barmoq o‘tishini uzluksiz ulang.", "Две октавы: соединяйте перенос руки и смену большого пальца.", "Two octaves; connect hand travel and thumb changes smoothly.")],
      tr("C–E–G: o‘ng 1–2–3, chap 5–3–2. Bir oktava C–E–G–C: o‘ng 1–2–3–5, chap 5–3–2–1. Kenglik qo‘lga mos bo‘lmasa arpejioni sekin siljib chaling.", "C–E–G: правая 1–2–3, левая 5–3–2. Октава C–E–G–C: правая 1–2–3–5, левая 5–3–2–1. Не растягивайте руку через усилие.", "C–E–G: RH 1–2–3, LH 5–3–2. One octave C–E–G–C: RH 1–2–3–5, LH 5–3–2–1. Move slowly rather than forcing a stretch.")),
@@ -115,8 +118,9 @@ FAMILIES = [
      tr("Barqarorlik — устойчивость. Xato bo‘lsa har safar boshidan boshlamang: pulsni saqlab keyingi tayanchga yeting, keyin qiyin joyni alohida ajrating.", "При ошибке не начинайте каждый раз сначала. Сохраните пульс до следующей опоры, затем отдельно разберите трудность.", "Do not restart from the beginning after every error. Keep the pulse to the next landmark, then isolate the difficult spot."),
      [tr("Bir qo‘lda 16 urishli jumla; oxirigacha barqaror chaling.", "Фраза в 16 долей одной рукой до конца без остановок.", "A 16-beat phrase in one hand, steady to the end."),
       tr("Jo‘rlik qo‘shiladi; melodiyani ichingizda kuylang.", "Добавляется сопровождение; мысленно пойте мелодию.", "Add accompaniment while singing the melody internally."),
-      tr("Har to‘rtinchi urishda sukut; ichki sanash to‘xtamasin.", "Пауза на каждой четвёртой доле; внутренний счёт продолжается.", "A rest on every fourth beat; keep the internal count moving.")], None),
+      tr("O‘ng har to‘rtinchi urishda jim, chap puls davom etadi.", "Правая молчит на каждой четвёртой доле, левая продолжает пульс.", "RH rests on every fourth beat while LH keeps the pulse.")], None),
 ]
+FAMILIES += EXTRA_FAMILIES
 
 LEVELS = ["easy", "intermediate", "advanced"]
 LEVEL_LABELS = [tr("Oson", "Легко", "Easy"), tr("O‘rta", "Средне", "Intermediate"), tr("Murakkab", "Сложно", "Advanced")]
@@ -137,6 +141,10 @@ def exercise_items():
                     ], "related_ids": [f"exercise:{family}:{other}" for other in LEVELS if other != level],
                     "_generator": {"family": family, "level": index}}
             if fingering: item["fingering"] = fingering
+            review = exercise_review(family, index)
+            item["explanation"].extend(review.pop("explanation"))
+            item["related_ids"].extend(review.pop("related_ids"))
+            item.update(review)
             items.append(item)
     return items
 
@@ -158,7 +166,7 @@ THEORY = [
      tr("Interval — интервал — ikki tovush orasidagi masofa. Namuna C dan turli yuqori tovushlarga yuradi; kichik qadam va keng sakrashni farqlang.", "Интервал — расстояние между двумя звуками. Пример идёт от C к разным верхним звукам: различайте шаг и скачок.", "An interval is the distance between two tones. Listen from C to different upper tones and distinguish steps from leaps."),
      tr("Har juftlikdan keyin keyingi tovushni kuylab ko‘ring; keyin klaviaturadagi masofani ko‘ring.", "После пары попробуйте пропеть верхний звук, затем посмотрите расстояние на клавиатуре.", "Sing the upper note after each pair, then look at its keyboard distance.")),
     ("major-minor", "harmony", tr("Major va minor farqi", "Мажор и минор", "Major and minor"),
-     tr("C–E–G major, C–E♭–G minor uch tovushligidir. Tersiya — терция — bir yarim ton o‘zgarib, akkord tusini o‘zgartiradi; kayfiyat faqat shu bilan belgilanmaydi.", "C–E–G — мажорное, C–E♭–G — минорное трезвучие. Изменение терции на полутон меняет окраску; настроение зависит не только от лада.", "C–E–G is major; C–E♭–G is minor. Moving the third by a semitone changes its color; mood depends on more than the mode."),
+     tr("C–E–G major, C–E♭–G minor uch tovushligidir. Tersiya — терция — bitta yarim ton o‘zgarib, akkord tusini o‘zgartiradi; kayfiyat faqat shu bilan belgilanmaydi.", "C–E–G — мажорное, C–E♭–G — минорное трезвучие. Изменение терции на полутон меняет окраску; настроение зависит не только от лада.", "C–E–G is major; C–E♭–G is minor. Moving the third by a semitone changes its color; mood depends on more than the mode."),
      tr("Pastki va yuqori tovushni saqlab, faqat o‘rtadagini almashtiring.", "Сохраните нижний и верхний звуки, меняя только средний.", "Keep the outer tones and change only the middle tone.")),
     ("triads", "harmony", tr("Uch tovushli akkord", "Трезвучие", "Triads"),
      tr("Uch tovushlik — трезвучие — asosiy holatda tersiyalar bilan tuzilgan akkord. C–E–G ni avval ketma-ket, keyin birga eshiting.", "Трезвучие в основном положении строится по терциям. Прослушайте C–E–G последовательно и одновременно.", "A root-position triad stacks thirds. Hear C–E–G successively, then together."),
@@ -199,13 +207,21 @@ THEORY = [
 ]
 
 
+THEORY += EXTRA_THEORY
+
+
 def theory_items():
-    return [{"id": f"theory:{key}", "kind": "theory", "title": title, "subtitle": task,
+    items = [{"id": f"theory:{key}", "kind": "theory", "title": title, "subtitle": task,
              "category": category, "goals": ["understanding"], "level": None, "minutes": 4,
              "intro": task, "explanation": [{"title": title, "text": text}],
              "steps": [{"title": tr("Ko‘ring va eshiting", "Посмотрите и послушайте", "Watch and listen"), "instruction": task},
                        {"title": tr("Pianinoda sinang", "Попробуйте на пианино", "Try at the piano"), "instruction": text}],
              "related_ids": [], "_generator": {"topic": key}} for key, category, title, text, task in THEORY]
+    for item in items:
+        review = theory_review(item["_generator"]["topic"])
+        item["explanation"].extend(review.pop("explanation"))
+        item.update(review)
+    return items
 
 
 from .still_lessons import LESSONS, lesson_items

@@ -58,4 +58,9 @@ export type StudyFilter = {
   goal: string;
   level: string;
   favoritesOnly: boolean;
+  status: StudyStatusFilter;
 };
+
+export type StudyStatus = 'learning' | 'struggling' | 'mastered';
+export type StudyStatusFilter = StudyStatus | 'not_started' | '';
+export type StudyProgressMap = Record<string, StudyStatus>;

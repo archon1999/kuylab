@@ -21,15 +21,30 @@ export const learningMessages: Record<string, { ru: string; en: string }> = {
   Tahrirlash: { ru: 'Редактировать', en: 'Edit' },
   'Olib tashlash': { ru: 'Убрать', en: 'Remove' },
   'Joriy bosqich holati': { ru: 'Состояние текущего этапа', en: 'Current stage progress' },
-  'Qulay tezligim (%)': { ru: 'Моя удобная скорость (%)', en: 'My comfortable speed (%)' },
-  'O‘zingiz ravon chalgan tezlik. Namuna = 100%.': {
-    ru: 'Скорость, на которой вы играете уверенно. Пример = 100%.',
-    en: 'The speed you can play fluently. This example = 100%.',
+  Boshlanmagan: { ru: 'Не начато', en: 'Not started' },
+  'Avval bilib oling': { ru: 'Перед заданием', en: 'Before you try' },
+  'Batafsil nazariya': { ru: 'Подробная теория', en: 'Read the full explanation' },
+  'Tushunganingizni tekshiring': { ru: 'Проверьте понимание', en: 'Check your understanding' },
+  'Darslarni holat bo‘yicha ko‘rsatish': {
+    ru: 'Показать уроки по статусу',
+    en: 'Show lessons by progress',
   },
-  '20–200 orasida butun son kiriting.': {
-    ru: 'Введите целое число от 20 до 200.',
-    en: 'Enter a whole number from 20 to 200.',
+  'Bu holatda darslar yo‘q': {
+    ru: 'Нет уроков с таким статусом',
+    en: 'No lessons with this status',
   },
+  'Barcha darslar': { ru: 'Все уроки', en: 'All lessons' },
+  'Darslarni o‘zlashtirish': { ru: 'Освоение уроков', en: 'Learning progress' },
+  '{0} ta dars. Holatlarni o‘zingiz belgilaysiz; dars bosqichlari alohida dars sifatida sanalmaydi.':
+    {
+      ru: 'Уроков: {0}. Вы отмечаете статус сами; этапы не считаются отдельными уроками.',
+      en: '{0} lessons. You set your own status; stages are not counted as separate lessons.',
+    },
+  'Yo‘nalishlar bo‘yicha o‘zlashtirish': {
+    ru: 'Освоение по направлениям',
+    en: 'Learning progress by area',
+  },
+  'Yo‘nalish': { ru: 'Направление', en: 'Area' },
   '{0}/{1} bosqich o‘zlashtirilgan': {
     ru: 'Освоено этапов: {0}/{1}',
     en: '{0}/{1} stages mastered',

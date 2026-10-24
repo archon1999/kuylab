@@ -124,46 +124,55 @@ def lesson_stage_midi(parsed, start, end, selection, speed_percent, title="Still
 
 
 def exercise_notes(family, level):
-    """Twelve authored patterns at three substantially different difficulties."""
+    """Reviewed patterns; quarters describe timing, not acoustic decay tails."""
+    if level not in (0, 1, 2):
+        raise ValueError("Unknown exercise level")
+    from .practical_midi import EXTRA_FAMILIES, extra_exercise
+    if family in EXTRA_FAMILIES:
+        return extra_exercise(family, level, midi_bytes)
     notes, pedal = [], []
     speed = [66, 80, 96][level]
     repetitions = [2, 3, 4][level]
+    cycle = 8 if family == "scales" and level == 0 else 12 if family == "coordination" and level == 2 else 16
+    if family == "arpeggios":
+        cycle, repetitions = (8, 4) if level == 2 else (4, [4, 6][level])
     def add(start, pitch, duration=.8, hand="right", velocity=72):
         notes.append((start, duration, pitch, hand, velocity))
     scale = [0, 2, 4, 5, 7, 9, 11, 12]
     for r in range(repetitions):
-        base = r * 16
+        base = r * cycle
         if family == "five-finger":
             pattern = [[0, 2, 4, 5, 7, 5, 4, 2], [0, 4, 2, 5, 4, 7, 5, 2], [0, 5, 2, 7, 4, 2, 5, 4]][level]
             for i, interval in enumerate(pattern * 2):
                 add(base + i, 60 + interval, .8, "right")
                 add(base + i, 48 + (interval if level < 2 else pattern[-1-i % 8]), .8, "left", 58)
         elif family == "scales":
-            count = 1 if level == 0 else 2
-            pattern = [*scale[:-1], *[x + 12 for x in scale]] if count == 2 else scale
-            pattern = pattern + pattern[-2:0:-1]
-            step = 16 / len(pattern)
-            for i, interval in enumerate(pattern):
-                add(base + i * step, 60 + interval, step * .9)
+            ascending = scale if level == 0 else [*scale[:-1], *[x + 12 for x in scale]]
+            degrees = list(range(len(ascending))) + list(range(len(ascending)-2, -1, -1))
+            descending_left = [48, 47, 45, 43, 41, 40, 38, 36, 35, 33, 31, 29, 28, 26, 24]
+            for i, degree in enumerate(degrees):
+                duration = cycle-i*.5-.2 if i == len(degrees)-1 else .45
+                add(base + i*.5, 60 + ascending[degree], duration)
                 if level:
-                    add(base + i * step, 48 + (interval if level == 1 else 24 - interval), step * .9, "left", 60)
+                    pitch = 48 + ascending[degree] if level == 1 else descending_left[degree]
+                    add(base + i*.5, pitch, duration, "left", 60)
         elif family == "arpeggios":
-            pattern = [[0,4,7,4], [0,4,7,12,7,4], [0,4,7,12,16,19,24,19,16,12,7,4]][level]
-            for i in range(24 if level == 2 else 16):
-                step = 16 / (24 if level == 2 else 16)
-                add(base+i*step, 60+pattern[i%len(pattern)], step*.85)
-                if level: add(base+i*step, 36+pattern[i%len(pattern)], step*.85, "left", 56)
+            pattern = [[0,4,7,4,0], [0,4,7,12,7,4,0], [0,4,7,12,16,19,24,19,16,12,7,4,0]][level]
+            for i, interval in enumerate(pattern):
+                duration = cycle-i*.5-.2 if i == len(pattern)-1 else .43
+                add(base+i*.5, 60+interval, duration)
+                if level: add(base+i*.5, 36+interval, duration, "left", 56)
         elif family == "chords":
             voicings = [[60,64,67],[60,65,69],[59,62,67],[60,64,67]] if level else [[60,64,67]]*4
-            if level == 2: voicings = [[60,64,67,71],[60,64,69,72],[59,62,65,69],[60,64,67,72]]
+            if level == 2: voicings = [[60,64,67,71],[60,64,65,69],[59,62,65,67],[60,64,67,71]]
             for i, chord in enumerate(voicings):
                 for pitch in chord: add(base+i*4, pitch, 3.2)
-                add(base+i*4, [48,41,43,48][i], 3.2, "left", 56)
+                add(base+i*4, [48,41,43,48][i] if level else 48, 3.2, "left", 56)
         elif family == "coordination":
             right_step = [1,.5,.5][level]
             left_step = [2,1,.75][level]
-            for i in range(round(16/right_step)): add(base+i*right_step, 60+[0,2,4,5,7,5,4,2][i%8], right_step*.8)
-            for i in range(int(16/left_step)): add(base+i*left_step, 48+[0,7,4,7][i%4], left_step*.7, "left", 56)
+            for i in range(round(cycle/right_step)): add(base+i*right_step, 60+[0,2,4,5,7,5,4,2][i%8], right_step*.8)
+            for i in range(round(cycle/left_step)): add(base+i*left_step, 48+[0,7,4,7][i%4], left_step*.7, "left", 56)
         elif family == "rhythm":
             pattern = [[1,1,2],[.75,.25,1,2],[.5,.5,1/3,1/3,1/3,1,1]][level]
             at = base
@@ -198,8 +207,8 @@ def exercise_notes(family, level):
         elif family == "pedal":
             for i, root in enumerate([48,53,55,48]):
                 at = base+i*4
-                for pitch in [root,root+4 if root !=53 else root+4,root+7]: add(at,pitch,1.2,"left",55)
-                pedal.extend([(at,False),(at+.12,True),(at+3.85,False)])
+                for pitch in [root,root+4,root+7]: add(at,pitch,1.2,"left",55)
+                pedal.extend([(at,False),(at+.12,True)])
                 if level:
                     for j in range(4): add(at+j,72+[0,4,7,4][j],.7,velocity=64)
                 if level==2:
@@ -207,11 +216,12 @@ def exercise_notes(family, level):
         elif family == "continuity":
             melody = [0,2,4,7,5,4,2,0,4,5,7,9,7,4,2,0]
             for i,p in enumerate(melody):
-                if level==2 and i%4==3: continue
-                add(base+i,60+p,.85)
+                if not (level==2 and i%4==3): add(base+i,60+p,.85)
                 if level: add(base+i,48+[0,7,4,7][i%4],.7,"left",50)
         else: raise ValueError(f"Unknown study family: {family}")
-    return midi_bytes(notes, speed, pedal=pedal), {"authored_bpm":speed,"pedal_demonstration":bool(pedal)}
+    if pedal:
+        pedal.append((cycle*repetitions, False))
+    return midi_bytes(notes, speed, pedal=pedal, end_quarters=cycle*repetitions), {"authored_bpm":speed,"pedal_demonstration":bool(pedal)}
 
 
 def theory_midi(topic):
@@ -255,11 +265,17 @@ def theory_midi(topic):
             chord(i,[p],.9,78);chord(i,[48,55,60],.8,38,"left")
     elif topic == "pedal":
         chord(0,[60,64,67],1);chord(4,[60,65,69],1)
-        pedal=[(.1,True),(3.9,False),(4.1,True),(7.5,False)]
+        pedal=[(.1,True),(4,False),(4.1,True),(7.5,False)]
     elif topic == "phrasing":
         for i,p in enumerate([60,62,64,67,65,64,62,60]): chord(i,[p],.7 if i==3 else .9,64 if i<4 else 58)
     elif topic == "practice":
         for repeat in range(3):
             for i,p in enumerate([60,64,67,64]): chord(repeat*6+i,[p],.8)
-    else: raise ValueError(topic)
-    return midi_bytes(notes,bpm=76,pedal=pedal,meter=(3,4) if topic=="meter" else (4,4))
+    else:
+        from .practical_midi import extra_theory
+        return extra_theory(topic, midi_bytes)
+    end = {"keyboard":8, "pulse":16, "durations":16, "rests":16, "intervals":21,
+           "major-minor":8, "triads":8, "inversions":12, "tonic-dominant":12,
+           "arpeggio":8, "meter":12, "syncopation":8, "legato":8, "dynamics":16,
+           "voicing":8, "pedal":8, "phrasing":8, "practice":18}[topic]
+    return midi_bytes(notes,bpm=76,pedal=pedal,meter=(3,4) if topic=="meter" else (4,4),end_quarters=end)

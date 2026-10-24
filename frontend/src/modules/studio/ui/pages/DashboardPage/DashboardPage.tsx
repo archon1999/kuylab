@@ -9,10 +9,10 @@ import {
   PlayArrowRounded,
 } from '@mui/icons-material';
 import { Button } from '@mui/material';
-import { useTranslation } from '@shared/i18n';
+import { usePreferences, useTranslation } from '@shared/i18n';
 import { navigate } from '@shared/routing';
 import { useStudio } from '../../../application';
-import { durationLabel } from '../../../domain';
+import { durationLabel, studyCountLabel } from '../../../domain';
 import {
   ContentRow,
   Heading,
@@ -22,8 +22,10 @@ import {
 } from '../../shared/StudioParts';
 import '../../studio.css';
 import RecentNotes from '../../shared/RecentNotes';
+import { StudyStatusBadge } from '../../shared/StudyStatus';
 export default function DashboardPage() {
   const tr = useTranslation();
+  const { language } = usePreferences();
   const { catalog } = useStudio();
   const { profile } = useProfile();
   const { recents, favorites, stats, positions, lastStages, progress } = useActivity();
@@ -50,7 +52,7 @@ export default function DashboardPage() {
   const lastProgress = lastStudy && progress[lastStage?.id || lastStudy.id];
   const saved = favorites.filter((value) => validIds.has(value)).slice(0, 4);
   return (
-    <div className="studio-page">
+    <div className="studio-page studio-dashboard">
       <Heading title={tr('Salom, {0}', [profile.display_name])} />
       {composition && (
         <section className="studio-hero">
@@ -64,8 +66,8 @@ export default function DashboardPage() {
             </p>
             <h2>{composition.title}</h2>
             <p className="studio-hero-caption">
-              {durationLabel(composition.duration_seconds)} · {composition.lesson_ids.length}{' '}
-              {tr('dars')}
+              {durationLabel(composition.duration_seconds)} ·{' '}
+              {studyCountLabel(composition.lesson_ids.length, 'lesson', language)}
             </p>
             <div className="studio-actions">
               <Button
@@ -91,19 +93,12 @@ export default function DashboardPage() {
           <div>
             <small>{tr('Davom etish')}</small>
             <h2>{lastStudy.title}</h2>
-            <p>
-              {lastStage?.title}
-              {lastProgress
-                ? ' · ' +
-                  tr(
-                    {
-                      learning: 'O‘rganyapman',
-                      struggling: 'Qiynalyapman',
-                      mastered: 'O‘zlashtirdim',
-                    }[lastProgress],
-                  )
-                : ''}
-            </p>
+            {(lastStage || lastProgress) && (
+              <div className="studio-resume-meta">
+                {lastStage && <span>{lastStage.title}</span>}
+                {lastProgress && <StudyStatusBadge status={lastProgress} />}
+              </div>
+            )}
           </div>
           <Button
             onClick={() => navigate('study', { item: lastStudy.id, stage: lastStage?.id || null })}

@@ -2,7 +2,7 @@ import { useErrorScreen } from '@shared/ui/errorScreen';
 import ErrorState from '@shared/ui/ErrorState';
 import { useActivity } from '@modules/activity';
 import { useProfile } from '@modules/profile';
-import { useStudio } from '@modules/studio';
+import { allStudyItems, useStudio } from '@modules/studio';
 import { CloseRounded, PianoRounded } from '@mui/icons-material';
 import { Button, Drawer, IconButton, useMediaQuery } from '@mui/material';
 import { PageSkeleton, PlayerSkeleton } from '@shared/ui/Loading';
@@ -34,12 +34,10 @@ export default function AppLayout() {
   }, [page, itemId, compositionId]);
   const studyItem =
     page === 'study' && catalog
-      ? [...catalog.lessons, ...catalog.exercises, ...catalog.theory].find(
-          (item) => item.id === params.get('item'),
-        )
+      ? allStudyItems(catalog).find((item) => item.id === params.get('item'))
       : null;
   const navigationPage = studyItem
-    ? studyItem.kind === 'lesson'
+    ? ['lesson', 'journey'].includes(studyItem.kind)
       ? 'library'
       : studyItem.kind === 'exercise'
         ? 'exercises'

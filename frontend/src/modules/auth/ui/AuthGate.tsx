@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { transitionColorMode } from '@shared/ui/colorModeTransition';
 import BrandMark from '@shared/ui/BrandMark';
+import { StudioSplash } from '@shared/ui/Loading';
 import { AuthContext, useSession } from '../application';
 import type { AuthRepository } from '../domain';
 import './auth.css';
@@ -135,6 +136,10 @@ export default function AuthGate({
     );
   if (session.user)
     return <AuthContext.Provider value={repository}>{children}</AuthContext.Provider>;
+  if (session.loading)
+    return (
+      <StudioSplash label={{ uz: 'Yuklanmoqda…', ru: 'Загрузка…', en: 'Loading…' }[language]} />
+    );
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
@@ -158,111 +163,94 @@ export default function AuthGate({
           <BrandMark />
           <span>KuyLab</span>
         </div>
-        {session.loading ? (
-          <div
-            role="status"
-            className="auth-pulse"
-            aria-label={{ uz: 'Yuklanmoqda…', ru: 'Загрузка…', en: 'Loading…' }[language]}
-          />
-        ) : session.error ? (
-          <>
-            <p role="alert">{session.error}</p>
-            <button onClick={() => location.reload()}>{text[6]}</button>
-          </>
-        ) : (
-          <>
-            <div className="auth-preferences">
-              <div
-                className="auth-language"
-                role="group"
-                aria-label={{ uz: 'Til', ru: 'Язык', en: 'Language' }[language]}
-              >
-                {(['uz', 'ru', 'en'] as const).map((code) => (
-                  <button
-                    type="button"
-                    key={code}
-                    lang={code}
-                    aria-pressed={code === language}
-                    onClick={() => setLanguage(code)}
-                  >
-                    {code.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-              <div
-                className="auth-mode"
-                role="group"
-                aria-label={{ uz: 'Rang rejimi', ru: 'Тема', en: 'Theme' }[language]}
-              >
-                <button
-                  type="button"
-                  aria-pressed={mode === 'light'}
-                  aria-label={
-                    { uz: 'Yorug‘ rejim', ru: 'Светлая тема', en: 'Light mode' }[language]
-                  }
-                  onClick={() => chooseMode('light')}
-                >
-                  <LightModeOutlined />
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={mode === 'dark'}
-                  aria-label={
-                    { uz: 'Qorong‘i rejim', ru: 'Тёмная тема', en: 'Dark mode' }[language]
-                  }
-                  onClick={() => chooseMode('dark')}
-                >
-                  <DarkModeOutlined />
-                </button>
-              </div>
-            </div>
-            <h1>{text[register ? 1 : 0]}</h1>
-            <p>{text[5]}</p>
-
-            <form onSubmit={submit}>
-              {register && (
-                <label>
-                  {text[4]}
-                  <input name="display_name" autoComplete="name" maxLength={80} required />
-                </label>
-              )}
-              <label>
-                {text[2]}
-                <input
-                  name="username"
-                  autoComplete="username"
-                  maxLength={150}
-                  required
-                  autoCapitalize="none"
-                />
-              </label>
-              <label>
-                {text[3]}
-                <input
-                  name="password"
-                  type="password"
-                  autoComplete={register ? 'new-password' : 'current-password'}
-                  minLength={register ? 8 : undefined}
-                  required
-                />
-                {register && <small>{text[7]}</small>}
-              </label>
-              {error && <p role="alert">{error}</p>}
-              <button className="auth-submit" disabled={busy}>
-                {busy ? '…' : text[register ? 1 : 0]}
-              </button>
-            </form>
-            <button
-              className="auth-alternative"
-              onClick={() => {
-                setRegister(!register);
-                setError('');
-              }}
+        <>
+          <div className="auth-preferences">
+            <div
+              className="auth-language"
+              role="group"
+              aria-label={{ uz: 'Til', ru: 'Язык', en: 'Language' }[language]}
             >
-              {text[register ? 0 : 1]}
+              {(['uz', 'ru', 'en'] as const).map((code) => (
+                <button
+                  type="button"
+                  key={code}
+                  lang={code}
+                  aria-pressed={code === language}
+                  onClick={() => setLanguage(code)}
+                >
+                  {code.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            <div
+              className="auth-mode"
+              role="group"
+              aria-label={{ uz: 'Rang rejimi', ru: 'Тема', en: 'Theme' }[language]}
+            >
+              <button
+                type="button"
+                aria-pressed={mode === 'light'}
+                aria-label={{ uz: 'Yorug‘ rejim', ru: 'Светлая тема', en: 'Light mode' }[language]}
+                onClick={() => chooseMode('light')}
+              >
+                <LightModeOutlined />
+              </button>
+              <button
+                type="button"
+                aria-pressed={mode === 'dark'}
+                aria-label={{ uz: 'Qorong‘i rejim', ru: 'Тёмная тема', en: 'Dark mode' }[language]}
+                onClick={() => chooseMode('dark')}
+              >
+                <DarkModeOutlined />
+              </button>
+            </div>
+          </div>
+          <h1>{text[register ? 1 : 0]}</h1>
+          <p>{text[5]}</p>
+
+          <form onSubmit={submit}>
+            {register && (
+              <label>
+                {text[4]}
+                <input name="display_name" autoComplete="name" maxLength={80} required />
+              </label>
+            )}
+            <label>
+              {text[2]}
+              <input
+                name="username"
+                autoComplete="username"
+                maxLength={150}
+                required
+                autoCapitalize="none"
+              />
+            </label>
+            <label>
+              {text[3]}
+              <input
+                name="password"
+                type="password"
+                autoComplete={register ? 'new-password' : 'current-password'}
+                minLength={register ? 8 : undefined}
+                required
+              />
+              {register && <small>{text[7]}</small>}
+            </label>
+            {error && <p role="alert">{error}</p>}
+            <button className="auth-submit" disabled={busy}>
+              {busy ? '…' : text[register ? 1 : 0]}
             </button>
-          </>
-        )}
+          </form>
+          <button
+            className="auth-alternative"
+            onClick={() => {
+              setRegister(!register);
+              setError('');
+            }}
+          >
+            {text[register ? 0 : 1]}
+          </button>
+        </>
       </section>
     </main>
   );

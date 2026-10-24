@@ -1,4 +1,5 @@
-import { PageSkeleton } from '@shared/ui/Loading';
+import { StudioSplash } from '@shared/ui/Loading';
+import { useTranslation } from '@shared/i18n';
 import { createElement, type ReactNode } from 'react';
 import { ActivityStateProvider } from './application';
 import { createActivityRepository } from './data-access';
@@ -7,10 +8,11 @@ import { NotesContext } from './application/usePracticeNotes';
 const repository = createActivityRepository();
 const notesRepository = createNotesRepository();
 export function ActivityProvider({ children }: { children: ReactNode }) {
+  const tr = useTranslation();
   return createElement(ActivityStateProvider, {
     repository,
     children: createElement(NotesContext.Provider, { value: notesRepository, children }),
-    fallback: createElement(PageSkeleton),
+    fallback: createElement(StudioSplash, { label: tr('Yuklanmoqda…') }),
   });
 }
 export { useActivity } from './application';

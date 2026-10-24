@@ -1,9 +1,9 @@
 import ErrorState from '@shared/ui/ErrorState';
-import { PageSkeleton, PlayerSkeleton } from '@shared/ui/Loading';
 import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
 import { lazy, Suspense } from 'react';
 import RouteBoundary from './RouteBoundary';
+import RouteLoading from './RouteLoading';
 const pages = {
   dashboard: lazy(() => import('@modules/studio/ui/pages/DashboardPage')),
   library: lazy(() => import('@modules/studio/ui/pages/LibraryPage')),
@@ -41,25 +41,7 @@ export default function Router() {
         />
       }
     >
-      <Suspense
-        fallback={
-          page === 'practice' ? (
-            <PlayerSkeleton />
-          ) : (
-            <PageSkeleton
-              variant={
-                page === 'settings'
-                  ? 'settings'
-                  : page === 'study' || page === 'lesson'
-                    ? 'study'
-                    : page === 'dashboard'
-                      ? 'page'
-                      : 'library'
-              }
-            />
-          )
-        }
-      >
+      <Suspense fallback={<RouteLoading page={page} />}>
         <Page />
       </Suspense>
     </RouteBoundary>

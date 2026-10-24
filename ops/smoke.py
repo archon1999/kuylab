@@ -73,6 +73,28 @@ class Browser:
 names = ["deploy-check-" + secrets.token_hex(8) for _ in range(2)]
 browsers = [Browser(), Browser()]
 try:
+    public = Browser()
+    status, home, public_headers = public.request("/")
+    assert status == 200 and b"boot-screen" not in home, "Public homepage must be prerendered"
+    assert b'<html lang="uz"' in home and b'application/ld+json' in home
+    assert not public_headers.get("X-Robots-Tag"), "Public homepage must remain indexable"
+    public_scripts = StartupScripts()
+    public_scripts.feed(home.decode())
+    for script in public_scripts.scripts:
+        digest = base64.b64encode(hashlib.sha256(script.replace("\r\n", "\n").encode()).digest()).decode()
+        assert f"'sha256-{digest}'" in public_headers["Content-Security-Policy"], "CSP blocks public-page scripts"
+    status, robots, robot_headers = public.request("/robots.txt")
+    assert status == 200 and b"Sitemap: https://kuylab.uz/sitemap.xml" in robots
+    assert "text/plain" in robot_headers["Content-Type"]
+    status, sitemap, _ = public.request("/sitemap.xml")
+    assert status == 200 and sitemap.count(b"<loc>") == 15 and b"/studio" not in sitemap
+    for path in ["/musiqa-nazariyasi/", "/ru/", "/en/learn-piano/"]:
+        status, page, _ = public.request(path)
+        assert status == 200 and b'<h1>' in page and b'boot-screen' not in page
+    status, missing, _ = public.request("/not-a-real-public-page/")
+    assert status == 404 and b"noindex" in missing, "Unknown public URLs need a real branded 404"
+    status, studio, studio_headers = public.request("/studio")
+    assert status == 200 and b"boot-screen" in studio and "noindex" in studio_headers["X-Robots-Tag"]
     for browser, name in zip(browsers, names):
         assert browser.request("/api/auth/session/")[0] == 200
         assert browser.request("/api/auth/register/", "POST", {}, csrf=False)[0] == 403
@@ -92,6 +114,7 @@ try:
     assert hashlib.sha256(content).hexdigest() == original.content_sha256
     status, page, headers = a.request(f"/practice/{original.arrangement.composition_id}")
     assert status == 200, "SPA deep link failed"
+    assert "noindex" in headers["X-Robots-Tag"], "Private studio routes must not be indexed"
     csp = headers["Content-Security-Policy"]
     startup = StartupScripts()
     startup.feed(page.decode())

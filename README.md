@@ -16,6 +16,7 @@ users do not upload or edit shared content through the website.
 - `frontend/src/app`: routes, layouts, providers and theme.
 - `frontend/src/modules`: domain, application, data-access and UI layers.
 - `frontend/src/shared`: transport, localization, UI and playback helpers.
+- `frontend/public-site`: prerendered UZ/RU/EN public pages and educational guides.
 - `ops`: production deployment, backup and Nginx configuration.
 
 ## Local development
@@ -38,7 +39,8 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:5173 and create an account. No default production password or
+Open http://127.0.0.1:5173 for the public site, then `/studio` to create an account.
+No default production password or
 administrator is shipped. `seed_studio` preserves existing learner state; the
 explicit destructive replacement flag is not part of normal setup or deployment.
 
@@ -68,6 +70,20 @@ DNS/TLS, backup and rollback procedures. Secrets, databases, media and learner
 records stay outside Git. Production is configured for `kuylab.uz`.
 
 ## Content and attribution
+
+Public pages are generated at build time, including canonical/hreflang links,
+Open Graph images, visible educational content and matching JSON-LD. `/robots.txt`
+and `/sitemap.xml` list the public site; authenticated studio routes send `noindex`.
+Existing composition/player links and legacy query-string bookmarks remain valid.
+The service worker keeps public HTML separate from `/studio.html` so visiting a
+public guide cannot replace the offline studio shell. No analytics tracker runs
+on the public site. `llms.txt` is a content directory, not an indexing guarantee.
+
+When changing public content, edit all three languages in
+`frontend/public-site/content.mjs`, update its actual review date, and rebuild.
+Google Search Console uses DNS ownership verification; retain its root TXT record.
+Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
+Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
 The current curriculum uses the supplied Winter Sonata — Still MIDI, with separate
 teaching adaptations; general exercises are original examples. Source bytes and

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import publicSite from './public-site/vite.mjs';
 const publicShell = [
   '/favicon.svg',
   '/licenses.html',
@@ -14,6 +15,7 @@ const publicShell = [
 ];
 export default defineConfig({
   plugins: [
+    publicSite(),
     react(),
     {
       name: 'curated-studio-offline',
@@ -30,7 +32,7 @@ export default defineConfig({
             );
           } else if (req.url === '/offline-shell.json') {
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(['/', '/index.html', ...publicShell]));
+            res.end(JSON.stringify(['/studio.html', ...publicShell]));
           } else next();
         });
       },

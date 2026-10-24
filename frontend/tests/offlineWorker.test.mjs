@@ -4,7 +4,7 @@ import vm from 'node:vm';
 import fs from 'node:fs';
 
 const source = fs.readFileSync(new URL('../scripts/studio-sw.js', import.meta.url), 'utf8');
-function worker({ revision = 'new', fails = false, paths = ['/', '/index.html', '/assets/app-new.js'] } = {}) {
+function worker({ revision = 'new', fails = false, paths = ['/', '/studio.html', '/assets/app-new.js'], network = async () => new Response(JSON.stringify(paths)) } = {}) {
   const stores = new Map(), listeners = new Map();
   let skipped = false, claimed = false;
   const origin = 'https://piano.example';
@@ -28,11 +28,12 @@ function worker({ revision = 'new', fails = false, paths = ['/', '/index.html', 
     async skipWaiting() { skipped = true; },
     clients: { async matchAll() { return []; }, async claim() { claimed = true; } },
   };
-  vm.runInNewContext(source.replace('__REVISION__', revision), { self, caches, fetch: async () => new Response(JSON.stringify(paths)), Response, URL });
+  vm.runInNewContext(source.replace('__REVISION__', revision), { self, caches, fetch: (...args) => network(...args), Response, URL });
   return {
     stores, caches,
     get skipped() { return skipped; }, get claimed() { return claimed; },
     async dispatch(type, data) { let promise; listeners.get(type)({ data, waitUntil(value) { promise = value; } }); return promise; },
+    async navigate(path) { let promise; listeners.get('fetch')({ request: { url: origin + path, method: 'GET', mode: 'navigate' }, respondWith(value) { promise = value; } }); return promise; },
   };
 }
 
@@ -40,15 +41,28 @@ test('an incomplete new shell cannot install, skip waiting, or remove the previo
   const w = worker({ fails: true });
   const previous = await w.caches.open('kuylab-shell-previous');
   await previous.put('/__shell_ready', new Response('ready'));
-  await previous.put('/index.html', new Response('working old HTML'));
+  await previous.put('/studio.html', new Response('working old HTML'));
   await previous.put('/assets/app-old.js', new Response('working old bundle'));
   await assert.rejects(w.dispatch('install'), /Offline shell incomplete/);
   assert.equal(w.skipped, false);
   assert.equal(w.claimed, false);
-  assert.equal(await (await previous.match('/index.html')).text(), 'working old HTML');
+  assert.equal(await (await previous.match('/studio.html')).text(), 'working old HTML');
   assert.ok(await previous.match('/assets/app-old.js'));
   assert.ok(await previous.match('/__shell_ready'));
   assert.equal(await (await w.caches.open('kuylab-shell-new')).match('/__shell_ready'), undefined);
+});
+
+test('public page navigation cannot poison the app HTML used by an offline deep link', async () => {
+  let offline = false;
+  const w = worker({ network: async (request) => { if (offline) throw new Error('Offline'); return new Response(request.url.endsWith('/studio') ? 'private app' : 'public guide'); } });
+  assert.equal(await (await w.navigate('/studio')).text(), 'private app');
+  assert.equal(await (await w.navigate('/')).text(), 'public guide');
+  assert.equal(await (await w.navigate('/musiqa-nazariyasi/')).text(), 'public guide');
+  offline = true;
+  assert.equal(await (await w.navigate('/practice/8')).text(), 'private app');
+  assert.equal(await (await w.navigate('/')).text(), 'public guide');
+  assert.equal(await (await w.navigate('/musiqa-nazariyasi/')).text(), 'public guide');
+  await assert.rejects(w.navigate('/never-cached/'), /Offline/);
 });
 
 test('only a complete new shell activates and then retires the previous version', async () => {
@@ -59,7 +73,7 @@ test('only a complete new shell activates and then retires the previous version'
   await w.dispatch('install');
   assert.equal(w.skipped, true);
   const current = await w.caches.open('kuylab-shell-new');
-  assert.deepEqual(await (await current.match('/__shell_ready')).json(), ['/', '/index.html', '/assets/app-new.js']);
+  assert.deepEqual(await (await current.match('/__shell_ready')).json(), ['/', '/studio.html', '/assets/app-new.js']);
   assert.ok(await current.match('/assets/app-new.js'));
   await w.dispatch('activate');
   assert.equal(w.claimed, true);
@@ -69,14 +83,14 @@ test('only a complete new shell activates and then retires the previous version'
 });
 
 test('HTML alone is never a complete production shell', async () => {
-  const w = worker({ paths: ['/', '/index.html'] });
+  const w = worker({ paths: ['/', '/studio.html'] });
   await assert.rejects(w.dispatch('install'), /Offline shell incomplete/);
   assert.equal(w.skipped, false);
   assert.equal(await (await w.caches.open('kuylab-shell-new')).match('/__shell_ready'), undefined);
 });
 
 test('development bootstrap keeps previous caches until runtime modules have been cached', async () => {
-  const w = worker({ revision: 'dev', paths: ['/', '/index.html'] });
+  const w = worker({ revision: 'dev', paths: ['/', '/studio.html'] });
   const old = await w.caches.open('kuylab-shell-previous');
   await old.put('/__shell_ready', new Response('ready'));
   await w.dispatch('install');

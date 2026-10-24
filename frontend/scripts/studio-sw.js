@@ -9,7 +9,7 @@ async function refreshShell() {
     const response = await fetch('/offline-shell.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('Development shell');
     const paths = await response.json();
-    if (!Array.isArray(paths) || !paths.includes('/index.html')) throw new Error('Invalid shell manifest');
+    if (!Array.isArray(paths) || !paths.includes('/studio.html')) throw new Error('Invalid shell manifest');
     await cache.addAll(paths);
     if (paths.some(path => path.startsWith('/assets/'))) {
       await cache.put('/__shell_ready', new Response(JSON.stringify(paths)));
@@ -20,7 +20,7 @@ async function refreshShell() {
     // usable version. Development has no built manifest; runtime modules are
     // cached separately and only that completed pass may mark it ready.
     if (development) {
-      try { await cache.addAll(['/', '/index.html']); } catch { /* Preserve previous cached resources. */ }
+      try { await cache.addAll(['/studio.html']); } catch { /* Preserve previous cached resources. */ }
     }
   }
   for (const client of await self.clients.matchAll()) client.postMessage({ type: 'offline-updated' });
@@ -50,7 +50,7 @@ self.addEventListener('message', event => {
       const marker = await cache.match('/__shell_ready');
       let previous = [];
       try { previous = marker ? await marker.json() : []; } catch { /* Upgrade older markers. */ }
-      const completePaths = [...new Set(['/index.html', ...previous, ...paths])];
+      const completePaths = [...new Set(['/studio.html', ...previous, ...paths])];
       if (!(await Promise.all(completePaths.map(path => cache.match(path)))).every(Boolean)) return;
       await cache.put('/__shell_ready', new Response(JSON.stringify(completePaths)));
       for (const client of await self.clients.matchAll()) client.postMessage({ type: 'offline-updated' });
@@ -76,12 +76,15 @@ self.addEventListener('fetch', event => {
   if (request.mode === 'navigate' || ['script', 'style', 'font', 'image'].includes(request.destination)) {
     event.respondWith((async () => {
       const cache = await caches.open(shell);
+      // A public homepage must never replace the authenticated React shell.
+      const appPath = /^\/(studio(?:\.html)?|compositions|practice|lessons|study|exercises|theory|statistics|settings|404)(\/|$)/.test(url.pathname);
+      const cacheKey = request.mode === 'navigate' ? (appPath ? '/studio.html' : url.pathname) : request;
       try {
         const response = await fetch(request);
-        if (response.ok) await cache.put(request.mode === 'navigate' ? '/index.html' : request, response.clone());
+        if (response.ok) await cache.put(cacheKey, response.clone());
         return response;
       } catch (error) {
-        const cached = await cache.match(request.mode === 'navigate' ? '/index.html' : request, { ignoreSearch: true });
+        const cached = await cache.match(cacheKey, { ignoreSearch: true });
         if (cached) return cached;
         throw error;
       }

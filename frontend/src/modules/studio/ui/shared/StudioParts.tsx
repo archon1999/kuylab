@@ -8,12 +8,13 @@ import {
   PlayArrowRounded,
 } from '@mui/icons-material';
 import { Button, IconButton, Tooltip } from '@mui/material';
-import { useTranslation } from '@shared/i18n';
+import { usePreferences, useTranslation } from '@shared/i18n';
 import { navigate } from '@shared/routing';
 import { useStudio } from '../../application';
 import { StudyStatusBadge } from './StudyStatus';
 import {
   durationLabel,
+  studyCountLabel,
   studyProgress,
   allStudyItems,
   type Composition,
@@ -141,6 +142,7 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
 }
 export function CompositionCard({ composition }: { composition: Composition }) {
   const tr = useTranslation();
+  const { language } = usePreferences();
   return (
     <article className="studio-composition-card">
       <div className="studio-composition-art" aria-hidden="true">
@@ -161,9 +163,7 @@ export function CompositionCard({ composition }: { composition: Composition }) {
         <p>{composition.composer}</p>
         <div className="studio-composition-meta">
           <span>{durationLabel(composition.duration_seconds)}</span>
-          <span>
-            {composition.lesson_ids.length} {tr('dars')}
-          </span>
+          <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
         </div>
         <div className="studio-actions">
           <Button

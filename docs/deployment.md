@@ -77,6 +77,30 @@ records DNS-only until the origin certificate is issued, then proxy the two web
 records and use **Full (strict)** encryption with TLS 1.2 or newer. Do not enable
 Flexible encryption or proxy mail/FTP records.
 
+For a new domain whose registrar delegation is still propagating, the web records
+can be configured as proxied in advance. Keep Cloudflare's Always Use HTTPS off
+until origin activation; the origin enforces HTTPS once its certificate is ready.
+The preflight checks the actual public ACME route instead of requiring DNS to
+return the origin IP, so it also works through Cloudflare.
+
+Install the one-time provisioning job to finish without an interactive session:
+
+```sh
+install -m 755 ops/activate-domain.sh /usr/local/sbin/kuylab-activate-domain
+install -m 644 ops/systemd/kuylab-domain-activation.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable kuylab-domain-activation.service
+systemctl start --no-block kuylab-domain-activation.service
+journalctl -u kuylab-domain-activation.service -n 30 --no-pager
+```
+
+It waits up to 24 hours for both public HTTP routes, obtains a certificate using
+the server's existing ACME account, validates/reloads Nginx, then waits for both
+public HTTPS health checks. It disables itself after success and records the
+activation time in `/opt/kuylab/domain-active`. This is not a recurring timer;
+certificate renewals continue through the existing Certbot timer. If provisioning
+fails, inspect its journal before restarting the service.
+
 After certificate activation, enable Cloudflare's Always Use HTTPS. Both origin
 listeners serve the ACME webroot, so certificate validation continues to work
 when the edge redirects HTTP challenges to HTTPS. Verify with

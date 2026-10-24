@@ -88,6 +88,26 @@ legato, dynamics, voicing, pedal, phrasing and fragment practice.
 
 ## Prepare or update
 
+### Continuity path and interactive studies — 24 October 2026
+
+Eight separately authored studies cover 0–48, 48–112, 112–196 and 196–214.604
+seconds, joins at 40–56, 104–120 and 188–204, and the full supplied performance.
+They are practice windows, not asserted formal sections. Foundation keeps the
+highest upper-track note within each 45ms attack group and all left-track attacks
+at C3 or below. Bridge restores the entire upper track over those bass landmarks.
+Both keep source pitches, velocities and timing at 60% and 80% source speed. The
+third stage restores all attacks at source speed. The complete path's third stage
+references the original immutable score directly. No key, meter, chord root or
+pedal information is invented. Original source SHA and existing stage IDs remain
+unchanged. `tests/studio/test_journey.py` checks nested source-note selections and
+full window duration, including omitted-note silence.
+
+The theory catalog also contains 19 optional activities: virtual-keyboard note,
+interval, triad and inversion construction, listening identification, and two
+reasoning checks using the main pedal/practice examples. All prompts and feedback
+are authored in UZ/RU/EN. Audition material is original. Exercises remain freely
+accessible and produce no physical-performance score.
+
 Back up the live SQLite database before replacing a repertoire. Then:
 
 ```powershell

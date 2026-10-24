@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import publicSite from './public-site/vite.mjs';
+const apiOrigin = process.env.KUYLAB_API_PROXY || 'http://127.0.0.1:8000';
 const publicShell = [
   '/favicon.svg',
   '/licenses.html',
@@ -78,8 +79,8 @@ export default defineConfig({
       ),
     },
   },
-  server: { port: 5173, proxy: { '/api': 'http://127.0.0.1:8000' } },
-  preview: { port: 4173, proxy: { '/api': 'http://127.0.0.1:8000' } },
+  server: { port: 5173, proxy: { '/api': apiOrigin } },
+  preview: { port: 4173, proxy: { '/api': apiOrigin } },
   build: {
     rollupOptions: {
       output: {

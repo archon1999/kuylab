@@ -1,6 +1,7 @@
 import type { PersonalState, ActivitySession, ActivityStats } from './entities/activity.types.ts';
 
 export const emptyPersonal: PersonalState = {
+  comfortableSpeeds: {},
   progress: {},
   lastStages: {},
   favorites: [],

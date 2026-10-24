@@ -3,6 +3,13 @@ const validId = (id: unknown): id is string =>
   typeof id === 'string' && /^[a-zA-Z0-9:_-]{1,100}$/.test(id);
 export function mapPersonal(value: PersonalState): PersonalState {
   return {
+    comfortableSpeeds: Object.fromEntries(
+      Object.entries(value?.comfortableSpeeds || {})
+        .filter(
+          ([id, speed]) => validId(id) && Number.isInteger(speed) && speed >= 20 && speed <= 200,
+        )
+        .slice(0, 500),
+    ),
     progress: Object.fromEntries(
       Object.entries(value?.progress || {})
         .filter(

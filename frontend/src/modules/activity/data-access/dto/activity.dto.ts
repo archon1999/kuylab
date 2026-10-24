@@ -1,5 +1,6 @@
 export type RecentDto = { id: string; openedAt: string };
 export type PersonalStateDto = {
+  comfortableSpeeds: Record<string, number>;
   progress: Record<string, 'learning' | 'struggling' | 'mastered'>;
   lastStages: Record<string, string>;
   favorites: string[];

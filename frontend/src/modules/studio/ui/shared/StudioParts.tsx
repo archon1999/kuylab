@@ -11,7 +11,13 @@ import { Button, IconButton, Tooltip } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { navigate } from '@shared/routing';
 import { useStudio } from '../../application';
-import { durationLabel, type Composition, type StudyItem } from '../../domain';
+import {
+  durationLabel,
+  studyProgress,
+  allStudyItems,
+  type Composition,
+  type StudyItem,
+} from '../../domain';
 
 export function Heading({
   eyebrow,
@@ -77,6 +83,8 @@ export function openComposition(composition: Composition) {
 export function StudyCard({ item, number }: { item: StudyItem; number?: number }) {
   const tr = useTranslation();
   const { catalog } = useStudio();
+  const { progress } = useActivity();
+  const learned = studyProgress(item, progress);
   const category = catalog?.categories.find((value) => value.id === item.category)?.label;
   const level = { easy: 'Oson', intermediate: 'O‘rta', advanced: 'Murakkab' };
   return (
@@ -101,11 +109,35 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
         <h3>{item.title}</h3>
         <p>{item.subtitle}</p>
       </a>
+      {(learned.total > 0 || learned.state) && (
+        <div className="study-card-progress">
+          <span>
+            {learned.total
+              ? tr('{0}/{1} bosqich o‘zlashtirilgan', [learned.completed, learned.total])
+              : ''}
+          </span>
+          {learned.state && (
+            <span>
+              {tr(
+                { learning: 'O‘rganyapman', struggling: 'Qiynalyapman', mastered: 'O‘zlashtirdim' }[
+                  learned.state
+                ],
+              )}
+            </span>
+          )}
+        </div>
+      )}
       <div className="studio-card-bottom">
         <span>
           {item.level
             ? tr(level[item.level])
-            : tr(item.kind === 'lesson' ? 'Kompozitsiya darsi' : 'Amaliy nazariya')}
+            : tr(
+                item.kind === 'journey'
+                  ? 'To‘liq ijroga tayyorgarlik'
+                  : item.kind === 'lesson'
+                    ? 'Kompozitsiya darsi'
+                    : 'Amaliy nazariya',
+              )}
           <span className="studio-dot">·</span>
           {item.minutes} {tr('daq.')}
         </span>
@@ -160,9 +192,7 @@ export function ContentRow({ id }: { id: string }) {
   const { catalog } = useStudio();
   const tr = useTranslation();
   const composition = catalog?.compositions.find((value) => `composition:${value.id}` === id);
-  const item =
-    catalog &&
-    [...catalog.lessons, ...catalog.exercises, ...catalog.theory].find((value) => value.id === id);
+  const item = catalog && allStudyItems(catalog).find((value) => value.id === id);
   if (!composition && !item) return null;
   return (
     <div className="studio-content-row">
@@ -183,9 +213,11 @@ export function ContentRow({ id }: { id: string }) {
               tr(
                 item?.kind === 'theory'
                   ? 'Nazariya'
-                  : item?.kind === 'lesson'
-                    ? 'Kompozitsiya darsi'
-                    : 'Umumiy mashq',
+                  : item?.kind === 'journey'
+                    ? 'To‘liq ijroga tayyorgarlik'
+                    : item?.kind === 'lesson'
+                      ? 'Kompozitsiya darsi'
+                      : 'Umumiy mashq',
               )}
           </small>
         </span>

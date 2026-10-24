@@ -12,6 +12,7 @@ import {
   PlayCircleOutlineRounded,
   RestartAltRounded,
   SettingsOutlined,
+  BookmarkBorderRounded,
 } from '@mui/icons-material';
 import { useEffect, useRef, useState } from 'react';
 import { usePreferences, useTranslation } from '@shared/i18n';
@@ -40,6 +41,11 @@ export default function StudioPlayerView(
     },
   };
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [notebookOpen, setNotebookOpen] = useState(false);
+  const notePosition = useRef(0);
+  useEffect(() => {
+    if (transport.speed !== settings.speed) transport.changeSpeed(settings.speed);
+  }, [settings.speed]);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const { volume, reverb, leftVolume, rightVolume } = settings;
   const [full, setFull] = useState(false);
@@ -174,6 +180,22 @@ export default function StudioPlayerView(
             <RestartAltRounded />
           </IconButton>
         </Tooltip>
+        {props.notebook && (
+          <Tooltip title={tr('Qaydlar')}>
+            <IconButton
+              aria-label={tr('Qaydlar')}
+              onClick={() => {
+                notePosition.current = player.position;
+                if (player.playing) void player.toggle();
+                setSettingsOpen(false);
+                setNotebookOpen(true);
+              }}
+              aria-expanded={notebookOpen}
+            >
+              <BookmarkBorderRounded />
+            </IconButton>
+          </Tooltip>
+        )}
         <Tooltip title={text.settings}>
           <IconButton
             className="studio-settings-button"
@@ -253,6 +275,17 @@ export default function StudioPlayerView(
           onClose={() => setSettingsOpen(false)}
         />
       </Drawer>
+      {props.notebook && (
+        <Drawer
+          anchor="right"
+          open={notebookOpen}
+          onClose={() => setNotebookOpen(false)}
+          container={full ? element.current : undefined}
+          slotProps={{ paper: { role: 'dialog', 'aria-label': tr('Qaydlar') } }}
+        >
+          {props.notebook(notePosition.current, player.seek, () => setNotebookOpen(false))}
+        </Drawer>
+      )}
     </section>
   );
 }

@@ -21,6 +21,7 @@ import {
   openComposition,
 } from '../../shared/StudioParts';
 import '../../studio.css';
+import RecentNotes from '../../shared/RecentNotes';
 export default function DashboardPage() {
   const tr = useTranslation();
   const { catalog } = useStudio();
@@ -36,12 +37,17 @@ export default function DashboardPage() {
     ...catalog.lessons.map((value) => value.id),
     ...catalog.exercises.map((value) => value.id),
     ...catalog.theory.map((value) => value.id),
+    ...(catalog.journeys || []).map((value) => value.id),
   ]);
   const recent = recents.filter((value) => validIds.has(value.id)).slice(0, 4);
-  const lastStudy = [...catalog.lessons, ...catalog.exercises, ...catalog.theory].find(
-    (item) => item.id === recent[0]?.id,
-  );
+  const lastStudy = [
+    ...catalog.lessons,
+    ...catalog.exercises,
+    ...catalog.theory,
+    ...(catalog.journeys || []),
+  ].find((item) => item.id === recent[0]?.id);
   const lastStage = lastStudy?.stages?.find((stage) => stage.id === lastStages[lastStudy.id]);
+  const lastProgress = lastStudy && progress[lastStage?.id || lastStudy.id];
   const saved = favorites.filter((value) => validIds.has(value)).slice(0, 4);
   return (
     <div className="studio-page">
@@ -87,14 +93,14 @@ export default function DashboardPage() {
             <h2>{lastStudy.title}</h2>
             <p>
               {lastStage?.title}
-              {progress[lastStudy.id]
+              {lastProgress
                 ? ' · ' +
                   tr(
                     {
                       learning: 'O‘rganyapman',
                       struggling: 'Qiynalyapman',
                       mastered: 'O‘zlashtirdim',
-                    }[progress[lastStudy.id]],
+                    }[lastProgress],
                   )
                 : ''}
             </p>
@@ -182,6 +188,7 @@ export default function DashboardPage() {
           <ArrowForwardRounded />
         </button>
       </div>
+      <RecentNotes />
       {catalog.theory[0] && (
         <section>
           <SectionTitle
@@ -200,9 +207,12 @@ function ContentName({ id }: { id: string }) {
   const { catalog } = useStudio();
   return (
     catalog?.compositions.find((item) => `composition:${item.id}` === id)?.title ||
-    [...(catalog?.lessons || []), ...(catalog?.exercises || []), ...(catalog?.theory || [])].find(
-      (item) => item.id === id,
-    )?.title ||
+    [
+      ...(catalog?.lessons || []),
+      ...(catalog?.exercises || []),
+      ...(catalog?.theory || []),
+      ...(catalog?.journeys || []),
+    ].find((item) => item.id === id)?.title ||
     ''
   );
 }

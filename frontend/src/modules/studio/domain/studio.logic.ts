@@ -26,7 +26,24 @@ export function filterStudyItems(items: StudyItem[], filter: StudyFilter, favori
 }
 
 export function allStudyItems(catalog: StudioCatalog) {
-  return [...catalog.lessons, ...catalog.exercises, ...catalog.theory];
+  return [...catalog.lessons, ...catalog.exercises, ...catalog.theory, ...(catalog.journeys || [])];
+}
+
+export function studyProgress(
+  item: StudyItem,
+  progress: Record<string, 'learning' | 'struggling' | 'mastered'>,
+) {
+  const stages = item.stages || [];
+  const states = stages.map((stage) => progress[stage.id]).filter(Boolean);
+  const completed = stages.filter((stage) => progress[stage.id] === 'mastered').length;
+  const state = states.length
+    ? completed === stages.length
+      ? 'mastered'
+      : states.includes('struggling')
+        ? 'struggling'
+        : 'learning'
+    : progress[item.id];
+  return { state, completed, total: stages.length };
 }
 
 export function durationLabel(seconds: number) {

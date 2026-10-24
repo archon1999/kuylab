@@ -52,6 +52,11 @@ export default function DetailPage() {
           >
             {tr('Playerni ochish')}
           </Button>
+          {!!catalog?.journeys?.length && (
+            <Button component="a" href="#whole-performance">
+              {tr('To‘liq ijroga tayyorgarlik')}
+            </Button>
+          )}
         </div>
       </div>
       <section>
@@ -69,6 +74,18 @@ export default function DetailPage() {
           ))}
         </div>
       </section>
+      {!!catalog?.journeys?.length && (
+        <section id="whole-performance" style={{ scrollMarginTop: 24 }}>
+          <SectionTitle title={tr('To‘liq ijroga tayyorgarlik')} />
+          <div className="studio-card-grid">
+            {catalog.journeys
+              .filter((item) => item.composition_id === composition.id)
+              .map((item) => (
+                <StudyCard key={item.id} item={item} />
+              ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

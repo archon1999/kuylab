@@ -42,8 +42,12 @@ export async function requestJson<T>(
             ? {
                 'X-CSRFToken': decodeURIComponent(
                   (typeof document !== 'undefined' ? document.cookie : '').match(
-                    /(?:^|; )csrftoken=([^;]*)/,
-                  )?.[1] || '',
+                    /(?:^|; )kuylab_csrftoken=([^;]*)/,
+                  )?.[1] ||
+                    (typeof document !== 'undefined' ? document.cookie : '').match(
+                      /(?:^|; )csrftoken=([^;]*)/,
+                    )?.[1] ||
+                    '',
                 ),
               }
             : {}),

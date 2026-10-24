@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { StudioAudioPort } from '../domain/contracts/studio-audio.port';
 import { StudioTransport, notesForWindow, studioTimeline } from '../domain/studioTransport';
 import type { Score } from '../domain';
+import { audioFocus } from './audioFocus';
 
 export type StudioPlayerProps = {
+  contextId?: string;
+  notebook?: (position: number, seek: (seconds: number) => void, close: () => void) => ReactNode;
   score: Score;
   markers?: { time: number; label: string }[];
   compact?: boolean;
@@ -35,6 +38,7 @@ export function useStudioPlayer(
   const cursor = useRef(0);
   const resumeVoices = useRef(true);
   const generation = useRef(0);
+  const owner = useRef(Symbol('studio-player'));
   const callbacks = useRef({ onPlaybackChange, onPositionChange });
   callbacks.current = { onPlaybackChange, onPositionChange };
 
@@ -71,6 +75,7 @@ export function useStudioPlayer(
       return;
     }
     if (transport.playing) {
+      audioFocus.release(owner.current);
       transport.pause(audio.now());
       audio.stop();
       setPlaying(false);
@@ -79,6 +84,17 @@ export function useStudioPlayer(
       return;
     }
     const ticket = ++generation.current;
+    audioFocus.claim(owner.current, () => {
+      generation.current++;
+      transport.pause(audio.now());
+      audio.stop();
+      setPlaying(false);
+      setLoading(false);
+      setCountdown(0);
+      const value = transport.snapshot(audio.now()).position;
+      setPosition(value);
+      callbacks.current.onPositionChange?.(value);
+    });
     setLoading(true);
     setError(false);
     try {
@@ -127,6 +143,7 @@ export function useStudioPlayer(
     setSpeedState(transport.speed);
     return () => {
       generation.current++;
+      audioFocus.release(owner.current);
       audio.stop();
       callbacks.current.onPlaybackChange?.(false);
     };

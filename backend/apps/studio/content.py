@@ -3,7 +3,7 @@
 UZ teaching intentionally includes Russian terminology; translations are authored,
 not a claim that the MIDI contains words, theory, fingerings or formal sections.
 """
-REVISION = "still-studio-2026-10-v4"
+REVISION = "still-studio-2026-10-v5"
 
 
 def tr(uz, ru, en):
@@ -212,4 +212,5 @@ from .still_lessons import LESSONS, lesson_items
 
 
 def all_items():
-    return lesson_items()+exercise_items()+theory_items()
+    from .still_journey import journey_items
+    return lesson_items()+exercise_items()+theory_items()+journey_items()

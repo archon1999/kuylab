@@ -1,5 +1,6 @@
 """Session accounts. Curated scores are shared; learner state never is."""
 import json
+import re
 from django.contrib.auth import authenticate, get_user_model, login, logout, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -102,6 +103,9 @@ def password(request):
 @api_view(["GET", "PATCH"])
 def player_preferences(request):
     profile = user_profile(request.user)
+    context = request.query_params.get("context")
+    if context is not None and not re.fullmatch(r"[a-zA-Z0-9:_-]{1,100}", context):
+        return Response({"detail": "Invalid preference context."}, status=400)
     if request.method == "PATCH":
         value = request.data
         if not isinstance(value, dict) or len(json.dumps(value)) > 4096:
@@ -109,6 +113,14 @@ def player_preferences(request):
         allowed = {"noteNames", "keyNames", "shadows", "particles", "velocityGradients", "left", "right", "leftColor", "rightColor", "lookahead", "volume", "reverb", "speed", "leftVolume", "rightVolume", "countIn", "focusKeys"}
         if set(value) - allowed:
             return Response({"detail": "Unknown preference."}, status=400)
-        profile.player_preferences = value
-        profile.save(update_fields=["player_preferences"])
-    return Response(profile.player_preferences)
+        if context:
+            with transaction.atomic():
+                profile = Profile.objects.select_for_update().get(pk=profile.pk)
+                if context not in profile.player_context_preferences and len(profile.player_context_preferences) >= 500:
+                    return Response({"detail": "Preference context limit reached."}, status=400)
+                profile.player_context_preferences = {**profile.player_context_preferences, context: value}
+                profile.save(update_fields=["player_context_preferences"])
+        else:
+            profile.player_preferences = value
+            profile.save(update_fields=["player_preferences"])
+    return Response(profile.player_context_preferences.get(context, {}) if context else profile.player_preferences)

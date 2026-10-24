@@ -1,0 +1,78 @@
+.practice-notebook {
+  width: min(420px, 100vw);
+  height: 100%;
+  padding: 24px;
+  overflow: auto;
+  color: var(--ink);
+  background: var(--canvas);
+}
+.notebook-heading,
+.notebook-note-top,
+.notebook-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.notebook-heading {
+  margin-bottom: 24px;
+}
+.notebook-heading h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 650;
+}
+.notebook-timestamp {
+  display: block;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.notebook-actions {
+  margin-top: 14px;
+  justify-content: flex-start;
+}
+.practice-notebook .MuiAlert-root {
+  margin-top: 20px;
+}
+.notebook-list {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+}
+.notebook-list li {
+  padding: 18px 0;
+  border-top: 1px solid var(--chrome-line);
+}
+.notebook-list p {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.notebook-seek {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 6px 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.notebook-empty {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 42px 16px;
+  color: var(--secondary);
+  text-align: center;
+}
+.notebook-empty > svg {
+  font-size: 38px;
+}

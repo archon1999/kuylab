@@ -11,5 +11,6 @@ export {
   emptyFilter,
   filterStudyItems,
   allStudyItems,
+  studyProgress,
   durationLabel,
 } from './studio.logic.ts';

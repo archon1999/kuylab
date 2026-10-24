@@ -1,4 +1,4 @@
-import { useActivity } from '@modules/activity';
+import { useActivity, PracticeNotebook } from '@modules/activity';
 import { StudioPlayer } from '@modules/practice';
 import { ArrowBackRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
@@ -45,6 +45,10 @@ export default function PlayerPage() {
       {score && (
         <StudioPlayer
           key={String(score.id)}
+          contextId={id!}
+          notebook={(position, seek, close) => (
+            <PracticeNotebook contentId={id!} position={position} onSeek={seek} onClose={close} />
+          )}
           score={score}
           markers={catalog?.lessons
             .filter((item) => item.composition_id === composition.id && item.source)
@@ -57,7 +61,7 @@ export default function PlayerPage() {
             .map((item) => ({ time: item.source!.start_seconds, label: item.title }))
             .sort((a, b) => a.time - b.time)}
           onBack={onBack}
-          initialPosition={positions[id!] || 0}
+          initialPosition={params.has('at') ? Number(params.get('at')) : positions[id!] || 0}
           onPositionChange={(seconds) => setPosition(id!, seconds)}
           onPlaybackChange={setPlaying}
         />

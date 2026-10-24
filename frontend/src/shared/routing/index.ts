@@ -17,6 +17,7 @@ function visit(path: string) {
 }
 export function navigate(page: Page, values: Record<string, string | number | null> = {}) {
   const params = parseRoute(location.pathname, location.search).params;
+  params.delete('at');
   params.set('page', page);
   if (page !== 'lesson') params.delete('lesson');
   if (page !== 'study') {

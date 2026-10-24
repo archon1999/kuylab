@@ -1151,7 +1151,7 @@
   background: var(--soft);
 }
 .studio-study-card {
-  transition: background 0.15s ease;
+  transition: background-color var(--motion-duration) var(--motion-easing);
 }
 .studio-study-card:hover {
   background: color-mix(in srgb, var(--surface) 65%, var(--soft));

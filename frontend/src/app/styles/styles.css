@@ -533,7 +533,7 @@ h1 {
   min-height: 182px;
   border-radius: 20px;
   background: #fff;
-  transition: box-shadow 0.15s;
+  transition: box-shadow var(--motion-duration) var(--motion-easing);
 }
 .composition-card:hover {
   box-shadow: 0 8px 24px #59462d0a;

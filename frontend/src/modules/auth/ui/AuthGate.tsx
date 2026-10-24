@@ -1,7 +1,15 @@
 import { DarkModeOutlined, LightModeOutlined } from '@mui/icons-material';
 import ErrorState from '@shared/ui/ErrorState';
 import { parseRoute } from '@shared/routing/paths';
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from 'react';
+import { transitionColorMode } from '@shared/ui/colorModeTransition';
 import BrandMark from '@shared/ui/BrandMark';
 import { AuthContext, useSession } from '../application';
 import type { AuthRepository } from '../domain';
@@ -60,7 +68,13 @@ export default function AuthGate({
   const [mode, setMode] = useState<'light' | 'dark'>(() =>
     guestPreference('theme') === 'dark' ? 'dark' : 'light',
   );
-  useEffect(() => {
+  const modeRef = useRef(mode);
+  const chooseMode = (next: 'light' | 'dark') => {
+    if (modeRef.current === next) return;
+    modeRef.current = next;
+    transitionColorMode(() => setMode(next));
+  };
+  useLayoutEffect(() => {
     if (session.user) return;
     document.documentElement.dataset.theme = mode;
     document.documentElement.lang = language;
@@ -186,7 +200,7 @@ export default function AuthGate({
                   aria-label={
                     { uz: 'Yorug‘ rejim', ru: 'Светлая тема', en: 'Light mode' }[language]
                   }
-                  onClick={() => setMode('light')}
+                  onClick={() => chooseMode('light')}
                 >
                   <LightModeOutlined />
                 </button>
@@ -196,7 +210,7 @@ export default function AuthGate({
                   aria-label={
                     { uz: 'Qorong‘i rejim', ru: 'Тёмная тема', en: 'Dark mode' }[language]
                   }
-                  onClick={() => setMode('dark')}
+                  onClick={() => chooseMode('dark')}
                 >
                   <DarkModeOutlined />
                 </button>

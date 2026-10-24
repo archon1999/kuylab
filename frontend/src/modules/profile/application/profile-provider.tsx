@@ -6,10 +6,12 @@ import {
   type InterfaceLanguage,
 } from '@shared/i18n';
 import { readLocal, writeLocal } from '@shared/lib/storage';
+import { transitionColorMode } from '@shared/ui/colorModeTransition';
 import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -79,7 +81,7 @@ export function ProfileProvider({
   function toggleMode() {
     const next = modeRef.current === 'light' ? 'dark' : 'light';
     modeRef.current = next;
-    setMode(next);
+    transitionColorMode(() => setMode(next));
     store('kuylab-theme', next);
     void sync.current?.choose({ theme: next });
   }
@@ -113,7 +115,7 @@ export function ProfileProvider({
     void reload();
     return () => resource.cancel();
   }, [resource]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dataset.theme = mode;
   }, [language, mode]);

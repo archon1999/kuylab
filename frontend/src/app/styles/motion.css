@@ -1,0 +1,51 @@
+/* Existing component transitions share the MUI duration and easing tokens. */
+*,
+*::before,
+*::after {
+  transition-property:
+    background-color, color, border-color, outline-color, box-shadow, fill, stroke;
+  transition-duration: var(--motion-duration);
+  transition-timing-function: var(--motion-easing);
+}
+
+/* The snapshot crossfade owns theme changes, avoiding several overlapping fades. */
+:root[data-theme-transition] *,
+:root[data-theme-transition] *::before,
+:root[data-theme-transition] *::after {
+  transition-duration: 0s !important;
+}
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(root) {
+  animation-duration: var(--motion-duration);
+  animation-timing-function: var(--motion-easing);
+}
+::view-transition-old(root) {
+  animation: theme-fade-out var(--motion-duration) var(--motion-easing) both;
+}
+::view-transition-new(root) {
+  animation: theme-fade-in var(--motion-duration) var(--motion-easing) both;
+}
+@keyframes theme-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+  }
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}

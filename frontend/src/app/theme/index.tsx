@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { usePreferences } from '@shared/i18n';
 import { useMemo } from 'react';
+import { motionDurations, motionEasing } from '@shared/ui/motion';
 import AppLayout from '../layouts/studio/AppLayout';
 
 export default function ThemedApp() {
@@ -24,6 +25,15 @@ export default function ThemedApp() {
         h2: { fontFamily: '"Lora Variable", Georgia, serif', fontWeight: 600 },
       },
       shape: { borderRadius: 12 },
+      transitions: {
+        duration: motionDurations,
+        easing: {
+          easeInOut: motionEasing,
+          easeOut: motionEasing,
+          easeIn: motionEasing,
+          sharp: motionEasing,
+        },
+      },
       components: {
         MuiButton: {
           defaultProps: { disableElevation: true },

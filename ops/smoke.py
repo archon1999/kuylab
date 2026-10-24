@@ -108,7 +108,11 @@ try:
     status, catalog, headers = a.request("/api/studio/catalog/")
     assert status == 200 and "no-store" in headers["Cache-Control"]
     assert len(catalog["compositions"]) == 7 and len(catalog["lessons"]) == 48 and len(catalog["journeys"]) == 56
-    assert sum(len(item["challenges"]) for item in catalog["theory"]) == 19
+    assert len(catalog["exercises"]) == 48 and len(catalog["theory"]) == 24
+    assert sum(len(item["challenges"]) for item in catalog["theory"]) == 25
+    assert all(task.get("preparation") for item in catalog["theory"] for task in item["challenges"])
+    compound = next(item for item in catalog["theory"] if item["id"] == "theory:compound-meter")
+    assert len(compound["comparisons"]) == 2 and compound["ready_when"]
     note_path = "/api/activity/notes/"
     status, note, _ = a.request(note_path, "POST", {"contentId": "theory:triads", "position": 2.5, "text": "Deployment notebook check"})
     assert status == 201 and note["position"] == 2.5

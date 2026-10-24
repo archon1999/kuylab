@@ -10,12 +10,13 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-import { useTranslation } from '@shared/i18n';
+import { usePreferences, useTranslation } from '@shared/i18n';
 import { useRoute } from '@shared/routing';
 import { useState } from 'react';
 import { useStudio } from '../../../application';
-import { emptyFilter, filterStudyItems, type StudyFilter } from '../../../domain';
+import { emptyFilter, filterStudyItems, studyCountLabel, type StudyFilter } from '../../../domain';
 import { Heading, StudyCard } from '../../shared/StudioParts';
+import { StudyStatusFilter } from '../../shared/StudyStatus';
 import '../../studio.css';
 export default function StudyLibraryPage() {
   const { page } = useRoute();
@@ -24,11 +25,12 @@ export default function StudyLibraryPage() {
 function StudyLibrary({ theory }: { theory: boolean }) {
   const { catalog } = useStudio();
   const tr = useTranslation();
-  const { favorites } = useActivity();
+  const { language } = usePreferences();
+  const { favorites, progress } = useActivity();
   const [filter, setFilter] = useState<StudyFilter>(emptyFilter);
   if (!catalog) return null;
   const items = theory ? catalog.theory : catalog.exercises;
-  const shown = filterStudyItems(items, filter, favorites);
+  const shown = filterStudyItems(items, filter, favorites, progress);
   const categories = catalog.categories.filter((category) =>
     items.some((item) => item.category === category.id),
   );
@@ -102,17 +104,25 @@ function StudyLibrary({ theory }: { theory: boolean }) {
       </div>
       <div className="studio-filter-meta">
         <span role="status">
-          {shown.length} {tr(theory ? 'mavzu' : 'mashq')}
+          {studyCountLabel(shown.length, theory ? 'theory' : 'exercise', language)}
         </span>
-        <Button
-          size="small"
-          startIcon={<FavoriteBorderRounded />}
-          aria-pressed={filter.favoritesOnly}
-          variant={filter.favoritesOnly ? 'contained' : 'text'}
-          onClick={() => setFilter((value) => ({ ...value, favoritesOnly: !value.favoritesOnly }))}
-        >
-          {tr('Sevimlilar')}
-        </Button>
+        <div className="studio-filter-actions">
+          <StudyStatusFilter
+            value={filter.status}
+            onChange={(status) => setFilter((value) => ({ ...value, status }))}
+          />
+          <Button
+            size="small"
+            startIcon={<FavoriteBorderRounded />}
+            aria-pressed={filter.favoritesOnly}
+            variant={filter.favoritesOnly ? 'contained' : 'text'}
+            onClick={() =>
+              setFilter((value) => ({ ...value, favoritesOnly: !value.favoritesOnly }))
+            }
+          >
+            {tr('Sevimlilar')}
+          </Button>
+        </div>
       </div>
       {shown.length ? (
         <div className="studio-card-grid">
@@ -127,7 +137,8 @@ function StudyLibrary({ theory }: { theory: boolean }) {
             !filter.query &&
             !filter.category &&
             !filter.goal &&
-            !filter.level
+            !filter.level &&
+            !filter.status
               ? 'favorites'
               : 'search'
           }

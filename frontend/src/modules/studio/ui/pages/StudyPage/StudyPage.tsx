@@ -199,7 +199,7 @@ export default function StudyPage() {
           )}
         </div>
       )}
-      <section className="studio-reading">
+      <section className="studio-reading" id="study-explanation">
         <SectionTitle title={tr('Tushunib oling')} />
         <div className="studio-explanations">
           {item.explanation.map((part, index) => (
@@ -214,11 +214,13 @@ export default function StudyPage() {
         <section className="studio-reading studio-readiness">
           <SectionTitle title={tr('Dars yakunidagi mezon')} />
           <p>{item.ready_when}</p>
-          <p>
-            {tr(
-              'Avval joriy bosqichni uch marta qulay va ravon takrorlang. Keyin yangi bosqichga o‘ting yoki tezlikni 5–10% oshiring. Aniqlik yo‘qolsa, oldingi qulay variantga qayting. Bosqichlar doim ochiq.',
-            )}
-          </p>
+          {stage && (
+            <p>
+              {tr(
+                'Avval joriy bosqichni uch marta qulay va ravon takrorlang. Keyin yangi bosqichga o‘ting yoki tezlikni 5–10% oshiring. Aniqlik yo‘qolsa, oldingi qulay variantga qayting. Bosqichlar doim ochiq.',
+              )}
+            </p>
+          )}
         </section>
       )}
       {item.fingering && <Fingering text={item.fingering} />}
@@ -226,7 +228,11 @@ export default function StudyPage() {
         <TheoryChallenge key={`challenge:${item.id}`} challenges={item.challenges} />
       )}
       <section className="studio-reading">
-        <SectionTitle title={tr('Pianinoda sinab ko‘ring')} />
+        <SectionTitle
+          title={tr(
+            item.kind === 'theory' ? 'Tushunganingizni tekshiring' : 'Pianinoda sinab ko‘ring',
+          )}
+        />
         <ol className="studio-steps">
           {item.steps.map((step, index) => (
             <li key={index}>

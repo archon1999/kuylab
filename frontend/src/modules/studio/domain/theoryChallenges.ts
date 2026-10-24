@@ -4,6 +4,7 @@ export type TheoryChallenge = {
   mode: 'keyboard' | 'choice';
   prompt: string;
   explanation: string;
+  preparation?: string;
   answerPitches?: number[];
   choices?: { id: string; label: string }[];
   answerChoice?: string;

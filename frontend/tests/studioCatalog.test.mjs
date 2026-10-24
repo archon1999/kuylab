@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { emptyFilter, filterStudyItems, durationLabel, selectStudyStage } from '../src/modules/studio/domain/index.ts';
+import { emptyFilter, filterStudyItems, filterByStudyStatus, summarizeStudyProgress, durationLabel, selectStudyStage } from '../src/modules/studio/domain/index.ts';
 import { formatStudioDate } from '../src/modules/studio/domain/dateLabels.ts';
+import { studyCountLabel } from '../src/modules/studio/domain/countLabels.ts';
 
 const items = [
   { id: 'left-easy', title: 'Chap qo‘l ritmi', subtitle: 'Tayanchni saqlash', intro: 'Sekin va ravon', category: 'rhythm', goals: ['coordination'], level: 'easy' },
@@ -20,6 +21,37 @@ test('clearing studio filters restores the full curated catalog without mutating
 });
 test('favorites can safely contain content removed from a prior catalog', () => {
   assert.deepEqual(filterStudyItems(items, { ...emptyFilter, favoritesOnly: true }, ['old-pirate']), []);
+});
+test('filtered counts use correct Russian, English and Uzbek noun forms', () => {
+  for (const [count, label] of [[0,'0 тем'],[1,'1 тема'],[2,'2 темы'],[5,'5 тем'],[11,'11 тем'],[14,'14 тем'],[21,'21 тема'],[24,'24 темы']]) assert.equal(studyCountLabel(count, 'theory', 'ru'),label);
+  assert.equal(studyCountLabel(6,'lesson','ru'),'6 уроков');
+  assert.equal(studyCountLabel(1,'exercise','en'),'1 exercise');
+  assert.equal(studyCountLabel(48,'exercise','en'),'48 exercises');
+  assert.equal(studyCountLabel(1,'theory','uz'),'1 mavzu');
+  assert.equal(studyCountLabel(24,'theory','uz'),'24 mavzu');
+});
+test('status filters combine with search and favorites and include untouched material', () => {
+  const progress = { 'left-easy': 'learning', 'right-easy': 'mastered', 'removed-item': 'mastered' };
+  const before = structuredClone(progress);
+  assert.deepEqual(filterStudyItems(items, { ...emptyFilter, query: 'ritm', status: 'mastered', favoritesOnly: true }, ['right-easy'], progress).map(item => item.id), ['right-easy']);
+  assert.deepEqual(filterStudyItems(items, { ...emptyFilter, status: 'not_started' }, [], progress).map(item => item.id), ['left-advanced']);
+  assert.deepEqual(filterStudyItems(items, { ...emptyFilter, status: 'struggling' }, [], progress), []);
+  assert.deepEqual(progress, before);
+});
+test('card, status filter and totals use the same staged progress without counting stages twice', () => {
+  const course = [{ id: 'a', stages: [{ id: 'a:1' }, { id: 'a:2' }] }, { id: 'b' }, { id: 'c' }, { id: 'd' }];
+  const progress = { a: 'mastered', 'a:1': 'mastered', 'a:2': 'struggling', b: 'learning', c: 'mastered', 'old:stage': 'mastered' };
+  assert.deepEqual(summarizeStudyProgress(course, progress), { total: 4, not_started: 1, learning: 1, struggling: 1, mastered: 1 });
+  assert.deepEqual(filterByStudyStatus(course, 'struggling', progress).map(item => item.id), ['a']);
+  assert.deepEqual(filterByStudyStatus(course, 'mastered', progress).map(item => item.id), ['c']);
+  const complete = { ...progress, 'a:2': 'mastered' };
+  assert.deepEqual(summarizeStudyProgress(course, complete), { total: 4, not_started: 1, learning: 1, struggling: 0, mastered: 2 });
+});
+test('learning totals ignore retired content, deduplicate study IDs and stay isolated per learner', () => {
+  const course = [{ id: 'a' }, { id: 'b' }, { id: 'a' }];
+  assert.deepEqual(summarizeStudyProgress(course, { a: 'mastered', retired: 'struggling' }), { total: 2, not_started: 1, learning: 0, struggling: 0, mastered: 1 });
+  assert.deepEqual(summarizeStudyProgress(course, {}), { total: 2, not_started: 2, learning: 0, struggling: 0, mastered: 0 });
+  assert.deepEqual(summarizeStudyProgress([], { a: 'mastered' }), { total: 0, not_started: 0, learning: 0, struggling: 0, mastered: 0 });
 });
 test('display duration preserves the actual source length and pads seconds', () => {
   assert.equal(durationLabel(214.604), '3:34');

@@ -11,6 +11,7 @@ import { Button, IconButton, Tooltip } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { navigate } from '@shared/routing';
 import { useStudio } from '../../application';
+import { StudyStatusBadge } from './StudyStatus';
 import {
   durationLabel,
   studyProgress,
@@ -88,7 +89,7 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
   const category = catalog?.categories.find((value) => value.id === item.category)?.label;
   const level = { easy: 'Oson', intermediate: 'O‘rta', advanced: 'Murakkab' };
   return (
-    <article className="studio-study-card">
+    <article className="studio-study-card" data-progress={learned.state || 'not_started'}>
       <div className="studio-card-top">
         <span className="studio-card-category">
           {number
@@ -116,15 +117,7 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
               ? tr('{0}/{1} bosqich o‘zlashtirilgan', [learned.completed, learned.total])
               : ''}
           </span>
-          {learned.state && (
-            <span>
-              {tr(
-                { learning: 'O‘rganyapman', struggling: 'Qiynalyapman', mastered: 'O‘zlashtirdim' }[
-                  learned.state
-                ],
-              )}
-            </span>
-          )}
+          {learned.state && <StudyStatusBadge status={learned.state} />}
         </div>
       )}
       <div className="studio-card-bottom">

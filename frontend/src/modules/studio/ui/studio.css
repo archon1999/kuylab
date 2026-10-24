@@ -4,10 +4,7 @@
   gap: 34px;
 }
 .study-progress-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr);
-  gap: 24px;
-  align-items: start;
+  display: block;
 }
 .study-progress-panel > div > small {
   display: block;
@@ -179,10 +176,6 @@
   gap: 10px;
 }
 @media (max-width: 650px) {
-  .study-progress-panel {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
   .theory-challenge {
     padding: 20px 16px;
   }
@@ -499,6 +492,7 @@
   flex-direction: column;
   gap: 17px;
   min-width: 0;
+  border: 1px solid transparent;
 }
 .studio-card-top {
   display: flex;
@@ -1153,10 +1147,13 @@
   background: var(--soft);
 }
 .studio-study-card {
-  transition: background-color var(--motion-duration) var(--motion-easing);
+  transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    border-color var(--motion-duration) var(--motion-easing),
+    box-shadow var(--motion-duration) var(--motion-easing);
 }
 .studio-study-card:hover {
-  background: color-mix(in srgb, var(--surface) 65%, var(--soft));
+  background-color: color-mix(in srgb, var(--surface) 65%, var(--soft));
 }
 .studio-card-category {
   font-size: 12px;
@@ -1245,4 +1242,243 @@
 }
 .studio-comparisons .MuiToggleButtonGroup-root {
   flex-wrap: wrap;
+}
+
+[data-progress='not_started'] {
+  --study-status: #626a78;
+}
+[data-progress='learning'] {
+  --study-status: #286b9a;
+}
+[data-progress='struggling'] {
+  --study-status: #925a17;
+}
+[data-progress='mastered'] {
+  --study-status: #28714f;
+}
+:root[data-theme='dark'] [data-progress='learning'] {
+  --study-status: #94c5ec;
+}
+:root[data-theme='dark'] [data-progress='not_started'] {
+  --study-status: #bcb3ce;
+}
+:root[data-theme='dark'] [data-progress='struggling'] {
+  --study-status: #edbc77;
+}
+:root[data-theme='dark'] [data-progress='mastered'] {
+  --study-status: #8bd3af;
+}
+.studio-study-card[data-progress]:not([data-progress='not_started']) {
+  border-color: color-mix(in srgb, var(--study-status) 54%, var(--chrome-line));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--study-status) 80%, transparent);
+}
+.study-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 4px 9px;
+  border-radius: 99px;
+  color: var(--study-status);
+  background: color-mix(in srgb, var(--study-status) 10%, transparent);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.study-status-badge > svg,
+.study-progress .MuiToggleButton-root > svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.study-progress .MuiToggleButton-root {
+  gap: 7px;
+  text-transform: none;
+}
+.study-progress .MuiToggleButton-root > svg {
+  color: var(--study-status);
+}
+.study-progress .MuiToggleButton-root.Mui-selected {
+  color: var(--study-status);
+  background: color-mix(in srgb, var(--study-status) 13%, var(--surface));
+  border-color: color-mix(in srgb, var(--study-status) 50%, var(--chrome-line));
+}
+.study-progress .MuiToggleButton-root.Mui-selected:hover {
+  background: color-mix(in srgb, var(--study-status) 19%, var(--surface));
+}
+.studio-filter-actions,
+.studio-lesson-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.studio-filter-meta {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.study-status-filter {
+  min-width: 225px;
+}
+.study-status-filter .MuiOutlinedInput-root {
+  background: var(--surface);
+  border-radius: 12px;
+  font-size: 13px;
+}
+.study-status-filter .MuiInputLabel-root {
+  font-size: 13px;
+}
+.study-status-filter .MuiSelect-select {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+.study-status-filter .study-status-badge {
+  background: transparent;
+  padding: 0;
+}
+.studio-lesson-filter {
+  justify-content: space-between;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.studio-progress-description {
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+.studio-progress-totals {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.studio-progress-totals > div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--study-status) 27%, var(--chrome-line));
+}
+.studio-progress-totals strong {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--study-status);
+  font-variant-numeric: tabular-nums;
+}
+.studio-progress-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--chrome-line);
+  border-radius: 12px;
+}
+.studio-progress-table {
+  border-collapse: collapse;
+  min-width: 650px;
+  width: 100%;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.studio-progress-table th,
+.studio-progress-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--chrome-line);
+  text-align: center;
+}
+.studio-progress-table th:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+.studio-progress-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.studio-progress-table td {
+  font-weight: 600;
+}
+.challenge-preparation {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid var(--chrome-line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.challenge-preparation > svg {
+  flex: none;
+  color: var(--accent);
+  margin-top: 2px;
+}
+.challenge-preparation h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+.challenge-preparation p {
+  max-width: 75ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.85;
+}
+.challenge-preparation .MuiButton-root {
+  padding: 0;
+  margin-top: 8px;
+}
+#study-explanation {
+  scroll-margin-top: 24px;
+}
+.studio-study-card,
+.studio-progress-totals > div {
+  background-image: url('../../../shared/ui/assets/piano-lines.svg');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 200px 125px;
+}
+.studio-dashboard {
+  gap: 26px;
+}
+.studio-dashboard .studio-hero {
+  background-image: url('../../../shared/ui/assets/music-paper.svg');
+}
+.studio-dashboard .studio-resume {
+  padding: 16px 0;
+}
+.studio-dashboard .studio-resume-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--secondary);
+}
+.studio-dashboard .studio-week-strip {
+  padding-bottom: 20px;
+}
+@media (max-width: 760px) {
+  .studio-progress-totals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .studio-progress-totals > div {
+    padding: 16px 12px;
+  }
+}
+@media (max-width: 480px) {
+  .studio-filter-actions,
+  .study-status-filter {
+    width: 100%;
+  }
+  .challenge-preparation {
+    padding: 16px;
+    gap: 10px;
+  }
+  .study-progress .MuiToggleButton-root {
+    flex-direction: column;
+    gap: 5px;
+  }
 }

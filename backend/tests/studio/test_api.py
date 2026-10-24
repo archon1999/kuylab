@@ -10,7 +10,7 @@ from django.test import TestCase, override_settings
 from apps.learning.models import Composition, Profile, LearningLesson
 from apps.scores.models import Score
 from apps.scores.midi import parse_midi
-from apps.studio.content import all_items, LESSONS, localize
+from apps.studio.content import all_items, FAMILIES, LESSONS, localize
 from apps.studio.midi_authoring import SOURCE_SHA256, source_data, adapt_source, exercise_notes, theory_midi
 from apps.studio.models import StudioAsset
 
@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(7,48,36,18))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),102)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(7,48,48,24))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),120)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)
@@ -270,7 +270,7 @@ class StudioTests(TestCase):
 
     def test_original_exercises_are_unique_and_include_actual_sustain(self):
         hashes=[]
-        for family in ["five-finger","scales","arpeggios","chords","coordination","rhythm","leaps","octaves","articulation","balance","pedal","continuity"]:
+        for family, *_ in FAMILIES:
             for level in range(3):
                 content,_=exercise_notes(family,level)
                 hashes.append(hashlib.sha256(content).hexdigest())
@@ -281,7 +281,7 @@ class StudioTests(TestCase):
                 if family=="pedal":
                     self.assertTrue(parsed["pedal_events"])
                     self.assertTrue(any(event["sound_duration_seconds"]>event["duration_seconds"] for event in parsed["events"]))
-        self.assertEqual(len(set(hashes)),36)
+        self.assertEqual(len(set(hashes)),48)
 
     def test_theory_examples_have_expected_musical_differences(self):
         parsed=parse_midi(theory_midi("major-minor"))

@@ -10,11 +10,13 @@ preferences and activity statistics. The musical catalog is curated in code;
 users do not upload or edit shared content through the website.
 
 Personal timestamp notes open the player at the saved moment and can be edited or
-removed with undo. Progress and self-reported comfortable speeds are stored per
-lesson stage; player settings are restored separately for each composition,
+removed with undo. Color-coded learning status is stored per lesson stage and
+appears on study cards, filters and statistics. Player settings are restored separately for each composition,
 exercise, stage and comparison. Still includes eight continuity studies (four
-parts, three joins and a full-piece path) alongside its 12 lessons. The 18 theory
-topics include 19 optional keyboard/ear activities with explanations and sampled
+parts, three joins and a full-piece path) alongside its 12 lessons. The independent
+curriculum has 48 exercises in 16 families and 24 theory topics, each with a
+source-matched MIDI explanation, practice method, pitfalls and a self-check.
+Theory includes 25 optional keyboard/ear activities with explanations and sampled
 piano audition. Activities do not grade physical playing or lock other lessons.
 
 ## Structure

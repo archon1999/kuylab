@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { usePianoAudition } from '@modules/practice';
 import { Alert, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { HearingRounded, PlayArrowRounded, StopRounded } from '@mui/icons-material';
+import {
+  HearingRounded,
+  MenuBookRounded,
+  PlayArrowRounded,
+  StopRounded,
+} from '@mui/icons-material';
 import { useTranslation } from '@shared/i18n';
 import { checkChallenge, type TheoryChallenge as Challenge } from '../../domain/theoryChallenges';
 const keyName = (pitch: number) =>
@@ -45,6 +50,18 @@ export default function TheoryChallenge({ challenges }: { challenges: Challenge[
           {index + 1}/{challenges.length}
         </span>
       </div>
+      {question.preparation && (
+        <aside className="challenge-preparation" aria-label={tr('Avval bilib oling')}>
+          <MenuBookRounded aria-hidden="true" />
+          <div>
+            <h3>{tr('Avval bilib oling')}</h3>
+            <p>{question.preparation}</p>
+            <Button component="a" href="#study-explanation" size="small">
+              {tr('Batafsil nazariya')}
+            </Button>
+          </div>
+        </aside>
+      )}
       <p className="theory-challenge-prompt">{question.prompt}</p>
       {question.audio.length > 0 && (
         <Button

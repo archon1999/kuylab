@@ -38,7 +38,7 @@ class ComparisonTests(SimpleTestCase):
         self.assertEqual(len({lesson['explanation'][-1]['text']['en'] for lesson in lessons}),12)
 
     def test_comparison_copy_is_complete_in_three_languages(self):
-        for topic in ['voicing','meter','legato','dynamics']:
+        for topic in ['voicing','meter','legato','dynamics','compound-meter']:
             self.assertEqual(len(definitions(topic)),2)
             for example in definitions(topic):
                 for field in ['title','instruction']:

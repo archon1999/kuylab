@@ -10,7 +10,8 @@ TimeoutStartSec=25h
 UMask=0077
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectHome=true
+# Shared-host Nginx includes configuration from /home; validation needs read access.
+ProtectHome=read-only
 MemoryMax=256M
 
 [Install]

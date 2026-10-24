@@ -67,7 +67,7 @@ class StudioTests(TestCase):
         with self.assertRaises(CommandError): call_command("seed_studio",stdout=io.StringIO())
         self.assertTrue(Composition.objects.filter(pk=old.pk).exists())
         call_command("seed_studio",replace_compositions=True,stdout=io.StringIO())
-        self.assertEqual(Composition.objects.count(),1)
+        self.assertEqual(Composition.objects.count(),7)
         self.assertEqual(Profile.objects.get(pk=1).display_name,"Preserved learner")
 
     def test_teaching_copy_changes_keep_existing_midi_versions(self):
@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(1,12,36,18))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),66)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(7,48,36,18))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),102)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)
@@ -111,6 +111,29 @@ class StudioTests(TestCase):
                 for translated_item, original in zip(translated[kind],uz[kind]):
                     self.assertNotEqual(translated_item["title"],original["title"])
                     self.assertNotEqual(translated_item["explanation"][0]["text"],original["explanation"][0]["text"])
+
+    def test_every_piece_keeps_its_own_lessons_journeys_and_original(self):
+        from apps.studio.repertoire import SOURCES
+        from apps.studio.services import studio_catalog
+        catalog = studio_catalog("en")
+        for source, composition in zip(SOURCES, catalog["compositions"]):
+            original = StudioAsset.objects.get(pk=source.asset_key).score
+            self.assertEqual(composition["score_id"], original.pk)
+            self.assertEqual(original.content_sha256, source.sha256)
+            lessons = [item for item in catalog["lessons"] if item["id"] in composition["lesson_ids"]]
+            journeys = [item for item in catalog["journeys"] if item["composition_id"] == composition["id"]]
+            self.assertEqual((len(lessons), len(journeys)), (12 if source.code == "still" else 6, 8))
+            for item in lessons + journeys:
+                self.assertEqual(item["composition_id"], composition["id"])
+                for stage in item["stages"]:
+                    self.assertEqual(Score.objects.get(pk=stage["score_id"]).arrangement.composition_id, composition["id"])
+            self.assertEqual(journeys[-1]["stages"][-1]["score_id"], original.pk)
+
+    def test_catalog_does_not_fetch_all_parsed_study_graphs(self):
+        from apps.studio.services import studio_catalog
+        with self.assertNumQueries(2):
+            catalog = studio_catalog("uz")
+        self.assertEqual(len(catalog["compositions"]), 7)
 
     def test_readonly_catalog_and_legacy_content_write_endpoints(self):
         score=StudioAsset.objects.first().score

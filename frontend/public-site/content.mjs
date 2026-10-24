@@ -1,6 +1,6 @@
 export const languages = ['uz', 'ru', 'en'];
 export const origin = 'https://kuylab.uz';
-export const reviewed = '2026-10-24';
+export const reviewed = '2026-10-25';
 export const paths = {
   home: { uz: '/', ru: '/ru/', en: '/en/' },
   piano: { uz: '/pianino-organish/', ru: '/ru/uchitsya-igrat-na-pianino/', en: '/en/learn-piano/' },
@@ -73,7 +73,7 @@ export const content = {
       ],
       [
         'Hozir qaysi asardan boshlash mumkin?',
-        'Hozirgi etalon kompozitsiya — Winter Sonata — Still. Uning to‘liq MIDI ijrosi va oson variantdan originalga olib boradigan 12 ta darsi studiyada mavjud.',
+        'Studiyada 7 ta kompozitsiya va 48 ta kompozitsiya darsi bor: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’ning What Is a Youth asari va Memories. Har biri uchun to‘liq yuborilgan MIDI, osonlashtirilgan mashqlar va butun ijroga tayyorgarlik yo‘li mavjud.',
       ],
     ],
     about:
@@ -285,7 +285,7 @@ export const content = {
       ],
       [
         'Какое произведение уже доступно?',
-        'Первое эталонное произведение — Winter Sonata — Still. В студии есть полная MIDI-версия и 12 уроков с переходом от простых вариантов к оригиналу.',
+        'Доступны 7 произведений и 48 уроков: Still, Star, Tears in Your Eyes, My Memory, Premonition, What Is a Youth Нино Роты и Memories. Для каждого есть переданный MIDI целиком, упрощённые упражнения и путь к полному исполнению.',
       ],
     ],
     about:
@@ -497,7 +497,7 @@ export const content = {
       ],
       [
         'Which piece is available now?',
-        'The current reference composition is Winter Sonata — Still. The studio includes its complete MIDI performance and 12 lessons that progress from simpler versions towards the original.',
+        'The studio includes 7 pieces and 48 composition lessons: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’s What Is a Youth and Memories. Each has its complete supplied MIDI, simplified studies and a path towards a full performance.',
       ],
     ],
     about:

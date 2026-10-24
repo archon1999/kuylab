@@ -3,7 +3,7 @@
 UZ teaching intentionally includes Russian terminology; translations are authored,
 not a claim that the MIDI contains words, theory, fingerings or formal sections.
 """
-REVISION = "still-studio-2026-10-v5"
+REVISION = "curated-repertoire-2026-10-v6"
 
 
 def tr(uz, ru, en):
@@ -132,7 +132,7 @@ def exercise_items():
                     "explanation": [{"title": tr("Nimaga e’tibor beramiz", "На что обратить внимание", "What to listen for"), "text": explanation}],
                     "steps": [
                         {"title": tr("Tinglang", "Послушайте", "Listen"), "instruction": variants[index]},
-                        {"title": tr("Sekin sinang", "Попробуйте медленно", "Try slowly"), "instruction": tr("Avval 50–70% tezlikda bitta siklni chaling. Kerakli oraliqni timeline’da belgilang; tovushlar va harakat ravshanlashgach davom eting.", "Начните с одного цикла на 50–70% скорости. Выделите диапазон на шкале; продолжайте, когда звук и движение ясны.", "Begin with one cycle at 50–70% speed. Select it on the timeline and continue when the sound and movement are clear.")},
+                        {"title": tr("Sekin sinang", "Попробуйте медленно", "Try slowly"), "instruction": tr("Avval 50–70% tezlikda bitta siklni chaling. Kerak bo‘lsa timeline orqali uning boshiga qayting; tovushlar va harakat ravshanlashgach davom eting.", "Начните с одного цикла на 50–70% скорости. При необходимости вернитесь по шкале к его началу; продолжайте, когда звук и движение ясны.", "Begin with one cycle at 50–70% speed. If needed, seek back to its start on the timeline; continue when the sound and movement are clear.")},
                         {"title": tr("Eshiting va solishtiring", "Слушайте и сравнивайте", "Listen and compare"), "instruction": explanation},
                     ], "related_ids": [f"exercise:{family}:{other}" for other in LEVELS if other != level],
                     "_generator": {"family": family, "level": index}}
@@ -143,7 +143,7 @@ def exercise_items():
 
 THEORY = [
     ("keyboard", "foundations", tr("Klavishlar va yarim ton", "Клавиши и полутон", "Keys and semitones"),
-     tr("Yarim ton — полутон — klaviaturadagi eng yaqin qo‘shni tovush. E–F va B–C orasida qora klavish yo‘q, lekin masofa baribir yarim ton.", "Полутон — расстояние между соседними клавишами. Между E–F и B–C нет чёрной клавиши, но расстояние также полутон.", "A semitone is the distance between adjacent keys. E–F and B–C have no black key between them, but are still a semitone apart."),
+     tr("Yarim ton — полутон — klaviaturadagi eng yaqin qo‘shni tovush. E–F va B–C orasida qora klavish yo‘q, lekin masofa baribir yarim ton. ♯ tovushni yarim ton ko‘taradi, ♭ esa tushiradi. Pianinoda bitta qora klavish ikki nomga ega bo‘lishi mumkin: C♯=D♭, D♯=E♭, G♯=A♭ va A♯=B♭. Player qora klavishlarni ♯ nomlari bilan ko‘rsatadi.", "Полутон — расстояние между соседними клавишами. Между E–F и B–C нет чёрной клавиши, но расстояние также полутон. ♯ повышает звук на полутон, ♭ понижает. Одна чёрная клавиша может иметь два имени: C♯=D♭, D♯=E♭, G♯=A♭, A♯=B♭. Плеер подписывает чёрные клавиши через ♯.", "A semitone is the distance between adjacent keys. E–F and B–C have no black key between them, but are still a semitone apart. A sharp raises a tone by one semitone; a flat lowers it. One piano key can have two names: C♯=D♭, D♯=E♭, G♯=A♭ and A♯=B♭. The player uses sharp names for black keys."),
      tr("C dan G gacha oq-qora klavishlarni ketma-ket tinglang. E–F o‘tishini toping.", "Прослушайте все клавиши от C до G. Найдите переход E–F.", "Hear every key from C to G, then locate the E–F transition.")),
     ("pulse", "rhythm", tr("Puls va ritm", "Пульс и ритм", "Pulse and rhythm"),
      tr("Puls — пульс — muntazam tayanch; ritm — ритм — tovush va sukutning shu tayanch ustidagi tartibi. Har nota alohida puls bo‘lishi shart emas.", "Пульс — регулярная опора; ритм — порядок звуков и пауз поверх неё. Не каждой ноте соответствует отдельная доля.", "Pulse is the regular reference; rhythm arranges sounds and silences over it. A note does not always equal a beat."),
@@ -213,4 +213,5 @@ from .still_lessons import LESSONS, lesson_items
 
 def all_items():
     from .still_journey import journey_items
-    return lesson_items()+exercise_items()+theory_items()+journey_items()
+    from .repertoire_studies import repertoire_items
+    return lesson_items()+exercise_items()+theory_items()+journey_items()+repertoire_items()

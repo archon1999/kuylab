@@ -1,4 +1,4 @@
-# Curated Still studio
+# Curated piano studio
 
 The website exposes read-only musical content. The profile and personal activity
 remain writable through their own APIs. `CuratedContentMiddleware` rejects legacy
@@ -27,7 +27,7 @@ a redistribution license. No arranger/composer identity is invented.
 
 ## Authored material
 
-The catalog contains 12 Still lessons with **three MIDI stages each**, 36 general
+The Still course contains 12 lessons with **three MIDI stages each**, 36 general
 exercises and 18 practical theory topics: 91 current MIDI assets including the
 original. Every lesson has a concept, a verified source-note example, listening
 guidance, three practice instructions and a self-check. Uzbek includes Russian
@@ -108,31 +108,70 @@ reasoning checks using the main pedal/practice examples. All prompts and feedbac
 are authored in UZ/RU/EN. Audition material is original. Exercises remain freely
 accessible and produce no physical-performance score.
 
-Back up the live SQLite database before replacing a repertoire. Then:
+To add/update the registered repertoire without deleting existing users or progress:
 
 ```powershell
 poetry run python manage.py migrate
-poetry run python manage.py seed_studio --replace-compositions
+poetry run python manage.py seed_studio
 ```
 
-The explicit flag deletes other Composition records and their dependent history.
-The Profile is preserved. Without the flag, existing unrelated compositions cause
+The optional `--replace-compositions` flag deletes unregistered Composition records
+and their dependent history. Profiles are preserved. Without that flag, unrelated compositions cause
 a clear refusal before mutation. A repeat run keeps stable score IDs and files.
 New/changed examples create a new immutable Score version; a missing backing file
 is repaired by a new version. All MIDI assets are generated and validated before
 the transaction begins, and failed new files are cleaned up on rollback.
 
-The existing Score model requires an arrangement parent: studio examples share
-the curated Still arrangement as a storage owner. Only lessons are exposed as
-composition-related in the catalog; original general exercises and theory remain
-independent content. `StudioAsset.key` is their stable public identity.
+Source adaptations belong to their own composition's arrangement. Independently
+authored general exercises and theory retain the Still arrangement as their
+legacy storage owner, without becoming composition-specific lessons.
+`StudioAsset.key` remains their stable public identity.
 
 ```powershell
 poetry run python manage.py test tests.studio --settings=config.settings.test --noinput
 ```
 
-15 studio tests cover original bytes/metadata, all 90 teaching assets, multilingual
-identities, all 36 stage URLs, nested private-field exclusion, uniformly scaled
+Studio tests cover original bytes/metadata, every teaching asset, multilingual
+identities, all stage URLs, nested private-field exclusion, uniformly scaled
 timing/holds/velocity/hand, increasing source-note sets, complete final excerpts,
 the taught bass/melody landmarks, ending release, missing-stage failure,
 idempotence, explicit replacement, profile preservation and retired route safety.
+
+## Six additional user-supplied performances — 25 October 2026
+
+`repertoire.py` pins every original by SHA-256, retains the exact filename and
+attributes Nino Rota from the user-supplied filename. Memories deliberately has no
+invented composer or soundtrack attribution. All six exports contain two unnamed
+tracks, one explicit 120-quarter-BPM tempo, no key/meter declaration and no CC64.
+Upper/lower track roles are reviewed inferences, not literal physical fingering.
+
+| Source | Notes | File duration | Main teaching observations |
+| --- | ---: | ---: | --- |
+| What Is a Youth | 833 | 179.375 s | Octaves, changing thirds, broken F♯–A–C♯ support, opposing register moves at 151.75 s |
+| Star | 597 | 208.427 s | Long melody holds, D–F–A / A–C♯–E shapes, F6 entry, sparse ending |
+| Tears in Your Eyes | 688 | 198.370 s | E♭/E contrast, repeated eight-note upper motif, final B5→C6 and held layers |
+| My Memory | 1058 | 272.063 s | Staggered opening, recurring theme, high G6, dense lower texture and independent ending |
+| Premonition | 784 | 229.089 s | C–B–B♭–A–A♭–G bass, broken triads, B–C–C♯ figures, closing C–E♭–G rise |
+| Memories | 500 | 175.990 s | Sparse responses, A–C–E support, repeated A4 under the upper melody and E6 register change |
+
+`repertoire_courses.py` contains 36 individually authored lesson plans in UZ/RU/EN.
+`repertoire_studies.py` compiles source-only selections into 60%, 80% and 100%
+stages. Melody studies keep selected upper attacks, then the whole upper track;
+bass studies do the equivalent for the lower track. Coordination studies restore
+the full upper layer before the lower inner notes. The first Memories two-voice
+study specifically omits upper-track pitches below C5 to expose its A–G–F–E–D
+line; the original A4 time slots are preserved.
+
+Each piece also has four longer parts, three boundary joins and a complete-file
+path. These are practice windows, not inferred formal sections or notation bars.
+Sparse upper landmarks choose the highest note within 45 ms attack groups. Lower
+landmarks retain the lowest original attack in each two-second study window.
+These transparent reductions do not infer chord roots. All variants preserve the
+selected source pitches, velocities, onsets and clipped holds under uniform time
+scaling. The last complete-file stage reuses the original score and its bytes.
+
+The complete catalog has 7 compositions, 48 lessons, 56 continuity studies, 36
+independent exercises and 18 theory topics with 19 optional activities. The catalog
+queries IDs and seven scalar metadata rows, avoiding every study's parsed graph.
+Tests verify the exact musical landmarks, all 252 new stage selections, original
+hashes, piece ownership, localization, complete coverage and stable reseeding.

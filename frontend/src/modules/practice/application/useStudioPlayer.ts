@@ -5,6 +5,7 @@ import type { Score } from '../domain';
 import { audioFocus } from './audioFocus';
 
 export type StudioPlayerProps = {
+  title?: string;
   contextId?: string;
   notebook?: (position: number, seek: (seconds: number) => void, close: () => void) => ReactNode;
   score: Score;

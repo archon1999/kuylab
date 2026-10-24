@@ -95,8 +95,12 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The current curriculum uses the supplied Winter Sonata — Still MIDI, with separate
-teaching adaptations; general exercises are original examples. Source bytes and
+The curated repertoire contains seven supplied MIDI performances: Still, What Is
+a Youth, Star, Tears in Your Eyes, My Memory, Premonition and Memories. The six
+new pieces each include six source-specific lessons and eight continuity studies,
+all with three MIDI stages. Still retains its twelve lessons and eight studies.
+Every complete-piece path ends with the unchanged supplied original. General
+exercises are independently authored examples. Source bytes and
 provenance are documented in [the studio notes](backend/apps/studio/README.md).
 Composition files and historical reference fixtures do not carry a blanket
 open-source redistribution license. Review their provenance before republishing

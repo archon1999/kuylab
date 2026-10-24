@@ -70,6 +70,19 @@ existing renewal service must stay enabled. Public login requires HTTPS; secure
 cookies and HTTPS redirects must not be disabled for a temporary public preview.
 Web Audio worklets and service workers also require a secure browser context.
 
+Cloudflare manages the `kuylab.uz` DNS zone on its Free plan. The registrar's
+nameservers are `alina.ns.cloudflare.com` and `boyd.ns.cloudflare.com`. The apex
+A record points to `193.164.17.34`; `www` is a CNAME to `kuylab.uz`. Keep these
+records DNS-only until the origin certificate is issued, then proxy the two web
+records and use **Full (strict)** encryption with TLS 1.2 or newer. Do not enable
+Flexible encryption or proxy mail/FTP records.
+
+KuyLab's HTTPS virtual host trusts `CF-Connecting-IP` only when the connection
+comes from Cloudflare's published IPv4/IPv6 proxy networks. This keeps per-client
+login limits and access logs correct without trusting spoofed headers from direct
+connections. Review `ops/nginx/kuylab-cloudflare.conf` when Cloudflare updates its
+published ranges; the snippet is scoped to KuyLab and does not affect other sites.
+
 ## Backup and recovery
 
 ```sh

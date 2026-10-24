@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/build-public.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test:score": "node --experimental-strip-types --test tests/scoreTimeline.test.mjs tests/midiTempo.test.mjs",
     "lint:architecture": "node scripts/check-architecture.mjs",

@@ -112,7 +112,7 @@ export async function isOfflineReady(id: string | number | undefined, language: 
           const paths = (await marker.json()) as string[];
           return (
             Array.isArray(paths) &&
-            paths.includes('/index.html') &&
+            paths.includes('/studio.html') &&
             (await Promise.all(paths.map((path) => cache.match(path).then(Boolean)))).every(Boolean)
           );
         } catch {

@@ -1,5 +1,5 @@
 export const pagePaths = {
-  dashboard: '/',
+  dashboard: '/studio',
   library: '/compositions',
   detail: '/compositions',
   lesson: '/lessons',
@@ -48,7 +48,7 @@ export function parseRoute(pathname: string, search = '') {
   // Old bookmarks are accepted once and canonicalized by the browser adapter.
   const legacy = new URLSearchParams(search);
   const legacyPage = legacy.get('page');
-  if (pathname === '/' && legacyPage && legacyPage in pagePaths) {
+  if (['/', '/studio'].includes(pathname) && legacyPage && legacyPage in pagePaths) {
     legacy.forEach((value, key) => params.set(key, value));
     page = legacyPage as Page;
   } else {

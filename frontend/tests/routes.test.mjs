@@ -15,6 +15,9 @@ test('unknown and malformed paths show 404 instead of silently opening dashboard
 test('old composition and stage links keep their identity', () => {
   const route = parseRoute('/','?page=study&item=lesson%3Astill%3Aopening-listen&stage=easy');
   assert.equal(routePath(route.page,route.params),'/study/lesson%3Astill%3Aopening-listen/stages/easy');
+  const redirected = parseRoute('/studio','?page=practice&composition=8');
+  assert.equal(routePath(redirected.page,redirected.params),'/practice/8');
+  assert.equal(routePath('dashboard'), '/studio');
 });
 test('browser persistence isolates accounts and never reads legacy unscoped values', () => {
   const map = new Map([['kuylab-profile','private legacy']]);

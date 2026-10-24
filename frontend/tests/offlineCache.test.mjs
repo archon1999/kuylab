@@ -74,8 +74,8 @@ test('offline badge disappears when a required application bundle or sample is e
     await content.put('/__kuylab_offline/uz/scores/1/',new Response('{}'));
     await content.put('/__kuylab_offline/uz/studio/catalog/',new Response('{}'));
     const shell = await caches.open('kuylab-shell-test');
-    await shell.put('/__shell_ready',new Response(JSON.stringify(['/index.html','/assets/app.js'])));
-    await shell.put('/index.html',new Response('app'));
+    await shell.put('/__shell_ready',new Response(JSON.stringify(['/studio.html','/assets/app.js'])));
+    await shell.put('/studio.html',new Response('app'));
     await shell.put('/assets/app.js',new Response('bundle'));
     const audio = await caches.open('kuylab-piano-splendid-v2');
     await audio.put('/__piano_ready',new Response(JSON.stringify(['/audio/piano.mp3'])));

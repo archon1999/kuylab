@@ -155,6 +155,7 @@ export default function StudyPage() {
           <StudioPlayer
             key={String(score.id)}
             contextId={positionId}
+            title={[item.title, comparison?.title || stage?.title].filter(Boolean).join(' · ')}
             notebook={(position, seek, close) => (
               <PracticeNotebook
                 contentId={positionId}

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { content, languages, origin, paths, reviewed } from './content.mjs';
+import { motionDuration, motionEasing } from '../src/shared/ui/motion.ts';
 
 const escape = (value) =>
   String(value).replace(
@@ -10,8 +11,22 @@ const escape = (value) =>
 const json = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 const arrow =
   '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const themeScript = `try{document.documentElement.dataset.mode=localStorage.getItem('guest:kuylab-theme')||localStorage.getItem('kuylab-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}document.addEventListener('DOMContentLoaded',()=>{document.querySelector('[data-theme]')?.addEventListener('click',()=>{const mode=document.documentElement.dataset.mode==='dark'?'light':'dark';document.documentElement.dataset.mode=mode;try{localStorage.setItem('guest:kuylab-theme',mode);localStorage.setItem('kuylab-theme',mode)}catch{}})})`;
-const cssSource = readFileSync(new URL('./style.css', import.meta.url), 'utf8');
+const themeScript = `(()=>{
+const root=document.documentElement;
+root.style.setProperty('--motion-duration',${JSON.stringify(motionDuration + 'ms')});
+root.style.setProperty('--motion-easing',${JSON.stringify(motionEasing)});
+try{root.dataset.mode=localStorage.getItem('guest:kuylab-theme')||localStorage.getItem('kuylab-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}
+let mode=root.dataset.mode||'light',active,revision=0;
+document.addEventListener('DOMContentLoaded',()=>{document.querySelector('[data-theme]')?.addEventListener('click',()=>{
+mode=mode==='dark'?'light':'dark';const next=mode,ticket=++revision;active?.skipTransition();
+const update=()=>{if(ticket!==revision)return;root.dataset.mode=next;try{localStorage.setItem('guest:kuylab-theme',next);localStorage.setItem('kuylab-theme',next)}catch{}};
+if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches){active=undefined;delete root.dataset.themeTransition;update();return}
+root.dataset.themeTransition='true';const transition=document.startViewTransition(update);active=transition;
+transition.ready.catch(()=>{});transition.finished.catch(()=>{}).finally(()=>{if(active===transition){active=undefined;delete root.dataset.themeTransition}});
+})});
+})()`;
+const cssSource = readFileSync(new URL('./style.css', import.meta.url), 'utf8') +
+  readFileSync(new URL('../src/app/styles/motion.css', import.meta.url), 'utf8');
 export const style = cssSource
   .replace(/\/\*[\s\S]*?\*\//g, '')
   .replace(/\s+/g, ' ')

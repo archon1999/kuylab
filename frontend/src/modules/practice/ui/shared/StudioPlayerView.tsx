@@ -32,6 +32,7 @@ export default function StudioPlayerView(
   const { language, mode, toggleMode } = usePreferences();
   const tr = useTranslation();
   const text = studioLabels[language];
+  const title = props.title || props.score.title;
   const { preferences: settings, update } = useStudioPreferences(props.preferences);
   const transport = useStudioPlayer(props, props.audio, settings);
   const player = {
@@ -111,7 +112,7 @@ export default function StudioPlayerView(
       ref={element}
       className={`studio-player ${props.compact ? 'studio-player-compact' : ''}`}
       data-color-mode={mode}
-      aria-label={props.score.title}
+      aria-label={title}
     >
       <div className="studio-toolbar">
         {props.onBack && (
@@ -237,7 +238,7 @@ export default function StudioPlayerView(
         />
         {!player.playing && !player.loading && player.position < 0.2 && (
           <div className="studio-piece-label">
-            <span>{props.score.title}</span>
+            <span>{title}</span>
           </div>
         )}
         {player.loading && (

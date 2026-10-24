@@ -578,7 +578,9 @@
   stroke-width: 1;
 }
 .studio-composition-art > span {
-  font: italic 40px var(--font-display);
+  font: italic 30px/1.2 var(--font-display);
+  max-width: 85%;
+  text-align: center;
 }
 .studio-art-keys {
   position: absolute;

@@ -1,8 +1,45 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { runInNewContext } from 'node:vm';
 import { parse } from 'parse5';
 import { content, languages, origin, paths } from '../public-site/content.mjs';
 import { pages, renderPage, render404, renderRobots, renderSitemap, renderDirectory, isAppPath } from '../public-site/site.mjs';
+import { motionDuration, motionEasing } from '../src/shared/ui/motion.ts';
+
+test('public theme controls share studio motion timing and finish both switch directions', async () => {
+  const html = parse(renderPage('uz', 'home'));
+  const script = text(elements(html, 'script').find(node => !attribute(node, 'type')));
+  const root = { dataset: {}, style: { setProperty: (key, value) => properties.set(key, value) } };
+  const properties = new Map(), storage = new Map();
+  let ready, click;
+  const transitions = [];
+  const document = {
+    documentElement: root,
+    addEventListener: (_name, listener) => ready = listener,
+    querySelector: () => ({ addEventListener: (_name, listener) => click = listener }),
+    startViewTransition(update) {
+      update();
+      let finish;
+      const transition = { ready: Promise.resolve(), finished: new Promise(resolve => finish = resolve), finish: () => finish(), skipTransition() {} };
+      transitions.push(transition);
+      return transition;
+    },
+  };
+  runInNewContext(script, { document, localStorage: { getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value) }, matchMedia: () => ({ matches: false }) });
+  assert.equal(properties.get('--motion-duration'), `${motionDuration}ms`);
+  assert.equal(properties.get('--motion-easing'), motionEasing);
+  ready(); click();
+  assert.equal(root.dataset.mode, 'dark');
+  transitions[0].finish();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(root.dataset.themeTransition, undefined);
+  click();
+  assert.equal(root.dataset.mode, 'light');
+  transitions[1].finish();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(root.dataset.themeTransition, undefined);
+  assert.equal(storage.get('guest:kuylab-theme'), 'light');
+});
 
 function elements(node, tag) { return [...(node.tagName === tag ? [node] : []), ...(node.childNodes || []).flatMap(child => elements(child, tag))]; }
 function attribute(node, name) { return node.attrs.find(item => item.name === name)?.value; }

@@ -152,7 +152,7 @@ export function CompositionCard({ composition }: { composition: Composition }) {
     <article className="studio-composition-card">
       <div className="studio-composition-art" aria-hidden="true">
         <MusicNoteRounded />
-        <span>Still</span>
+        <span>{composition.title.replace('Winter Sonata — ', '')}</span>
         <div className="studio-art-keys">
           {Array.from({ length: 14 }, (_, index) => (
             <i key={index} />

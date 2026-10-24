@@ -87,7 +87,7 @@ def adapt_source(parsed, start, end, mode="both"):
     return midi_bytes(notes, bpm=120, meter=None, title="Still teaching adaptation"), [event["id"] for event in events]
 
 
-def lesson_stage_midi(parsed, start, end, selection, speed_percent):
+def lesson_stage_midi(parsed, start, end, selection, speed_percent, title="Still reviewed teaching stage"):
     """Curated source-event indices, never an arbitrary time-bucket melody guess.
 
     Selection maps each hand to reviewed indices within the source range, or
@@ -119,7 +119,7 @@ def lesson_stage_midi(parsed, start, end, selection, speed_percent):
               min(e["duration_seconds"], end - e["onset_seconds"]) * 2,
               e["pitch"]["midi"], e["hand"], e["velocity"]) for e in selected]
     data = midi_bytes(notes, bpm=120 * speed_percent / 100, meter=None,
-                      title="Still reviewed teaching stage", end_quarters=(end-start)*2)
+                      title=title, end_quarters=(end-start)*2)
     return data, [event["id"] for event in selected]
 
 

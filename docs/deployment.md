@@ -77,6 +77,11 @@ records DNS-only until the origin certificate is issued, then proxy the two web
 records and use **Full (strict)** encryption with TLS 1.2 or newer. Do not enable
 Flexible encryption or proxy mail/FTP records.
 
+After certificate activation, enable Cloudflare's Always Use HTTPS. Both origin
+listeners serve the ACME webroot, so certificate validation continues to work
+when the edge redirects HTTP challenges to HTTPS. Verify with
+`certbot renew --cert-name kuylab.uz --dry-run` after enabling the proxy.
+
 KuyLab's HTTPS virtual host trusts `CF-Connecting-IP` only when the connection
 comes from Cloudflare's published IPv4/IPv6 proxy networks. This keeps per-client
 login limits and access logs correct without trusting spoofed headers from direct

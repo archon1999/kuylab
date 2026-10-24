@@ -167,7 +167,7 @@ export default function DashboardPage() {
           <span>
             <strong>{tr('Mashqlar')}</strong>
             <small>
-              {catalog.exercises.length} {tr('mashq')} · {tr('Uch daraja')}
+              {studyCountLabel(catalog.exercises.length, 'exercise', language)} · {tr('Uch daraja')}
             </small>
           </span>
           <ArrowForwardRounded />
@@ -177,7 +177,8 @@ export default function DashboardPage() {
           <span>
             <strong>{tr('Amaliy nazariya')}</strong>
             <small>
-              {catalog.theory.length} {tr('mavzu')} · {tr('Ko‘ring, eshiting, sinab ko‘ring')}
+              {studyCountLabel(catalog.theory.length, 'theory', language)} ·{' '}
+              {tr('Ko‘ring, eshiting, sinab ko‘ring')}
             </small>
           </span>
           <ArrowForwardRounded />

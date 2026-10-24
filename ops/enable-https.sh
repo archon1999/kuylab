@@ -40,6 +40,14 @@ else
     mv /etc/nginx/conf.d/kuylab.conf.backup /etc/nginx/conf.d/kuylab.conf
     exit 1
 fi
-# Verify the origin independently of edge certificate issuance and DNS caches.
-curl --noproxy '*' --fail --silent --show-error --max-time 15 \
-    --resolve kuylab.uz:443:127.0.0.1 https://kuylab.uz/health/ready/
+# A successful reload signal can precede the new workers accepting TLS.
+# Verify the origin independently of edge certificates and DNS caches.
+for attempt in {1..10}; do
+    if curl --noproxy '*' --fail --silent --max-time 5 \
+        --resolve kuylab.uz:443:127.0.0.1 https://kuylab.uz/health/ready/; then
+        exit 0
+    fi
+    sleep 1
+done
+echo 'Origin HTTPS did not become ready after the Nginx reload.' >&2
+exit 1

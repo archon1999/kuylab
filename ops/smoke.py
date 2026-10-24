@@ -107,6 +107,26 @@ try:
     assert b.request("/api/auth/player-preferences/")[1] == {}
     status, catalog, headers = a.request("/api/studio/catalog/")
     assert status == 200 and "no-store" in headers["Cache-Control"]
+    assert len(catalog["journeys"]) == 8 and sum(len(item["challenges"]) for item in catalog["theory"]) == 19
+    note_path = "/api/activity/notes/"
+    status, note, _ = a.request(note_path, "POST", {"contentId": "theory:triads", "position": 2.5, "text": "Deployment notebook check"})
+    assert status == 201 and note["position"] == 2.5
+    assert b.request(note_path)[1] == []
+    target = note_path + note["id"] + "/"
+    assert b.request(target, "PATCH", {"text": "Other account"})[0] == 404
+    assert a.request(target, "PATCH", {"text": "Edited notebook check"})[0] == 200
+    assert a.request(target, "DELETE")[0] == 204
+    assert a.request(target, "PATCH", {"deleted": False})[0] == 200
+    context_path = "/api/auth/player-preferences/?context=theory%3Atriads"
+    assert a.request(context_path, "PATCH", {"speed": 0.7, "left": False})[0] == 200
+    assert a.request(context_path)[1]["speed"] == 0.7 and b.request(context_path)[1] == {}
+    state = a.request("/api/activity/state/")[1]
+    stage_id = catalog["journeys"][-1]["stages"][0]["id"]
+    state["progress"][stage_id] = "learning"
+    state["comfortableSpeeds"][stage_id] = 65
+    assert a.request("/api/activity/state/", "PATCH", state)[0] == 200
+    assert a.request("/api/activity/state/")[1]["comfortableSpeeds"][stage_id] == 65
+    assert b.request("/api/activity/state/")[1]["comfortableSpeeds"] == {}
     from apps.studio.models import StudioAsset
     original = StudioAsset.objects.get(pk="composition:still:original").score
     status, content, _ = a.request(f"/api/scores/{original.pk}/file/")
@@ -132,7 +152,7 @@ try:
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None
-    print("Production smoke passed: secure cookies, CSRF, two-user isolation, catalog, original MIDI, clean URL and logout.")
+    print("Production smoke passed: secure cookies, CSRF, two-user isolation, notes, stage progress, scoped preferences, catalog, original MIDI, clean URL and logout.")
 finally:
     users = get_user_model().objects.filter(username__in=names)
     ids = {str(value) for value in users.values_list("pk", flat=True)}

@@ -2,6 +2,22 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { requestJson } from '../src/shared/api/transport.ts';
 
+test('local CSRF cookies take priority while production keeps the default cookie name', async t => {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'document');
+  const document = { cookie: 'csrftoken=other-app; kuylab_csrftoken=kuylab-local' };
+  Object.defineProperty(globalThis, 'document', { configurable: true, value: document });
+  t.after(() => previous ? Object.defineProperty(globalThis, 'document', previous) : delete globalThis.document);
+  const tokens = [];
+  t.mock.method(globalThis, 'fetch', async (_url, options) => {
+    tokens.push(options.headers['X-CSRFToken']);
+    return Response.json({ ok: true });
+  });
+  await requestJson('activity/personal/', 'PATCH', {});
+  document.cookie = 'csrftoken=production-token';
+  await requestJson('activity/personal/', 'PATCH', {});
+  assert.deepEqual(tokens, ['kuylab-local', 'production-token']);
+});
+
 test('successful JSON reads pass language and empty responses support writes', async t => {
   const calls = [];
   t.mock.method(globalThis, 'fetch', async (url, options) => {

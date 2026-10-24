@@ -7,6 +7,7 @@ from django.db import models
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE, related_name="piano_profile")
     player_preferences = models.JSONField(default=dict)
+    player_context_preferences = models.JSONField(default=dict)
     display_name = models.CharField(max_length=80, default="Pianinochi")
     instrument_model = models.CharField(max_length=120, default="Yamaha YDP-145")
     keys = models.PositiveSmallIntegerField(default=88, validators=[MinValueValidator(25), MaxValueValidator(128)])

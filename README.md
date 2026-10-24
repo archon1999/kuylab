@@ -9,6 +9,14 @@ Each account has its own favorites, playback positions, learning progress,
 preferences and activity statistics. The musical catalog is curated in code;
 users do not upload or edit shared content through the website.
 
+Personal timestamp notes open the player at the saved moment and can be edited or
+removed with undo. Progress and self-reported comfortable speeds are stored per
+lesson stage; player settings are restored separately for each composition,
+exercise, stage and comparison. Still includes eight continuity studies (four
+parts, three joins and a full-piece path) alongside its 12 lessons. The 18 theory
+topics include 19 optional keyboard/ear activities with explanations and sampled
+piano audition. Activities do not grade physical playing or lock other lessons.
+
 ## Structure
 
 - `backend/apps`: learning, scores, studio and activity domains.
@@ -40,6 +48,8 @@ npm run dev
 ```
 
 Open http://127.0.0.1:5173 for the public site, then `/studio` to create an account.
+For a different local backend port, set `KUYLAB_API_PROXY` before starting Vite.
+Local session/CSRF cookie names are isolated from other Django projects.
 No default production password or
 administrator is shipped. `seed_studio` preserves existing learner state; the
 explicit destructive replacement flag is not part of normal setup or deployment.

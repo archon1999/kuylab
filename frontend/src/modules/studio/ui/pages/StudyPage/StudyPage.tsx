@@ -1,6 +1,10 @@
-import { useActivity } from '@modules/activity';
+import { useActivity, PracticeNotebook } from '@modules/activity';
 import { StudioPlayer } from '@modules/practice';
-import { ArrowBackRounded, ArrowForwardRounded } from '@mui/icons-material';
+import {
+  ArrowBackRounded,
+  ArrowForwardRounded,
+  CheckCircleOutlineRounded,
+} from '@mui/icons-material';
 import { Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
@@ -9,20 +13,14 @@ import { useStudio, useStudyScore } from '../../../application';
 import { allStudyItems, durationLabel, selectStudyStage } from '../../../domain';
 import { Favorite, Heading, Loading, SectionTitle, StudioError } from '../../shared/StudioParts';
 import Fingering from '../../shared/Fingering';
+import StudyProgress from '../../shared/StudyProgress';
+import TheoryChallenge from '../../shared/TheoryChallenge';
 import '../../studio.css';
 export default function StudyPage() {
   const { catalog } = useStudio();
   const { params } = useRoute();
-  const {
-    recordOpen,
-    setPlaying,
-    setPosition,
-    positions,
-    progress,
-    setProgress,
-    lastStages,
-    setStage,
-  } = useActivity();
+  const { recordOpen, setPlaying, setPosition, positions, progress, lastStages, setStage } =
+    useActivity();
   const tr = useTranslation();
   const item = catalog && allStudyItems(catalog).find((value) => value.id === params.get('item'));
   const stage = selectStudyStage(
@@ -50,7 +48,11 @@ export default function StudyPage() {
   };
   const goBack = () =>
     navigate(
-      item.kind === 'lesson' ? 'detail' : item.kind === 'exercise' ? 'exercises' : 'theory',
+      ['lesson', 'journey'].includes(item.kind)
+        ? 'detail'
+        : item.kind === 'exercise'
+          ? 'exercises'
+          : 'theory',
       { composition: item.composition_id ?? null },
     );
   const related = catalog
@@ -61,7 +63,7 @@ export default function StudyPage() {
   const category =
     catalog?.categories.find((value) => value.id === item.category)?.label ||
     tr(
-      item.kind === 'lesson'
+      ['lesson', 'journey'].includes(item.kind)
         ? 'Kompozitsiya darsi'
         : item.kind === 'exercise'
           ? 'Umumiy mashq'
@@ -71,7 +73,7 @@ export default function StudyPage() {
     <article className="studio-page studio-study-page">
       <Button className="studio-back" startIcon={<ArrowBackRounded />} onClick={goBack}>
         {tr(
-          item.kind === 'lesson'
+          ['lesson', 'journey'].includes(item.kind)
             ? 'Kompozitsiya darslari'
             : item.kind === 'exercise'
               ? 'Mashqlar'
@@ -79,18 +81,6 @@ export default function StudyPage() {
         )}
       </Button>
       <Heading eyebrow={category} title={item.title} action={<Favorite id={item.id} />} />
-      <ToggleButtonGroup
-        className="study-progress"
-        size="small"
-        exclusive
-        value={progress[item.id] || null}
-        onChange={(_, value) => setProgress(item.id, value)}
-        aria-label={tr('O‘zlashtirish holati')}
-      >
-        <ToggleButton value="learning">{tr('O‘rganyapman')}</ToggleButton>
-        <ToggleButton value="struggling">{tr('Qiynalyapman')}</ToggleButton>
-        <ToggleButton value="mastered">{tr('O‘zlashtirdim')}</ToggleButton>
-      </ToggleButtonGroup>
       <p className="studio-study-intro">{item.intro}</p>
       {stage && (
         <section className="studio-lesson-stages" aria-label={tr('Mashq bosqichlari')}>
@@ -102,6 +92,9 @@ export default function StudyPage() {
           >
             {item.stages?.map((value, index) => (
               <ToggleButton key={value.id} value={value.id}>
+                {progress[value.id] === 'mastered' && (
+                  <CheckCircleOutlineRounded fontSize="small" sx={{ mr: 1 }} />
+                )}
                 {index + 1}. {value.title}
               </ToggleButton>
             ))}
@@ -147,6 +140,11 @@ export default function StudyPage() {
           <p>{comparison?.instruction}</p>
         </section>
       )}
+      <StudyProgress
+        key={`progress:${stage?.id || item.id}`}
+        id={stage?.id || item.id}
+        staged={!!stage}
+      />
       <section className="studio-sample" aria-label={tr('Ovozli namuna')}>
         <div className="studio-sample-label">
           <span>{tr('Avval tinglab ko‘ring')}</span>
@@ -156,9 +154,20 @@ export default function StudyPage() {
         {score && Number(score.id) === scoreId && (
           <StudioPlayer
             key={String(score.id)}
+            contextId={positionId}
+            notebook={(position, seek, close) => (
+              <PracticeNotebook
+                contentId={positionId}
+                position={position}
+                onSeek={seek}
+                onClose={close}
+              />
+            )}
             score={score}
             compact
-            initialPosition={positions[positionId] || 0}
+            initialPosition={
+              params.has('at') ? Number(params.get('at')) : positions[positionId] || 0
+            }
             onPlaybackChange={setPlaying}
             onPositionChange={(seconds) => setPosition(positionId, seconds)}
           />
@@ -212,6 +221,9 @@ export default function StudyPage() {
         </section>
       )}
       {item.fingering && <Fingering text={item.fingering} />}
+      {!!item.challenges?.length && (
+        <TheoryChallenge key={`challenge:${item.id}`} challenges={item.challenges} />
+      )}
       <section className="studio-reading">
         <SectionTitle title={tr('Pianinoda sinab ko‘ring')} />
         <ol className="studio-steps">

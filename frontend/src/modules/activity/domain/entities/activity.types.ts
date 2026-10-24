@@ -1,11 +1,21 @@
 export type Recent = { id: string; openedAt: string };
 
 export type PersonalState = {
+  comfortableSpeeds: Record<string, number>;
   progress: Record<string, 'learning' | 'struggling' | 'mastered'>;
   lastStages: Record<string, string>;
   favorites: string[];
   recents: Recent[];
   positions: Record<string, number>;
+};
+
+export type PracticeNote = {
+  id: string;
+  contentId: string;
+  position: number;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ActivitySession = {

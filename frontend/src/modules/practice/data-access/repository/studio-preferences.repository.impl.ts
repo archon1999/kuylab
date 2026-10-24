@@ -1,4 +1,4 @@
-import { accountStorage } from '../../../../shared/lib/accountScope.ts';
+import { accountId, accountStorage } from '../../../../shared/lib/accountScope.ts';
 import { requestJson } from '../../../../shared/api/transport.ts';
 import {
   normalizeStudioPreferences,
@@ -11,46 +11,81 @@ type PreferenceStorage = {
   setItem(key: string, value: string): void;
 };
 /** Storage access stays behind a port, including the blocked-storage fallback. */
-export function createStudioPreferences(storage?: PreferenceStorage): StudioPreferencePort {
+export function createStudioPreferences(
+  storage?: PreferenceStorage,
+  contextId?: string,
+): StudioPreferencePort {
   const getStorage = () => storage || accountStorage;
+  const context = contextId && /^[a-zA-Z0-9:_-]{1,100}$/.test(contextId) ? contextId : undefined;
+  const storageKey = context ? key + ':' + context : key;
+  const pendingKey = 'player-preferences-pending' + (context ? ':' + context : '');
+  const endpoint =
+    'auth/player-preferences/' + (context ? '?context=' + encodeURIComponent(context) : '');
+  const owner = accountId();
+  let revision = 0;
   let pending: ReturnType<typeof setTimeout> | undefined;
-  const sync = () => {
-    if (storage) return;
+  const sync = async () => {
+    if (storage || accountId() !== owner) return;
     let value: string | null;
     try {
-      value = accountStorage.getItem('player-preferences-pending');
+      value = accountStorage.getItem(pendingKey);
     } catch {
       return;
     }
     if (!value) return;
-    void requestJson('auth/player-preferences/', 'PATCH', JSON.parse(value))
+    await requestJson(endpoint, 'PATCH', JSON.parse(value))
       .then(() => {
-        if (accountStorage.getItem('player-preferences-pending') === value)
-          accountStorage.setItem('player-preferences-pending', '');
+        if (accountId() === owner && accountStorage.getItem(pendingKey) === value)
+          accountStorage.setItem(pendingKey, '');
       })
       .catch(() => undefined);
   };
-  if (!storage) sync();
+  const read = () => {
+    try {
+      return normalizeStudioPreferences(
+        JSON.parse(getStorage().getItem(storageKey) || getStorage().getItem(key) || 'null'),
+      );
+    } catch {
+      return normalizeStudioPreferences(null);
+    }
+  };
   return {
-    read() {
+    read,
+    async load() {
+      const ticket = revision;
+      if (storage) return read();
       try {
-        return normalizeStudioPreferences(JSON.parse(getStorage().getItem(key) || 'null'));
+        await sync();
+        const remote = await requestJson<Record<string, unknown>>(endpoint);
+        if (
+          ticket === revision &&
+          accountId() === owner &&
+          !accountStorage.getItem(pendingKey) &&
+          Object.keys(remote).length
+        )
+          getStorage().setItem(storageKey, JSON.stringify(normalizeStudioPreferences(remote)));
       } catch {
-        return normalizeStudioPreferences(null);
+        /* Preserve this context's local settings until connectivity returns. */
       }
+      return read();
     },
     write(value) {
+      revision++;
       try {
         const encoded = JSON.stringify(normalizeStudioPreferences(value));
-        getStorage().setItem(key, encoded);
+        getStorage().setItem(storageKey, encoded);
         if (!storage) {
-          accountStorage.setItem('player-preferences-pending', encoded);
+          accountStorage.setItem(pendingKey, encoded);
           clearTimeout(pending);
           pending = setTimeout(sync, 500);
         }
       } catch {
         /* Current page preferences still work if the browser disallows storage. */
       }
+    },
+    dispose() {
+      clearTimeout(pending);
+      void sync();
     },
   };
 }

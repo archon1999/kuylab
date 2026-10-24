@@ -13,9 +13,9 @@ def personal_library(learner, changes=None):
     item, _ = PersonalLibrary.objects.get_or_create(profile=learner)
     if changes is not None:
         for key, value in changes.items():
-            setattr(item, "last_stages" if key == "lastStages" else key, value)
-        item.save(update_fields=["last_stages" if key == "lastStages" else key for key in changes])
-    return {"favorites": item.favorites, "recents": item.recents, "positions": item.positions, "progress": item.progress, "lastStages": item.last_stages}
+            setattr(item, {"lastStages": "last_stages", "comfortableSpeeds": "comfortable_speeds"}.get(key, key), value)
+        item.save(update_fields=[{"lastStages": "last_stages", "comfortableSpeeds": "comfortable_speeds"}.get(key, key) for key in changes])
+    return {"favorites": item.favorites, "recents": item.recents, "positions": item.positions, "progress": item.progress, "lastStages": item.last_stages, "comfortableSpeeds": item.comfortable_speeds}
 
 
 def visit_data(item):

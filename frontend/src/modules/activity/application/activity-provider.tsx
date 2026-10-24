@@ -21,6 +21,7 @@ import {
 type ContextValue = PersonalState & {
   setProgress(id: string, state: PersonalState['progress'][string] | null): void;
   setStage(id: string, stage: string): void;
+  setComfortableSpeed(id: string, speed: number | null): void;
   sessions: ActivitySession[];
   stats: ActivityStats;
   toggleFavorite(id: string): void;
@@ -310,6 +311,14 @@ export function ActivityStateProvider({
     <Context.Provider
       value={{
         ...personal,
+        setComfortableSpeed: (id, speed) =>
+          updatePersonal((value) => {
+            const comfortableSpeeds = { ...value.comfortableSpeeds };
+            if (speed !== null && Number.isInteger(speed) && speed >= 20 && speed <= 200)
+              comfortableSpeeds[id] = speed;
+            else delete comfortableSpeeds[id];
+            return { ...value, comfortableSpeeds };
+          }),
         setProgress: (id, state) =>
           updatePersonal((value) => {
             const progress = { ...value.progress };

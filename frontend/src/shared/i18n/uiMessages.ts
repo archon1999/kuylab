@@ -1,7 +1,9 @@
 import { studioMessages } from './studioMessages';
+import { learningMessages } from './learningMessages';
 /** Complete Russian and English catalog. Source keys and placeholders are stable. */
 export const uiMessages: Record<string, { ru: string; en: string }> = {
   ...studioMessages,
+  ...learningMessages,
   'Hozircha sevimlilar yo‘q': { ru: 'Пока нет избранного', en: 'No favorites yet' },
   'Kompozitsiyalarni ko‘rish': { ru: 'Открыть композиции', en: 'Explore compositions' },
   'Birinchi kuy sizni kutmoqda': { ru: 'Начните с первой мелодии', en: 'Your first melody awaits' },

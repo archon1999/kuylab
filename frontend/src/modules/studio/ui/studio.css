@@ -3,6 +3,221 @@
   flex-direction: column;
   gap: 34px;
 }
+.study-progress-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.study-progress-panel > div > small {
+  display: block;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+.study-card-progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 16px 0 0;
+  color: var(--secondary);
+  font-size: 12px;
+}
+.studio-note-link {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+  gap: 16px;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--chrome-line);
+  background: none;
+  padding: 18px 20px;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.studio-note-link:last-child {
+  border-bottom: 0;
+}
+.studio-note-link > svg {
+  color: var(--accent);
+}
+.studio-note-link strong,
+.studio-note-link small {
+  display: block;
+}
+.studio-note-link strong {
+  font-weight: 600;
+  font-size: 15px;
+}
+.studio-note-link small {
+  margin-top: 6px;
+  color: var(--secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.theory-challenge {
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--soft);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.theory-challenge-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.theory-challenge-heading h2 {
+  font-size: 23px;
+  margin: 0;
+}
+.theory-challenge-heading > svg {
+  color: var(--accent);
+}
+.theory-challenge-heading > span {
+  margin-left: auto;
+  color: var(--secondary);
+  font-size: 13px;
+}
+.theory-challenge-prompt {
+  font-size: 18px;
+  line-height: 1.7;
+}
+.theory-challenge-hint {
+  color: var(--secondary);
+  font-size: 14px;
+}
+.theory-challenge .MuiAlert-root {
+  width: 100%;
+}
+.theory-challenge .MuiAlert-root p {
+  margin: 8px 0 0;
+}
+.challenge-keyboard {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  height: 155px;
+  background: #211a30;
+  padding: 4px;
+  border-radius: 8px;
+}
+.challenge-white-keys {
+  display: flex;
+  gap: 2px;
+  height: 100%;
+}
+.challenge-white-keys button {
+  flex: 1;
+  min-width: 0;
+  background: linear-gradient(#fffdfa, #eeeae4);
+  border: 0;
+  border-radius: 0 0 5px 5px;
+  color: #4b4751;
+  position: relative;
+  cursor: pointer;
+}
+.challenge-keyboard button span {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 600 11px var(--font-ui);
+}
+.challenge-keyboard button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 1px;
+  z-index: 4;
+}
+.challenge-black-key {
+  position: absolute;
+  top: 4px;
+  width: 4.2%;
+  height: 92px;
+  transform: translateX(-50%);
+  background: linear-gradient(#37313e, #100c18);
+  color: #f2eee9;
+  border: 0;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 5px #0003;
+  cursor: pointer;
+}
+.challenge-black-key span {
+  font-size: 9px !important;
+}
+.challenge-keyboard button.is-selected {
+  background: linear-gradient(#dfbda3, #b77d50);
+  color: #251d29;
+}
+.challenge-selection {
+  color: var(--secondary);
+  font-size: 14px;
+  min-height: 24px;
+  font-variant-numeric: tabular-nums;
+}
+.challenge-choices {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.challenge-choices .MuiToggleButton-root {
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: var(--surface);
+  text-transform: none;
+  padding: 12px 20px;
+}
+.challenge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 650px) {
+  .study-progress-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .theory-challenge {
+    padding: 20px 16px;
+  }
+  .theory-challenge-heading h2 {
+    font-size: 20px;
+  }
+  .challenge-keyboard {
+    height: 130px;
+  }
+  .challenge-black-key {
+    height: 78px;
+  }
+  .challenge-keyboard button span {
+    font-size: 9px;
+  }
+  .challenge-black-key span {
+    display: none;
+  }
+  .challenge-choices {
+    width: 100%;
+  }
+  .challenge-choices .MuiToggleButton-root {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .study-progress-panel .MuiToggleButtonGroup-root {
+    display: flex;
+  }
+  .study-progress-panel .MuiToggleButton-root {
+    font-size: 12px;
+    flex: 1;
+    padding-inline: 8px;
+  }
+}
 .studio-heading {
   display: flex;
   align-items: center;

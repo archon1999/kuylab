@@ -28,8 +28,10 @@ def prepared_assets():
     })]
     for item in all_items():
         provenance = {"kind":"original_authored_study", "catalog_id":item["id"], "revision":REVISION}
-        if item["kind"] == "lesson":
+        if item["kind"] in {"lesson", "journey"}:
             for stage in item["stages"]:
+                if stage.get("_reuse_original"):
+                    continue
                 spec = stage["_generator"]
                 data, identifiers = lesson_stage_midi(parsed, **spec)
                 stage_provenance = {**provenance, "kind":"teaching_adaptation", "stage_id": stage["id"],
@@ -113,4 +115,4 @@ class Command(BaseCommand):
                 try: storage.delete(name)
                 except OSError: pass
             raise
-        self.stdout.write(self.style.SUCCESS(f"Still studio ready: composition {composition.pk}, 12 lessons / 36 lesson stages, 36 exercises, 18 theory examples. Profile preserved."))
+        self.stdout.write(self.style.SUCCESS(f"Still studio ready: composition {composition.pk}, 12 lessons / 36 lesson stages, 8 continuity studies, 36 exercises, 18 theory topics / 19 interactive activities. Profile preserved."))

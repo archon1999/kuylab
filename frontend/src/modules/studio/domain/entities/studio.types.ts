@@ -1,6 +1,8 @@
+import type { TheoryChallenge } from '../theoryChallenges';
 export type StudyItem = {
+  challenges?: TheoryChallenge[];
   id: string;
-  kind: 'lesson' | 'exercise' | 'theory';
+  kind: 'lesson' | 'exercise' | 'theory' | 'journey';
   title: string;
   subtitle: string;
   category: string;
@@ -40,6 +42,7 @@ export type Composition = {
 };
 
 export type StudioCatalog = {
+  journeys?: StudyItem[];
   revision: string;
   compositions: Composition[];
   lessons: StudyItem[];

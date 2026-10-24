@@ -1,6 +1,8 @@
+import type { TheoryChallenge } from '../../domain/theoryChallenges';
 export type StudyItemDto = {
+  challenges?: TheoryChallenge[];
   id: string;
-  kind: 'lesson' | 'exercise' | 'theory';
+  kind: 'lesson' | 'exercise' | 'theory' | 'journey';
   title: string;
   subtitle: string;
   category: string;
@@ -40,6 +42,7 @@ export type CompositionDto = {
 };
 
 export type StudioCatalogDto = {
+  journeys?: StudyItemDto[];
   revision: string;
   compositions: CompositionDto[];
   lessons: StudyItemDto[];

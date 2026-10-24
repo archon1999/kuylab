@@ -27,7 +27,15 @@ export function routePath(
         );
   const segment = (key: string) =>
     params.get(key) ? '/' + encodeURIComponent(params.get(key)!) : '';
-  if (page === 'detail' || page === 'practice') return pagePaths[page] + segment('composition');
+  const timestamp =
+    params.has('at') &&
+    Number.isFinite(Number(params.get('at'))) &&
+    Number(params.get('at')) >= 0 &&
+    Number(params.get('at')) <= 7200
+      ? '?t=' + Number(params.get('at'))
+      : '';
+  if (page === 'detail' || page === 'practice')
+    return pagePaths[page] + segment('composition') + (page === 'practice' ? timestamp : '');
   if (page === 'study')
     return (
       pagePaths[page] +
@@ -36,7 +44,8 @@ export function routePath(
         ? '/stages' + segment('stage')
         : params.get('example')
           ? '/examples' + segment('example')
-          : '')
+          : '') +
+      timestamp
     );
   if (page === 'lesson') return pagePaths[page] + segment('lesson');
   return pagePaths[page];
@@ -82,6 +91,16 @@ export function parseRoute(pathname: string, search = '') {
         ) ?? 'notFound';
     }
   }
+  const at = legacy.get('t');
+  if (
+    ['practice', 'study'].includes(page) &&
+    at !== null &&
+    at.trim() &&
+    Number.isFinite(Number(at)) &&
+    Number(at) >= 0 &&
+    Number(at) <= 7200
+  )
+    params.set('at', String(Number(at)));
   params.set('page', page);
   return { page, params };
 }

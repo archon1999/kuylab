@@ -1,5 +1,6 @@
 from datetime import timedelta
 from uuid import uuid4
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.test import TestCase
@@ -22,7 +23,7 @@ class AccountTests(TestCase):
         return result.json()['user']
 
     def patch(self, client, url, data, **headers):
-        return client.patch(url, data, format='json', HTTP_X_CSRFTOKEN=client.cookies['csrftoken'].value, **headers)
+        return client.patch(url, data, format='json', HTTP_X_CSRFTOKEN=client.cookies[settings.CSRF_COOKIE_NAME].value, **headers)
 
     def test_anonymous_cannot_read_or_write_personal_state(self):
         for path in ['/api/profile/','/api/activity/state/','/api/activity/visits/','/api/auth/player-preferences/','/api/studio/catalog/']:
@@ -51,7 +52,7 @@ class AccountTests(TestCase):
         self.register(self.a,'learner_a'); self.register(self.b,'learner_b')
         now = timezone.now()
         data = {'id':str(uuid4()),'startedAt':(now-timedelta(seconds=400)).isoformat(),'seconds':300,'contentSeconds':{},'daySeconds':{timezone.localdate(now).isoformat():300}}
-        def put(client): return client.put('/api/activity/visits/',data,format='json',HTTP_X_CSRFTOKEN=client.cookies['csrftoken'].value)
+        def put(client): return client.put('/api/activity/visits/',data,format='json',HTTP_X_CSRFTOKEN=client.cookies[settings.CSRF_COOKIE_NAME].value)
         self.assertEqual(put(self.a).status_code,200)
         self.assertEqual(put(self.b).status_code,400)
         self.assertEqual(self.b.get('/api/activity/visits/').json(),[])
@@ -63,7 +64,7 @@ class AccountTests(TestCase):
 
     def test_logout_invalidates_session(self):
         self.register(self.a,'learner_a')
-        self.assertEqual(self.a.post('/api/auth/logout/',{},format='json',HTTP_X_CSRFTOKEN=self.a.cookies['csrftoken'].value).status_code,200)
+        self.assertEqual(self.a.post('/api/auth/logout/',{},format='json',HTTP_X_CSRFTOKEN=self.a.cookies[settings.CSRF_COOKIE_NAME].value).status_code,200)
         self.assertIsNone(self.a.get('/api/auth/session/').json()['user'])
         self.assertEqual(self.a.get('/api/activity/state/').status_code,403)
 

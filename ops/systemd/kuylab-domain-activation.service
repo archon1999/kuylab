@@ -1,0 +1,17 @@
+[Unit]
+Description=Activate KuyLab HTTPS once public DNS reaches the origin
+Wants=network-online.target
+After=network-online.target nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/kuylab-activate-domain
+TimeoutStartSec=25h
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target

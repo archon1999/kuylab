@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS build
+FROM python:3.15-slim-bookworm@sha256:575f8bc12ec26542e0678bc6b60e385218248019d433157ec327264a78c3a853 AS build
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=true POETRY_NO_INTERACTION=1
 WORKDIR /app
@@ -11,7 +11,7 @@ RUN DJANGO_SECRET_KEY=build-only-not-a-deployment-secret-00000000000000000000000
     POSTGRES_DB=build POSTGRES_USER=build POSTGRES_PASSWORD=build \
     .venv/bin/python manage.py collectstatic --noinput --settings=config.settings.production
 
-FROM python:3.12-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 AS runtime
+FROM python:3.15-slim-bookworm@sha256:575f8bc12ec26542e0678bc6b60e385218248019d433157ec327264a78c3a853 AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=config.settings.production PATH="/app/.venv/bin:$PATH"
 RUN groupadd --gid 10001 kuylab && useradd --uid 10001 --gid kuylab --no-create-home kuylab \

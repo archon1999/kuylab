@@ -18,6 +18,10 @@ export const learningMessages: Record<string, { ru: string; en: string }> = {
     ru: 'Все задания выполнены. Урок освоен.',
     en: 'All tasks completed. Lesson mastered.',
   },
+  'Barcha topshiriqlar bajarildi.': {
+    ru: 'Все задания выполнены.',
+    en: 'All tasks completed.',
+  },
   'Ijro varianti': { ru: 'Вариант исполнения', en: 'Performance version' },
   'Darslar Easy va Hard uchun umumiy.': {
     ru: 'Уроки общие для Easy и Hard.',
@@ -63,10 +67,10 @@ export const learningMessages: Record<string, { ru: string; en: string }> = {
   },
   'Barcha darslar': { ru: 'Все уроки', en: 'All lessons' },
   'Darslarni o‘zlashtirish': { ru: 'Освоение уроков', en: 'Learning progress' },
-  '{0} ta dars. Holatlarni o‘zingiz belgilaysiz; dars bosqichlari alohida dars sifatida sanalmaydi.':
+  '{0} ta dars. Holatni qo‘lda ham o‘zgartirish mumkin; bosqichlar alohida dars sifatida sanalmaydi.':
     {
-      ru: 'Уроков: {0}. Вы отмечаете статус сами; этапы не считаются отдельными уроками.',
-      en: '{0} lessons. You set your own status; stages are not counted as separate lessons.',
+      ru: 'Уроков: {0}. Статус можно изменить и вручную; этапы не считаются отдельными уроками.',
+      en: '{0} lessons. You can also change the status manually; stages are not counted as separate lessons.',
     },
   'Yo‘nalishlar bo‘yicha o‘zlashtirish': {
     ru: 'Освоение по направлениям',

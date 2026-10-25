@@ -53,7 +53,7 @@ export default function StatisticsPage() {
         <SectionTitle title={tr('Darslarni o‘zlashtirish')} />
         <p className="studio-progress-description">
           {tr(
-            '{0} ta dars. Holatlarni o‘zingiz belgilaysiz; dars bosqichlari alohida dars sifatida sanalmaydi.',
+            '{0} ta dars. Holatni qo‘lda ham o‘zgartirish mumkin; bosqichlar alohida dars sifatida sanalmaydi.',
             [learning.total],
           )}
         </p>

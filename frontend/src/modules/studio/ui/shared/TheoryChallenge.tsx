@@ -287,9 +287,7 @@ export default function TheoryChallenge({
         </Alert>
       )}
       {!checked && summary.correct === summary.total && (
-        <Alert severity="success">
-          {tr('Barcha topshiriqlar bajarildi. Dars o‘zlashtirildi.')}
-        </Alert>
+        <Alert severity="success">{tr('Barcha topshiriqlar bajarildi.')}</Alert>
       )}
     </section>
   );

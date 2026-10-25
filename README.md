@@ -11,13 +11,19 @@ users do not upload or edit shared content through the website.
 
 Personal timestamp notes open the player at the saved moment and can be edited or
 removed with undo. Color-coded learning status is stored per lesson stage and
-appears on study cards, filters and statistics. Player settings are restored separately for each composition,
-exercise, stage and comparison. Still includes eight continuity studies (four
+appears on study cards, filters and statistics. Composition and variant players
+retain separate settings; every lesson, exercise, stage and comparison shares one
+study-player settings profile per account. Playback positions remain separate.
+Still includes eight continuity studies (four
 parts, three joins and a full-piece path) alongside its 12 lessons. The independent
 curriculum has 48 exercises in 16 families and 24 theory topics, each with a
 source-matched MIDI explanation, practice method, pitfalls and a self-check.
-Theory includes 25 optional keyboard/ear activities with explanations and sampled
-piano audition. Activities do not grade physical playing or lock other lessons.
+Theory includes 49 optional keyboard/ear activities with explanations and sampled
+piano audition, including a deeper application task in every topic. Answers are
+saved per account: a wrong answer marks a difficulty, and completing every task
+marks mastery. Reading or interacting starts an untouched lesson; opening a route
+alone does not. The status controls at the top and bottom also allow manual
+updates. Activities do not grade physical playing or lock other lessons.
 
 ## Structure
 

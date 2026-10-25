@@ -3,6 +3,7 @@ import type { PersonalState, ActivitySession, ActivityStats } from './entities/a
 export const emptyPersonal: PersonalState = {
   comfortableSpeeds: {},
   progress: {},
+  challengeResults: {},
   lastStages: {},
   favorites: [],
   recents: [],

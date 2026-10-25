@@ -21,8 +21,9 @@ export function createActivityRepository(): ActivityRepository {
       return value && validVisit(value.session) && Number.isFinite(value.touched) ? value : null;
     },
     writeLive: (session, touched) => writeLocal(liveKey, { session, touched }),
-    getPersonal: () => request<PersonalStateDto>('activity/state/'),
-    savePersonal: (value) => request<PersonalStateDto>('activity/state/', 'PATCH', value),
+    getPersonal: () => request<PersonalStateDto>('activity/state/').then(mapPersonal),
+    savePersonal: (value) =>
+      request<PersonalStateDto>('activity/state/', 'PATCH', value).then(mapPersonal),
     getVisits: () => request<ActivitySessionDto[]>('activity/visits/'),
     saveVisit: (value) => request<ActivitySessionDto>('activity/visits/', 'PUT', value),
   };

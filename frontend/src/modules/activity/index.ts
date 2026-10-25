@@ -20,3 +20,4 @@ export { usePracticeNotes } from './application/usePracticeNotes';
 export { default as PracticeNotebook } from './ui/shared/PracticeNotebook';
 export type { PracticeNote } from './domain/entities/activity.types';
 export type { ActivitySession, ActivityStats } from './domain';
+export { challengeResultKey, challengeSummary } from './domain';

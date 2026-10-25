@@ -3,6 +3,7 @@ export type Recent = { id: string; openedAt: string };
 export type PersonalState = {
   comfortableSpeeds: Record<string, number>;
   progress: Record<string, 'learning' | 'struggling' | 'mastered'>;
+  challengeResults: Record<string, 'correct' | 'incorrect'>;
   lastStages: Record<string, string>;
   favorites: string[];
   recents: Recent[];

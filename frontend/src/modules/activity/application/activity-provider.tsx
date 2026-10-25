@@ -12,6 +12,8 @@ import {
   ActivityClock,
   activityStats,
   mergeVisits,
+  markStudyStarted,
+  recordChallengeAnswer,
   type ActivityRepository,
   type ActivitySession,
   type ActivityStats,
@@ -21,6 +23,13 @@ import {
 type ContextValue = PersonalState & {
   setProgress(id: string, state: PersonalState['progress'][string] | null): void;
   setStage(id: string, stage: string): void;
+  startStudy(id: string): void;
+  recordChallengeResult(
+    studyId: string,
+    questionIds: string[],
+    questionId: string,
+    correct: boolean,
+  ): void;
   setComfortableSpeed(id: string, speed: number | null): void;
   sessions: ActivitySession[];
   stats: ActivityStats;
@@ -91,6 +100,7 @@ export function ActivityStateProvider({
   const updatePersonal = useCallback(
     (change: (value: PersonalState) => PersonalState) => {
       const value = change(personalRef.current);
+      if (value === personalRef.current) return;
       personalRef.current = value;
       revision.current++;
       repository.writePersonal(value);
@@ -98,6 +108,20 @@ export function ActivityStateProvider({
       setPersonal(value);
     },
     [repository],
+  );
+  const startStudy = useCallback(
+    (id: string) => {
+      updatePersonal((value) => markStudyStarted(value, id));
+    },
+    [updatePersonal],
+  );
+  const recordChallengeResult = useCallback(
+    (studyId: string, questionIds: string[], questionId: string, correct: boolean) => {
+      updatePersonal((value) =>
+        recordChallengeAnswer(value, studyId, questionIds, questionId, correct),
+      );
+    },
+    [updatePersonal],
   );
   const mergeHistory = useCallback(
     (incoming: ActivitySession[]) => {
@@ -311,6 +335,8 @@ export function ActivityStateProvider({
     <Context.Provider
       value={{
         ...personal,
+        startStudy,
+        recordChallengeResult,
         setComfortableSpeed: (id, speed) =>
           updatePersonal((value) => {
             const comfortableSpeeds = { ...value.comfortableSpeeds };

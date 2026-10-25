@@ -171,4 +171,4 @@ class Command(BaseCommand):
                 try: storage.delete(name)
                 except OSError: pass
             raise
-        self.stdout.write(self.style.SUCCESS("Curated studio ready: 8 compositions (All in: Easy/Hard), 57 lessons, 61 continuity studies, 48 exercises, 24 theory topics / 25 interactive activities. Users and existing sources preserved."))
+        self.stdout.write(self.style.SUCCESS("Curated studio ready: 8 compositions (All in: Easy/Hard), 57 lessons, 61 continuity studies, 48 exercises, 24 theory topics / 49 interactive activities. Users and existing sources preserved."))

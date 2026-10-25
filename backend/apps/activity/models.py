@@ -5,6 +5,7 @@ import uuid
 class PersonalLibrary(models.Model):
     profile = models.OneToOneField("learning.Profile", on_delete=models.CASCADE)
     progress = models.JSONField(default=dict)
+    challenge_results = models.JSONField(default=dict)
     last_stages = models.JSONField(default=dict)
     comfortable_speeds = models.JSONField(default=dict)
     favorites = models.JSONField(default=list)

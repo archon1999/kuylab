@@ -5,6 +5,7 @@ export type TheoryChallenge = {
   prompt: string;
   explanation: string;
   preparation?: string;
+  difficulty?: 'deeper';
   answerPitches?: number[];
   choices?: { id: string; label: string }[];
   answerChoice?: string;

@@ -53,4 +53,6 @@ def challenges(topic):
         from .theory_reviews import challenge_preparation
         for task in tasks:
             task["preparation"] = challenge_preparation(topic)
+    from .interactive_extensions import deeper_challenges
+    tasks += deeper_challenges(topic)
     return tasks

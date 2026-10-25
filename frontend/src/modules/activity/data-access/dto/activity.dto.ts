@@ -2,6 +2,7 @@ export type RecentDto = { id: string; openedAt: string };
 export type PersonalStateDto = {
   comfortableSpeeds: Record<string, number>;
   progress: Record<string, 'learning' | 'struggling' | 'mastered'>;
+  challengeResults?: Record<string, 'correct' | 'incorrect'>;
   lastStages: Record<string, string>;
   favorites: string[];
   recents: RecentDto[];

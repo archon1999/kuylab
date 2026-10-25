@@ -1,8 +1,13 @@
 import type { ActivitySession, PersonalState } from '../../domain/entities/activity.types.ts';
 const validId = (id: unknown): id is string =>
   typeof id === 'string' && /^[a-zA-Z0-9:_-]{1,100}$/.test(id);
-export function mapPersonal(value: PersonalState): PersonalState {
+export function mapPersonal(value: Partial<PersonalState> | null | undefined): PersonalState {
   return {
+    challengeResults: Object.fromEntries(
+      Object.entries(value?.challengeResults || {})
+        .filter(([id, result]) => validId(id) && ['correct', 'incorrect'].includes(result))
+        .slice(0, 2000),
+    ),
     comfortableSpeeds: Object.fromEntries(
       Object.entries(value?.comfortableSpeeds || {})
         .filter(
@@ -15,7 +20,7 @@ export function mapPersonal(value: PersonalState): PersonalState {
         .filter(
           ([id, state]) => validId(id) && ['learning', 'struggling', 'mastered'].includes(state),
         )
-        .slice(0, 500),
+        .slice(0, 2000),
     ),
     lastStages: Object.fromEntries(
       Object.entries(value?.lastStages || {})
@@ -29,9 +34,9 @@ export function mapPersonal(value: PersonalState): PersonalState {
           .slice(0, 40)
       : [],
     positions: Object.fromEntries(
-      Object.entries(value?.positions || {}).filter(
-        ([key, val]) => validId(key) && Number.isFinite(val) && val >= 0 && val <= 7200,
-      ),
+      Object.entries(value?.positions || {})
+        .filter(([key, val]) => validId(key) && Number.isFinite(val) && val >= 0 && val <= 7200)
+        .slice(0, 2000),
     ),
   };
 }

@@ -18,6 +18,7 @@ class RecentSerializer(serializers.Serializer):
 
 class PersonalSerializer(serializers.Serializer):
     progress = serializers.DictField(child=serializers.ChoiceField(choices=["learning", "struggling", "mastered"]), required=False)
+    challengeResults = serializers.DictField(child=serializers.ChoiceField(choices=["correct", "incorrect"]), required=False)
     lastStages = serializers.DictField(child=ContentId(), required=False)
     comfortableSpeeds = serializers.DictField(child=serializers.IntegerField(min_value=20, max_value=200), required=False)
     favorites = serializers.ListField(child=ContentId(), max_length=500)
@@ -25,11 +26,15 @@ class PersonalSerializer(serializers.Serializer):
     positions = serializers.DictField(child=serializers.FloatField(min_value=0, max_value=7200))
 
     def validate(self, data):
+        results = data.get("challengeResults", {})
+        if len(results) > 2000 or any(not re.fullmatch(r"[a-zA-Z0-9:_-]{1,100}", key) for key in results):
+            raise serializers.ValidationError("Invalid challenge results.")
         for field in ["progress", "lastStages", "comfortableSpeeds"]:
             values = data.get(field, {})
-            if len(values) > 500 or any(not re.fullmatch(r"[a-zA-Z0-9:_-]{1,100}", key) for key in values):
+            limit = 2000 if field == "progress" else 500
+            if len(values) > limit or any(not re.fullmatch(r"[a-zA-Z0-9:_-]{1,100}", key) for key in values):
                 raise serializers.ValidationError("Invalid learning state.")
-        if len(data["recents"]) > 40 or len(data["positions"]) > 500:
+        if len(data["recents"]) > 40 or len(data["positions"]) > 2000:
             raise serializers.ValidationError("Personal library limit exceeded.")
         if any(not re.fullmatch(r"[a-zA-Z0-9:_-]{1,100}", key) for key in data["positions"]):
             raise serializers.ValidationError("Invalid content ID.")

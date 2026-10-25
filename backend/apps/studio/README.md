@@ -29,13 +29,21 @@ a redistribution license. No arranger/composer identity is invented.
 
 The Still course contains 12 lessons with **three MIDI stages each**. The independent
 curriculum contains **48 exercises in 16 families and 24 practical theory topics**,
-with 25 optional activities and five paired listening comparisons. Every lesson
+with 49 optional activities and five paired listening comparisons. Every lesson
 has a concept, a verified source-note example, listening
 guidance, three practice instructions and a self-check. Uzbek includes Russian
 terminology; RU and EN are authored too. Reviewed lessons live in
 `still_lessons.py`; independent study definitions live in `content.py`, with
 reviewed coaching in `practice_reviews.py` and `theory_reviews.py` and additional
 original MIDI in `practical_midi.py`. See the [independent curriculum audit](../../../docs/practical-curriculum-review-2026-10.md).
+
+`interactive_extensions.py` adds one more demanding application to each theory
+topic, following its original foundation tasks. All 49 tasks include preparation,
+an explanation available before or after checking, and authored UZ/RU/EN text.
+Account-owned answer results drive learning/difficulty/mastery and remain
+independent of other accounts. Main compositions retain separate player settings;
+study players use the shared `study:shared` context while resume positions stay
+specific to the example or stage. See the [task review](../../../docs/deeper-theory-review-2026-10.md).
 
 The 12 lessons use source ranges 0–16, 0–20, 16–32, 48–64, 112–128,
 196–214.604 and 0–10 seconds. These are teaching selections, not asserted formal
@@ -192,7 +200,7 @@ selected source pitches, velocities, onsets and clipped holds under uniform time
 scaling. The last complete-file stage reuses the original score and its bytes.
 
 The complete catalog has 8 compositions, 57 lessons, 61 continuity studies, 48
-independent exercises and 24 theory topics with 25 optional activities. The catalog
+independent exercises and 24 theory topics with 49 optional activities. The catalog
 queries IDs and small scalar source metadata rows, avoiding every study's parsed graph.
 Tests verify the exact musical landmarks, all 420 stage selections for these six
 pieces, release evidence, original hashes, piece ownership, localization,

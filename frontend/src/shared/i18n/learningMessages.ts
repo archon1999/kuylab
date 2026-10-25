@@ -1,4 +1,23 @@
 export const learningMessages: Record<string, { ru: string; en: string }> = {
+  'Dars yakunidagi holat': { ru: 'Статус после занятия', en: 'Status after studying' },
+  'Holat javoblaringizga qarab yangilanadi. Uni qo‘lda ham o‘zgartirishingiz mumkin.': {
+    ru: 'Статус обновляется по ответам. Его можно изменить и вручную.',
+    en: 'Your answers update the status. You can also change it manually.',
+  },
+  'Topshiriqni tanlash': { ru: 'Выбрать задание', en: 'Select a task' },
+  '{0}-topshiriq: {1}': { ru: 'Задание {0}: {1}', en: 'Task {0}: {1}' },
+  '{0}/{1} topshiriq bajarildi': {
+    ru: 'Выполнено заданий: {0}/{1}',
+    en: '{0}/{1} tasks completed',
+  },
+  'Chuqurroq topshiriq': { ru: 'Углублённое задание', en: 'Go a little deeper' },
+  Bajarildi: { ru: 'Выполнено', en: 'Completed' },
+  'Oldingi topshiriq': { ru: 'Предыдущее задание', en: 'Previous task' },
+  'Javob izohi': { ru: 'Объяснение ответа', en: 'Answer explanation' },
+  'Barcha topshiriqlar bajarildi. Dars o‘zlashtirildi.': {
+    ru: 'Все задания выполнены. Урок освоен.',
+    en: 'All tasks completed. Lesson mastered.',
+  },
   'Ijro varianti': { ru: 'Вариант исполнения', en: 'Performance version' },
   'Darslar Easy va Hard uchun umumiy.': {
     ru: 'Уроки общие для Easy и Hard.',

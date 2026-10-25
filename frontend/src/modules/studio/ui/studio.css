@@ -57,6 +57,7 @@
   white-space: nowrap;
 }
 .theory-challenge {
+  scroll-margin-top: 24px;
   padding: 28px;
   border-radius: 20px;
   background: var(--soft);
@@ -1603,4 +1604,43 @@
     grid-row: 3;
     justify-self: start;
   }
+}
+.study-progress-caption {
+  color: var(--secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.challenge-progress-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+.challenge-progress-row > small {
+  color: var(--secondary);
+  font-size: 13px;
+}
+.challenge-navigation .MuiToggleButton-root {
+  min-width: 44px;
+  min-height: 38px;
+  gap: 7px;
+  font-weight: 650;
+}
+.challenge-navigation [data-result='correct'] .MuiSvgIcon-root {
+  color: var(--study-mastered, #28714f);
+}
+.challenge-navigation [data-result='incorrect'] .MuiSvgIcon-root {
+  color: var(--study-struggling, #925a17);
+}
+.challenge-explanation strong {
+  display: block;
+  margin-bottom: 6px;
+}
+:root[data-theme='dark'] .challenge-navigation [data-result='correct'] .MuiSvgIcon-root {
+  color: #8bd3af;
+}
+:root[data-theme='dark'] .challenge-navigation [data-result='incorrect'] .MuiSvgIcon-root {
+  color: #edbc77;
 }

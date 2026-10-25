@@ -2,16 +2,37 @@ import { useActivity } from '@modules/activity';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { statusPresentation } from './StudyStatus';
-export default function StudyProgress({ id, staged }: { id: string; staged: boolean }) {
+export default function StudyProgress({
+  id,
+  staged,
+  atEnd = false,
+  automatic = false,
+}: {
+  id: string;
+  staged: boolean;
+  atEnd?: boolean;
+  automatic?: boolean;
+}) {
   const tr = useTranslation();
   const { progress, setProgress } = useActivity();
   return (
     <section
       className="study-progress-panel"
-      aria-label={tr(staged ? 'Joriy bosqich holati' : 'O‘zlashtirish holati')}
+      data-study-progress
+      aria-label={tr(
+        atEnd ? 'Dars yakunidagi holat' : staged ? 'Joriy bosqich holati' : 'O‘zlashtirish holati',
+      )}
     >
       <div>
-        <small>{tr(staged ? 'Joriy bosqich holati' : 'O‘zlashtirish holati')}</small>
+        <small>
+          {tr(
+            atEnd
+              ? 'Dars yakunidagi holat'
+              : staged
+                ? 'Joriy bosqich holati'
+                : 'O‘zlashtirish holati',
+          )}
+        </small>
         <ToggleButtonGroup
           className="study-progress"
           size="small"
@@ -30,6 +51,13 @@ export default function StudyProgress({ id, staged }: { id: string; staged: bool
             );
           })}
         </ToggleButtonGroup>
+        {automatic && atEnd && (
+          <p className="study-progress-caption">
+            {tr(
+              'Holat javoblaringizga qarab yangilanadi. Uni qo‘lda ham o‘zgartirishingiz mumkin.',
+            )}
+          </p>
+        )}
       </div>
     </section>
   );

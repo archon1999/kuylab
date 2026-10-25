@@ -45,4 +45,4 @@ class JourneyTests(SimpleTestCase):
                     else: self.assertTrue(all(60<=pitch<=84 for pitch in task['answerPitches']))
                 for note in task['audio']:
                     self.assertTrue(21<=note['pitch']<=108 and 0<note['velocity']<=127 and note['duration']>0 and note['onset']>=0)
-        self.assertEqual(total,25)
+        self.assertEqual(total,49)

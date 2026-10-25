@@ -1,32 +1,62 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePianoAudition } from '@modules/practice';
-import { Alert, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { useActivity, challengeResultKey, challengeSummary } from '@modules/activity';
+import { Alert, Button, Chip, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import {
   HearingRounded,
   MenuBookRounded,
   PlayArrowRounded,
   StopRounded,
+  CheckCircleOutlineRounded,
+  ErrorOutlineRounded,
 } from '@mui/icons-material';
 import { useTranslation } from '@shared/i18n';
 import { checkChallenge, type TheoryChallenge as Challenge } from '../../domain/theoryChallenges';
 const keyName = (pitch: number) =>
   ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'][pitch % 12] +
   (Math.floor(pitch / 12) - 1);
-export default function TheoryChallenge({ challenges }: { challenges: Challenge[] }) {
+export default function TheoryChallenge({
+  studyId,
+  challenges,
+}: {
+  studyId: string;
+  challenges: Challenge[];
+}) {
   const tr = useTranslation();
-  const [index, setIndex] = useState(0);
+  const { challengeResults, recordChallengeResult } = useActivity();
+  const questionIds = challenges.map((question) => question.id);
+  const summary = challengeSummary(studyId, questionIds, challengeResults);
+  const [index, setIndex] = useState(() =>
+    Math.max(
+      0,
+      challenges.findIndex(
+        (question) => challengeResults[challengeResultKey(studyId, question.id)] !== 'correct',
+      ),
+    ),
+  );
   const [pitches, setPitches] = useState<number[]>([]);
   const [choice, setChoice] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const piano = usePianoAudition();
   const question = challenges[index] || challenges[0];
+  const section = useRef<HTMLElement>(null);
+  const previousQuestion = useRef(question.id);
   useEffect(() => {
     piano.stop();
     setPitches([]);
     setChoice(null);
     setChecked(false);
     setRevealed(false);
+    if (previousQuestion.current !== question.id) {
+      section.current?.scrollIntoView({
+        block: 'start',
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'instant'
+          : 'smooth',
+      });
+      previousQuestion.current = question.id;
+    }
   }, [question.id, piano.stop]);
   const correct = checkChallenge(question, pitches, choice);
   const highest = Math.max(72, ...(question.answerPitches || []));
@@ -42,13 +72,53 @@ export default function TheoryChallenge({ challenges }: { challenges: Challenge[
     void piano.play([{ pitch, onset: 0, duration: 0.65, velocity: 78 }]);
   };
   return (
-    <section className="theory-challenge" aria-label={tr('O‘zingiz sinab ko‘ring')}>
+    <section ref={section} className="theory-challenge" aria-label={tr('O‘zingiz sinab ko‘ring')}>
       <div className="theory-challenge-heading">
         <HearingRounded />
         <h2>{tr('O‘zingiz sinab ko‘ring')}</h2>
         <span>
           {index + 1}/{challenges.length}
         </span>
+      </div>
+      <div className="challenge-progress-row">
+        <ToggleButtonGroup
+          className="challenge-navigation"
+          exclusive
+          value={index}
+          onChange={(_, value: number | null) => value !== null && setIndex(value)}
+          aria-label={tr('Topshiriqni tanlash')}
+        >
+          {challenges.map((task, number) => {
+            const result = challengeResults[challengeResultKey(studyId, task.id)];
+            return (
+              <ToggleButton
+                key={task.id}
+                value={number}
+                data-result={result || 'new'}
+                aria-label={tr('{0}-topshiriq: {1}', [
+                  number + 1,
+                  tr(
+                    result === 'correct'
+                      ? 'Bajarildi'
+                      : result === 'incorrect'
+                        ? 'Qayta urinish'
+                        : 'Boshlanmagan',
+                  ),
+                ])}
+              >
+                {number + 1}
+                {result === 'correct' && <CheckCircleOutlineRounded fontSize="small" />}
+                {result === 'incorrect' && <ErrorOutlineRounded fontSize="small" />}
+              </ToggleButton>
+            );
+          })}
+        </ToggleButtonGroup>
+        <small aria-live="polite">
+          {tr('{0}/{1} topshiriq bajarildi', [summary.correct, summary.total])}
+        </small>
+        {question.difficulty === 'deeper' && (
+          <Chip size="small" label={tr('Chuqurroq topshiriq')} />
+        )}
       </div>
       {question.preparation && (
         <aside className="challenge-preparation" aria-label={tr('Avval bilib oling')}>
@@ -161,7 +231,10 @@ export default function TheoryChallenge({ challenges }: { challenges: Challenge[
         <Button
           variant="contained"
           disabled={question.mode === 'keyboard' ? !pitches.length : !choice}
-          onClick={() => setChecked(true)}
+          onClick={() => {
+            setChecked(true);
+            recordChallengeResult(studyId, questionIds, question.id, correct);
+          }}
         >
           {tr('Tekshirish')}
         </Button>
@@ -179,21 +252,43 @@ export default function TheoryChallenge({ challenges }: { challenges: Challenge[
           {tr(revealed ? 'Izohni yashirish' : 'Izohni ko‘rish')}
         </Button>
         {challenges.length > 1 && (
-          <Button onClick={() => setIndex((value) => (value + 1) % challenges.length)}>
-            {tr('Keyingi topshiriq')}
-          </Button>
+          <>
+            <Button disabled={index === 0} onClick={() => setIndex((value) => value - 1)}>
+              {tr('Oldingi topshiriq')}
+            </Button>
+            <Button
+              disabled={index === challenges.length - 1}
+              onClick={() => setIndex((value) => value + 1)}
+            >
+              {tr('Keyingi topshiriq')}
+            </Button>
+          </>
         )}
       </div>
       {checked && (
-        <Alert severity={correct ? 'success' : 'info'}>
-          {tr(correct ? 'To‘g‘ri.' : 'Yana bir bor eshitib yoki klavishlarni tekshirib ko‘ring.')}
-          {correct && <p>{question.explanation}</p>}
+        <Alert severity={correct ? 'success' : 'warning'}>
+          {tr(
+            correct
+              ? summary.correct === summary.total
+                ? 'Barcha topshiriqlar bajarildi. Dars o‘zlashtirildi.'
+                : 'To‘g‘ri.'
+              : 'Yana bir bor eshitib yoki klavishlarni tekshirib ko‘ring.',
+          )}
         </Alert>
       )}
-      {revealed && (!checked || !correct) && (
-        <Alert severity="info">
-          {question.explanation}
+      {revealed && (
+        <Alert className="challenge-explanation" severity="info">
+          <strong>{tr('Javob izohi')}</strong>
+          <p>{question.explanation}</p>
           {question.answerPitches && <p>{question.answerPitches.map(keyName).join(' · ')}</p>}
+          {question.answerChoice && (
+            <p>{question.choices?.find((option) => option.id === question.answerChoice)?.label}</p>
+          )}
+        </Alert>
+      )}
+      {!checked && summary.correct === summary.total && (
+        <Alert severity="success">
+          {tr('Barcha topshiriqlar bajarildi. Dars o‘zlashtirildi.')}
         </Alert>
       )}
     </section>

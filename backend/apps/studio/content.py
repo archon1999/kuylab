@@ -6,7 +6,7 @@ not a claim that the MIDI contains words, theory, fingerings or formal sections.
 from .practice_reviews import EXTRA_FAMILIES, exercise_review
 from .theory_reviews import EXTRA_THEORY, theory_review
 
-REVISION = "all-in-variants-2026-10-v9"
+REVISION = "interactive-learning-2026-10-v10"
 
 
 def tr(uz, ru, en):

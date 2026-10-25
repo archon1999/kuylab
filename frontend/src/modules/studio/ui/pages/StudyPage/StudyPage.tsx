@@ -8,7 +8,8 @@ import {
 import { Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useStudyEngagement } from '../../../application/useStudyEngagement';
 import { useStudio, useStudyScore } from '../../../application';
 import { allStudyItems, durationLabel, selectStudyStage } from '../../../domain';
 import { Favorite, Heading, Loading, SectionTitle, StudioError } from '../../shared/StudioParts';
@@ -33,6 +34,8 @@ export default function StudyPage() {
   const comparison = item?.comparisons?.find((value) => value.id === params.get('example'));
   const scoreId = comparison?.score_id ?? stage?.score_id ?? item?.score_id;
   const positionId = comparison?.id ?? stage?.id ?? item?.id ?? '';
+  const article = useRef<HTMLElement>(null);
+  useStudyEngagement(stage?.id || item?.id || '', article);
   const { score, loading, error, reload } = useStudyScore(scoreId);
   useEffect(() => {
     if (item) recordOpen(item.id);
@@ -70,7 +73,7 @@ export default function StudyPage() {
           : 'Amaliy nazariya',
     );
   return (
-    <article className="studio-page studio-study-page">
+    <article ref={article} className="studio-page studio-study-page">
       <Button className="studio-back" startIcon={<ArrowBackRounded />} onClick={goBack}>
         {tr(
           ['lesson', 'journey'].includes(item.kind)
@@ -156,7 +159,7 @@ export default function StudyPage() {
         {score && Number(score.id) === scoreId && (
           <StudioPlayer
             key={String(score.id)}
-            contextId={positionId}
+            contextId="study:shared"
             readableHolds={composition?.readable_holds}
             title={[item.title, comparison?.title || stage?.title].filter(Boolean).join(' · ')}
             notebook={(position, seek, close) => (
@@ -230,7 +233,11 @@ export default function StudyPage() {
       )}
       {item.fingering && <Fingering text={item.fingering} />}
       {!!item.challenges?.length && (
-        <TheoryChallenge key={`challenge:${item.id}`} challenges={item.challenges} />
+        <TheoryChallenge
+          key={`challenge:${item.id}`}
+          studyId={item.id}
+          challenges={item.challenges}
+        />
       )}
       <section className="studio-reading">
         <SectionTitle
@@ -273,6 +280,12 @@ export default function StudyPage() {
           </div>
         </section>
       )}
+      <StudyProgress
+        id={stage?.id || item.id}
+        staged={!!stage}
+        atEnd
+        automatic={!!item.challenges?.length}
+      />
     </article>
   );
 }

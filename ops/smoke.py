@@ -109,7 +109,7 @@ try:
     assert status == 200 and "no-store" in headers["Cache-Control"]
     assert len(catalog["compositions"]) == 8 and len(catalog["lessons"]) == 57 and len(catalog["journeys"]) == 61
     assert len(catalog["exercises"]) == 48 and len(catalog["theory"]) == 24
-    assert sum(len(item["challenges"]) for item in catalog["theory"]) == 25
+    assert sum(len(item["challenges"]) for item in catalog["theory"]) == 49
     assert all(task.get("preparation") for item in catalog["theory"] for task in item["challenges"])
     compound = next(item for item in catalog["theory"] if item["id"] == "theory:compound-meter")
     assert len(compound["comparisons"]) == 2 and compound["ready_when"]
@@ -132,6 +132,15 @@ try:
     assert a.request("/api/activity/state/", "PATCH", state)[0] == 200
     assert a.request("/api/activity/state/")[1]["comfortableSpeeds"][stage_id] == 65
     assert b.request("/api/activity/state/")[1]["comfortableSpeeds"] == {}
+    result_key = "theory:triads:challenge:build-major"
+    state["challengeResults"][result_key] = "correct"
+    assert a.request("/api/activity/state/", "PATCH", state)[0] == 200
+    assert a.request("/api/activity/state/")[1]["challengeResults"][result_key] == "correct"
+    assert b.request("/api/activity/state/")[1]["challengeResults"] == {}
+    shared_context = "/api/auth/player-preferences/?context=study%3Ashared"
+    assert a.request(shared_context, "PATCH", {"volume": 44, "speed": 0.8})[0] == 200
+    assert a.request(shared_context)[1]["volume"] == 44
+    assert b.request(shared_context)[1] == {}
     from apps.studio.models import StudioAsset
     from apps.studio.repertoire import SOURCES
     for source in SOURCES:

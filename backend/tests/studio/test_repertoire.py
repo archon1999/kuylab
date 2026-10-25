@@ -4,7 +4,7 @@ from django.test import SimpleTestCase
 from apps.scores.midi import parse_midi
 from apps.studio.content import localize
 from apps.studio.midi_authoring import lesson_stage_midi
-from apps.studio.repertoire import SOURCES, repertoire_source
+from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
 from apps.studio.repertoire_studies import repertoire_items
 from apps.studio.repertoire_courses import COURSES
 from apps.studio.repertoire_pedagogy import REVIEWS, reviewed_anchor
@@ -43,6 +43,8 @@ class RepertoireSourceTests(SimpleTestCase):
         counts = {"youth": 833, "star": 597, "tears": 688, "my-memory": 1058,
                   "premonition": 784, "memories": 500}
         for source in SOURCES[1:]:
+            if source.course_kind != "standard":
+                continue
             raw, parsed = repertoire_source(source.code)
             self.assertEqual(hashlib.sha256(raw).hexdigest(), source.sha256)
             self.assertEqual(len(parsed["events"]), counts[source.code])
@@ -50,14 +52,16 @@ class RepertoireSourceTests(SimpleTestCase):
             self.assertIsNone(parsed["metadata"]["time"])
             self.assertEqual(parsed["pedal_events"], [])
             self.assertEqual({event["hand_evidence"] for event in parsed["events"]}, {"curated_track_role_inference"})
-            self.assertEqual(SOURCES[-1].composer, "")
-            self.assertEqual(SOURCES[-1].title, "Memories")
+            self.assertEqual(SOURCE_BY_CODE["memories"].composer, "")
+            self.assertEqual(SOURCE_BY_CODE["memories"].title, "Memories")
 
     def test_every_piece_has_specific_localized_lessons_and_a_complete_path(self):
         items = repertoire_items()
         self.assertEqual(len(items), 84)
         self.assertEqual(len({item["id"] for item in items}), 84)
         for source in SOURCES[1:]:
+            if source.course_kind != "standard":
+                continue
             selected = [item for item in items if item["_composition"] == source.code]
             lessons = [item for item in selected if item["kind"] == "lesson"]
             paths = [item for item in selected if item["kind"] == "journey"]

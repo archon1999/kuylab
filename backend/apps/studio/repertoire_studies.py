@@ -105,11 +105,13 @@ def time_range(start, end):
 
 @lru_cache(maxsize=1)
 def repertoire_items():
-    expected = {source.code for source in SOURCES if source.code != "still"}
+    expected = {source.code for source in SOURCES if source.code != "still" and source.course_kind == "standard"}
     if set(COURSES) != expected:
         raise ValueError("Every registered source requires a reviewed course.")
     result = []
     for source in SOURCES[1:]:
+        if source.course_kind != "standard":
+            continue
         _, parsed = repertoire_source(source.code)
         duration = parsed["metadata"]["duration_seconds"]
         course = COURSES[source.code]

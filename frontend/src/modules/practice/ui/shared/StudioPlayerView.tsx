@@ -14,7 +14,8 @@ import {
   SettingsOutlined,
   BookmarkBorderRounded,
 } from '@mui/icons-material';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { readableRollNotes } from '../../domain/readableNotes';
 import { usePreferences, useTranslation } from '@shared/i18n';
 import type { StudioAudioPort } from '../../domain/contracts/studio-audio.port';
 import { useStudioPlayer, type StudioPlayerProps } from '../../application/useStudioPlayer';
@@ -35,6 +36,13 @@ export default function StudioPlayerView(
   const title = props.title || props.score.title;
   const { preferences: settings, update } = useStudioPreferences(props.preferences);
   const transport = useStudioPlayer(props, props.audio, settings);
+  const rollNotes = useMemo(
+    () =>
+      props.readableHolds && settings.compactNoteLengths
+        ? readableRollNotes(transport.timeline.notes)
+        : transport.timeline.notes,
+    [props.readableHolds, settings.compactNoteLengths, transport.timeline.notes],
+  );
   const player = {
     ...transport,
     changeSpeed(value: number) {
@@ -172,6 +180,7 @@ export default function StudioPlayerView(
             <AddCircleOutlineRounded className="studio-circle-sign" />
           </IconButton>
         </div>
+        {props.toolbarAccessory?.(player.position, player.pause)}
         <Tooltip title={text.reset}>
           <IconButton
             className="studio-secondary"
@@ -184,6 +193,7 @@ export default function StudioPlayerView(
         {props.notebook && (
           <Tooltip title={tr('Qaydlar')}>
             <IconButton
+              className="studio-notebook-button"
               aria-label={tr('Qaydlar')}
               onClick={() => {
                 notePosition.current = player.position;
@@ -228,7 +238,7 @@ export default function StudioPlayerView(
       </div>
       <div className="studio-roll-frame">
         <StudioRoll
-          notes={player.timeline.notes}
+          notes={rollNotes}
           position={player.position}
           playing={player.playing}
           reducedMotion={reducedMotion}
@@ -274,6 +284,7 @@ export default function StudioPlayerView(
           text={text}
           reducedMotion={reducedMotion}
           onClose={() => setSettingsOpen(false)}
+          readableHolds={props.readableHolds}
         />
       </Drawer>
       {props.notebook && (

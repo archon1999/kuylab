@@ -67,7 +67,7 @@ class StudioTests(TestCase):
         with self.assertRaises(CommandError): call_command("seed_studio",stdout=io.StringIO())
         self.assertTrue(Composition.objects.filter(pk=old.pk).exists())
         call_command("seed_studio",replace_compositions=True,stdout=io.StringIO())
-        self.assertEqual(Composition.objects.count(),7)
+        self.assertEqual(Composition.objects.count(),8)
         self.assertEqual(Profile.objects.get(pk=1).display_name,"Preserved learner")
 
     def test_teaching_copy_changes_keep_existing_midi_versions(self):
@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(7,48,48,24))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),120)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(8,57,48,24))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),129)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)
@@ -118,11 +118,12 @@ class StudioTests(TestCase):
         catalog = studio_catalog("en")
         for source, composition in zip(SOURCES, catalog["compositions"]):
             original = StudioAsset.objects.get(pk=source.asset_key).score
-            self.assertEqual(composition["score_id"], original.pk)
+            expected_score = StudioAsset.objects.get(pk="composition:all-in:easy").score_id if source.code == "all-in" else original.pk
+            self.assertEqual(composition["score_id"], expected_score)
             self.assertEqual(original.content_sha256, source.sha256)
             lessons = [item for item in catalog["lessons"] if item["id"] in composition["lesson_ids"]]
             journeys = [item for item in catalog["journeys"] if item["composition_id"] == composition["id"]]
-            self.assertEqual((len(lessons), len(journeys)), (12 if source.code == "still" else 6, 8))
+            self.assertEqual((len(lessons), len(journeys)), (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8))
             for item in lessons + journeys:
                 self.assertEqual(item["composition_id"], composition["id"])
                 for stage in item["stages"]:
@@ -182,7 +183,7 @@ class StudioTests(TestCase):
         from apps.studio.services import studio_catalog
         with self.assertNumQueries(2):
             catalog = studio_catalog("uz")
-        self.assertEqual(len(catalog["compositions"]), 7)
+        self.assertEqual(len(catalog["compositions"]), 8)
 
     def test_readonly_catalog_and_legacy_content_write_endpoints(self):
         score=StudioAsset.objects.first().score
@@ -227,9 +228,12 @@ class StudioTests(TestCase):
             catalog = self.client.get("/api/studio/catalog/",HTTP_ACCEPT_LANGUAGE=language).json()
             for lesson in catalog["lessons"]:
                 speeds = [60,80,100] if lesson["id"].startswith("lesson:still:") else [60,80,60,80,100]
-                self.assertEqual(len(lesson["stages"]),len(speeds))
+                if not lesson["id"].startswith("lesson:all-in:"):
+                    self.assertEqual(len(lesson["stages"]),len(speeds))
+                    self.assertEqual([s["source_speed_percent"] for s in lesson["stages"]],speeds)
+                else:
+                    self.assertIn(lesson["stages"][0]["tempo_bpm"], [40, 45, 50, 60])
                 self.assertEqual(lesson["score_id"],lesson["stages"][0]["score_id"])
-                self.assertEqual([s["source_speed_percent"] for s in lesson["stages"]],speeds)
                 self.assertTrue(lesson["ready_when"])
                 self.assertGreaterEqual(len(lesson["explanation"]),3)
                 for stage in lesson["stages"]:

@@ -73,7 +73,7 @@ export const content = {
       ],
       [
         'Hozir qaysi asardan boshlash mumkin?',
-        'Studiyada 7 ta kompozitsiya va 48 ta kompozitsiya darsi bor: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’ning What Is a Youth asari va Memories. Har biri uchun to‘liq yuborilgan MIDI, osonlashtirilgan mashqlar va butun ijroga tayyorgarlik yo‘li mavjud.',
+        'Studiyada 8 ta kompozitsiya va 57 ta kompozitsiya darsi bor: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’ning What Is a Youth asari, Memories va All in — Soundtrack. All in uchun bitta playerda Easy va Hard variantlari, umumiy 9 ta dars mavjud. Har bir kompozitsiyada to‘liq yuborilgan MIDI, osonlashtirilgan mashqlar va butun ijroga tayyorgarlik yo‘li bor.',
       ],
     ],
     about:
@@ -285,7 +285,7 @@ export const content = {
       ],
       [
         'Какое произведение уже доступно?',
-        'Доступны 7 произведений и 48 уроков: Still, Star, Tears in Your Eyes, My Memory, Premonition, What Is a Youth Нино Роты и Memories. Для каждого есть переданный MIDI целиком, упрощённые упражнения и путь к полному исполнению.',
+        'Доступны 8 произведений и 57 уроков: Still, Star, Tears in Your Eyes, My Memory, Premonition, What Is a Youth Нино Роты, Memories и All in — Soundtrack. У All in два варианта Easy и Hard в одном плеере и 9 общих уроков. Для каждого произведения есть переданный MIDI целиком, упрощённые упражнения и путь к полному исполнению.',
       ],
     ],
     about:
@@ -497,7 +497,7 @@ export const content = {
       ],
       [
         'Which piece is available now?',
-        'The studio includes 7 pieces and 48 composition lessons: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’s What Is a Youth and Memories. Each has its complete supplied MIDI, simplified studies and a path towards a full performance.',
+        'The studio includes 8 pieces and 57 composition lessons: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’s What Is a Youth, Memories and All in — Soundtrack. All in has Easy and Hard versions in one player with 9 shared lessons. Each piece has its complete supplied MIDI, simplified studies and a path towards a full performance.',
       ],
     ],
     about:

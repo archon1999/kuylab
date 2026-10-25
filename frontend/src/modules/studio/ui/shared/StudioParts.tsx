@@ -164,6 +164,9 @@ export function CompositionCard({ composition }: { composition: Composition }) {
         <div className="studio-composition-meta">
           <span>{durationLabel(composition.duration_seconds)}</span>
           <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
+          {!!composition.variants?.length && (
+            <span>{composition.variants.map((variant) => variant.title).join(' / ')}</span>
+          )}
         </div>
         <div className="studio-actions">
           <Button

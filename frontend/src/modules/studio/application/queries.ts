@@ -6,7 +6,13 @@ import { useStudio } from './studio-provider';
 export function useStudyScore(id: number | null | undefined) {
   const { repository } = useStudio();
   const { language } = usePreferences();
-  const [state, setState] = useState<{ score: Score | null; error: string; loading: boolean }>({
+  const [state, setState] = useState<{
+    id: number | null | undefined;
+    score: Score | null;
+    error: string;
+    loading: boolean;
+  }>({
+    id,
     score: null,
     error: '',
     loading: !!id,
@@ -14,15 +20,16 @@ export function useStudyScore(id: number | null | undefined) {
   const [revision, setRevision] = useState(0);
   useEffect(() => {
     let active = true;
-    setState({ score: null, error: '', loading: !!id });
+    setState({ id, score: null, error: '', loading: !!id });
     if (id)
       void repository.score(id).then(
         (score) => {
-          if (active) setState({ score, error: '', loading: false });
+          if (active) setState({ id, score, error: '', loading: false });
         },
         (reason) => {
           if (active)
             setState({
+              id,
               score: null,
               error: reason instanceof Error ? reason.message : 'Kontentni ochib bo‘lmadi.',
               loading: false,
@@ -33,5 +40,10 @@ export function useStudyScore(id: number | null | undefined) {
       active = false;
     };
   }, [repository, id, revision, language]);
-  return { ...state, reload: () => setRevision((value) => value + 1) };
+  // Never mount the preceding variant under the new variant's context while
+  // the effect starts its request. Late responses are discarded above too.
+  return {
+    ...(state.id === id ? state : { score: null, error: '', loading: !!id }),
+    reload: () => setRevision((value) => value + 1),
+  };
 }

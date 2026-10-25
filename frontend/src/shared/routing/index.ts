@@ -19,6 +19,11 @@ export function navigate(page: Page, values: Record<string, string | number | nu
   const params = parseRoute(location.pathname, location.search).params;
   params.delete('at');
   params.set('page', page);
+  if (
+    page !== 'practice' ||
+    (values.composition && String(values.composition) !== params.get('composition'))
+  )
+    params.delete('variant');
   if (page !== 'lesson') params.delete('lesson');
   if (page !== 'study') {
     params.delete('item');

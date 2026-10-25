@@ -110,7 +110,7 @@ def player_preferences(request):
         value = request.data
         if not isinstance(value, dict) or len(json.dumps(value)) > 4096:
             return Response({"detail": "Invalid preferences."}, status=400)
-        allowed = {"noteNames", "keyNames", "shadows", "particles", "velocityGradients", "left", "right", "leftColor", "rightColor", "lookahead", "volume", "reverb", "speed", "leftVolume", "rightVolume", "countIn", "focusKeys"}
+        allowed = {"noteNames", "keyNames", "shadows", "particles", "velocityGradients", "left", "right", "leftColor", "rightColor", "lookahead", "volume", "reverb", "speed", "leftVolume", "rightVolume", "countIn", "focusKeys", "compactNoteLengths"}
         if set(value) - allowed:
             return Response({"detail": "Unknown preference."}, status=400)
         if context:

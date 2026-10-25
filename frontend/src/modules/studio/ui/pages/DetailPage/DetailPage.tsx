@@ -6,7 +6,12 @@ import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
 import { useEffect, useState } from 'react';
 import { useStudio } from '../../../application';
-import { filterByStudyStatus, type StudyStatusFilter as StatusFilter } from '../../../domain';
+import {
+  filterByStudyStatus,
+  selectCompositionVariant,
+  type StudyStatusFilter as StatusFilter,
+} from '../../../domain';
+import CompositionVariants from '../../shared/CompositionVariants';
 import { StudyStatusFilter } from '../../shared/StudyStatus';
 import {
   Favorite,
@@ -21,7 +26,8 @@ export default function DetailPage() {
   const { params } = useRoute();
   const { catalog } = useStudio();
   const tr = useTranslation();
-  const { recordOpen, progress } = useActivity();
+  const { recordOpen, progress, lastStages, setStage } = useActivity();
+  const [requestedVariant, setRequestedVariant] = useState<string | null>(null);
   const [status, setStatus] = useState<StatusFilter>('');
   const composition = params.has('composition')
     ? catalog?.compositions.find((item) => item.id === Number(params.get('composition')))
@@ -30,6 +36,11 @@ export default function DetailPage() {
     if (composition) recordOpen(`composition:${composition.id}`);
   }, [composition?.id, recordOpen]);
   if (!composition) return <StudioError message={tr('Kompozitsiya topilmadi.')} />;
+  const variant = selectCompositionVariant(
+    composition,
+    requestedVariant,
+    lastStages[`composition:${composition.id}:variant`],
+  );
   const lessons = catalog?.lessons.filter((item) => composition.lesson_ids.includes(item.id)) || [];
   const journeys =
     catalog?.journeys?.filter((item) => item.composition_id === composition.id) || [];
@@ -50,16 +61,34 @@ export default function DetailPage() {
         action={<Favorite id={`composition:${composition.id}`} />}
       />
       <div className="studio-detail-intro">
-        <p>{composition.composer}</p>
+        {composition.composer && <p>{composition.composer}</p>}
+        {composition.variants && variant && (
+          <div className="composition-variant-intro">
+            <CompositionVariants
+              variants={composition.variants}
+              value={variant.id}
+              onChange={(next) => {
+                setRequestedVariant(next);
+                setStage(`composition:${composition.id}:variant`, next);
+              }}
+            />
+            <p>{variant.description}</p>
+            <small>{tr('Darslar Easy va Hard uchun umumiy.')}</small>
+          </div>
+        )}
         <div className="studio-actions">
           <Button
             variant="contained"
             startIcon={<PlayArrowRounded />}
-            onClick={() => openComposition(composition)}
+            onClick={() =>
+              variant
+                ? navigate('practice', { composition: composition.id, variant: variant.id })
+                : openComposition(composition)
+            }
           >
             {tr('Playerni ochish')}
           </Button>
-          {!!catalog?.journeys?.length && (
+          {!!journeys.length && (
             <Button component="a" href="#whole-performance">
               {tr('To‘liq ijroga tayyorgarlik')}
             </Button>

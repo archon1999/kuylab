@@ -2,6 +2,7 @@ export type {
   StudyItem,
   StudyStage,
   Composition,
+  CompositionVariant,
   StudioCatalog,
   StudyFilter,
   StudyStatus,

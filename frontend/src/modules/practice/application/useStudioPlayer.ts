@@ -7,6 +7,8 @@ import { audioFocus } from './audioFocus';
 export type StudioPlayerProps = {
   title?: string;
   contextId?: string;
+  toolbarAccessory?: (position: number, pause: () => void) => ReactNode;
+  readableHolds?: boolean;
   notebook?: (position: number, seek: (seconds: number) => void, close: () => void) => ReactNode;
   score: Score;
   markers?: { time: number; label: string }[];
@@ -68,6 +70,18 @@ export function useStudioPlayer(
     },
     [audio, transport, restartSchedule],
   );
+  const pause = useCallback(() => {
+    generation.current++;
+    setLoading(false);
+    setCountdown(0);
+    audioFocus.release(owner.current);
+    transport.pause(audio.now());
+    audio.stop();
+    setPlaying(false);
+    const value = transport.snapshot(audio.now()).position;
+    setPosition(value);
+    callbacks.current.onPositionChange?.(value);
+  }, [audio, transport]);
   const toggle = useCallback(async () => {
     if (loading) {
       generation.current++;
@@ -203,6 +217,7 @@ export function useStudioPlayer(
     clearError: () => setError(false),
     speed,
     toggle,
+    pause,
     seek,
     changeSpeed,
   };

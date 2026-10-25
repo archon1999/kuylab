@@ -20,7 +20,11 @@ export function mapStudyItem(dto: StudyItemDto): StudyItem {
 export function mapStudioCatalog(dto: StudioCatalogDto): StudioCatalog {
   return {
     revision: dto.revision,
-    compositions: dto.compositions.map((item) => ({ ...item, lesson_ids: [...item.lesson_ids] })),
+    compositions: dto.compositions.map((item) => ({
+      ...item,
+      lesson_ids: [...item.lesson_ids],
+      variants: item.variants?.map((variant) => ({ ...variant })),
+    })),
     lessons: dto.lessons.map(mapStudyItem),
     journeys: (dto.journeys || []).map(mapStudyItem),
     exercises: dto.exercises.map(mapStudyItem),

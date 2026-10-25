@@ -1,4 +1,13 @@
 export const learningMessages: Record<string, { ru: string; en: string }> = {
+  'Ijro varianti': { ru: 'Вариант исполнения', en: 'Performance version' },
+  'Darslar Easy va Hard uchun umumiy.': {
+    ru: 'Уроки общие для Easy и Hard.',
+    en: 'Easy and Hard share the same lessons.',
+  },
+  'O‘quv tempi: {0} BPM. Playerdagi 100% shu tempga teng.': {
+    ru: 'Учебный темп: {0} BPM. 100% плеера соответствует этому темпу.',
+    en: 'Study tempo: {0} BPM. The player’s 100% equals this tempo.',
+  },
   'Tanlanganlarni eshitish': { ru: 'Послушать выбранные', en: 'Hear selected keys' },
   Qaydlar: { ru: 'Заметки', en: 'Notes' },
   'Oxirgi qaydlar': { ru: 'Последние заметки', en: 'Recent notes' },

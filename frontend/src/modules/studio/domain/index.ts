@@ -2,6 +2,7 @@ export type {
   StudyItem,
   StudyStage,
   Composition,
+  CompositionVariant,
   StudioCatalog,
   StudyFilter,
   StudyStatus,
@@ -12,6 +13,8 @@ export type { StudioRepository } from './contracts/index.ts';
 export { studyCountLabel } from './countLabels.ts';
 export {
   selectStudyStage,
+  selectCompositionVariant,
+  compositionPlaybackContext,
   emptyFilter,
   filterStudyItems,
   allStudyItems,

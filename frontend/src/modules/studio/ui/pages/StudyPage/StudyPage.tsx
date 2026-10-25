@@ -101,10 +101,12 @@ export default function StudyPage() {
           </ToggleButtonGroup>
           <p>{stage.instruction}</p>
           <small>
-            {tr(
-              'Namuna asl tezlikning {0}% ida yozilgan. Playerdagi 100% — shu namunaning tezligi.',
-              [stage.source_speed_percent],
-            )}
+            {stage.tempo_bpm
+              ? tr('O‘quv tempi: {0} BPM. Playerdagi 100% shu tempga teng.', [stage.tempo_bpm])
+              : tr(
+                  'Namuna asl tezlikning {0}% ida yozilgan. Playerdagi 100% — shu namunaning tezligi.',
+                  [stage.source_speed_percent ?? 100],
+                )}
           </small>
           {item.source && (
             <small>
@@ -155,6 +157,7 @@ export default function StudyPage() {
           <StudioPlayer
             key={String(score.id)}
             contextId={positionId}
+            readableHolds={composition?.readable_holds}
             title={[item.title, comparison?.title || stage?.title].filter(Boolean).join(' · ')}
             notebook={(position, seek, close) => (
               <PracticeNotebook
@@ -191,6 +194,8 @@ export default function StudyPage() {
                   score: composition.score_id,
                   item: null,
                   stage: null,
+                  variant: stage.composition_variant_id ?? null,
+                  at: item.source!.start_seconds,
                 });
               }}
             >

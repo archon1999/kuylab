@@ -14,12 +14,19 @@ import type { StudioPreferences } from '../../domain/studioPreferences';
 import { studioLabels } from './studioLabels';
 
 type ToggleKey =
-  'noteNames' | 'keyNames' | 'shadows' | 'particles' | 'velocityGradients' | 'focusKeys';
+  | 'noteNames'
+  | 'keyNames'
+  | 'shadows'
+  | 'particles'
+  | 'velocityGradients'
+  | 'focusKeys'
+  | 'compactNoteLengths';
 export default function StudioSettings({
   settings,
   update,
   text,
   reducedMotion,
+  readableHolds,
   onClose,
 }: {
   settings: StudioPreferences;
@@ -29,6 +36,7 @@ export default function StudioSettings({
   ) => StudioPreferences;
   text: typeof studioLabels.uz;
   reducedMotion: boolean;
+  readableHolds?: boolean;
   onClose: () => void;
 }) {
   const [tab, setTab] = useState(0);
@@ -79,6 +87,12 @@ export default function StudioSettings({
             {toggle('noteNames', text.noteNames)}
             {toggle('keyNames', text.keyNames)}
             {toggle('focusKeys', text.focusKeys)}
+            {readableHolds && (
+              <>
+                {toggle('compactNoteLengths', text.compactNoteLengths)}
+                <p className="studio-settings-hint">{text.compactNoteLengthsHint}</p>
+              </>
+            )}
           </fieldset>
           <fieldset>
             <legend>{text.effects}</legend>

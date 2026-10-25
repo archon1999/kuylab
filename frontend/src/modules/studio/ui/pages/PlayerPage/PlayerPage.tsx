@@ -6,19 +6,30 @@ import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
 import { useEffect } from 'react';
 import { useStudio, useStudyScore } from '../../../application';
+import { compositionPlaybackContext, selectCompositionVariant } from '../../../domain';
+import CompositionVariants from '../../shared/CompositionVariants';
 import { Loading, StudioError } from '../../shared/StudioParts';
 import '../../studio.css';
 export default function PlayerPage() {
   const { catalog } = useStudio();
   const { params } = useRoute();
   const tr = useTranslation();
-  const { recordOpen, positions, setPosition, setPlaying } = useActivity();
+  const { recordOpen, positions, setPosition, setPlaying, lastStages, setStage } = useActivity();
   const composition = params.has('composition')
     ? catalog?.compositions.find((item) => item.id === Number(params.get('composition')))
     : catalog?.compositions[0];
-  // The public player opens the catalog's original. Standalone adaptations live in study pages.
-  const { score, loading, error, reload } = useStudyScore(composition?.score_id);
   const id = composition ? `composition:${composition.id}` : null;
+  const variant = selectCompositionVariant(
+    composition,
+    params.get('variant'),
+    lastStages[`${id}:variant`],
+  );
+  const context = composition ? compositionPlaybackContext(composition, variant?.id) : '';
+  const scoreId = variant?.score_id ?? composition?.score_id;
+  const { score, loading, error, reload } = useStudyScore(scoreId);
+  useEffect(() => {
+    if (id && variant) setStage(`${id}:variant`, variant.id);
+  }, [id, variant?.id]);
   useEffect(() => {
     if (id) recordOpen(id);
     return () => setPlaying(false);
@@ -45,7 +56,30 @@ export default function PlayerPage() {
       {score && (
         <StudioPlayer
           key={String(score.id)}
-          contextId={id!}
+          title={`${composition.title}${variant ? ' · ' + variant.title : ''}`}
+          contextId={context}
+          readableHolds={composition.readable_holds}
+          toolbarAccessory={
+            composition.variants && composition.variants.length > 1
+              ? (position, pause) => (
+                  <CompositionVariants
+                    compact
+                    variants={composition.variants!}
+                    value={variant!.id}
+                    onChange={(next) => {
+                      if (next === variant!.id) return;
+                      pause();
+                      setPlaying(false);
+                      navigate('practice', {
+                        composition: composition.id,
+                        variant: next,
+                        at: Number(position.toFixed(3)),
+                      });
+                    }}
+                  />
+                )
+              : undefined
+          }
           notebook={(position, seek, close) => (
             <PracticeNotebook contentId={id!} position={position} onSeek={seek} onClose={close} />
           )}
@@ -61,8 +95,15 @@ export default function PlayerPage() {
             .map((item) => ({ time: item.source!.start_seconds, label: item.title }))
             .sort((a, b) => a.time - b.time)}
           onBack={onBack}
-          initialPosition={params.has('at') ? Number(params.get('at')) : positions[id!] || 0}
-          onPositionChange={(seconds) => setPosition(id!, seconds)}
+          initialPosition={
+            params.has('at')
+              ? Number(params.get('at'))
+              : (positions[context] ?? positions[id!] ?? 0)
+          }
+          onPositionChange={(seconds) => {
+            setPosition(context, seconds);
+            if (context !== id) setPosition(id!, seconds);
+          }}
           onPlaybackChange={setPlaying}
         />
       )}

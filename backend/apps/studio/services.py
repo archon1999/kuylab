@@ -3,6 +3,7 @@ from .models import StudioAsset
 from .comparisons import definitions as comparison_definitions
 from .interactive import challenges
 from .repertoire import SOURCES, SOURCE_BY_CODE
+from .all_in_package import variant_definitions
 
 
 class CatalogNotPrepared(Exception):
@@ -18,21 +19,24 @@ def public_definition(value):
 
 
 def studio_catalog(language):
-    # The catalog needs IDs and seven small metadata rows, not every study's
+    # The catalog needs IDs and a few small metadata rows, not every study's
     # parsed note graph. JSON extraction works on both SQLite and PostgreSQL.
     assets = dict(StudioAsset.objects.values_list("key", "score_id"))
-    originals = {row["key"]: row for row in StudioAsset.objects.filter(key__in=[source.asset_key for source in SOURCES]).values(
+    source_keys = [source.asset_key for source in SOURCES]
+    source_keys += [variant["_asset_key"] for source in SOURCES for variant in variant_definitions(source.code)]
+    originals = {row["key"]: row for row in StudioAsset.objects.filter(key__in=source_keys).values(
         "key", "score_id", "score__arrangement__composition_id", "score__arrangement__composition__title",
         "score__arrangement__composition__composer", "score__parsed__metadata__duration_seconds")}
     definitions = all_items()
-    required = [item["id"] for item in definitions]
+    required = [item["id"] for item in definitions if not item.get("stages")]
     required += [stage["_asset_key"] for item in definitions for stage in item.get("stages", [])]
+    required += [variant["_asset_key"] for source in SOURCES for variant in variant_definitions(source.code)]
     if any(source.asset_key not in originals for source in SOURCES) or any(key not in assets for key in required):
         raise CatalogNotPrepared("The curated studio has not been prepared. Run seed_studio locally.")
     groups = {"lesson":[], "exercise":[], "theory":[], "journey":[]}
     for definition in definitions:
         item = localize(public_definition(definition),language)
-        item["score_id"] = assets[item["id"]]
+        item["score_id"] = assets.get(item["id"])
         if item["kind"] in {"lesson", "journey"}:
             source = SOURCE_BY_CODE[definition.get("_composition", "still")]
             item["composition_id"] = originals[source.asset_key]["score__arrangement__composition_id"]
@@ -55,6 +59,18 @@ def studio_catalog(language):
             "duration_seconds":original["score__parsed__metadata__duration_seconds"],
             "lesson_ids":[item["id"] for item in groups["lesson"] if item["composition_id"] == composition_id],
         })
+        variants = variant_definitions(source.code)
+        if variants:
+            compositions[-1]["variants"] = [
+                {"id": value["id"], "title": value["title"],
+                 "description": localize(value["description"], language),
+                 "score_id": assets[value["_asset_key"]],
+                 "duration_seconds": originals[value["_asset_key"]]["score__parsed__metadata__duration_seconds"]}
+                for value in variants
+            ]
+            compositions[-1]["default_variant_id"] = "easy"
+            compositions[-1]["readable_holds"] = source.code == "all-in"
+            compositions[-1]["score_id"] = assets[variants[0]["_asset_key"]]
     result = {"revision":REVISION,"compositions":compositions,"lessons":groups["lesson"],"exercises":groups["exercise"],"theory":groups["theory"],
         "journeys":groups["journey"],
         "categories":[{"id":key,"label":localize(label,language)} for key,label in CATEGORIES],

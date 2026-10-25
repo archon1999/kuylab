@@ -20,6 +20,7 @@ export const defaultStudioPreferences: Readonly<StudioPreferences> = {
   rightVolume: 100,
   countIn: 0,
   focusKeys: false,
+  compactNoteLengths: true,
 };
 
 /** Persist only personal settings; score identity and position cannot leak into this record. */
@@ -37,7 +38,8 @@ export function normalizeStudioPreferences(value: unknown): StudioPreferences {
       | 'velocityGradients'
       | 'left'
       | 'right'
-      | 'focusKeys',
+      | 'focusKeys'
+      | 'compactNoteLengths',
   ) => (typeof raw[key] === 'boolean' ? raw[key] : defaultStudioPreferences[key]);
   const color = (key: 'leftColor' | 'rightColor') =>
     typeof raw[key] === 'string' && /^#[\da-f]{6}$/i.test(raw[key])
@@ -59,6 +61,7 @@ export function normalizeStudioPreferences(value: unknown): StudioPreferences {
     rightVolume: number('rightVolume', 0, 100, 1),
     countIn: [2, 3].includes(Number(raw.countIn)) ? Number(raw.countIn) : 0,
     focusKeys: bool('focusKeys'),
+    compactNoteLengths: bool('compactNoteLengths'),
     noteNames: bool('noteNames'),
     keyNames: bool('keyNames'),
     shadows: bool('shadows'),

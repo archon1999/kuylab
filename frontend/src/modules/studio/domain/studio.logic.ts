@@ -4,10 +4,32 @@ import type {
   StudyFilter,
   StudyStatusFilter,
   StudyProgressMap,
+  Composition,
 } from './entities/studio.types.ts';
 
 export function selectStudyStage(item: StudyItem | undefined, requested: string | null) {
   return item?.stages?.find((stage) => stage.id === requested) || item?.stages?.[0];
+}
+
+export function selectCompositionVariant(
+  composition: Composition | undefined,
+  requested?: string | null,
+  remembered?: string,
+) {
+  const variants = composition?.variants || [];
+  return (
+    variants.find((variant) => variant.id === requested) ||
+    variants.find((variant) => variant.id === remembered) ||
+    variants.find((variant) => variant.id === composition?.default_variant_id) ||
+    variants[0]
+  );
+}
+
+export function compositionPlaybackContext(composition: Composition, variantId?: string) {
+  const id = `composition:${composition.id}`;
+  return variantId && composition.variants?.some((variant) => variant.id === variantId)
+    ? `${id}:variant:${variantId}`
+    : id;
 }
 
 export const emptyFilter: StudyFilter = {

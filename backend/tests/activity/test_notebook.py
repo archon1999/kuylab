@@ -59,3 +59,11 @@ class NotebookTests(TestCase):
         self.assertEqual(self.b.get(first).data,{})
         self.assertEqual(self.a.get('/api/auth/player-preferences/').data,{})
         self.assertEqual(self.a.patch('/api/auth/player-preferences/?context=../other',{},format='json').status_code,400)
+
+    def test_compact_note_display_is_saved_per_variant_and_user(self):
+        easy='/api/auth/player-preferences/?context=composition:8:variant:easy'
+        hard='/api/auth/player-preferences/?context=composition:8:variant:hard'
+        self.assertEqual(self.a.patch(hard,{"compactNoteLengths":False},format='json').status_code,200)
+        self.assertEqual(self.a.get(hard).data,{"compactNoteLengths":False})
+        self.assertEqual(self.a.get(easy).data,{})
+        self.assertEqual(self.b.get(hard).data,{})

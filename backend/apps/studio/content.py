@@ -6,7 +6,7 @@ not a claim that the MIDI contains words, theory, fingerings or formal sections.
 from .practice_reviews import EXTRA_FAMILIES, exercise_review
 from .theory_reviews import EXTRA_THEORY, theory_review
 
-REVISION = "independent-curriculum-2026-10-v8"
+REVISION = "all-in-variants-2026-10-v9"
 
 
 def tr(uz, ru, en):
@@ -230,4 +230,5 @@ from .still_lessons import LESSONS, lesson_items
 def all_items():
     from .still_journey import journey_items
     from .repertoire_studies import repertoire_items
-    return lesson_items()+exercise_items()+theory_items()+journey_items()+repertoire_items()
+    from .all_in_lessons import all_in_items
+    return lesson_items()+exercise_items()+theory_items()+journey_items()+repertoire_items()+all_in_items()

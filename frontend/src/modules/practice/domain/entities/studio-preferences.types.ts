@@ -16,6 +16,7 @@ export type StudioPreferences = {
   rightVolume: number;
   countIn: number;
   focusKeys: boolean;
+  compactNoteLengths: boolean;
 };
 
 export type RollSettings = Pick<

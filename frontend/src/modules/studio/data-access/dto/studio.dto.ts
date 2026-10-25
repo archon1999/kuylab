@@ -27,7 +27,9 @@ export type StudyStageDto = {
   title: string;
   instruction: string;
   score_id: number;
-  source_speed_percent: number;
+  source_speed_percent?: number;
+  tempo_bpm?: number;
+  composition_variant_id?: string;
 };
 
 export type CompositionDto = {
@@ -39,6 +41,15 @@ export type CompositionDto = {
   score_id: number;
   duration_seconds: number;
   lesson_ids: string[];
+  variants?: {
+    id: string;
+    title: string;
+    description: string;
+    score_id: number;
+    duration_seconds: number;
+  }[];
+  default_variant_id?: string;
+  readable_holds?: boolean;
 };
 
 export type StudioCatalogDto = {

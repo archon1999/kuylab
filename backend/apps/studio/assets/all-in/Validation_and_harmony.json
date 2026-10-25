@@ -1,0 +1,905 @@
+{
+  "source": "/mnt/data/All_In_Va_Bank_Full_Original_Style_v3.mid",
+  "transposition": 5,
+  "key": "D minor",
+  "duration_seconds": 287.8129523333333,
+  "right_hand_notes": 1049,
+  "left_hand_full_notes": 1171,
+  "left_hand_easy_notes": 424,
+  "low_octave_pairs_preserved": 42,
+  "low_octave_notes_preserved": 84,
+  "right_hand_identical_after_transposition": true,
+  "tempo_and_form_unchanged": true,
+  "full_range": [
+    29,
+    94
+  ],
+  "easy_left_range": [
+    29,
+    62
+  ],
+  "markers": [
+    {
+      "seconds": 0.0,
+      "beat": 0.0,
+      "name": "Introduction - original take"
+    },
+    {
+      "seconds": 15.713544,
+      "beat": 16.5,
+      "name": "Part 1 - verse A"
+    },
+    {
+      "seconds": 29.458336,
+      "beat": 32.5,
+      "name": "Part 1 - verse B"
+    },
+    {
+      "seconds": 42.218756,
+      "beat": 48.5,
+      "name": "Part 1 - pre-chorus"
+    },
+    {
+      "seconds": 57.776048,
+      "beat": 68.5,
+      "name": "Restored pre-chorus continuation"
+    },
+    {
+      "seconds": 67.040048,
+      "beat": 80.5,
+      "name": "Part 1 - chorus A"
+    },
+    {
+      "seconds": 85.415049,
+      "beat": 104.25,
+      "name": "OPEN ending - continue to chorus B"
+    },
+    {
+      "seconds": 91.850174,
+      "beat": 112.5,
+      "name": "Part 1 - chorus B"
+    },
+    {
+      "seconds": 116.75229999999999,
+      "beat": 144.5,
+      "name": "Part 1 - flowing cadence"
+    },
+    {
+      "seconds": 121.5043,
+      "beat": 150.5,
+      "name": "INTERLUDE 1 - contrasting reference melody"
+    },
+    {
+      "seconds": 127.9243,
+      "beat": 158.5,
+      "name": "Part 2 - verse A"
+    },
+    {
+      "seconds": 141.600368,
+      "beat": 174.5,
+      "name": "Part 2 - verse B"
+    },
+    {
+      "seconds": 154.296984,
+      "beat": 190.5,
+      "name": "Part 2 - pre-chorus"
+    },
+    {
+      "seconds": 179.040492,
+      "beat": 222.5,
+      "name": "Part 2 - chorus A"
+    },
+    {
+      "seconds": 197.415493,
+      "beat": 246.25,
+      "name": "OPEN ending - continue to chorus B"
+    },
+    {
+      "seconds": 203.850618,
+      "beat": 254.5,
+      "name": "Part 2 - chorus B"
+    },
+    {
+      "seconds": 228.75274399999998,
+      "beat": 286.5,
+      "name": "Part 2 - flowing cadence"
+    },
+    {
+      "seconds": 233.504744,
+      "beat": 292.5,
+      "name": "INTERLUDE 2"
+    },
+    {
+      "seconds": 239.92474399999998,
+      "beat": 300.5,
+      "name": "OUTRO - complete reference material"
+    },
+    {
+      "seconds": 258.70074399999993,
+      "beat": 324.5,
+      "name": "Return of opening motif"
+    },
+    {
+      "seconds": 274.8767439999999,
+      "beat": 344.5,
+      "name": "Final closing phrase"
+    },
+    {
+      "seconds": 282.1017439999999,
+      "beat": 353.0,
+      "name": "FINAL cadence"
+    }
+  ],
+  "drills": [
+    {
+      "file": "01_Akkord_shakllari_60bpm.mid",
+      "title": "01 Chord shapes: block then broken",
+      "bpm": 60,
+      "seconds": 52.0
+    },
+    {
+      "file": "02_Kuplet_oson_60bpm.mid",
+      "title": "02 Verse: Dm Dm Bb A",
+      "bpm": 60,
+      "seconds": 68.0
+    },
+    {
+      "file": "03_Dm_ochiq_arpej_50bpm.mid",
+      "title": "03 Dm open arpeggio: shift, do not stretch",
+      "bpm": 50,
+      "seconds": 43.2
+    },
+    {
+      "file": "04_Dm_asl_motiv_40bpm.mid",
+      "title": "04 Actual Dm motif - quantized technique drill",
+      "bpm": 40,
+      "seconds": 54.0
+    },
+    {
+      "file": "05_Prechorus_60bpm.mid",
+      "title": "05 Pre-chorus harmonic map",
+      "bpm": 60,
+      "seconds": 68.0
+    },
+    {
+      "file": "06_Naqarot_faqat_oktavalar_60bpm.mid",
+      "title": "06 Chorus octave landings only",
+      "bpm": 60,
+      "seconds": 68.0
+    },
+    {
+      "file": "07_Naqarot_oson_LH_60bpm.mid",
+      "title": "07 Chorus - easy LH",
+      "bpm": 60,
+      "seconds": 68.0
+    },
+    {
+      "file": "08_Naqarot_ikki_qol_60bpm.mid",
+      "title": "08 Chorus - easy LH with RH reference",
+      "bpm": 60,
+      "seconds": 68.0
+    },
+    {
+      "file": "09_Kuplet_asl_LH_45bpm.mid",
+      "title": "09 Full verse LH - quantized and released for practice",
+      "bpm": 45,
+      "seconds": 47.999987999999995
+    }
+  ],
+  "harmonic_map": [
+    {
+      "bar": 5,
+      "start": 15840,
+      "end": 19680,
+      "chord": "Dm",
+      "seconds": 15.713544
+    },
+    {
+      "bar": 6,
+      "start": 19680,
+      "end": 23520,
+      "chord": "Dm",
+      "seconds": 19.255212
+    },
+    {
+      "bar": 7,
+      "start": 23520,
+      "end": 27360,
+      "chord": "Bb",
+      "seconds": 22.567712
+    },
+    {
+      "bar": 8,
+      "start": 27360,
+      "end": 31200,
+      "chord": "A",
+      "seconds": 25.755212
+    },
+    {
+      "bar": 9,
+      "start": 31200,
+      "end": 35040,
+      "chord": "Dm",
+      "seconds": 29.458336
+    },
+    {
+      "bar": 10,
+      "start": 35040,
+      "end": 38880,
+      "chord": "Dm",
+      "seconds": 32.703128
+    },
+    {
+      "bar": 11,
+      "start": 38880,
+      "end": 42720,
+      "chord": "Bb",
+      "seconds": 35.880212
+    },
+    {
+      "bar": 12,
+      "start": 42720,
+      "end": 46560,
+      "chord": "A",
+      "seconds": 38.92188
+    },
+    {
+      "bar": 13,
+      "start": 46560,
+      "end": 50400,
+      "chord": "Gm",
+      "seconds": 42.218756
+    },
+    {
+      "bar": 14,
+      "start": 50400,
+      "end": 54240,
+      "chord": "C",
+      "seconds": 45.307296
+    },
+    {
+      "bar": 15,
+      "start": 54240,
+      "end": 58080,
+      "chord": "F",
+      "seconds": 48.437504000000004
+    },
+    {
+      "bar": 16,
+      "start": 58080,
+      "end": 61920,
+      "chord": "Bb",
+      "seconds": 51.60938
+    },
+    {
+      "bar": 17,
+      "start": 61920,
+      "end": 65760,
+      "chord": "Gm",
+      "seconds": 54.723964
+    },
+    {
+      "bar": 18,
+      "start": 65760,
+      "end": 69600,
+      "chord": "Em7b5",
+      "seconds": 57.776048
+    },
+    {
+      "bar": 19,
+      "start": 69600,
+      "end": 73440,
+      "chord": "A",
+      "seconds": 60.876048000000004
+    },
+    {
+      "bar": 20,
+      "start": 73440,
+      "end": 77280,
+      "chord": "A",
+      "seconds": 63.968048
+    },
+    {
+      "bar": 21,
+      "start": 77280,
+      "end": 79200,
+      "chord": "Dm",
+      "seconds": 67.040048
+    },
+    {
+      "bar": 21,
+      "start": 79200,
+      "end": 81120,
+      "chord": "A7",
+      "seconds": 68.545256
+    },
+    {
+      "bar": 22,
+      "start": 81120,
+      "end": 84960,
+      "chord": "Bb",
+      "seconds": 70.06088
+    },
+    {
+      "bar": 23,
+      "start": 84960,
+      "end": 86880,
+      "chord": "Gm7",
+      "seconds": 73.12338
+    },
+    {
+      "bar": 23,
+      "start": 86791,
+      "end": 88800,
+      "chord": "C",
+      "seconds": 74.62835137708333
+    },
+    {
+      "bar": 24,
+      "start": 88800,
+      "end": 90720,
+      "chord": "F",
+      "seconds": 76.196296
+    },
+    {
+      "bar": 24,
+      "start": 90720,
+      "end": 92640,
+      "chord": "Bb",
+      "seconds": 77.680672
+    },
+    {
+      "bar": 25,
+      "start": 92640,
+      "end": 96480,
+      "chord": "Gm",
+      "seconds": 79.274422
+    },
+    {
+      "bar": 26,
+      "start": 96480,
+      "end": 100320,
+      "chord": "A",
+      "seconds": 82.321298
+    },
+    {
+      "bar": 27,
+      "start": 100320,
+      "end": 104160,
+      "chord": "Bb",
+      "seconds": 85.618174
+    },
+    {
+      "bar": 28,
+      "start": 104160,
+      "end": 108000,
+      "chord": "A",
+      "seconds": 88.750174
+    },
+    {
+      "bar": 29,
+      "start": 108000,
+      "end": 109920,
+      "chord": "Dm",
+      "seconds": 91.850174
+    },
+    {
+      "bar": 29,
+      "start": 109920,
+      "end": 111840,
+      "chord": "A7",
+      "seconds": 93.35538199999999
+    },
+    {
+      "bar": 30,
+      "start": 111840,
+      "end": 115680,
+      "chord": "Bb",
+      "seconds": 94.871006
+    },
+    {
+      "bar": 31,
+      "start": 115680,
+      "end": 117600,
+      "chord": "Gm7",
+      "seconds": 97.933506
+    },
+    {
+      "bar": 31,
+      "start": 117511,
+      "end": 119520,
+      "chord": "C",
+      "seconds": 99.43847737708333
+    },
+    {
+      "bar": 32,
+      "start": 119520,
+      "end": 121440,
+      "chord": "F",
+      "seconds": 101.006422
+    },
+    {
+      "bar": 32,
+      "start": 121440,
+      "end": 123360,
+      "chord": "Bb",
+      "seconds": 102.490798
+    },
+    {
+      "bar": 33,
+      "start": 123360,
+      "end": 127200,
+      "chord": "Gm",
+      "seconds": 104.084548
+    },
+    {
+      "bar": 34,
+      "start": 127200,
+      "end": 131040,
+      "chord": "A",
+      "seconds": 107.131424
+    },
+    {
+      "bar": 35,
+      "start": 131040,
+      "end": 134880,
+      "chord": "Bb",
+      "seconds": 110.4283
+    },
+    {
+      "bar": 36,
+      "start": 134880,
+      "end": 138720,
+      "chord": "A",
+      "seconds": 113.5803
+    },
+    {
+      "bar": 37,
+      "start": 138720,
+      "end": 142560,
+      "chord": "Dm",
+      "seconds": 116.75229999999999
+    },
+    {
+      "bar": 38,
+      "start": 142560,
+      "end": 144480,
+      "chord": "Dm",
+      "seconds": 119.9203
+    },
+    {
+      "bar": 39,
+      "start": 144480,
+      "end": 148320,
+      "chord": "Bb",
+      "seconds": 121.5043
+    },
+    {
+      "bar": 40,
+      "start": 148320,
+      "end": 152160,
+      "chord": "A",
+      "seconds": 124.7163
+    },
+    {
+      "bar": 41,
+      "start": 152160,
+      "end": 156000,
+      "chord": "Dm",
+      "seconds": 127.9243
+    },
+    {
+      "bar": 42,
+      "start": 156000,
+      "end": 159840,
+      "chord": "Dm",
+      "seconds": 131.44826
+    },
+    {
+      "bar": 43,
+      "start": 159840,
+      "end": 163680,
+      "chord": "Bb",
+      "seconds": 134.74419600000002
+    },
+    {
+      "bar": 44,
+      "start": 163680,
+      "end": 167520,
+      "chord": "A",
+      "seconds": 137.91576
+    },
+    {
+      "bar": 45,
+      "start": 167520,
+      "end": 171360,
+      "chord": "Dm",
+      "seconds": 141.600368
+    },
+    {
+      "bar": 46,
+      "start": 171360,
+      "end": 175200,
+      "chord": "Dm",
+      "seconds": 144.828936
+    },
+    {
+      "bar": 47,
+      "start": 175200,
+      "end": 179040,
+      "chord": "Bb",
+      "seconds": 147.990132
+    },
+    {
+      "bar": 48,
+      "start": 179040,
+      "end": 182880,
+      "chord": "A",
+      "seconds": 151.016592
+    },
+    {
+      "bar": 49,
+      "start": 182880,
+      "end": 186720,
+      "chord": "Gm",
+      "seconds": 154.296984
+    },
+    {
+      "bar": 50,
+      "start": 186720,
+      "end": 190560,
+      "chord": "C",
+      "seconds": 157.37008400000002
+    },
+    {
+      "bar": 51,
+      "start": 190560,
+      "end": 194400,
+      "chord": "F",
+      "seconds": 160.48464
+    },
+    {
+      "bar": 52,
+      "start": 194400,
+      "end": 198240,
+      "chord": "Bb",
+      "seconds": 163.640656
+    },
+    {
+      "bar": 53,
+      "start": 198240,
+      "end": 202080,
+      "chord": "Gm",
+      "seconds": 166.739668
+    },
+    {
+      "bar": 54,
+      "start": 202080,
+      "end": 205920,
+      "chord": "Em7b5",
+      "seconds": 169.776492
+    },
+    {
+      "bar": 55,
+      "start": 205920,
+      "end": 209760,
+      "chord": "A",
+      "seconds": 172.87649199999998
+    },
+    {
+      "bar": 56,
+      "start": 209760,
+      "end": 213600,
+      "chord": "A",
+      "seconds": 175.968492
+    },
+    {
+      "bar": 57,
+      "start": 213600,
+      "end": 215520,
+      "chord": "Dm",
+      "seconds": 179.040492
+    },
+    {
+      "bar": 57,
+      "start": 215520,
+      "end": 217440,
+      "chord": "A7",
+      "seconds": 180.5457
+    },
+    {
+      "bar": 58,
+      "start": 217440,
+      "end": 221280,
+      "chord": "Bb",
+      "seconds": 182.061324
+    },
+    {
+      "bar": 59,
+      "start": 221280,
+      "end": 223200,
+      "chord": "Gm7",
+      "seconds": 185.123824
+    },
+    {
+      "bar": 59,
+      "start": 223111,
+      "end": 225120,
+      "chord": "C",
+      "seconds": 186.62879537708335
+    },
+    {
+      "bar": 60,
+      "start": 225120,
+      "end": 227040,
+      "chord": "F",
+      "seconds": 188.19674
+    },
+    {
+      "bar": 60,
+      "start": 227040,
+      "end": 228960,
+      "chord": "Bb",
+      "seconds": 189.681116
+    },
+    {
+      "bar": 61,
+      "start": 228960,
+      "end": 232800,
+      "chord": "Gm",
+      "seconds": 191.274866
+    },
+    {
+      "bar": 62,
+      "start": 232800,
+      "end": 236640,
+      "chord": "A",
+      "seconds": 194.321742
+    },
+    {
+      "bar": 63,
+      "start": 236640,
+      "end": 240480,
+      "chord": "Bb",
+      "seconds": 197.618618
+    },
+    {
+      "bar": 64,
+      "start": 240480,
+      "end": 244320,
+      "chord": "A",
+      "seconds": 200.750618
+    },
+    {
+      "bar": 65,
+      "start": 244320,
+      "end": 246240,
+      "chord": "Dm",
+      "seconds": 203.850618
+    },
+    {
+      "bar": 65,
+      "start": 246240,
+      "end": 248160,
+      "chord": "A7",
+      "seconds": 205.355826
+    },
+    {
+      "bar": 66,
+      "start": 248160,
+      "end": 252000,
+      "chord": "Bb",
+      "seconds": 206.87145
+    },
+    {
+      "bar": 67,
+      "start": 252000,
+      "end": 253920,
+      "chord": "Gm7",
+      "seconds": 209.93395
+    },
+    {
+      "bar": 67,
+      "start": 253831,
+      "end": 255840,
+      "chord": "C",
+      "seconds": 211.43892137708335
+    },
+    {
+      "bar": 68,
+      "start": 255840,
+      "end": 257760,
+      "chord": "F",
+      "seconds": 213.006866
+    },
+    {
+      "bar": 68,
+      "start": 257760,
+      "end": 259680,
+      "chord": "Bb",
+      "seconds": 214.491242
+    },
+    {
+      "bar": 69,
+      "start": 259680,
+      "end": 263520,
+      "chord": "Gm",
+      "seconds": 216.084992
+    },
+    {
+      "bar": 70,
+      "start": 263520,
+      "end": 267360,
+      "chord": "A",
+      "seconds": 219.131868
+    },
+    {
+      "bar": 71,
+      "start": 267360,
+      "end": 271200,
+      "chord": "Bb",
+      "seconds": 222.428744
+    },
+    {
+      "bar": 72,
+      "start": 271200,
+      "end": 275040,
+      "chord": "A",
+      "seconds": 225.58074399999998
+    },
+    {
+      "bar": 73,
+      "start": 275040,
+      "end": 278880,
+      "chord": "Dm",
+      "seconds": 228.75274399999998
+    },
+    {
+      "bar": 74,
+      "start": 278880,
+      "end": 280800,
+      "chord": "Dm",
+      "seconds": 231.92074399999998
+    },
+    {
+      "bar": 75,
+      "start": 280800,
+      "end": 284640,
+      "chord": "Bb",
+      "seconds": 233.504744
+    },
+    {
+      "bar": 76,
+      "start": 284640,
+      "end": 288480,
+      "chord": "A",
+      "seconds": 236.71674399999998
+    },
+    {
+      "bar": 77,
+      "start": 288480,
+      "end": 292320,
+      "chord": "Dm",
+      "seconds": 239.92474399999998
+    },
+    {
+      "bar": 78,
+      "start": 292320,
+      "end": 296160,
+      "chord": "Dm",
+      "seconds": 243.03674399999997
+    },
+    {
+      "bar": 83,
+      "start": 311520,
+      "end": 315360,
+      "chord": "Dm",
+      "seconds": 258.70074399999993
+    },
+    {
+      "bar": 79,
+      "start": 296160,
+      "end": 300000,
+      "chord": "Bb",
+      "seconds": 246.14874399999997
+    },
+    {
+      "bar": 80,
+      "start": 300000,
+      "end": 303840,
+      "chord": "A7",
+      "seconds": 249.26074399999996
+    },
+    {
+      "bar": 82,
+      "start": 307680,
+      "end": 311520,
+      "chord": "A7",
+      "seconds": 255.53674399999994
+    },
+    {
+      "bar": 85,
+      "start": 319200,
+      "end": 323040,
+      "chord": "A7",
+      "seconds": 265.1167439999999
+    },
+    {
+      "bar": 87,
+      "start": 326880,
+      "end": 330720,
+      "chord": "A7",
+      "seconds": 271.6007439999999
+    },
+    {
+      "bar": 81,
+      "start": 303840,
+      "end": 305760,
+      "chord": "Dm",
+      "seconds": 252.37274399999995
+    },
+    {
+      "bar": 81,
+      "start": 305760,
+      "end": 307680,
+      "chord": "Bb",
+      "seconds": 253.95474399999995
+    },
+    {
+      "bar": 84,
+      "start": 315360,
+      "end": 317280,
+      "chord": "Dm",
+      "seconds": 261.90874399999996
+    },
+    {
+      "bar": 84,
+      "start": 317280,
+      "end": 319200,
+      "chord": "Bb",
+      "seconds": 263.51274399999994
+    },
+    {
+      "bar": 86,
+      "start": 323040,
+      "end": 324960,
+      "chord": "Dm",
+      "seconds": 268.32474399999995
+    },
+    {
+      "bar": 86,
+      "start": 324960,
+      "end": 326880,
+      "chord": "Bb",
+      "seconds": 269.96274399999993
+    },
+    {
+      "bar": 88,
+      "start": 330720,
+      "end": 332640,
+      "chord": "Dm",
+      "seconds": 274.8767439999999
+    },
+    {
+      "bar": 88,
+      "start": 332640,
+      "end": 334560,
+      "chord": "Bb",
+      "seconds": 276.5767439999999
+    },
+    {
+      "bar": 89,
+      "start": 334560,
+      "end": 338880,
+      "chord": "A7",
+      "seconds": 278.2767439999999
+    },
+    {
+      "bar": 90,
+      "start": 338880,
+      "end": 343680,
+      "chord": "Dm",
+      "seconds": 282.1017439999999
+    }
+  ]
+}

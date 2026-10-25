@@ -97,8 +97,13 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The curated repertoire contains seven supplied MIDI performances: Still, What Is
-a Youth, Star, Tears in Your Eyes, My Memory, Premonition and Memories. The six
+The curated repertoire contains eight compositions: Still, What Is
+a Youth, Star, Tears in Your Eyes, My Memory, Premonition, Memories and All in — Soundtrack. All in
+has two byte-preserved full-length arrangements, Easy and Hard, in one player
+with nine shared lessons and five continuity paths. Variant switching pauses
+playback at the same timestamp; settings and resume positions are scoped per
+variant. Its optional compact note display abbreviates overlapping long blocks
+without changing sound or claiming to reconstruct finger releases. The six
 new pieces each include six source-specific lessons and eight continuity studies,
 all with five MIDI stages: sparse landmarks, focused layer, complete hands at
 60%, complete hands at 80%, and the 100% original. The six current files are the

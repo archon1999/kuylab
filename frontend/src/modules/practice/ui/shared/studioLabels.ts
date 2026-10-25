@@ -1,5 +1,8 @@
 export const studioLabels = {
   uz: {
+    compactNoteLengths: 'Uzun notalarni ixcham ko‘rsatish',
+    compactNoteLengthsHint:
+      'Faqat ko‘rinish qisqaradi; ovoz davomiyligi o‘zgarmaydi. Bu aniq barmoq ushlash ko‘rsatmasi emas.',
     focusKeys: 'Asardagi klavishlarni kattalashtirish',
     countIn: 'Ijro oldidan sanoq',
     off: 'O‘chiq',
@@ -43,6 +46,9 @@ export const studioLabels = {
     reset: 'Boshidan',
   },
   ru: {
+    compactNoteLengths: 'Компактное отображение длинных нот',
+    compactNoteLengthsHint:
+      'Сокращается только изображение, длительность звука сохраняется. Это не точная инструкция удержания пальцем.',
     focusKeys: 'Увеличить используемые клавиши',
     countIn: 'Отсчёт перед началом',
     off: 'Выкл.',
@@ -86,6 +92,9 @@ export const studioLabels = {
     reset: 'С начала',
   },
   en: {
+    compactNoteLengths: 'Compact long notes',
+    compactNoteLengthsHint:
+      'Only the display is shortened; sound duration stays unchanged. This is not an exact fingering hold guide.',
     focusKeys: 'Focus the used keys',
     countIn: 'Count in',
     off: 'Off',

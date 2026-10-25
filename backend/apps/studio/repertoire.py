@@ -21,6 +21,7 @@ class Source:
     slug: str
     composer: str = ""
     collection: str = "Winter Sonata"
+    course_kind: str = "standard"
 
     @property
     def composition_key(self):
@@ -43,14 +44,18 @@ SOURCES = (
     Source("my-memory", "Winter Sonata — My Memory", "Winter Sonata Classics - My Memory (Piano Version) (1).mid", "fa9282b92aa5c69ec9499a7a983d701382ce86bbc7f7b653c707d609257fa835", "winter-sonata-my-memory"),
     Source("premonition", "Winter Sonata — Premonition", "Winter Sonata Classics -  (Premonition) (1).mid", "fca75f473fdb6b0ff2cf15ecba81b26705fc8ff03370c9382d495d796c9bacee", "winter-sonata-premonition"),
     Source("memories", "Memories", "Memories (1).mid", "b61395b473e13d2ebf2a9070e8829e6d3aa7fba72b7d10b46ae994e1a2e672b7", "memories", collection=""),
+    Source("all-in", "All in — Soundtrack", "All_In_Plus5_Full.mid", "13d5ad3db51d778d3268fddf7aebefcefded493aa2edafb6e0448ea84d0cecb8", "all-in-soundtrack", collection="All in / Va-bank", course_kind="package"),
 )
 SOURCE_BY_CODE = {source.code: source for source in SOURCES}
 
 
-@lru_cache(maxsize=7)
+@lru_cache(maxsize=8)
 def repertoire_source(code):
     if code == "still":
         return source_data()
+    if code == "all-in":
+        from .all_in_package import package_source
+        return package_source("All_In_Plus5_Full.mid")
     source = SOURCE_BY_CODE[code]
     content = (Path(__file__).with_name("assets") / f"{code}.mid").read_bytes()
     if hashlib.sha256(content).hexdigest() != source.sha256:

@@ -13,6 +13,7 @@ from apps.studio.content import REVISION, all_items
 from apps.studio.midi_authoring import SOURCE_SHA256, source_data, lesson_stage_midi, exercise_notes, theory_midi
 from apps.studio.models import StudioAsset
 from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
+from apps.studio.all_in_package import additional_assets, package_source, study_file, HASHES
 
 ORIGINAL_KEY = "composition:still:original"
 
@@ -28,6 +29,15 @@ def prepared_assets():
     })]
     for source in SOURCES[1:]:
         content, source_parsed = repertoire_source(source.code)
+        if source.course_kind == "package":
+            assets.append((source.asset_key, source.title, content, source_parsed, {
+                "kind": "user_supplied_original_midi", "filename": source.filename,
+                "composition_code": source.code, "source_sha256": source.sha256,
+                "preserved_original_bytes": True, "hand_assignment": "supplied_track_names",
+                "completeness_scope": "Complete supplied Full +5 arrangement, not independently verified against a published edition.",
+                "unknown_metadata": ["composer", "arranger", "redistribution_license"],
+            }))
+            continue
         assets.append((source.asset_key, source.title, content, source_parsed, {
             "kind": "user_supplied_original_midi", "filename": source.filename,
             "composition_code": source.code, "source_sha256": source.sha256,
@@ -38,6 +48,7 @@ def prepared_assets():
             "composer_evidence": "user_supplied_filename" if source.composer else "not_supplied",
             "note_release_basis": "User's replacement performance export without pedal-extended note durations; no CC64 events supplied.",
         }))
+    assets.extend(additional_assets())
     for item in all_items():
         provenance = {"kind":"original_authored_study", "catalog_id":item["id"], "revision":REVISION}
         if item["kind"] in {"lesson", "journey"}:
@@ -47,10 +58,23 @@ def prepared_assets():
             for stage in item["stages"]:
                 if stage.get("_reuse_original"):
                     continue
+                if stage.get("_package_file"):
+                    data, details = study_file(stage["_package_file"])
+                    title = item["title"]["uz"] + " · " + stage["title"]["uz"]
+                    assets.append((stage["_asset_key"], title, data, parse_midi(data, title), {
+                        **provenance, **details, "stage_id": stage["id"],
+                    }))
+                    continue
+                if source_code == "all-in":
+                    filename = "All_In_Plus5_Easy_LH.mid" if stage.get("_source_variant") == "easy" else "All_In_Plus5_Full.mid"
+                    _, stage_source = package_source(filename)
+                    source_digest = HASHES[filename]
+                else:
+                    stage_source, source_digest = item_source, source.sha256
                 spec = stage["_generator"]
-                data, identifiers = lesson_stage_midi(item_source, **spec)
+                data, identifiers = lesson_stage_midi(stage_source, **spec)
                 stage_provenance = {**provenance, "kind":"teaching_adaptation", "stage_id": stage["id"],
-                    "source_sha256":source.sha256, "source_event_ids":identifiers,
+                    "source_sha256":source_digest, "source_event_ids":identifiers,
                     "source_start_seconds":spec["start"], "source_end_seconds":spec["end"],
                     "selection":spec["selection"], "source_speed_percent": spec["speed_percent"],
                     "source_timing_preserved":spec["speed_percent"] == 100,
@@ -58,7 +82,9 @@ def prepared_assets():
                     "transformation_description": stage["instruction"]["en"]}
                 if source_code != "still":
                     stage_provenance["composition_code"] = source_code
-                    stage_provenance["note_release_basis"] = "Replacement source note-off, uniformly scaled; no pedal tail baked into key holds."
+                    stage_provenance["note_release_basis"] = "Supplied package key holds, uniformly scaled; source CC64 messages only reset sustain off." if source_code == "all-in" else "Replacement source note-off, uniformly scaled; no pedal tail baked into key holds."
+                if source_code == "all-in":
+                    stage_provenance["source_variant"] = stage["_source_variant"]
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
                 assets.append((stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance))
             continue
@@ -107,6 +133,12 @@ class Command(BaseCommand):
                         "tempo_beat_unit":"quarter","key_signature":"","time_signature":"","arranger":"",
                         "full_score_format":"midi","full_score_verified_at":None})
                     arrangements[source.code] = arrangement
+                    if source.course_kind == "package":
+                        _, parsed = repertoire_source(source.code)
+                        arrangement.tempo_bpm = round(parsed["metadata"]["tempo"]["quarter_bpm"])
+                        arrangement.key_signature = "D minor"
+                        arrangement.time_signature = "mixed"
+                        arrangement.save(update_fields=["tempo_bpm", "key_signature", "time_signature"])
                 for key, title, content, parsed, provenance in assets:
                     source = SOURCE_BY_CODE[provenance.get("composition_code", "still")]
                     arrangement = arrangements[source.code]
@@ -124,9 +156,9 @@ class Command(BaseCommand):
                         continue
                     version = (Score.objects.filter(arrangement=arrangement).aggregate(last=Max("version"))["last"] or 0)+1
                     score = Score(arrangement=arrangement,version=version,file_format="midi",title=title,
-                                  original_filename=source.filename if key==source.asset_key else key.replace(":","-")+".mid",
+                                  original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") else key.replace(":","-")+".mid",
                                   content_sha256=digest,source_provenance=provenance,parsed=parsed,
-                                  rights_note="User-provided source, preserved without modification." if key==source.asset_key else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "Original practice example authored for this studio.",
+                                  rights_note="User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
                     score.musicxml.save("source.mid", ContentFile(content),save=False)
@@ -139,4 +171,4 @@ class Command(BaseCommand):
                 try: storage.delete(name)
                 except OSError: pass
             raise
-        self.stdout.write(self.style.SUCCESS("Curated studio ready: 7 original compositions, 48 lessons, 56 continuity studies, 48 exercises, 24 theory topics / 25 interactive activities. Users and existing sources preserved."))
+        self.stdout.write(self.style.SUCCESS("Curated studio ready: 8 compositions (All in: Easy/Hard), 57 lessons, 61 continuity studies, 48 exercises, 24 theory topics / 25 interactive activities. Users and existing sources preserved."))

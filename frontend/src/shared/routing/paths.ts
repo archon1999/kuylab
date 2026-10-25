@@ -35,7 +35,13 @@ export function routePath(
       ? '?t=' + Number(params.get('at'))
       : '';
   if (page === 'detail' || page === 'practice')
-    return pagePaths[page] + segment('composition') + (page === 'practice' ? timestamp : '');
+    return (
+      pagePaths[page] +
+      segment('composition') +
+      (page === 'practice'
+        ? (params.get('variant') ? '/variants' + segment('variant') : '') + timestamp
+        : '')
+    );
   if (page === 'study')
     return (
       pagePaths[page] +
@@ -71,9 +77,13 @@ export function parseRoute(pathname: string, search = '') {
     else if (parts[0] === 'compositions' && parts.length <= 2) {
       page = parts[1] ? 'detail' : 'library';
       if (parts[1]) params.set('composition', parts[1]);
-    } else if (parts[0] === 'practice' && parts.length <= 2) {
+    } else if (
+      parts[0] === 'practice' &&
+      (parts.length <= 2 || (parts.length === 4 && parts[2] === 'variants'))
+    ) {
       page = 'practice';
       if (parts[1]) params.set('composition', parts[1]);
+      if (parts[3]) params.set('variant', parts[3]);
     } else if (
       parts[0] === 'study' &&
       (parts.length === 2 || (parts.length === 4 && ['stages', 'examples'].includes(parts[2])))

@@ -191,11 +191,29 @@ These transparent reductions do not infer chord roots. All variants preserve the
 selected source pitches, velocities, onsets and clipped holds under uniform time
 scaling. The last complete-file stage reuses the original score and its bytes.
 
-The complete catalog has 7 compositions, 48 lessons, 56 continuity studies, 48
+The complete catalog has 8 compositions, 57 lessons, 61 continuity studies, 48
 independent exercises and 24 theory topics with 25 optional activities. The catalog
-queries IDs and seven scalar metadata rows, avoiding every study's parsed graph.
+queries IDs and small scalar source metadata rows, avoiding every study's parsed graph.
 Tests verify the exact musical landmarks, all 420 stage selections for these six
 pieces, release evidence, original hashes, piece ownership, localization,
 complete coverage and stable reseeding. An active source replacement creates a
 new immutable Score version and retargets StudioAsset; existing composition IDs,
 personal notes, progress, comfortable speeds and historical source files remain.
+
+## All in — Soundtrack: shared course and two arrangements
+
+`all_in_package.py` pins all thirteen supplied MIDI files. The original Full
+arrangement is `composition:all-in:original`; Easy is `composition:all-in:easy`.
+Both are one Composition and keep their exact source bytes. Easy is the initial
+player choice, then each account's last choice is restored. Only All in opts into
+the reversible compact-display reading aid; its audio and source files stay exact.
+The package has sustain-off CC64 resets but no pedal-down events. Long overlapping
+note-offs do not reveal physical finger releases, so compact visual lengths are
+explicitly described as a reading aid.
+
+Nine common lessons adapt the supplied PDF, nine drills and exact source passages
+in UZ/RU/EN. Drill copies omit the separate percussion track and retain the
+four-beat preparation, piano timings, pitches, holds and velocities. The five
+continuity paths include two complete LH-only sources; the complete path ends at
+the unchanged Hard performance. Main versions are not duplicated lesson catalogs.
+See [the import audit](../../../docs/all-in-course-review-2026-10.md).

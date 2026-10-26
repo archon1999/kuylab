@@ -12,7 +12,7 @@ import { Button } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
 import { navigate } from '@shared/routing';
 import { useStudio } from '../../../application';
-import { durationLabel, studyCountLabel } from '../../../domain';
+import { allStudyItems, durationLabel, studyCountLabel, selectResumeStudy } from '../../../domain';
 import {
   ContentRow,
   Heading,
@@ -42,14 +42,10 @@ export default function DashboardPage() {
     ...(catalog.journeys || []).map((value) => value.id),
   ]);
   const recent = recents.filter((value) => validIds.has(value.id)).slice(0, 4);
-  const lastStudy = [
-    ...catalog.lessons,
-    ...catalog.exercises,
-    ...catalog.theory,
-    ...(catalog.journeys || []),
-  ].find((item) => item.id === recent[0]?.id);
-  const lastStage = lastStudy?.stages?.find((stage) => stage.id === lastStages[lastStudy.id]);
-  const lastProgress = lastStudy && progress[lastStage?.id || lastStudy.id];
+  const resume = selectResumeStudy(allStudyItems(catalog), recents, progress, lastStages);
+  const lastStudy = resume?.item;
+  const lastStage = resume?.stage;
+  const lastProgress = resume?.status;
   const saved = favorites.filter((value) => validIds.has(value)).slice(0, 4);
   return (
     <div className="studio-page studio-dashboard">
@@ -77,7 +73,7 @@ export default function DashboardPage() {
               >
                 {tr(positions[`composition:${composition.id}`] ? 'Davom etish' : 'Playerni ochish')}
               </Button>
-              <Button onClick={() => navigate('detail', { composition: composition.id })}>
+              <Button onClick={() => navigate('detail', { compositionSlug: composition.slug })}>
                 {tr('Darslar')}
                 <ArrowForwardRounded sx={{ ml: 1, fontSize: 18 }} />
               </Button>

@@ -3,6 +3,8 @@ export type {
   StudyStage,
   Composition,
   CompositionVariant,
+  CompositionPreview,
+  CompositionFilter,
   StudioCatalog,
   StudyFilter,
   StudyStatus,
@@ -23,3 +25,10 @@ export {
   summarizeStudyProgress,
   durationLabel,
 } from './studio.logic.ts';
+export { selectResumeStudy } from './resumeStudy.ts';
+export {
+  emptyCompositionFilter,
+  filterCompositions,
+  compositionPage,
+  libraryVariant,
+} from './compositionLibrary.ts';

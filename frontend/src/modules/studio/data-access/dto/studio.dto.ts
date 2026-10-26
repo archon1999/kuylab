@@ -33,6 +33,9 @@ export type StudyStageDto = {
 };
 
 export type CompositionDto = {
+  difficulty?: number;
+  collection?: string;
+  preview_start_seconds?: number;
   id: number;
   slug: string;
   title: string;
@@ -42,6 +45,7 @@ export type CompositionDto = {
   duration_seconds: number;
   lesson_ids: string[];
   variants?: {
+    difficulty?: number;
     id: string;
     title: string;
     description: string;

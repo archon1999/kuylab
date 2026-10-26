@@ -3,7 +3,7 @@ import { useActivity } from '@modules/activity';
 import { ArrowBackRounded, PlayArrowRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
-import { navigate, useRoute } from '@shared/routing';
+import { navigate, replaceRoute, useRoute } from '@shared/routing';
 import { useEffect, useState } from 'react';
 import { useStudio } from '../../../application';
 import {
@@ -12,6 +12,7 @@ import {
   type StudyStatusFilter as StatusFilter,
 } from '../../../domain';
 import CompositionVariants from '../../shared/CompositionVariants';
+import DifficultyStars from '../../shared/DifficultyStars';
 import { StudyStatusFilter } from '../../shared/StudyStatus';
 import {
   Favorite,
@@ -29,12 +30,18 @@ export default function DetailPage() {
   const { recordOpen, progress, lastStages, setStage } = useActivity();
   const [requestedVariant, setRequestedVariant] = useState<string | null>(null);
   const [status, setStatus] = useState<StatusFilter>('');
-  const composition = params.has('composition')
-    ? catalog?.compositions.find((item) => item.id === Number(params.get('composition')))
-    : catalog?.compositions[0];
+  const composition = params.has('compositionSlug')
+    ? catalog?.compositions.find((item) => item.slug === params.get('compositionSlug'))
+    : params.has('composition')
+      ? catalog?.compositions.find((item) => item.id === Number(params.get('composition')))
+      : catalog?.compositions[0];
   useEffect(() => {
     if (composition) recordOpen(`composition:${composition.id}`);
   }, [composition?.id, recordOpen]);
+  useEffect(() => {
+    if (composition && !params.has('compositionSlug'))
+      replaceRoute('detail', { compositionSlug: composition.slug });
+  }, [composition?.slug, params.has('compositionSlug')]);
   if (!composition) return <StudioError message={tr('Kompozitsiya topilmadi.')} />;
   const variant = selectCompositionVariant(
     composition,
@@ -61,6 +68,7 @@ export default function DetailPage() {
         action={<Favorite id={`composition:${composition.id}`} />}
       />
       <div className="studio-detail-intro">
+        <DifficultyStars value={variant?.difficulty || composition.difficulty} />
         {composition.composer && <p>{composition.composer}</p>}
         {composition.variants && variant && (
           <div className="composition-variant-intro">

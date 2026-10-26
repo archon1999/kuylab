@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from apps.learning.models import Profile
 from apps.learning.localization import request_language
 from .services import CatalogNotPrepared, studio_catalog
+from .composition_showcase import composition_preview
 
 
 @api_view(["GET"])
@@ -20,3 +21,8 @@ def catalog(request):
     response["Content-Language"] = language
     response["Vary"] = "Accept-Language"
     return response
+
+
+@api_view(["GET"])
+def preview(request, composition_id):
+    return Response(composition_preview(composition_id, request.query_params.get("variant")))

@@ -110,6 +110,14 @@ try:
     assert len(catalog["compositions"]) == 8 and len(catalog["lessons"]) == 57 and len(catalog["journeys"]) == 61
     assert len(catalog["exercises"]) == 48 and len(catalog["theory"]) == 24
     assert sum(len(item["challenges"]) for item in catalog["theory"]) == 49
+    for piece in catalog["compositions"]:
+        assert piece["difficulty"] in range(1, 6)
+        assert a.request(f"/compositions/{piece['slug']}")[0] == 200
+        status, excerpt, _ = a.request(f"/api/studio/compositions/{piece['id']}/preview/")
+        assert status == 200 and excerpt["score_id"] == piece["score_id"]
+        assert len(excerpt["notes"]) > 10
+        assert {note["hand"] for note in excerpt["notes"]} == {"left", "right"}
+        assert b.request(f"/api/studio/compositions/{piece['id']}/preview/")[0] == 200
     assert all(task.get("preparation") for item in catalog["theory"] for task in item["challenges"])
     compound = next(item for item in catalog["theory"] if item["id"] == "theory:compound-meter")
     assert len(compound["comparisons"]) == 2 and compound["ready_when"]

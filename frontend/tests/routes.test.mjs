@@ -12,6 +12,16 @@ test('route identity round trips through clean shareable URLs', () => {
 test('unknown and malformed paths show 404 instead of silently opening dashboard', () => {
   for(const url of ['/missing','/study','/practice/8/extra','/study/%E0%A4%A']) assert.equal(parseRoute(url).page,'notFound');
 });
+test('composition detail links use slugs while numeric bookmarks retain a resolvable alias', () => {
+  const path = routePath('detail',{compositionSlug:'winter-sonata-still',composition:15});
+  assert.equal(path,'/compositions/winter-sonata-still');
+  const parsed = parseRoute(path);
+  assert.equal(parsed.page,'detail');
+  assert.equal(parsed.params.get('compositionSlug'),'winter-sonata-still');
+  assert.equal(parsed.params.get('composition'),null);
+  assert.equal(parseRoute('/compositions/15').params.get('composition'),'15');
+  assert.equal(routePath('practice',{composition:15}),'/practice/15');
+});
 test('old composition and stage links keep their identity', () => {
   const route = parseRoute('/','?page=study&item=lesson%3Astill%3Aopening-listen&stage=easy');
   assert.equal(routePath(route.page,route.params),'/study/lesson%3Astill%3Aopening-listen/stages/easy');

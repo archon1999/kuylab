@@ -25,6 +25,13 @@ marks mastery. Reading or interacting starts an untouched lesson; opening a rout
 alone does not. The status controls at the top and bottom also allow manual
 updates. Activities do not grade physical playing or lock other lessons.
 
+The dashboard resumes unfinished recent studies and stages. The composition
+library offers arrangement-specific 1–5-star difficulty, search, collection and
+favorite filters, sorting and pagination. Each card previews all source notes in
+a reviewed passage with a silent falling-note animation and synchronized keys.
+The [30-piece candidate list](docs/repertoire-candidates-2026-10-26.md) records
+future repertoire choices separately from playable, source-verified content.
+
 ## Structure
 
 - `backend/apps`: learning, scores, studio and activity domains.

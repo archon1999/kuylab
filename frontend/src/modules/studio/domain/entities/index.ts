@@ -3,6 +3,8 @@ export type {
   StudyStage,
   Composition,
   CompositionVariant,
+  CompositionPreview,
+  CompositionFilter,
   StudioCatalog,
   StudyFilter,
   StudyStatus,

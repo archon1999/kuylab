@@ -4,6 +4,7 @@ from .comparisons import definitions as comparison_definitions
 from .interactive import challenges
 from .repertoire import SOURCES, SOURCE_BY_CODE
 from .all_in_package import variant_definitions
+from .composition_showcase import presentation
 
 
 class CatalogNotPrepared(Exception):
@@ -53,6 +54,7 @@ def studio_catalog(language):
         composition_id = original["score__arrangement__composition_id"]
         prefix = source.collection + " · " if source.collection else ""
         compositions.append({
+            **presentation(source.code),
             "id":composition_id,"slug":source.slug,"title":original["score__arrangement__composition__title"],
             "subtitle":prefix + localize(tr("Siz tanlagan MIDI", "Выбранный вами MIDI", "Your selected MIDI"),language),
             "composer":original["score__arrangement__composition__composer"],"score_id":original["score_id"],
@@ -62,7 +64,7 @@ def studio_catalog(language):
         variants = variant_definitions(source.code)
         if variants:
             compositions[-1]["variants"] = [
-                {"id": value["id"], "title": value["title"],
+                {**presentation(source.code, value["id"]), "id": value["id"], "title": value["title"],
                  "description": localize(value["description"], language),
                  "score_id": assets[value["_asset_key"]],
                  "duration_seconds": originals[value["_asset_key"]]["score__parsed__metadata__duration_seconds"]}

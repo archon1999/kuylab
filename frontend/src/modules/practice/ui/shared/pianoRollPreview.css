@@ -1,0 +1,105 @@
+.piano-roll-preview {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.piano-roll-preview svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.preview-roll-bg {
+  fill: var(--soft);
+}
+.preview-key-lane {
+  fill: var(--ink);
+  opacity: 0.025;
+}
+.preview-time-line {
+  stroke: var(--ink);
+  stroke-width: 0.4;
+  opacity: 0.045;
+}
+.preview-note {
+  filter: drop-shadow(0 1px 1px #41324c18);
+}
+.preview-octave-line {
+  stroke: var(--border);
+  stroke-width: 0.6;
+  opacity: 0.38;
+}
+.preview-strike-line {
+  stroke: var(--accent);
+  stroke-width: 1;
+  opacity: 0.65;
+}
+.preview-white-key {
+  stroke: #d4cfc5;
+  stroke-width: 0.45;
+}
+.preview-black-key {
+  stroke: #100e18;
+  stroke-width: 0.35;
+}
+.preview-key-flash {
+  opacity: 0;
+  animation-name: preview-key-hold;
+  animation-timing-function: steps(1);
+}
+.preview-key-glow {
+  opacity: 0.6;
+  filter: blur(1.5px);
+}
+@keyframes preview-key-hold {
+  from,
+  to {
+    opacity: 1;
+  }
+}
+.preview-moving-notes {
+  animation-name: preview-notes-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.preview-motion-toggle.MuiIconButton-root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 24px #30223612;
+}
+.preview-motion-toggle.MuiIconButton-root svg {
+  font-size: 27px;
+}
+.piano-roll-preview.is-playing .preview-motion-toggle {
+  opacity: 0;
+}
+.piano-roll-preview.is-playing:hover .preview-motion-toggle,
+.piano-roll-preview .preview-motion-toggle:focus-visible {
+  opacity: 1;
+}
+.preview-motion-toggle.MuiIconButton-root:hover {
+  background: var(--soft);
+}
+@keyframes preview-notes-fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--preview-travel));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preview-moving-notes {
+    animation: none;
+  }
+  .preview-key-flash {
+    animation: none;
+  }
+}

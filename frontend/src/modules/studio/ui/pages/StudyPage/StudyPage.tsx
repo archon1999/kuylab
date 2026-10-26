@@ -56,7 +56,7 @@ export default function StudyPage() {
         : item.kind === 'exercise'
           ? 'exercises'
           : 'theory',
-      { composition: item.composition_id ?? null },
+      { compositionSlug: composition?.slug ?? null, composition: null },
     );
   const related = catalog
     ? allStudyItems(catalog).filter(

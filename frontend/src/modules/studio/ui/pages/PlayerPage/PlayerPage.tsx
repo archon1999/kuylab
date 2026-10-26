@@ -34,7 +34,8 @@ export default function PlayerPage() {
     if (id) recordOpen(id);
     return () => setPlaying(false);
   }, [id, recordOpen, setPlaying]);
-  const onBack = () => navigate('detail', { composition: composition?.id ?? null });
+  const onBack = () =>
+    composition ? navigate('detail', { compositionSlug: composition.slug }) : navigate('library');
   if (!composition)
     return (
       <div className="studio-player-fallback">

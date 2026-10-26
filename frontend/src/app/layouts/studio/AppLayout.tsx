@@ -29,9 +29,10 @@ export default function AppLayout() {
   const standaloneError = page === 'notFound' || pageError;
   const itemId = params.get('item');
   const compositionId = params.get('composition');
+  const compositionSlug = params.get('compositionSlug');
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 });
-  }, [page, itemId, compositionId]);
+  }, [page, itemId, compositionId, compositionSlug]);
   const studyItem =
     page === 'study' && catalog
       ? allStudyItems(catalog).find((item) => item.id === params.get('item'))
@@ -62,8 +63,10 @@ export default function AppLayout() {
       notFound: 'Sahifa topilmadi',
     };
     const composition =
-      catalog?.compositions.find((value) => value.id === Number(compositionId)) ??
-      (!compositionId ? catalog?.compositions[0] : undefined);
+      (compositionSlug
+        ? catalog?.compositions.find((value) => value.slug === compositionSlug)
+        : catalog?.compositions.find((value) => value.id === Number(compositionId))) ??
+      (!compositionId && !compositionSlug ? catalog?.compositions[0] : undefined);
     const stage =
       studyItem?.stages?.find((value) => value.id === params.get('stage')) ||
       studyItem?.comparisons?.find((value) => value.id === params.get('example'));

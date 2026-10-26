@@ -17,6 +17,8 @@ function visit(path: string) {
 }
 export function navigate(page: Page, values: Record<string, string | number | null> = {}) {
   const params = parseRoute(location.pathname, location.search).params;
+  if (page !== 'detail' || values.composition) params.delete('compositionSlug');
+  if (values.compositionSlug) params.delete('composition');
   params.delete('at');
   params.set('page', page);
   if (
@@ -56,6 +58,14 @@ export function navigate(page: Page, values: Record<string, string | number | nu
     if (value === null) params.delete(key);
     else params.set(key, String(value));
   visit(routePath(page, params));
+}
+/** Canonical aliases replace history, so Back cannot enter a redirect loop. */
+export function replaceRoute(page: Page, values: Record<string, string | number | null>) {
+  const path = routePath(page, values) + location.hash;
+  if (location.pathname + location.search + location.hash !== path) {
+    history.replaceState({}, '', path);
+    notify();
+  }
 }
 export function openPractice(composition?: number) {
   const values: Record<string, string | number | null> = {

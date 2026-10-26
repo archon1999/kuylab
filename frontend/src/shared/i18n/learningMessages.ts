@@ -26,11 +26,6 @@ export const learningMessages: Record<string, { ru: string; en: string }> = {
   'Birinchi sahifa': { ru: 'Первая страница', en: 'First page' },
   'Oxirgi sahifa': { ru: 'Последняя страница', en: 'Last page' },
   Sahifada: { ru: 'На странице', en: 'Per page' },
-  'Yulduzlar shu MIDI variantining qiyinligini bildiradi. Boshqa aranjirovkada daraja farq qilishi mumkin.':
-    {
-      ru: 'Звёзды показывают сложность этой MIDI-версии. В другой аранжировке уровень может отличаться.',
-      en: 'Stars describe this MIDI arrangement. A different arrangement may have a different difficulty.',
-    },
   'Previewni qayta ko‘rish': { ru: 'Повторить превью', en: 'Replay preview' },
   'Previewni to‘xtatish': { ru: 'Остановить превью', en: 'Pause preview' },
   'Previewni davom ettirish': { ru: 'Продолжить превью', en: 'Resume preview' },

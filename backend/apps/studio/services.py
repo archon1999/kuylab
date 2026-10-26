@@ -1,4 +1,4 @@
-from .content import REVISION, CATEGORIES, GOALS, all_items, localize, tr
+from .content import REVISION, CATEGORIES, GOALS, all_items, localize
 from .models import StudioAsset
 from .comparisons import definitions as comparison_definitions
 from .interactive import challenges
@@ -52,11 +52,10 @@ def studio_catalog(language):
     for source in SOURCES:
         original = originals[source.asset_key]
         composition_id = original["score__arrangement__composition_id"]
-        prefix = source.collection + " · " if source.collection else ""
         compositions.append({
             **presentation(source.code),
             "id":composition_id,"slug":source.slug,"title":original["score__arrangement__composition__title"],
-            "subtitle":prefix + localize(tr("Siz tanlagan MIDI", "Выбранный вами MIDI", "Your selected MIDI"),language),
+            "subtitle":source.collection,
             "composer":original["score__arrangement__composition__composer"],"score_id":original["score_id"],
             "duration_seconds":original["score__parsed__metadata__duration_seconds"],
             "lesson_ids":[item["id"] for item in groups["lesson"] if item["composition_id"] == composition_id],

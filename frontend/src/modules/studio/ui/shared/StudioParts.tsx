@@ -159,7 +159,7 @@ export function CompositionCard({
       <CompositionPreview composition={composition} variant={variant?.id} />
       <div className="studio-composition-content">
         <div className="studio-card-top">
-          <span className="studio-card-category">{composition.subtitle}</span>
+          <span className="studio-card-category">{composition.collection}</span>
           <Favorite id={`composition:${composition.id}`} />
         </div>
         <h2>{composition.title}</h2>

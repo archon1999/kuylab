@@ -231,11 +231,6 @@ export default function LibraryPage() {
               </Select>
             </FormControl>
           </div>
-          <p className="composition-difficulty-note">
-            {tr(
-              'Yulduzlar shu MIDI variantining qiyinligini bildiradi. Boshqa aranjirovkada daraja farq qilishi mumkin.',
-            )}
-          </p>
         </>
       )}
     </div>

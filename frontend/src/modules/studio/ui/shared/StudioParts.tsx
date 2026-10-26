@@ -9,7 +9,7 @@ import {
 } from '@mui/icons-material';
 import { Button, IconButton, Tooltip } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
-import { navigate } from '@shared/routing';
+import { followRouteLink, navigate, routePath } from '@shared/routing';
 import { useStudio } from '../../application';
 import { StudyStatusBadge } from './StudyStatus';
 import CompositionPreview from './CompositionPreview';
@@ -107,10 +107,7 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
       <a
         href={`/study/${encodeURIComponent(item.id)}`}
         className="studio-study-link"
-        onClick={(event) => {
-          event.preventDefault();
-          navigate('study', { item: item.id, composition: item.composition_id ?? null });
-        }}
+        onClick={followRouteLink}
       >
         <h3>{item.title}</h3>
         <p>{item.subtitle}</p>
@@ -177,17 +174,22 @@ export function CompositionCard({
         </div>
         <div className="studio-actions">
           <Button
+            component="a"
+            href={routePath('practice', {
+              composition: composition.id,
+              variant: variant?.id || null,
+            })}
             variant="contained"
             startIcon={<PlayArrowRounded />}
-            onClick={() =>
-              variant
-                ? navigate('practice', { composition: composition.id, variant: variant.id })
-                : openComposition(composition)
-            }
+            onClick={followRouteLink}
           >
             {tr('Playerni ochish')}
           </Button>
-          <Button onClick={() => navigate('detail', { compositionSlug: composition.slug })}>
+          <Button
+            component="a"
+            href={routePath('detail', { compositionSlug: composition.slug })}
+            onClick={followRouteLink}
+          >
             {tr('Darslar')}
           </Button>
         </div>

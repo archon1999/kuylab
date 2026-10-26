@@ -50,7 +50,7 @@ def excerpt_notes(events, start, duration):
         clipped_duration = min(end, release) - clipped_onset
         notes.append({"id": event["id"], "pitch": event["pitch"]["midi"],
                       "onset": clipped_onset - start, "duration": clipped_duration,
-                      "soundDuration": clipped_duration,
+                      "soundDuration": min(end, onset + event.get("sound_duration_seconds", event["duration_seconds"])) - clipped_onset,
                       "velocity": event.get("velocity", 85),
                       "hand": "left" if event.get("hand") == "left" else "right"})
     return sorted(notes, key=lambda note: (note["onset"], note["pitch"]))

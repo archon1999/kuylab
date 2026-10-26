@@ -5,7 +5,7 @@ import {
   type StudioPreferences,
 } from '../domain/studioPreferences';
 
-export function useStudioPreferences(port: StudioPreferencePort) {
+export function useStudioPreferences(port: StudioPreferencePort, hydrateRemote = true) {
   const [preferences, setPreferences] = useState(() => port.read());
   const current = useRef(preferences);
   useEffect(() => {
@@ -20,14 +20,19 @@ export function useStudioPreferences(port: StudioPreferencePort) {
     const initial = port.read();
     current.current = initial;
     setPreferences(initial);
-    hydrate();
-    window.addEventListener('online', hydrate);
+    const unsubscribe = port.subscribe?.(() => {
+      current.current = port.read();
+      setPreferences(current.current);
+    });
+    if (hydrateRemote) hydrate();
+    if (hydrateRemote) window.addEventListener('online', hydrate);
     return () => {
       live = false;
       window.removeEventListener('online', hydrate);
+      unsubscribe?.();
       port.dispose?.();
     };
-  }, [port]);
+  }, [port, hydrateRemote]);
   const update = useCallback(
     <K extends keyof StudioPreferences>(key: K, value: StudioPreferences[K]) => {
       const next = normalizeStudioPreferences({ ...current.current, [key]: value });

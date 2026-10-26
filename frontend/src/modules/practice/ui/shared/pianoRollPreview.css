@@ -84,6 +84,17 @@
 .piano-roll-preview .preview-motion-toggle:focus-visible {
   opacity: 1;
 }
+.preview-audio-error {
+  position: absolute;
+  bottom: 24%;
+  inset-inline: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 11px;
+}
 .preview-motion-toggle.MuiIconButton-root:hover {
   background: var(--soft);
 }

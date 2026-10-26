@@ -3,7 +3,7 @@ import { useActivity } from '@modules/activity';
 import { ArrowBackRounded, PlayArrowRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
-import { navigate, replaceRoute, useRoute } from '@shared/routing';
+import { followRouteLink, navigate, replaceRoute, routePath, useRoute } from '@shared/routing';
 import { useEffect, useState } from 'react';
 import { useStudio } from '../../../application';
 import {
@@ -86,13 +86,14 @@ export default function DetailPage() {
         )}
         <div className="studio-actions">
           <Button
+            component="a"
+            href={routePath('practice', {
+              composition: composition.id,
+              variant: variant?.id || null,
+            })}
             variant="contained"
             startIcon={<PlayArrowRounded />}
-            onClick={() =>
-              variant
-                ? navigate('practice', { composition: composition.id, variant: variant.id })
-                : openComposition(composition)
-            }
+            onClick={followRouteLink}
           >
             {tr('Playerni ochish')}
           </Button>

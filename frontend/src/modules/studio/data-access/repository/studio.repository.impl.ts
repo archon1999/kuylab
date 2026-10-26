@@ -3,9 +3,13 @@ import { request } from '@shared/api/http';
 import type { StudioRepository, CompositionPreview } from '../../domain';
 import type { StudioCatalogDto } from '../dto';
 import { mapStudioCatalog } from '../mappers';
+import { createLibraryStateRepository } from './library-state.repository';
 export function createStudioRepository(): StudioRepository {
   const previews = new Map<string, Promise<CompositionPreview>>();
+  const libraryState = createLibraryStateRepository();
   return {
+    readLibraryState: libraryState.read,
+    saveLibraryState: libraryState.write,
     catalog: async () => mapStudioCatalog(await request<StudioCatalogDto>('studio/catalog/')),
     score: (id) => request<Score>(`scores/${id}/`),
     preview: (id, variant) => {

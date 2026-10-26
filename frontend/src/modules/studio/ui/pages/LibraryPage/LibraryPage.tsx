@@ -1,4 +1,4 @@
-import { useDeferredValue, useRef, useState } from 'react';
+import { useDeferredValue, useEffect, useRef } from 'react';
 import EmptyState from '@shared/ui/EmptyState';
 import { useActivity } from '@modules/activity';
 import { useTranslation } from '@shared/i18n';
@@ -16,6 +16,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useStudio } from '../../../application';
+import { useCompositionLibraryState } from '../../../application/useCompositionLibraryState';
 import {
   compositionPage,
   emptyCompositionFilter,
@@ -29,24 +30,17 @@ export default function LibraryPage() {
   const { catalog } = useStudio();
   const { favorites } = useActivity();
   const tr = useTranslation();
-  const [filter, setFilter] = useState<CompositionFilter>(emptyCompositionFilter);
+  const { filter, page, size, change, reset, setPage, setSize } = useCompositionLibraryState();
   const query = useDeferredValue(filter.query);
-  const [page, setPage] = useState(1);
-  const [size, setSize] = useState(6);
   const list = useRef<HTMLDivElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
   const items = catalog?.compositions || [];
   const collections = [...new Set(items.map((item) => item.collection || '__other__'))];
   const shown = filterCompositions(items, { ...filter, query }, favorites);
   const result = compositionPage(shown, page, size);
-  const change = (value: Partial<CompositionFilter>) => {
-    setFilter((current) => ({ ...current, ...value }));
-    setPage(1);
-  };
-  const reset = () => {
-    setFilter(emptyCompositionFilter);
-    setPage(1);
-  };
+  useEffect(() => {
+    if (catalog && query === filter.query && page !== result.page) setPage(result.page, true);
+  }, [catalog, query, filter.query, page, result.page]);
   const filtered = Object.keys(emptyCompositionFilter).some(
     (key) =>
       filter[key as keyof CompositionFilter] !==
@@ -110,6 +104,9 @@ export default function LibraryPage() {
                 onChange={(event) => change({ collection: event.target.value })}
               >
                 <MenuItem value="">{tr('Barchasi')}</MenuItem>
+                {filter.collection && !collections.includes(filter.collection) && (
+                  <MenuItem value={filter.collection}>{filter.collection}</MenuItem>
+                )}
                 {collections.map((value) => (
                   <MenuItem key={value} value={value}>
                     {value === '__other__' ? tr('Alohida asarlar') : value}
@@ -220,7 +217,6 @@ export default function LibraryPage() {
                 value={size}
                 onChange={(event) => {
                   setSize(Number(event.target.value));
-                  setPage(1);
                 }}
               >
                 {[6, 12, 24].map((count) => (

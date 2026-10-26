@@ -3,5 +3,6 @@ export interface StudioPreferencePort {
   read(): StudioPreferences;
   write(value: StudioPreferences): void;
   load?(): Promise<StudioPreferences>;
+  subscribe?(listener: () => void): () => void;
   dispose?(): void;
 }

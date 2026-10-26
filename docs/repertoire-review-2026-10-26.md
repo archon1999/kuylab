@@ -49,6 +49,12 @@ The server still uses its existing MIDI parser and installs no new runtime packa
 All thirty final MIDI files are pinned and available without external downloads
 on SQLite locally and PostgreSQL in production.
 
+The PostgreSQL/container check exposed a NUL-padded `Piano` track label in the
+Time export. Parsed display text now removes NUL padding (including copyright
+and title fields), while the pinned source bytes and musical events stay intact.
+A regression test checks portable JSON metadata and unchanged pitch, velocity,
+hand, onset and release.
+
 | Edition | Stars | Duration | Notes | Preview starts |
 | --- | --- | --- | --- | --- |
 | Ode to Joy | 2 | 0:38 | 238 | 0 s |

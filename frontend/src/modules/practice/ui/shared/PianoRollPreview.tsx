@@ -1,44 +1,44 @@
-import { useEffect, useId, useMemo, useState, type CSSProperties } from 'react';
+import { useId, useMemo, type CSSProperties } from 'react';
 import { PauseRounded, PlayArrowRounded, ReplayRounded } from '@mui/icons-material';
-import { IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import { CircularProgress, IconButton, Tooltip, useMediaQuery } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { pianoKeyLayout, type StudioNote } from '../../domain/studioTransport';
 import { readableRollNotes } from '../../domain/readableNotes';
+import type { PreviewState } from '../../application/previewPlayback';
+import type { StudioPreferences } from '../../domain/studioPreferences';
 import './pianoRollPreview.css';
 
-/** Silent, source-faithful visual excerpt. CSS moves one group, never the full
- * audio player. Pauses offscreen/background and plays once until explicitly replayed. */
+/** Source-faithful excerpt. One CSS group follows the audio clock's anchors. */
 export default function PianoRollPreview({
   notes,
   duration,
   active,
   label,
   compactHolds = false,
-  onOpen,
+  playback,
+  settings,
+  onToggle,
 }: {
   notes: StudioNote[];
   duration: number;
   active: boolean;
   label: string;
   compactHolds?: boolean;
-  onOpen?: () => void;
+  playback: PreviewState;
+  settings: StudioPreferences;
+  onToggle: () => void;
 }) {
   const tr = useTranslation();
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const [running, setRunning] = useState(false);
-  const [started, setStarted] = useState(false);
-  const [finished, setFinished] = useState(false);
-  const [cycle, setCycle] = useState(0);
-  const [documentVisible, setDocumentVisible] = useState(document.visibilityState === 'visible');
-  useEffect(() => {
-    const change = () => setDocumentVisible(document.visibilityState === 'visible');
-    document.addEventListener('visibilitychange', change);
-    return () => document.removeEventListener('visibilitychange', change);
-  }, []);
+  const { playing: running, finished, cycle, position, speed, loading, error } = playback;
+  const started = position > 0;
   const id = useId().replace(/:/g, '');
   const rendered = useMemo(
-    () => (compactHolds ? readableRollNotes(notes) : notes),
-    [notes, compactHolds],
+    () =>
+      (compactHolds && settings.compactNoteLengths ? readableRollNotes(notes) : notes).filter(
+        (note) => settings[note.hand],
+      ),
+    [notes, compactHolds, settings.compactNoteLengths, settings.left, settings.right],
   );
   const keys = useMemo(() => {
     const pitches = notes.map((note) => note.pitch);
@@ -49,7 +49,20 @@ export default function PianoRollPreview({
   const byPitch = new Map(keys.map((key) => [key.pitch, key]));
   const keyboardY = 220;
   const scale = keyboardY / 4.5;
-  const moving = active && running && documentVisible && !reduced && !finished;
+  const moving = active && running && !reduced && !finished;
+  const labelText = tr(
+    loading
+      ? 'Preview ovozini yuklashni bekor qilish'
+      : error
+        ? 'Preview ovozini qayta yuklash'
+        : finished
+          ? 'Previewni qayta ko‘rish'
+          : running
+            ? 'Previewni to‘xtatish'
+            : started
+              ? 'Previewni davom ettirish'
+              : 'Previewni boshlash',
+  );
   const keyFlashes = (white: boolean) =>
     !reduced &&
     !finished &&
@@ -61,8 +74,8 @@ export default function PianoRollPreview({
           key={note.id}
           className="preview-key-flash"
           style={{
-            animationDelay: `${note.onset}s`,
-            animationDuration: `${note.duration}s`,
+            animationDelay: `${(note.onset - position) / speed}s`,
+            animationDuration: `${note.duration / speed}s`,
             animationPlayState: moving ? 'running' : 'paused',
           }}
         >
@@ -94,12 +107,12 @@ export default function PianoRollPreview({
             <rect width="300" height={keyboardY} />
           </clipPath>
           <linearGradient id={`${id}-left`} x2="0" y2="1">
-            <stop stopColor="#edb2d1" />
-            <stop offset="1" stopColor="#bf729b" />
+            <stop stopColor={`color-mix(in srgb, ${settings.leftColor} 65%, white)`} />
+            <stop offset="1" stopColor={settings.leftColor} />
           </linearGradient>
           <linearGradient id={`${id}-right`} x2="0" y2="1">
-            <stop stopColor="#afe3f4" />
-            <stop offset="1" stopColor="#639bd2" />
+            <stop stopColor={`color-mix(in srgb, ${settings.rightColor} 60%, #b8f5ff)`} />
+            <stop offset="1" stopColor={settings.rightColor} />
           </linearGradient>
           <linearGradient id={`${id}-ivory`} x2="0" y2="1">
             <stop stopColor="#fffefb" />
@@ -152,14 +165,11 @@ export default function PianoRollPreview({
             style={
               {
                 '--preview-travel': `${duration * scale}px`,
-                animationDuration: `${duration}s`,
+                animationDuration: `${duration / speed}s`,
+                animationDelay: `${-position / speed}s`,
                 animationPlayState: moving ? 'running' : 'paused',
               } as CSSProperties
             }
-            onAnimationEnd={() => {
-              setFinished(true);
-              setRunning(false);
-            }}
           >
             {rendered.map((note) => {
               const key = byPitch.get(note.pitch);
@@ -176,6 +186,7 @@ export default function PianoRollPreview({
                   rx={Math.min(5, key.width / 2)}
                   fill={`url(#${id}-${note.hand})`}
                   opacity={0.68 + (note.velocity / 127) * 0.32}
+                  style={{ filter: settings.shadows ? undefined : 'none' }}
                   stroke="rgba(255,255,255,.3)"
                   strokeWidth=".45"
                 />
@@ -215,56 +226,29 @@ export default function PianoRollPreview({
           ))}
         <g key={`black:${cycle}`}>{keyFlashes(false)}</g>
       </svg>
-      {(!reduced || onOpen) && (
-        <Tooltip
-          title={tr(
-            reduced
-              ? 'Playerni ochish'
-              : finished
-                ? 'Previewni qayta ko‘rish'
-                : running
-                  ? 'Previewni to‘xtatish'
-                  : started
-                    ? 'Previewni davom ettirish'
-                    : 'Previewni boshlash',
-          )}
+      <Tooltip title={labelText}>
+        <IconButton
+          className="preview-motion-toggle"
+          size="small"
+          aria-label={labelText}
+          aria-busy={loading}
+          onClick={onToggle}
         >
-          <IconButton
-            className="preview-motion-toggle"
-            size="small"
-            aria-label={tr(
-              reduced
-                ? 'Playerni ochish'
-                : finished
-                  ? 'Previewni qayta ko‘rish'
-                  : running
-                    ? 'Previewni to‘xtatish'
-                    : started
-                      ? 'Previewni davom ettirish'
-                      : 'Previewni boshlash',
-            )}
-            onClick={() => {
-              if (reduced) {
-                onOpen?.();
-                return;
-              }
-              setStarted(true);
-              if (finished) {
-                setFinished(false);
-                setCycle((value) => value + 1);
-                setRunning(true);
-              } else setRunning((value) => !value);
-            }}
-          >
-            {finished ? (
-              <ReplayRounded fontSize="small" />
-            ) : running ? (
-              <PauseRounded fontSize="small" />
-            ) : (
-              <PlayArrowRounded fontSize="small" />
-            )}
-          </IconButton>
-        </Tooltip>
+          {loading ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : finished ? (
+            <ReplayRounded fontSize="small" />
+          ) : running ? (
+            <PauseRounded fontSize="small" />
+          ) : (
+            <PlayArrowRounded fontSize="small" />
+          )}
+        </IconButton>
+      </Tooltip>
+      {error && (
+        <small className="preview-audio-error" role="status">
+          {tr('Preview ovozini yuklab bo‘lmadi. Qayta urining.')}
+        </small>
       )}
     </div>
   );

@@ -121,8 +121,11 @@ There are 147 composition lessons and 91 continuity paths in total.
 All in
 has two byte-preserved full-length arrangements, Easy and Hard, in one player
 with nine shared lessons and five continuity paths. Variant switching pauses
-playback at the same timestamp; settings and resume positions are scoped per
-variant. Its optional compact note display abbreviates overlapping long blocks
+playback at the same timestamp; resume positions are scoped per variant.
+Player settings, including speed, volume, hand balance, reverb and appearance,
+are shared across all compositions, lessons and previews within the same account.
+Other open player tabs receive changes through account-scoped browser storage.
+Its optional compact note display abbreviates overlapping long blocks
 without changing sound or claiming to reconstruct finger releases. The six
 earlier replacement exports each include six source-specific lessons and eight continuity studies,
 all with five MIDI stages: sparse landmarks, focused layer, complete hands at
@@ -133,6 +136,12 @@ and eight studies with their existing three-stage progression.
 Every complete-piece path ends with the unchanged supplied original. General
 exercises are independently authored examples. Source bytes and
 provenance are documented in [the studio notes](backend/apps/studio/README.md).
+Composition previews load piano samples only after Play, use the main player's
+Steinway engine, and pause on focus loss, backgrounding or leaving the viewport.
+Only one preview plays at a time. The library keeps search, filters, sort, page
+and page size in URLs such as `/compositions?q=Yiruma&p=1&size=6`, backed by
+per-account `sessionStorage`. Explicit URL values take priority; Back/Forward and
+native Ctrl/Command/middle-click player links retain normal browser behavior.
 The ten added classical editions retain their public-domain or individual CC terms.
 For the twenty added contemporary editions, the project owner explicitly confirmed
 permission to include MIDI files and adaptations in the website and public repository

@@ -1,4 +1,16 @@
 export const learningMessages: Record<string, { ru: string; en: string }> = {
+  'Preview ovozini yuklashni bekor qilish': {
+    ru: 'Отменить загрузку звука превью',
+    en: 'Cancel preview audio loading',
+  },
+  'Preview ovozini qayta yuklash': {
+    ru: 'Загрузить звук превью заново',
+    en: 'Retry preview audio',
+  },
+  'Preview ovozini yuklab bo‘lmadi. Qayta urining.': {
+    ru: 'Не удалось загрузить звук. Попробуйте ещё раз.',
+    en: 'Could not load preview audio. Try again.',
+  },
   'Previewni boshlash': { ru: 'Запустить превью', en: 'Play preview' },
   Qiyinchilik: { ru: 'Сложность', en: 'Difficulty' },
   'Qiyinchilik: {0}/5': { ru: 'Сложность: {0}/5', en: 'Difficulty: {0}/5' },

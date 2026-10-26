@@ -143,6 +143,19 @@ test('recorded piano loads four local velocity layers at the nearest anchor, onc
   }
 });
 
+test('a closed preview piano accepts shared hand levels and can prepare again', async () => {
+  const environment = fakeAudio();
+  const piano = createSampledPiano();
+  try {
+    await piano.prepare([60]);
+    piano.close();
+    assert.doesNotThrow(() => piano.handVolume('left', .4));
+    await piano.prepare([60]);
+    assert.equal(environment.contexts.length, 2);
+    assert.equal(environment.contexts[1].state, 'running');
+  } finally { piano.close(); environment.restore(); }
+});
+
 test('seek resumes a sample at its decay offset and stop cancels all scheduled voices', async () => {
   const environment = fakeAudio();
   try {

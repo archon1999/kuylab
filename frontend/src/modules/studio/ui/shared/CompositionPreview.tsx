@@ -5,7 +5,6 @@ import { PianoRollPreview } from '@modules/practice';
 import { useTranslation } from '@shared/i18n';
 import { useCompositionPreview } from '../../application/useCompositionPreview';
 import type { Composition } from '../../domain';
-import { navigate } from '@shared/routing';
 
 export default function CompositionPreview({
   composition,
@@ -31,9 +30,6 @@ export default function CompositionPreview({
             duration={preview.duration_seconds}
             active={visible}
             compactHolds={composition.readable_holds}
-            onOpen={() =>
-              navigate('practice', { composition: composition.id, variant: variant || null })
-            }
             label={tr('{0}: asardan tushayotgan notalar', [composition.title])}
           />
         </>

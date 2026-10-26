@@ -1,6 +1,19 @@
 import { useSyncExternalStore } from 'react';
 import { parseRoute, routePath, type Page } from './paths.ts';
+import { isPlainLinkClick } from './linkIntent.ts';
+import type { MouseEvent } from 'react';
 export { routePath, type Page } from './paths.ts';
+export function followRouteLink(event: MouseEvent<HTMLAnchorElement>) {
+  if (
+    !isPlainLinkClick(event) ||
+    (event.currentTarget.target && event.currentTarget.target !== '_self')
+  )
+    return;
+  const url = new URL(event.currentTarget.href, location.origin);
+  if (url.origin !== location.origin || event.currentTarget.hasAttribute('download')) return;
+  event.preventDefault();
+  visit(url.pathname + url.search + url.hash);
+}
 const initial = parseRoute(location.pathname, location.search);
 if (location.search.includes('page='))
   history.replaceState({}, '', routePath(initial.page, initial.params));

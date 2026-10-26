@@ -10,6 +10,12 @@ from apps.studio.composition_showcase import excerpt_notes
 
 
 class ExcerptBoundaryTests(SimpleTestCase):
+    def test_sustain_can_outlast_the_key_block_but_not_the_preview_boundary(self):
+        events = [dict(id='held',onset_seconds=0,duration_seconds=4,sound_duration_seconds=8,
+                       pitch={'midi':60},hand='right',velocity=73)]
+        note = excerpt_notes(events,3,3)[0]
+        self.assertEqual((note['onset'],note['duration'],note['soundDuration']), (0,1,3))
+
     def test_held_notes_and_both_hands_survive_without_inventing_or_sampling_attacks(self):
         def note(id, onset, duration, hand='right', **other):
             return dict(id=id, onset_seconds=onset, duration_seconds=duration,

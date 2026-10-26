@@ -12,6 +12,7 @@ export const pagePaths = {
   notFound: '/404',
 } as const;
 export type Page = keyof typeof pagePaths;
+const libraryQueryKeys = ['q', 'difficulty', 'collection', 'favorites', 'sort', 'p', 'size'];
 
 export function routePath(
   page: Page,
@@ -27,6 +28,11 @@ export function routePath(
         );
   const segment = (key: string) =>
     params.get(key) ? '/' + encodeURIComponent(params.get(key)!) : '';
+  if (page === 'library') {
+    const query = new URLSearchParams();
+    for (const key of libraryQueryKeys) if (params.has(key)) query.set(key, params.get(key)!);
+    return pagePaths.library + (query.size ? '?' + query.toString() : '');
+  }
   const timestamp =
     params.has('at') &&
     Number.isFinite(Number(params.get('at'))) &&
@@ -108,6 +114,8 @@ export function parseRoute(pathname: string, search = '') {
     }
   }
   const at = legacy.get('t');
+  if (page === 'library')
+    for (const key of libraryQueryKeys) if (legacy.has(key)) params.set(key, legacy.get(key)!);
   if (
     ['practice', 'study'].includes(page) &&
     at !== null &&

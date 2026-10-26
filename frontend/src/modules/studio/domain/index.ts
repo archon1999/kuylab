@@ -27,6 +27,13 @@ export {
 } from './studio.logic.ts';
 export { selectResumeStudy } from './resumeStudy.ts';
 export {
+  normalizeLibraryState,
+  hasLibraryQuery,
+  readLibraryQuery,
+  libraryQuery,
+} from './compositionLibraryState.ts';
+export type { CompositionLibraryState } from './compositionLibraryState.ts';
+export {
   emptyCompositionFilter,
   filterCompositions,
   compositionPage,

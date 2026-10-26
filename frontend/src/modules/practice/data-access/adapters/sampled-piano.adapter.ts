@@ -337,6 +337,8 @@ export function createSampledPiano(
       master = wet = output = null;
       compressor = null;
       room = null;
+      delete hands.left;
+      delete hands.right;
       roomReady = null;
       buffers.clear();
       loading.clear();

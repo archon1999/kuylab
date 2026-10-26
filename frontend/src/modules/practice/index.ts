@@ -7,7 +7,7 @@ export * from './domain';
 export * from './domain/session';
 export { default as ScoreWorkspace } from './ui/shared/ScoreWorkspace';
 export { StudioPlayer } from './studio';
-export { default as PianoRollPreview } from './ui/shared/PianoRollPreview';
+export { PianoRollPreview } from './preview';
 export { usePianoAudition } from './audition';
 export type { StudioPlayerProps } from './application/useStudioPlayer';
 export { PIANO_SAMPLE_FILES } from './data-access/adapters/sampled-piano.adapter';

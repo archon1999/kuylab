@@ -6,10 +6,7 @@ import type { StudioPlayerProps } from './application/useStudioPlayer';
 
 export function StudioPlayer(props: StudioPlayerProps) {
   const [audio] = useState(createSampledPiano);
-  const preferences = useMemo(
-    () => createStudioPreferences(undefined, props.contextId || 'score:' + props.score.id),
-    [props.contextId, props.score.id],
-  );
+  const preferences = useMemo(() => createStudioPreferences(), []);
   useEffect(() => () => audio.close(), [audio]);
   return <StudioPlayerView {...props} audio={audio} preferences={preferences} />;
 }

@@ -10,16 +10,10 @@ import {
 } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
-import { navigate } from '@shared/routing';
+import { followRouteLink, navigate, routePath } from '@shared/routing';
 import { useStudio } from '../../../application';
 import { allStudyItems, durationLabel, studyCountLabel, selectResumeStudy } from '../../../domain';
-import {
-  ContentRow,
-  Heading,
-  SectionTitle,
-  StudyCard,
-  openComposition,
-} from '../../shared/StudioParts';
+import { ContentRow, Heading, SectionTitle, StudyCard } from '../../shared/StudioParts';
 import '../../studio.css';
 import RecentNotes from '../../shared/RecentNotes';
 import { StudyStatusBadge } from '../../shared/StudyStatus';
@@ -67,9 +61,11 @@ export default function DashboardPage() {
             </p>
             <div className="studio-actions">
               <Button
+                component="a"
+                href={routePath('practice', { composition: composition.id })}
                 variant="contained"
                 startIcon={<PlayArrowRounded />}
-                onClick={() => openComposition(composition)}
+                onClick={followRouteLink}
               >
                 {tr(positions[`composition:${composition.id}`] ? 'Davom etish' : 'Playerni ochish')}
               </Button>

@@ -10,6 +10,7 @@ import hashlib
 
 from apps.scores.midi import parse_midi
 from .midi_authoring import SOURCE_SHA256, source_data
+from .curated_repertoire import active_entries, edition_source
 
 
 @dataclass(frozen=True)
@@ -46,10 +47,13 @@ SOURCES = (
     Source("memories", "Memories", "Memories (1).mid", "b61395b473e13d2ebf2a9070e8829e6d3aa7fba72b7d10b46ae994e1a2e672b7", "memories", collection=""),
     Source("all-in", "All in — Soundtrack", "All_In_Plus5_Full.mid", "13d5ad3db51d778d3268fddf7aebefcefded493aa2edafb6e0448ea84d0cecb8", "all-in-soundtrack", collection="All in / Va-bank", course_kind="package"),
 )
+SOURCES += tuple(Source(entry["code"], entry["title"], entry["code"] + ".mid", entry["sha256"],
+                        entry["slug"], entry["composer"], entry["collection"], "curated")
+                 for entry in active_entries())
 SOURCE_BY_CODE = {source.code: source for source in SOURCES}
 
 
-@lru_cache(maxsize=8)
+@lru_cache(maxsize=40)
 def repertoire_source(code):
     if code == "still":
         return source_data()
@@ -57,6 +61,8 @@ def repertoire_source(code):
         from .all_in_package import package_source
         return package_source("All_In_Plus5_Full.mid")
     source = SOURCE_BY_CODE[code]
+    if source.course_kind == "curated":
+        return edition_source(code)
     content = (Path(__file__).with_name("assets") / f"{code}.mid").read_bytes()
     if hashlib.sha256(content).hexdigest() != source.sha256:
         raise ValueError(f"{source.code}: source changed; review and version its curriculum first.")

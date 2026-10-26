@@ -107,7 +107,7 @@ try:
     assert b.request("/api/auth/player-preferences/")[1] == {}
     status, catalog, headers = a.request("/api/studio/catalog/")
     assert status == 200 and "no-store" in headers["Cache-Control"]
-    assert len(catalog["compositions"]) == 8 and len(catalog["lessons"]) == 57 and len(catalog["journeys"]) == 61
+    assert len(catalog["compositions"]) == 38 and len(catalog["lessons"]) == 147 and len(catalog["journeys"]) == 91
     assert len(catalog["exercises"]) == 48 and len(catalog["theory"]) == 24
     assert sum(len(item["challenges"]) for item in catalog["theory"]) == 49
     for piece in catalog["compositions"]:
@@ -157,7 +157,8 @@ try:
         assert status == 200 and hashlib.sha256(original_bytes).hexdigest() == source.sha256
         piece = next(item for item in catalog["compositions"] if item["id"] == source_score.arrangement.composition_id)
         paths = [item for item in catalog["journeys"] if item["composition_id"] == piece["id"]]
-        assert (len(piece["lesson_ids"]), len(paths)) == ((9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8))
+        expected = (3, 1) if source.course_kind == "curated" else (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8)
+        assert (len(piece["lesson_ids"]), len(paths)) == expected
         assert paths[-1]["stages"][-1]["score_id"] == source_score.pk
         if source.code == "all-in":
             assert len(piece["variants"]) == 2 and piece["default_variant_id"] == "easy"
@@ -195,7 +196,7 @@ try:
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None
-    print("Production smoke passed: secure cookies, CSRF, two-user isolation, notes, stage progress, variant-scoped preferences, eight compositions, Easy/Hard MIDI files, complete paths, clean URLs and logout.")
+    print("Production smoke passed: secure cookies, CSRF, two-user isolation, notes, stage progress, variant-scoped preferences, 38 compositions, Easy/Hard MIDI files, complete paths, clean URLs and logout.")
 finally:
     users = get_user_model().objects.filter(username__in=names)
     ids = {str(value) for value in users.values_list("pk", flat=True)}

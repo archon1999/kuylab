@@ -110,14 +110,21 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The curated repertoire contains eight compositions: Still, What Is
-a Youth, Star, Tears in Your Eyes, My Memory, Premonition, Memories and All in — Soundtrack. All in
+The curated repertoire contains 38 compositions. The original eight are Still, What Is
+a Youth, Star, Tears in Your Eyes, My Memory, Premonition, Memories and All in — Soundtrack.
+Thirty additional classical, contemporary and film piano editions are pinned in
+[the catalog manifest](backend/apps/studio/assets/catalog/manifest.json), with hashes,
+source credits, difficulty, real-note preview passages and UZ/RU/EN lesson plans.
+Each new edition has three focused lessons and one complete-piece path with
+five playable stages, progressing from sparse source notes to the full source.
+There are 147 composition lessons and 91 continuity paths in total.
+All in
 has two byte-preserved full-length arrangements, Easy and Hard, in one player
 with nine shared lessons and five continuity paths. Variant switching pauses
 playback at the same timestamp; settings and resume positions are scoped per
 variant. Its optional compact note display abbreviates overlapping long blocks
 without changing sound or claiming to reconstruct finger releases. The six
-new pieces each include six source-specific lessons and eight continuity studies,
+earlier replacement exports each include six source-specific lessons and eight continuity studies,
 all with five MIDI stages: sparse landmarks, focused layer, complete hands at
 60%, complete hands at 80%, and the 100% original. The six current files are the
 user's replacement exports without pedal-extended key durations; every original
@@ -126,9 +133,11 @@ and eight studies with their existing three-stage progression.
 Every complete-piece path ends with the unchanged supplied original. General
 exercises are independently authored examples. Source bytes and
 provenance are documented in [the studio notes](backend/apps/studio/README.md).
-Composition files and historical reference fixtures do not carry a blanket
-open-source redistribution license. Review their provenance before republishing
-musical content. Public repository visibility does not change third-party rights.
+The ten added classical editions retain their public-domain or individual CC terms.
+For the twenty added contemporary editions, the project owner explicitly confirmed
+permission to include MIDI files and adaptations in the website and public repository
+on 2026-10-26. [Edition notices](backend/apps/studio/assets/catalog/README.md) record
+that basis and source attribution; the code license does not relicense musical content.
 
 Piano samples, fonts, MUI and audio worklet notices are in
 [third-party notices](frontend/THIRD_PARTY_NOTICES.md) and the app's `/licenses.html`.

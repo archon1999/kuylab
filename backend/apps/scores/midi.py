@@ -43,6 +43,12 @@ def track_hand(name):
     return "unknown"
 
 
+def midi_text(value):
+    # Some sequencers NUL-pad SMF labels. Keep original bytes untouched, but
+    # remove padding from display text: PostgreSQL jsonb cannot store U+0000.
+    return value.replace("\x00", "")
+
+
 def parse_midi(data, title="MIDI performance"):
     if not isinstance(data, bytes) or not data or len(data) > MAX_UPLOAD_BYTES or not data.startswith(b"MThd"):
         raise ScoreImportError("Choose a complete Standard MIDI File (.mid/.midi), at most 8 MB.")
@@ -59,7 +65,9 @@ def parse_midi(data, title="MIDI performance"):
     messages, tracks, warnings, copyrights = [], [], [], []
     for track_index, track in enumerate(midi.tracks):
         ticks = 0
-        name = track.name.strip()[:240] or f"Track {track_index + 1}"
+        name = midi_text(track.name).strip()[:240] or f"Track {track_index + 1}"
+        if "\x00" in track.name and len(warnings) < 30:
+            warnings.append(f"NUL padding removed from track {track_index + 1} display label; original MIDI bytes are unchanged.")
         channels, programs = set(), {}
         if not track or track[-1].type != "end_of_track":
             raise ScoreImportError("Every track must have its complete end-of-track boundary.")
@@ -75,7 +83,7 @@ def parse_midi(data, title="MIDI performance"):
             if message.type == "program_change":
                 programs[str(message.channel)] = message.program
             if message.type == "copyright":
-                copyrights.append(message.text[:2000])
+                copyrights.append(midi_text(message.text)[:2000])
         tracks.append({"id": f"T{track_index}", "index": track_index, "name": name, "channels": sorted(channels), "programs": programs,
                        "hand": track_hand(name), "hand_evidence": "track_name_hint" if track_hand(name) != "unknown" else "unknown", "end_ticks": ticks})
     messages.sort(key=lambda item: item[:3])
@@ -239,7 +247,7 @@ def parse_midi(data, title="MIDI performance"):
         warnings.append("Channel 10 contains percussion; select piano tracks before keyboard exercises.")
     note_parts = [track for track in tracks if any(event["part_id"] == track["id"] for event in events)]
     parts = [{**track, "staff_count": 1, "measure_count": len(measures), "note_count": sum(event["part_id"] == track["id"] for event in events)} for track in note_parts]
-    metadata = {"title": title[:240], "composer": "", "key": key_signature(key_map[0]["midi_key"]) if key_map and key_map[0]["onset_ticks"] == 0 else None,
+    metadata = {"title": midi_text(title)[:240], "composer": "", "key": key_signature(key_map[0]["midi_key"]) if key_map and key_map[0]["onset_ticks"] == 0 else None,
                 "time": {key: value for key, value in time_map[0].items() if key not in ["onset_ticks", "onset_quarters"]} if time_map and time_map[0]["onset_ticks"] == 0 else None,
                 "tempo": {"quarter_bpm": tempo_map[0]["quarter_bpm"], "bpm": tempo_map[0]["quarter_bpm"], "beat_unit": "quarter", "beat_unit_dots": 0, "explicit": tempo_map[0]["explicit"]},
                 "measure_count": len(measures), "event_count": len(events), "part_count": len(parts), "total_quarters": total_quarters,

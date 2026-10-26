@@ -1,0 +1,1649 @@
+[
+  {
+    "code": "ode-to-joy",
+    "slug": "ode-to-joy",
+    "title": "Ode to Joy",
+    "composer": "Ludwig van Beethoven",
+    "collection": "Symphony No. 9 · piano reduction",
+    "sha256": "fb1604c08c865b275b464d74e5a7c526ff1a8acccdf9853cb92f0778daaed14b",
+    "note_count": 238,
+    "duration_seconds": 38.4,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Peter Chubb · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=528",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. Short complete hymn-theme reduction with chordal accompaniment; not the full symphony.",
+    "quarter_bpm": 100.0,
+    "key_label": "G",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 2,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu variantda tanish kuy akkord tovushlari bilan birga keladi. Akkord — bir vaqtda eshitiladigan tovushlar guruhi. Eng yuqori yo‘lni ichingizda kuylang, pastki tovushlarni esa tayanch deb tinglang. Siyrak bosqichdan to‘liq akkordga o‘tganda kuy jumlasi uzilmasin; har akkordni yangi jumla kabi urg‘ulamang.",
+      "ru": "Знакомая мелодия здесь звучит внутри аккордовой фактуры. Аккорд — несколько одновременно звучащих тонов. Пропойте верхнюю линию, нижние звуки услышьте как опоры. При переходе от редких ориентиров к полным аккордам сохраняйте одну фразу, не превращайте каждый аккорд в новое начало.",
+      "en": "This edition places the familiar tune inside a chordal texture. A chord contains tones sounding together. Sing the upper line and hear the lower tones as support. When sparse landmarks become complete chords, keep one continuous phrase rather than treating each chord as a new beginning."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 14,
+        "end": 38
+      }
+    ]
+  },
+  {
+    "code": "prelude-c-major",
+    "slug": "prelude-c-major",
+    "title": "Prelude in C major · BWV 846",
+    "composer": "Johann Sebastian Bach",
+    "collection": "The Well-Tempered Clavier",
+    "sha256": "874e07d0479542971bfceaf420d6117da8d602d89d26eea4610e7dd1ef58bf26",
+    "note_count": 549,
+    "duration_seconds": 140.0,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Tobias Erbsland · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=5",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 60.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "left",
+        "2": "right"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 2,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Arpejio — akkord tovushlarining birga emas, ketma-ket kelishi. Bu preludiyada qayta keladigan shakl ostida garmoniya almashadi. Avval har guruhning pastki tayanchini eshiting, keyin yuqoriga ochilgan tovushlarni qo‘shing. Barcha tovushlarni bir xil kuch bilan bosish o‘rniga, guruhlar orasidagi ravonlikni saqlang.",
+      "ru": "Арпеджио — последовательное звучание тонов аккорда. В прелюдии знакомая фигура повторяется, а гармония под ней меняется. Сначала услышьте нижнюю опору каждой группы, затем добавьте раскрывающиеся вверх звуки. Сохраняйте течение между группами, не выделяя каждый тон одинаковым акцентом.",
+      "en": "An arpeggio sounds the tones of a chord in succession. Here a recurring figure continues while the underlying harmony changes. Hear each group’s low support first, then add the tones opening above it. Maintain flow between groups instead of giving every tone an identical accent."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "gymnopedie-no-1",
+    "slug": "gymnopedie-no-1",
+    "title": "Gymnopédie No. 1",
+    "composer": "Erik Satie",
+    "collection": "Trois Gymnopédies",
+    "sha256": "09ce7337b4bf42ba12e1aa64b4c7dc7fcfa6455f1070cb12f8880a755df97384",
+    "note_count": 282,
+    "duration_seconds": 141.0,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Evin Robertson · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=37",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 60.0,
+    "key_label": "",
+    "time_label": "3/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 2,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Valsga o‘xshash uch hissali yurishda pastki bassdan keyin akkord keladi. Hissa — ichingizda teng yuradigan puls. Sekin temp bo‘shliqlarni yo‘qotish degani emas: bass, akkord va kuy o‘z vaqtida kirsin. Bu faylda yuqori staff kuy bilan birga ayrim jo‘rlik tovushlarini ham saqlaydi; ranglarni qat’iy barmoqlash deb olmang.",
+      "ru": "В трёхдольном движении за низким басом приходит аккорд. Доля — равномерный внутренний пульс. Медленный темп не отменяет времени между вступлениями баса, аккорда и мелодии. Верхний нотный слой этого файла содержит и часть сопровождения; цвет обозначает слой, а не обязательную физическую руку.",
+      "en": "The three-beat movement places a chord after a low bass. A beat is the steady pulse you feel internally. Slow playing still needs precise space between bass, chord and melody. This file’s upper staff also contains accompaniment tones; its colour identifies a layer rather than prescribing a physical hand."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ]
+  },
+  {
+    "code": "moonlight-sonata",
+    "slug": "moonlight-sonata",
+    "title": "Moonlight Sonata · I",
+    "composer": "Ludwig van Beethoven",
+    "collection": "Sonata Op. 27 No. 2",
+    "sha256": "a34e969c4957f0e9e98fc9ff0278cc1284931bdae6d463469797faa2b73a9c5c",
+    "note_count": 1142,
+    "duration_seconds": 276.0,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "credit": "Stewart Holmes · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=276",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. First movement only; E-major source key metadata is relative to the reviewed C-sharp-minor tonal centre.",
+    "quarter_bpm": 60.0,
+    "key_label": "C♯ minor",
+    "time_label": "2/2",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Triol bir puls ichiga teng joylashgan uch tovushdir. Birinchi qismdagi uzluksiz uchliklar ustida sekinroq kuy yo‘li eshitiladi. Jo‘rlikning har uchligini qattiq urg‘ulamang: yuqori tayanchlarni ichingizda kuylab, oradagi tovushlarni yumshoq davom ettiring. Bu yerda faqat sonataning birinchi qismi bor, qolgan ikki qism aralashtirilmagan.",
+      "ru": "Триоль делит пульс на три равные части. Над непрерывными тройками первой части движется более медленная мелодия. Не делайте тяжёлый акцент на каждой тройке: мысленно пойте верхние опоры, мягко продолжая внутренние звуки. Здесь полностью представлена первая часть сонаты, отдельно от второй и третьей.",
+      "en": "A triplet divides a pulse into three equal parts. The first movement’s continuous triplets support a slower melodic line. Avoid a heavy accent on every group: sing the upper landmarks internally while the inner tones continue softly. This edition contains the complete first movement, separately from movements two and three."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ]
+  },
+  {
+    "code": "fur-elise",
+    "slug": "fur-elise",
+    "title": "Für Elise",
+    "composer": "Ludwig van Beethoven",
+    "collection": "Bagatelle · WoO 59",
+    "sha256": "1c12c21c7bbf4cf163896732672648a69d497636059837abd153c71abe50215a",
+    "note_count": 905,
+    "duration_seconds": 130.4166145,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Stelios Samelis · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 72.00002880001152,
+    "key_label": "Am",
+    "time_label": "3/8",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Boshlanishdagi ikki qo‘shni tovush yarim ton oralig‘ida almashadi. Yarim ton — klaviaturadagi eng yaqin ikki klavish orasidagi masofa. Ularni tezlik uchun qotirib takrorlashdan oldin kuy qaysi tovushga borishini eshiting. Keyingi bo‘limlardagi akkord va yugurishlar kirganda ham mashhur boshlanishga qaytish yo‘lini yodda tuting.",
+      "ru": "Начало чередует два соседних звука на расстоянии полутона. Полутон — расстояние между ближайшими клавишами. Прежде чем ускорять повторение, услышьте, к какому звуку движется фраза. Поздние разделы добавляют аккорды и пассажи; сохраняйте связь с возвращением знакомого начала.",
+      "en": "The opening alternates neighbouring tones a semitone apart. A semitone is the distance between adjacent keys. Before speeding up the alternation, hear where the phrase is going. Later sections introduce chords and runs; keep their connection to the return of the familiar opening."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "prelude-e-minor",
+    "slug": "prelude-e-minor",
+    "title": "Prelude in E minor · Op. 28 No. 4",
+    "composer": "Frédéric Chopin",
+    "collection": "24 Preludes",
+    "sha256": "c1d7e05aa4e6e2baeec2e9108402a969c16d5df302b82fd66d110634697f2e3b",
+    "note_count": 600,
+    "duration_seconds": 108.214228,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Magnus Lewis-Smith · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=468",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 56.000029866682596,
+    "key_label": "Em",
+    "time_label": "2/2",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Kuy kam nota bilan gapiradi, jo‘rlik esa akkordlarni qayta bosib ichki tovushlarni asta o‘zgartiradi. Ovoz yuritish — akkord ichidagi alohida yo‘lning keyingi tovushga o‘tishi. Faqat bass almashishini kutmang: bitta ichki tovush yarim ton siljishi ham rangni o‘zgartiradi. Qayta bosishlarda kuy balandroq eshitilsin.",
+      "ru": "Мелодия говорит немногими нотами, а сопровождение повторяет аккорды и постепенно меняет внутренние тоны. Голосоведение — переход отдельной линии внутри аккордов к следующему звуку. Следите не только за басом: сдвиг одного внутреннего тона на полутон тоже меняет окраску. Повторные аккорды не должны заглушать мелодию.",
+      "en": "The melody uses few notes while repeated accompaniment chords gradually change their inner tones. Voice leading is the movement of an individual line within those chords. Follow more than the bass: one inner tone moving a semitone changes the colour. Repeated chords should leave the melody audible above them."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "waltz-a-minor",
+    "slug": "waltz-a-minor",
+    "title": "Waltz in A minor · B. 150",
+    "composer": "Frédéric Chopin",
+    "collection": "Waltzes",
+    "sha256": "e28a6c52d4ef1e433223a6227544982e60fe69d261b5a4093fd45e4a4f45d7cc",
+    "note_count": 920,
+    "duration_seconds": 120.5,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "https://github.com/musetrainer/library",
+    "credit": "MuseTrainer public-domain score library; source score MuseScore 1749181; MIDI render by KuyLab",
+    "source_url": "https://musetrainer.github.io/library/scores/Waltz_in_A_MinorChopin.mxl",
+    "edition_note": "Rendered from bundled MusicXML with music21 10.5.1, expanded repeats and written sounding pitches. Forty grace notes are realized as 1/8-quarter lead-ins; principal onsets are unchanged. Separate staff channels; A-minor key metadata. See ops/render_public_waltz.py.",
+    "quarter_bpm": 120.0,
+    "key_label": "Am",
+    "time_label": "3/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Valsda uch hissa bor: pastki bass tayanchidan keyin ikkita yengilroq akkord eshitiladi. Har uch klavish bosilishini bir xil urg‘ulamang. Bezak notalar asosiy tovush oldidan tez keladi; avval bezaksiz tayanch yo‘lni eshiting, keyin ularning qayerga olib borishini toping. Bezak qo‘shilganda asosiy hissaning vaqti siljimasin.",
+      "ru": "Вальс имеет три доли: за опорным басом следуют два более лёгких аккорда. Не делайте все три вступления одинаково тяжёлыми. Украшения быстро подводят к основному тону; сначала услышьте опорную линию, затем их направление. Добавляя украшения, сохраняйте время основной доли.",
+      "en": "A waltz has three beats: a supporting bass followed by two lighter chords. Avoid three equally heavy attacks. Grace notes lead quickly into a principal tone; hear the underlying line first, then locate their destination. Keep the principal beat in place when adding the ornaments."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ],
+    "rendered_from_musicxml": true,
+    "source_document_sha256": "07c809a6d0f4bab8c6a3f11a10694087c8ecc8bd421e9ee0977cd17339a06613"
+  },
+  {
+    "code": "nocturne-op-9-no-2",
+    "slug": "nocturne-op-9-no-2",
+    "title": "Nocturne · Op. 9 No. 2",
+    "composer": "Frédéric Chopin",
+    "collection": "Nocturnes",
+    "sha256": "e202d3941ce5f26397f57f59f0e2e4e3ad9e19061fa3c4dc596c5ee6a6a2548e",
+    "note_count": 1242,
+    "duration_seconds": 202.272525,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "credit": "Renato Biolcati Rinaldi · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 66.000066000066,
+    "key_label": "Eb",
+    "time_label": "12/8",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Kantilena — kuylangandek ravon olib borilgan melodiya. Bu noktyurnda bezaklar ko‘payganda ham asosiy kuy tayanchlari yo‘qolmasin. 12/8 da sakkizliklar uchlik guruhlar bo‘lib eshitiladi; har mayda notani alohida katta hissa deb olmang. Pastdagi bassdan akkordga ko‘chishni oldindan tayyorlab, kuyni jo‘rlikdan ajrating.",
+      "ru": "Кантилена — плавная, словно спетая мелодия. В ноктюрне украшения не должны скрывать её опоры. В 12/8 восьмые группируются по три: не превращайте каждую мелкую ноту в крупную долю. Заранее готовьте переход от баса к аккорду и отделяйте мелодию от сопровождения.",
+      "en": "Cantabile playing carries the melody as though singing it. The nocturne’s ornaments should not obscure its landmarks. In 12/8, eighth notes group in threes; each small note is not a separate large beat. Prepare bass-to-chord moves early and keep the melodic line distinct from the accompaniment."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "rondo-alla-turca",
+    "slug": "rondo-alla-turca",
+    "title": "Rondo alla Turca",
+    "composer": "Wolfgang Amadeus Mozart",
+    "collection": "Sonata K. 331 · III",
+    "sha256": "c14299cbdd34c8b2081da84dc06519ef8a52a0d589ee53c758d28b8e3d727d1c",
+    "note_count": 1614,
+    "duration_seconds": 255.0,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Rune Zedeler and Chris Sawer · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=108",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 60.0,
+    "key_label": "Am",
+    "time_label": "2/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Rondo bir tanish mavzuning boshqa bo‘limlardan keyin qaytishiga asoslanadi. Tez mayda notalar orasida jumla qayerda boshlanib tugashini toping. Avval kuy yo‘lini siyrak tayanchlarda tinglang, keyin barcha asl notalarni qo‘shing. Oktava — bir xil nomli ikki tovushning sakkiz pog‘ona masofasi; oktavali joylarda qo‘lni qotirmang.",
+      "ru": "Рондо строится на возвращении знакомой темы после других эпизодов. В быстрых мелких нотах найдите начало и конец фразы. Сначала услышьте её по редким опорам, затем верните все исходные ноты. Октава соединяет одноимённые звуки через восемь ступеней; в октавных местах не фиксируйте руку жёстко.",
+      "en": "A rondo brings a familiar theme back after contrasting episodes. Find phrase beginnings and endings within the quick notes. Hear the line through sparse landmarks before restoring its full note set. An octave connects notes of the same name eight scale steps apart; avoid a rigid hand in octave passages."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "clair-de-lune",
+    "slug": "clair-de-lune",
+    "title": "Clair de lune",
+    "composer": "Claude Debussy",
+    "collection": "Suite bergamasque",
+    "sha256": "4eee9a1546ffde1ff74cb9824ba0e57cbc821185a15185bfea9faed97820bf8c",
+    "note_count": 1468,
+    "duration_seconds": 322.5,
+    "storage": "public",
+    "rights_basis": "published_open_license",
+    "license": "Public Domain",
+    "license_url": "",
+    "credit": "Keith O’Hara · Mutopia Project",
+    "source_url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1778",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 60.0,
+    "key_label": "Db",
+    "time_label": "9/8",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 5,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu asarda bir necha tovushdan iborat yumshoq akkordlar keyinchalik kengroq harakatga ochiladi. Yuqori yo‘lni ichingizda kuylab, akkordning ichki tovushlarini uning ostida eshiting. 9/8 guruhlaridagi mayda pulslar uzilmasin. Katta masofaga sakraganda qo‘lni oldindan ko‘chiring; tovushning jarangi tugashi bilan klavishni ushlash vaqtini adashtirmang.",
+      "ru": "Мягкие многозвучные аккорды позже раскрываются в более широкое движение. Мысленно пойте верхнюю линию, слыша внутренние тоны под ней. Сохраняйте мелкий пульс в группах 9/8. При широких перемещениях готовьте перенос руки заранее и различайте удержание клавиши и продолжающийся резонанс звука.",
+      "en": "Soft chords open into broader motion later in the piece. Sing the upper line internally and hear the inner chord tones below it. Keep the small pulses connected within 9/8 groups. Prepare wide moves early and distinguish the time a key is held from the resonance that continues afterwards."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ]
+  },
+  {
+    "code": "river-flows-in-you",
+    "slug": "river-flows-in-you",
+    "title": "River Flows in You",
+    "composer": "Yiruma",
+    "collection": "First Love",
+    "sha256": "8a31444abaaec5c9c3106e66a66e5ca962ab9d572361498606264943937aea2f",
+    "note_count": 1124,
+    "duration_seconds": 209.76302083333334,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 16,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Takroriy jo‘rlik ustida kuy kichik jumlalarga bo‘linib oqadi. Motiv — qaytib keladigan qisqa musiqiy fikr. Motivning har qaytishini aynan bir xil kuch bilan bosmang; avval qaysi tovushga borayotganini eshiting. Jo‘rlik ravonlashgach, kuy kirishlarini qo‘shing va ikki qatlamning bir-birini bosib ketmasligini tinglang.",
+      "ru": "Над повторяющимся сопровождением мелодия течёт короткими фразами. Мотив — небольшая возвращающаяся музыкальная мысль. Не повторяйте его механически с одной силой: сначала услышьте направление. После плавного сопровождения добавьте вступления мелодии и проверьте, что слои не заглушают друг друга.",
+      "en": "Short melodic phrases flow over recurring accompaniment. A motif is a small musical idea that returns. Do not repeat it mechanically at one intensity; hear its destination first. Once the accompaniment flows, add the melody’s entries and listen for balance between the layers."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "bass",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "coordination",
+        "start": 40,
+        "end": 64
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Yiruma/Yiruma_River_Flows_in_You.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "kiss-the-rain",
+    "slug": "kiss-the-rain",
+    "title": "Kiss the Rain",
+    "composer": "Yiruma",
+    "collection": "From the Yellow Room",
+    "sha256": "7e9fe6cf369750ca5e4eebe484087f7eb80647ef5be8145dab48512e0f522d67",
+    "note_count": 1432,
+    "duration_seconds": 253.0703125,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus; creator/arranger not identified in the repository",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 24,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Uzun kuy tovushlari orasida jo‘rlik harakati davom etadi. Legato — tovushlarni bir musiqiy yo‘l sifatida ulash; bu har klavishni pedal kabi uzoq ushlash degani emas. Kuy tayanchlarini kuylab, yangi tovush qaysi paytda kirishini kuting. Qisqa bezaklarni qo‘shganda uzun jumlaning yo‘nalishi yo‘qolmasin.",
+      "ru": "Между длинными звуками мелодии сопровождение продолжает двигаться. Легато связывает звуки в одну линию, но не требует держать каждую клавишу как педальный хвост. Пропойте опоры и дождитесь точного нового вступления. Короткие украшения должны сохранять направление длинной фразы.",
+      "en": "The accompaniment keeps moving between sustained melodic tones. Legato connects tones into one line; it does not mean holding every key like a pedal tail. Sing the landmarks and wait for each new entry. Short decorations should preserve the direction of the longer phrase."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "bass",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "coordination",
+        "start": 48,
+        "end": 72
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Yiruma/Yiruma_Kiss_the_Rain.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "may-be",
+    "slug": "may-be",
+    "title": "May Be",
+    "composer": "Yiruma",
+    "collection": "First Love",
+    "sha256": "385064151f33c20505e0e8cee86ddf19c90891790915078d143d34b45dddf929",
+    "note_count": 1210,
+    "duration_seconds": 256.9010416666667,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus; creator/arranger not identified in the repository",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu variantda kuy kirishlari va jo‘rlikning mayda harakatlari bir xil zichlikda emas. Avval yuqori yo‘lning qisqa savol va javobini eshiting. Fraza — bir nafasda kuylash mumkin bo‘lgan musiqiy bo‘lak. Fraza oxirida shoshmang, lekin ichki pulsni ham to‘xtatmang; keyin pastki qatlamni shu yo‘lga ulang.",
+      "ru": "Мелодические вступления и мелкие движения сопровождения имеют разную плотность. Сначала услышьте короткий вопрос и ответ верхней линии. Фраза — музыкальный отрезок, который можно спеть на одном дыхании. Не торопите её окончание и не теряйте внутренний пульс; затем присоедините нижний слой.",
+      "en": "Melodic entries and the smaller accompaniment motions have different densities. Hear the upper line’s short question and answer first. A phrase is a musical span you could sing in one breath. Do not rush its ending or lose the inner pulse; then connect the lower layer to that line."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Yiruma/Yiruma_Maybe.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "nuvole-bianche",
+    "slug": "nuvole-bianche",
+    "title": "Nuvole Bianche",
+    "composer": "Ludovico Einaudi",
+    "collection": "Una Mattina",
+    "sha256": "a81730fc44de10ad5540253c0468b0d66161ca71a0f4ba0a8e919f8bce3c8d29",
+    "note_count": 2650,
+    "duration_seconds": 349.9908854166667,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 24,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Takroriy shakl asta kuchayib katta jumlaga aylanadi. Kreshchendo — ovoz kuchining bosqichma-bosqich ortishi, tempni tezlatish emas. Qaytadigan bass tayanchlarini bir tekis vaqt bilan eshiting. To‘liq faktura qo‘shilganda yuqori kuy ajralib tursin; kuchayishni faqat barcha notalarni qattiq bosish bilan almashtirmang.",
+      "ru": "Повторяющаяся фигура постепенно вырастает в большую фразу. Крещендо означает постепенное усиление звука, а не ускорение. Держите равномерное время возвращающихся басовых опор. В полной фактуре сохраняйте верхнюю мелодию и не подменяйте развитие одинаково сильным ударом по всем нотам.",
+      "en": "A recurring figure gradually grows into a larger phrase. Crescendo means a gradual increase in sound, not speed. Keep returning bass landmarks evenly timed. Preserve the upper melody in the complete texture instead of replacing the musical build with equally forceful attacks on every note."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "bass",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "coordination",
+        "start": 48,
+        "end": 72
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Einaudi/Einaudi_Nuvole_bianche.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "una-mattina",
+    "slug": "una-mattina",
+    "title": "Una Mattina",
+    "composer": "Ludovico Einaudi",
+    "collection": "Una Mattina",
+    "sha256": "1e30f75928d3d5b5e023958526146de75f814375949cecc345cc5b531ed4ae9c",
+    "note_count": 742,
+    "duration_seconds": 192.0,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano edition; transcriber not identified by source",
+    "source_url": "https://midifind.com/files/l/ludovico_einaudi/ludovico_einaudi_una_mattina_2/1275-1-0-38414",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bir-biriga yaqin kuy tovushlari qaytib keladigan jo‘rlik bilan suhbatlashadi. Ostinato — qaytariladigan musiqiy shakl. Avval shu shaklning pastki tayanchlarini eshiting, keyin kuy uning orasiga qayerda kirishini toping. Bir tovush ushlanib turganda boshqasining yangidan kirishini ajrating; takrorlarda vaqtni tezlashtirmang.",
+      "ru": "Близкие звуки мелодии взаимодействуют с возвращающимся сопровождением. Остинато — повторяющаяся музыкальная фигура. Сначала услышьте её нижние опоры, затем найдите вступления мелодии между ними. Различайте удержанный звук и новое вступление другого слоя, не ускоряйте повторения.",
+      "en": "Neighbouring melodic tones interact with a returning accompaniment figure. An ostinato is a recurring musical pattern. Hear its low landmarks first, then locate the melody’s entries between them. Distinguish a held tone from another layer’s fresh attack and avoid accelerating through repetitions."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://midifind.com/files/0-0-1-38414-20",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "experience",
+    "slug": "experience",
+    "title": "Experience",
+    "composer": "Ludovico Einaudi",
+    "collection": "In a Time Lapse",
+    "sha256": "e3b2a9bfc48bade532f271f997c60a8f5f32e8764f300cfafc532c39c2a7486b",
+    "note_count": 2630,
+    "duration_seconds": 350.038442,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano arrangement; creator not supplied by source",
+    "source_url": "https://playmarblemusic.com/midis",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 72.00002880001152,
+    "key_label": "F♯ minor",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "0": "right",
+        "1": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 32,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu pianino variantida qaytariladigan harakat ustiga tobora zichroq qatlam qo‘shiladi. Faktura — bir vaqtda mavjud kuy va jo‘rlik yo‘llarining tuzilishi. Har yangi qatlam kirganda temp o‘zgarmasin. Avval pastki puls, keyin yuqori tayanchlar, so‘ng barcha ichki tovushlarni qo‘shing; zich yakunda ham kuy yo‘li eshitilsin.",
+      "ru": "В этой фортепианной версии к повторяющемуся движению добавляется всё более плотный верх. Фактура — устройство одновременно звучащих линий. Сохраняйте темп при появлении нового слоя. Начните с нижнего пульса, добавьте верхние опоры, затем внутренние звуки; мелодия должна оставаться слышимой и в плотной кульминации.",
+      "en": "This piano version adds an increasingly dense upper texture to recurring motion. Texture describes how simultaneous musical lines are arranged. Keep the tempo stable as layers arrive. Begin with the low pulse, add upper landmarks, then the inner tones; the melody should remain audible in the dense climax."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "bass",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "coordination",
+        "start": 56,
+        "end": 80
+      }
+    ],
+    "download_url": "https://playmarblemusic.com/midis/Experience_-_Ludovico_Einaudi.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "i-giorni",
+    "slug": "i-giorni",
+    "title": "I Giorni",
+    "composer": "Ludovico Einaudi",
+    "collection": "I Giorni",
+    "sha256": "7569f1a6154b90daf9578e122f812e228a6436b227e98a05348a182d86f833cc",
+    "note_count": 1969,
+    "duration_seconds": 357.9921875,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus; creator/arranger not identified in the repository",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 16,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bir motivning qaytishi butun asarning xotirjam yo‘lini birlashtiradi. Takror bir xil ma’nosiz bosish emas: bass yoki yuqori tayanchning o‘zgarishini eshiting. Avval kuy tayanchlarini kuylang, keyin ular orasidagi to‘liq harakatni qaytaring. Uzoq ijroda har qaytishda yangi tezlik olish o‘rniga ichki pulsni saqlang.",
+      "ru": "Возвращающийся мотив объединяет спокойное течение произведения. Повторение не означает механическое копирование: услышьте изменение баса или верхней опоры. Сначала пропойте мелодические ориентиры, затем восстановите движение между ними. В длинном исполнении сохраняйте внутренний пульс, не начиная каждый возврат в новом темпе.",
+      "en": "A returning motif connects the piece’s calm flow. Repetition is not mechanical copying: hear changes in the bass or upper landmark. Sing the melodic supports first, then restore the motion between them. In the longer performance keep an inner pulse instead of restarting each return at a new tempo."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "bass",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "coordination",
+        "start": 40,
+        "end": 64
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Einaudi/Einaudi_I_giorni.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "comptine",
+    "slug": "comptine",
+    "title": "Comptine d’un autre été : L’Après-midi",
+    "composer": "Yann Tiersen",
+    "collection": "Amélie",
+    "sha256": "dfa7afaa963b4f8d344823d80241ea99ac3fcd650a2ce819aeac4a52aede7fb1",
+    "note_count": 811,
+    "duration_seconds": 141.333192,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "ADL Piano MIDI; underlying transcriber unverified",
+    "source_url": "https://github.com/lucasnfe/adl-piano-midi",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 90.00009000009,
+    "key_label": "E minor",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Chap qatlamning qaytadigan arpejiosi ustida kuy mustaqil harakat qiladi. Mustaqillik — har ikki qo‘l har safar birga bosishi shart emasligi. Avval jo‘rlik tartibini eshiting, keyin yuqori tovushlar uning qaysi joyiga tushishini toping. Zichroq kuy kelganda pastki shakl tezlashib ketmasin.",
+      "ru": "Над повторяющимся арпеджио нижнего слоя мелодия движется самостоятельно. Независимость означает, что руки не обязаны каждый раз начинать вместе. Сначала услышьте порядок сопровождения, затем место верхних вступлений внутри него. Более плотная мелодия не должна ускорять нижнюю фигуру.",
+      "en": "The melody moves independently above a recurring lower arpeggio. Independence means the hands need not start every note together. Hear the accompaniment’s order first, then place upper entries within it. A denser melody should not make the lower pattern accelerate."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/lucasnfe/adl-piano-midi/master/midi/adl-piano-midi.zip",
+    "archive_member": "adl-piano-midi/Soundtracks/French Soundtrack/Yann Tiersen/Comptine Dun Autre Ete.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "mariage-d-amour",
+    "slug": "mariage-d-amour",
+    "title": "Mariage d’Amour",
+    "composer": "Paul de Senneville",
+    "collection": "Piano",
+    "sha256": "75bd923f1bd47851ec4b8d960edda9ee5a8d487b165550c553dc68c6aa24e818",
+    "note_count": 1137,
+    "duration_seconds": 241.38886475,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "ADL Piano MIDI; Lucas N. Ferreira, Levi H. S. Lelis and Jim Whitehead; underlying arranger unverified",
+    "source_url": "https://github.com/lucasnfe/adl-piano-midi",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 54.00000540000054,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 16,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Paul de Senneville asarining shu variantida keng jo‘rlik va kuydagi bezaklar birga keladi. Katta intervalga qo‘lni cho‘zib qotirish o‘rniga yangi joyga ko‘chiring. Avval bezaklar orasidagi asosiy kuy tayanchini toping. Ikki qatlam qo‘shilganda kuy balansi va bassning vaqtiga e’tibor bering; shoshilgan bezak frazani bo‘lib yubormasin.",
+      "ru": "В этой версии произведения Поля де Сенневиля широкое сопровождение сочетается с украшениями мелодии. Переносите руку к новому положению вместо жёсткого растяжения. Найдите основные мелодические опоры между украшениями. Соединяя слои, следите за балансом и временем баса; торопливое украшение не должно дробить фразу.",
+      "en": "This edition of Paul de Senneville’s piece combines wide accompaniment with melodic ornaments. Carry the hand into a new position rather than holding a rigid stretch. Find the melodic landmarks between ornaments. When combining layers, listen to balance and bass timing; rushed decorations should not break the phrase."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "bass",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "coordination",
+        "start": 40,
+        "end": 64
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/lucasnfe/adl-piano-midi/master/midi/adl-piano-midi.zip",
+    "archive_member": "adl-piano-midi/Ambient/Easy Listening/Richard Clayderman/Marriage DAmour.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "ballade-pour-adeline",
+    "slug": "ballade-pour-adeline",
+    "title": "Ballade pour Adeline",
+    "composer": "Paul de Senneville · Olivier Toussaint",
+    "collection": "Piano",
+    "sha256": "ef167814f114074d1395334c72edb6dc4d879490a26ab8d203afe0ec4f07f81d",
+    "note_count": 844,
+    "duration_seconds": 169.62890625,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "ADL Piano MIDI; Lucas N. Ferreira, Levi H. S. Lelis and Jim Whitehead; underlying arranger unverified",
+    "source_url": "https://github.com/lucasnfe/adl-piano-midi",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 240.0,
+    "key_label": "C",
+    "time_label": "3/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Tanish kuy qisqa kirishlardan kengroq jumlaga ochiladi. Yuqori yo‘ldagi uzun tayanchni ichingizda kuylang va jo‘rlikning har notasi bilan qayta boshlamang. Bass pastga yoki yuqoriga ko‘chganda kuy uzilmasin. Siyrak variantda yo‘nalishni topib, keyin barcha ichki tovushlarni yumshoq qo‘shing.",
+      "ru": "Знакомая мелодия раскрывается от коротких вступлений к более широкой фразе. Мысленно пойте длинную верхнюю опору, не начиная её заново с каждой нотой сопровождения. Перемещение баса не должно разрывать мелодию. Найдите направление в редком варианте, затем мягко добавьте внутренние звуки.",
+      "en": "The familiar melody opens from short entries into a broader phrase. Sing the long upper landmark internally rather than restarting it with each accompaniment note. Keep the melody connected as the bass moves. Find its direction in the sparse version, then add the inner tones softly."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/lucasnfe/adl-piano-midi/master/midi/adl-piano-midi.zip",
+    "archive_member": "adl-piano-midi/Ambient/Easy Listening/Richard Clayderman/Ballade Pour Adeline.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "cornfield-chase",
+    "slug": "cornfield-chase",
+    "title": "Cornfield Chase",
+    "composer": "Hans Zimmer",
+    "collection": "Interstellar",
+    "sha256": "e040b0219f3eaa2723b651f39f1635363797fa87dd5cd50ee48981dcccfb75c5",
+    "note_count": 1311,
+    "duration_seconds": 126.73368,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano arrangement; source attribution retained in MIDI",
+    "source_url": "https://playmarblemusic.com/midis",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 49.00039200313603,
+    "key_label": "",
+    "time_label": "6/8",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 16,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Qaytadigan tovush shakli harakat hissini yaratadi. Ostinato shaklining notalari ko‘paysa ham uning ichki pulsi barqaror qolsin. Avval pastki tayanchlarni, keyin yuqori yo‘lni alohida eshiting. Bir xil klavishga qaytish yangi hujumdir: avvalgisini tugash vaqtida bo‘shating va uni pedal dumi bilan aralashtirmang.",
+      "ru": "Повторяющаяся фигура создаёт ощущение движения. Даже при уплотнении остинато его внутренний пульс остаётся устойчивым. Отдельно услышьте нижние опоры и верхнюю линию. Возвращение к той же клавише — новое нажатие: отпускайте предыдущее вовремя и отличайте его от педального резонанса.",
+      "en": "A recurring figure creates forward motion. Keep its inner pulse steady as the ostinato grows denser. Hear the lower landmarks and upper line separately. Returning to the same key is a fresh attack: release the preceding note at its ending and distinguish it from pedal resonance."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "bass",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "coordination",
+        "start": 40,
+        "end": 64
+      }
+    ],
+    "download_url": "https://playmarblemusic.com/midis/Theme of Interstellar - Cornfield Chase___WWW.MIDISFREE.COM.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "time",
+    "slug": "time",
+    "title": "Time",
+    "composer": "Hans Zimmer",
+    "collection": "Inception",
+    "sha256": "d35b2f572d1df2a1ccb7f2168a52785a44005094524e88a57b45fa291b979f69",
+    "note_count": 541,
+    "duration_seconds": 287.8,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano edition; transcriber not identified by source",
+    "source_url": "https://scorebase.org/scores/220030",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 60.0,
+    "key_label": "A minor",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "0": "right",
+        "1": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 32,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Sekin qaytadigan garmoniya asarning katta o‘sishini ushlab turadi. Garmoniya — birga yoki ketma-ket eshitilgan akkordlar orasidagi munosabat. Avval bass kelishlarini sanamasdan ichingizda puls bilan kuzating. Keyingi qatlamlar qo‘shilganda shoshmang: ovoz kengayishi mumkin, lekin vaqtning barqarorligi saqlanadi.",
+      "ru": "Медленно возвращающаяся гармония удерживает большое нарастание произведения. Гармония — связь аккордов, звучащих одновременно или последовательно. Следите за приходом баса внутренним пульсом. Не торопитесь при добавлении новых слоёв: звук может расширяться, но устойчивость времени сохраняется.",
+      "en": "Slowly recurring harmony supports the piece’s large build. Harmony concerns relationships between chords heard together or in succession. Follow bass arrivals with an internal pulse. Do not rush when new layers join: the sound can broaden while time remains steady."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "bass",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "coordination",
+        "start": 56,
+        "end": 80
+      }
+    ],
+    "download_url": "https://scorebase.org/scores/220030/file/mid?download=true",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "hes-a-pirate",
+    "slug": "hes-a-pirate",
+    "title": "He’s a Pirate",
+    "composer": "Klaus Badelt",
+    "collection": "Pirates of the Caribbean",
+    "sha256": "109220b9d4f378bfb8f86d5f7dce845c26020b8bd042caceb70a17326a85e38b",
+    "note_count": 1255,
+    "duration_seconds": 77.4,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano edition; transcriber not identified by source",
+    "source_url": "https://midifind.com/files/movies_tv_show/pirates_of_the_caribbean_he_39_s_a_pirate_piano/377-1-0-8824",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. Complete 77-second short arrangement.",
+    "quarter_bpm": 200.0,
+    "key_label": "",
+    "time_label": "6/8",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "0": "right",
+        "1": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu qisqa pianino aranjirovkasida ritmik aniqlik asosiy vazifa. 6/8 dagi mayda tovushlarni uchlik guruhlar sifatida eshiting. Avval kuyning boshlanish va to‘xtash joylarini, keyin jo‘rlik hujumlarini toping. Zich akkordlar qo‘shilganda ritm og‘irlashmasin; tezlikdan oldin barcha kirishlarning tartibini ravon qiling.",
+      "ru": "В этой короткой фортепианной аранжировке главная задача — ритмическая точность. Слышьте мелкие звуки 6/8 группами по три. Найдите начала и остановки мелодии, затем вступления сопровождения. Плотные аккорды не должны утяжелять ритм; до ускорения добейтесь плавного порядка всех атак.",
+      "en": "Rhythmic precision is central to this short piano arrangement. Hear the small notes of 6/8 in groups of three. Locate the melody’s starts and stops, then the accompaniment attacks. Dense chords should not make the rhythm heavy; make the entry sequence fluent before increasing speed."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://midifind.com/files/0-0-1-8824-20",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "one-summers-day",
+    "slug": "one-summers-day",
+    "title": "One Summer’s Day",
+    "composer": "Joe Hisaishi",
+    "collection": "Spirited Away",
+    "sha256": "d4764afb57ec85113f5d9200f5c8fb6218bf591703ef740b2e341e01f681beed",
+    "note_count": 960,
+    "duration_seconds": 225.00130208333334,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Pianist8 MIDI corpus; creator/arranger not identified in the repository",
+    "source_url": "https://github.com/joann8512/Pianist8",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 120.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 4,
+    "preview_start": 16,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Yumshoq akkordlar orasida kuy ayrim tayanchlar orqali eshitiladi. Akkord ichidagi eng yuqori yo‘lni ajratib, qolgan tovushlarni uning ostida tinglang. Bo‘shliqlarda ichki pulsni yo‘qotmang. Jo‘rlik kengayganda har bir klavishni uzoq ushlab rangni loyqalash o‘rniga, fayldagi alohida nota tugashlariga qarang.",
+      "ru": "Между мягкими аккордами мелодия проявляется через отдельные опоры. Выделите верхнюю линию, остальные тоны услышьте под ней. Не теряйте внутренний пульс в паузах. При расширении сопровождения следите за отдельными окончаниями нот, не замутняя звучание одинаково долгим удержанием всех клавиш.",
+      "en": "Melodic landmarks emerge between soft chords. Separate the upper line and hear the other tones beneath it. Keep an inner pulse through gaps. As accompaniment broadens, follow individual note endings rather than blurring the sound by holding all keys equally long."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "bass",
+        "start": 16,
+        "end": 40
+      },
+      {
+        "mode": "coordination",
+        "start": 40,
+        "end": 64
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/joann8512/Pianist8/4ce87d6395bc85137e12ed6caddfaf405ca6b8d9/midi/Hisaishi/Hisaishi_One_Summer%27s_Day.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "merry-go-round-of-life",
+    "slug": "merry-go-round-of-life",
+    "title": "Merry-Go-Round of Life",
+    "composer": "Joe Hisaishi",
+    "collection": "Howl’s Moving Castle",
+    "sha256": "c6579739e4d968c3196a42d6a3e64ce6ff28a187a820ed7672bee21d8c3ee371",
+    "note_count": 2344,
+    "duration_seconds": 317.82375625,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Online Sequencer 2571108; source uploader not identified",
+    "source_url": "https://onlinesequencer.net/2571108",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering. Waltz phrasing is triple; the Online Sequencer export supplies a 4/4 navigation grid.",
+    "quarter_bpm": 135.000135000135,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 4,
+    "preview_start": 32,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Valsning pastki bass va keyingi akkordlari ustida keng kuy aylanadi. Avval uch hissali musiqiy yurishni eshiting; eksportning navigatsiya kataklari nota yozuvi o‘rnini bosmaydi. Kuy sakrashlarida yangi registrni oldindan toping. Keng jo‘rlik qaytganda yuqori jumlaning nafasini va yengil vals harakatini saqlang.",
+      "ru": "Широкая мелодия кружится над басом и следующими аккордами вальса. Сначала услышьте трёхдольное движение: навигационная сетка экспорта не заменяет нотную запись. Заранее находите новый регистр при скачках мелодии. В полном сопровождении сохраняйте дыхание верхней фразы и лёгкость вальса.",
+      "en": "A broad melody turns above the waltz’s bass and following chords. Hear the three-beat musical movement first; the export’s navigation grid is not a notated score. Locate new registers before melodic leaps. Preserve the upper phrase’s breathing and the waltz’s light movement as full accompaniment returns."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "bass",
+        "start": 32,
+        "end": 56
+      },
+      {
+        "mode": "coordination",
+        "start": 56,
+        "end": 80
+      }
+    ],
+    "download_method": "Published Download .mid control; browser export, 2026-10-26",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "la-valse-d-amelie",
+    "slug": "la-valse-d-amelie",
+    "title": "La Valse d’Amélie",
+    "composer": "Yann Tiersen",
+    "collection": "Amélie",
+    "sha256": "2129b88850616c7782ca49ef8cd906c524ae0f7d567c925f897d7d445c3d169e",
+    "note_count": 766,
+    "duration_seconds": 157.5,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "ADL Piano MIDI; underlying transcriber unverified",
+    "source_url": "https://github.com/lucasnfe/adl-piano-midi",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 120.0,
+    "key_label": "Am",
+    "time_label": "3/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Qaytadigan uch hissali jo‘rlik kuyning aylanish hissini yaratadi. Birinchi bassni tayanch, keyingi akkordlarni yengilroq davom deb eshiting. Yuqori qatlam boshqa vaqtda kirsa ham pastki puls to‘xtamasin. Avval siyrak ikki qatlam, keyin to‘liq jo‘rlik bilan kuyning qayerga ketayotganini kuzating.",
+      "ru": "Возвращающееся трёхдольное сопровождение создаёт вращение мелодии. Слышьте первый бас как опору, следующие аккорды как более лёгкое продолжение. Нижний пульс не останавливается из-за отдельного верхнего вступления. Проследите направление сначала в редких двух слоях, затем с полным сопровождением.",
+      "en": "Recurring three-beat accompaniment gives the melody its turning motion. Hear the first bass as support and the following chords as lighter continuation. Keep the lower pulse moving through independent upper entries. Follow the melody’s direction first in sparse layers, then over complete accompaniment."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/lucasnfe/adl-piano-midi/master/midi/adl-piano-midi.zip",
+    "archive_member": "adl-piano-midi/Soundtracks/French Soundtrack/Yann Tiersen/La Valse dAmelie.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "love-story",
+    "slug": "love-story",
+    "title": "Love Story · Theme",
+    "composer": "Francis Lai",
+    "collection": "Love Story",
+    "sha256": "5a54e02e82abee2686238718b08cadb4441b7010afc3538e5d1489e9f905c166",
+    "note_count": 742,
+    "duration_seconds": 143.916015625,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Online Sequencer 4524466; source uploader not identified",
+    "source_url": "https://onlinesequencer.net/4524466",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 80.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Francis Lai mavzusida uzun kuy yo‘li takroriy jo‘rlik ustida davom etadi. Kuy avjiga qayerda borishini ichingizda kuylang. Avj — frazaning ma’no va ovoz jihatidan yetib boradigan nuqtasi. Har yangi akkordda kuy nafasini qayta boshlamang; bass almashuvlarini oldindan topib, yuqori yo‘lni birlashtiring.",
+      "ru": "В теме Франсиса Лэ длинная мелодия продолжается над повторяющимся сопровождением. Мысленно пропойте её путь к вершине — смысловой и звуковой опоре фразы. Не начинайте дыхание мелодии заново на каждом аккорде. Заранее находите смены баса и соединяйте верхнюю линию.",
+      "en": "Francis Lai’s theme carries a long melody over recurring accompaniment. Sing its direction towards the phrase’s musical high point internally. Do not restart the melody’s breath at each chord. Locate bass changes early and connect the upper line across them."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_method": "Published Download .mid control; browser export, 2026-10-26",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "mia-sebastians-theme",
+    "slug": "mia-sebastians-theme",
+    "title": "Mia & Sebastian’s Theme",
+    "composer": "Justin Hurwitz",
+    "collection": "La La Land",
+    "sha256": "dd760e0ec71fbf8b7d3b8cf820ff04c4896ed087c5d9054b4e23ee64f70142fa",
+    "note_count": 572,
+    "duration_seconds": 123.6,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Online Sequencer 4506732; Tmoni1738",
+    "source_url": "https://onlinesequencer.net/4506732",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. One source track: colour roles use the reviewed MIDI C4 register boundary; crossing voices are not automatic fingering.",
+    "quarter_bpm": 100.0,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "register",
+      "split_pitch": 60,
+      "evidence": "curated_register_split_not_physical_hand_metadata"
+    },
+    "difficulty": 3,
+    "preview_start": 0,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Qisqa savolga o‘xshash kuy keyingi javob jumlasiga olib boradi. Avval yuqori kirishlarni ichingizda kuylab, uzun tayanchlarni toping. Jo‘rlikning harakati shu jumlani bo‘lib yubormasin. Zichlashgan joylarda oldingi sokin tayanchni yodda tutib, to‘liq sekin bosqichdan asl vaqtga bosqichma-bosqich o‘ting.",
+      "ru": "Короткая мелодическая реплика ведёт к ответной фразе. Сначала пропойте верхние вступления и найдите длинные опоры. Движение сопровождения не должно дробить эту линию. В более плотных местах сохраняйте ощущение прежней спокойной опоры и переходите от полного медленного этапа к исходному времени постепенно.",
+      "en": "A short melodic question leads into an answering phrase. Sing the upper entries and locate the sustained landmarks first. Accompaniment motion should not break that line. In denser passages keep the earlier calm support in mind and move gradually from the slow complete stage to source timing."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "bass",
+        "start": 0,
+        "end": 24
+      },
+      {
+        "mode": "coordination",
+        "start": 24,
+        "end": 48
+      }
+    ],
+    "download_method": "Published Download .mid control; browser export, 2026-10-26",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "schindlers-list",
+    "slug": "schindlers-list",
+    "title": "Theme from Schindler’s List",
+    "composer": "John Williams",
+    "collection": "Schindler’s List",
+    "sha256": "ea131f0065570ef9adc518db4e97ac3010b7d0b77c769a573a4491827960c3a6",
+    "note_count": 816,
+    "duration_seconds": 96.0,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "ADL Piano MIDI; Lucas N. Ferreira, Levi H. S. Lelis and Jim Whitehead; underlying arranger unverified",
+    "source_url": "https://github.com/lucasnfe/adl-piano-midi",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings. Complete 96-second short arrangement.",
+    "quarter_bpm": 100.0,
+    "key_label": "G minor",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 3,
+    "preview_start": 8,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Bu qisqa pianino variantida uzoq kuy tovushlari orasidagi sukut ham jumlaning bir qismidir. Har tayanchga shoshilmay borib, keyingi kirish oldidan ichki pulsni saqlang. Yuqori yo‘lni kuylang, pastdagi akkordlarni uning tayanchi deb eshiting. Hissiy kuchni tempni tasodifiy tezlatish bilan almashtirmang.",
+      "ru": "В этой короткой фортепианной версии тишина между длинными звуками тоже принадлежит фразе. Не торопите опоры, сохраняйте внутренний пульс перед следующим вступлением. Пойте верхнюю линию, нижние аккорды услышьте как поддержку. Не заменяйте эмоциональное развитие случайным ускорением.",
+      "en": "In this short piano edition, silence between sustained tones belongs to the phrase too. Avoid rushing its landmarks and keep an inner pulse before the next entry. Sing the upper line and hear lower chords as support. Emotional development should not become accidental acceleration."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "bass",
+        "start": 8,
+        "end": 32
+      },
+      {
+        "mode": "coordination",
+        "start": 32,
+        "end": 56
+      }
+    ],
+    "download_url": "https://raw.githubusercontent.com/lucasnfe/adl-piano-midi/master/midi/adl-piano-midi.zip",
+    "archive_member": "adl-piano-midi/Soundtracks/Soundtrack/John Williams/Theme From Schindlers List.mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  },
+  {
+    "code": "my-heart-will-go-on",
+    "slug": "my-heart-will-go-on",
+    "title": "My Heart Will Go On",
+    "composer": "James Horner · Will Jennings",
+    "collection": "Titanic",
+    "sha256": "33c353a6a88f013c1920f92fe1c8bd24462cc1d4ec7ac4b8c3013dcb84f3f98d",
+    "note_count": 1369,
+    "duration_seconds": 281.6674272624997,
+    "storage": "public",
+    "rights_basis": "owner_confirmed_redistribution",
+    "license": "Redistribution permission confirmed by project owner, 2026-10-26; original rights retained",
+    "license_url": "",
+    "credit": "Community piano arrangement",
+    "source_url": "https://playmarblemusic.com/midis",
+    "edition_note": "Complete selected piano edition; exact attacks, key releases, velocities and source metadata retained. Display roles describe layers, not verified physical fingerings.",
+    "quarter_bpm": 99.96051559633945,
+    "key_label": "",
+    "time_label": "4/4",
+    "hand_roles": {
+      "method": "tracks",
+      "tracks": {
+        "1": "right",
+        "2": "left"
+      },
+      "evidence": "reviewed_source_staff_roles_not_fingering"
+    },
+    "difficulty": 4,
+    "preview_start": 24,
+    "preview_duration": 16,
+    "learning_focus": {
+      "uz": "Qo‘shiqning tanish kuyi bu keng pianino variantida ichki tovushlar bilan boyitilgan. Avval kuylab bo‘ladigan asosiy yo‘lni toping, keyin qo‘shimcha tovushlarni yumshoq qaytaring. Katta bas va akkord sakrashlarini oldindan tayyorlang. Avjda ham har notani bir xil kuchda bosish o‘rniga kuy va jo‘rlikning farqini eshiting.",
+      "ru": "В этой широкой фортепианной версии знакомая песенная линия обогащена внутренними тонами. Найдите напеваемую мелодию, затем мягко верните дополнительные звуки. Заранее готовьте большие перемещения баса и аккордов. Даже в кульминации различайте мелодию и сопровождение вместо одинаковой силы всех нот.",
+      "en": "This broad piano edition enriches the familiar song melody with inner tones. Find the singable line first, then restore the additional tones softly. Prepare wide bass and chord moves early. Even at the climax distinguish melody from accompaniment rather than giving every note equal force."
+    },
+    "lesson_windows": [
+      {
+        "mode": "melody",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "bass",
+        "start": 24,
+        "end": 48
+      },
+      {
+        "mode": "coordination",
+        "start": 48,
+        "end": 72
+      }
+    ],
+    "download_url": "https://playmarblemusic.com/midis/Celine Dion - My Heart Will Go On (Advanced).mid",
+    "permission_confirmed_on": "2026-10-26",
+    "permission_scope": "MIDI files and teaching adaptations in the KuyLab website and its public GitHub repository",
+    "permission_evidence": "Project owner explicitly confirmed they hold the permissions and requested public repository inclusion."
+  }
+]

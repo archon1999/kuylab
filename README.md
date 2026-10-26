@@ -1,3 +1,21 @@
+![KuyLab — turn a score into a practice system](assets/banner.svg)
+
+**Learn the piece. Understand the music. Keep your progress.**
+
+[Open KuyLab](https://kuylab.uz/) · [Local development](#local-development) · [Verification](#verification) · [Content and attribution](#content-and-attribution)
+
+A composition-first studio where synchronized MIDI playback, guided lesson stages and personal study tools work together. The experience is available in **Uzbek, Russian and English**.
+
+| Practice | Learn | Continue |
+| --- | --- | --- |
+| Falling notes, playback speed and arrangement-aware players | Composition lessons, independent exercises and music theory | Saved positions, timestamp notes and account-owned progress |
+
+The implementation separates musical transport and audio behavior from the interface, while a Django backend owns learner state. The repository documents source provenance and third-party rights alongside its code.
+
+Built by [Nazarbek Baltabaev](https://github.com/archon1999).
+
+---
+
 # KuyLab
 
 A composition-first piano learning studio built with Django, React, TypeScript and
@@ -127,3 +145,4 @@ Piano samples, fonts, MUI and audio worklet notices are in
 [third-party notices](frontend/THIRD_PARTY_NOTICES.md) and the app's `/licenses.html`.
 
 Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+

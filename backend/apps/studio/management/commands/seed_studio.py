@@ -14,6 +14,7 @@ from apps.studio.midi_authoring import SOURCE_SHA256, source_data, lesson_stage_
 from apps.studio.models import StudioAsset
 from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
 from apps.studio.all_in_package import additional_assets, package_source, study_file, HASHES
+from apps.studio.curated_repertoire import ENTRY_BY_CODE, edition_provenance
 
 ORIGINAL_KEY = "composition:still:original"
 
@@ -29,6 +30,9 @@ def prepared_assets():
     })]
     for source in SOURCES[1:]:
         content, source_parsed = repertoire_source(source.code)
+        if source.course_kind == "curated":
+            assets.append((source.asset_key, source.title, content, source_parsed, edition_provenance(source.code)))
+            continue
         if source.course_kind == "package":
             assets.append((source.asset_key, source.title, content, source_parsed, {
                 "kind": "user_supplied_original_midi", "filename": source.filename,
@@ -83,6 +87,11 @@ def prepared_assets():
                 if source_code != "still":
                     stage_provenance["composition_code"] = source_code
                     stage_provenance["note_release_basis"] = "Supplied package key holds, uniformly scaled; source CC64 messages only reset sustain off." if source_code == "all-in" else "Replacement source note-off, uniformly scaled; no pedal tail baked into key holds."
+                if source.course_kind == "curated":
+                    stage_provenance.update({"source_url": ENTRY_BY_CODE[source_code]["source_url"],
+                                             "license": ENTRY_BY_CODE[source_code]["license"],
+                                             "credit": ENTRY_BY_CODE[source_code]["credit"],
+                                             "note_release_basis": "Source note-on/off timing, uniformly scaled; sustain is not baked into key holds."})
                 if source_code == "all-in":
                     stage_provenance["source_variant"] = stage["_source_variant"]
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
@@ -133,6 +142,17 @@ class Command(BaseCommand):
                         "tempo_beat_unit":"quarter","key_signature":"","time_signature":"","arranger":"",
                         "full_score_format":"midi","full_score_verified_at":None})
                     arrangements[source.code] = arrangement
+                    if source.course_kind == "curated":
+                        entry = ENTRY_BY_CODE[source.code]
+                        arrangement.source_url = entry["source_url"]
+                        arrangement.source_kind = "public_domain" if entry["license"] == "Public Domain" else "licensed" if entry["storage"] == "public" else "link"
+                        arrangement.rights_status = "public_domain" if entry["license"] == "Public Domain" else "licensed" if entry["storage"] == "public" else "unconfirmed"
+                        arrangement.rights_note = entry["license"] + ". " + entry["credit"] + ". " + entry["edition_note"]
+                        arrangement.arranger = entry["credit"][:120]
+                        arrangement.tempo_bpm = round(entry["quarter_bpm"])
+                        arrangement.key_signature = entry["key_label"]
+                        arrangement.time_signature = entry["time_label"]
+                        arrangement.save(update_fields=["source_url", "source_kind", "rights_status", "rights_note", "arranger", "tempo_bpm", "key_signature", "time_signature"])
                     if source.course_kind == "package":
                         _, parsed = repertoire_source(source.code)
                         arrangement.tempo_bpm = round(parsed["metadata"]["tempo"]["quarter_bpm"])
@@ -158,7 +178,7 @@ class Command(BaseCommand):
                     score = Score(arrangement=arrangement,version=version,file_format="midi",title=title,
                                   original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") else key.replace(":","-")+".mid",
                                   content_sha256=digest,source_provenance=provenance,parsed=parsed,
-                                  rights_note="User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
+                                  rights_note=(ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
                     score.musicxml.save("source.mid", ContentFile(content),save=False)
@@ -171,4 +191,6 @@ class Command(BaseCommand):
                 try: storage.delete(name)
                 except OSError: pass
             raise
-        self.stdout.write(self.style.SUCCESS("Curated studio ready: 8 compositions (All in: Easy/Hard), 57 lessons, 61 continuity studies, 48 exercises, 24 theory topics / 49 interactive activities. Users and existing sources preserved."))
+        items = all_items()
+        counts = {kind: sum(item["kind"] == kind for item in items) for kind in ("lesson", "journey", "exercise", "theory")}
+        self.stdout.write(self.style.SUCCESS(f"Curated studio ready: {len(SOURCES)} compositions (All in: Easy/Hard), {counts['lesson']} lessons, {counts['journey']} continuity studies, {counts['exercise']} exercises, {counts['theory']} theory topics. Users and existing sources preserved."))

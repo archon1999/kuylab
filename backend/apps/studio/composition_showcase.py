@@ -9,6 +9,7 @@ from rest_framework.exceptions import NotFound
 from .all_in_package import variant_definitions
 from .models import StudioAsset
 from .repertoire import SOURCES, SOURCE_BY_CODE
+from .curated_repertoire import active_entries
 
 
 # Seconds refer to the exact supplied exports and their reviewed course landmarks.
@@ -24,6 +25,8 @@ SHOWCASE = {
     "all-in": {"difficulty": 2, "start": 67.04, "duration": 16,
                "variants": {"easy": 2, "hard": 4}},
 }
+SHOWCASE.update({entry["code"]: {"difficulty": entry["difficulty"], "start": entry["preview_start"],
+                                  "duration": entry["preview_duration"]} for entry in active_entries()})
 
 
 def presentation(code, variant=None):

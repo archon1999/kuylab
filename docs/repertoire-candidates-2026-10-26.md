@@ -1,8 +1,12 @@
 # KuyLab uchun 30 ta yangi kompozitsiya nomzodi
 
-Tayyorlangan sana: 2026-10-26. Bu keyingi repertuar uchun tanlash ro‘yxati;
-hozirgi sakkizta kompozitsiya katalogidan alohida turadi. Aniq MIDI ijrolari
-hali tanlanmagan. Ro‘yxat mashhurlik bo‘yicha statistik reyting emas.
+Tayyorlangan sana: 2026-10-26. Quyidagi dastlabki tanlash ro‘yxatining barcha
+30 asari katalogga qo‘shildi; oldingi sakkizta bilan jami 38 ta bo‘ldi.
+Aniq tanlangan fayllar, manbalar va yakuniy qiyinlik baholari
+[katalog manifestida](../backend/apps/studio/assets/catalog/manifest.json),
+darslarni tekshirish qaydlari esa [repertuar reviewida](repertoire-review-2026-10-26.md).
+Pastdagi jadval dastlabki reja va tadqiqot manbalarini saqlaydi;
+u mashhurlik bo‘yicha statistik reyting emas.
 
 Yulduzlar rejalashtirilayotgan pianino variantiga dastlabki baho:
 1 — boshlang‘ich, 2 — oson, 3 — o‘rta, 4 — murakkab, 5 — juda murakkab.

@@ -139,7 +139,7 @@ provenance are documented in [the studio notes](backend/apps/studio/README.md).
 Composition previews load piano samples only after Play, use the main player's
 Steinway engine, and pause on focus loss, backgrounding or leaving the viewport.
 Only one preview plays at a time. The library keeps search, filters, sort, page
-and page size in URLs such as `/compositions?q=Yiruma&p=1&size=6`, backed by
+and page size in URLs such as `/compositions?q=Yiruma` or `/compositions?p=2&size=12`, backed by
 per-account `sessionStorage`. Explicit URL values take priority; Back/Forward and
 native Ctrl/Command/middle-click player links retain normal browser behavior.
 The ten added classical editions retain their public-domain or individual CC terms.

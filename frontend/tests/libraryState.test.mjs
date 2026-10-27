@@ -5,6 +5,7 @@ import { createLibraryStateRepository } from '../src/modules/studio/data-access/
 import { setAccountScope } from '../src/shared/lib/accountScope.ts';
 import { parseRoute, routePath } from '../src/shared/routing/paths.ts';
 import { isPlainLinkClick } from '../src/shared/routing/linkIntent.ts';
+import { canonicalEntryState, isCanonicalEntry } from '../src/shared/routing/historyState.ts';
 
 test('search, filters, order, page and page size round-trip through a canonical library URL',()=>{
   const state=normalizeLibraryState({filter:{query:'Für Elise & C♯',difficulty:4,collection:'Romeo & Juliet · 1968',favoritesOnly:true,sort:'duration'},page:3,size:12});
@@ -23,11 +24,26 @@ test('invalid URL values cannot create unbounded pages, unsafe sizes or unknown 
   assert.equal(hasLibraryQuery(new URLSearchParams('utm_source=example')),false);
 });
 
-test('an explicit default URL overrides old session filters; fresh visits can restore the session',()=>{
+test('default filters and pagination stay out of URLs; only changed values are shareable',()=>{
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState(null))),'/compositions');
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState({filter:{query:'Yiruma'}}))),'/compositions?q=Yiruma');
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState({page:2}))),'/compositions?p=2');
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState({size:12}))),'/compositions?size=12');
+  const defaults=readLibraryQuery(new URLSearchParams('p=1&size=6&sort=curated&difficulty=0&favorites=0'));
+  assert.equal(routePath('library',libraryQuery(defaults)),'/compositions');
+});
+
+test('clean default history entries override later session filters; fresh visits restore the session',()=>{
   const saved=normalizeLibraryState({filter:{query:'Yiruma'},page:2,size:12});
-  const resolve=params=>hasLibraryQuery(params)?readLibraryQuery(params):saved;
+  const resolve=(params,history=null)=>hasLibraryQuery(params)||isCanonicalEntry(history,'/compositions')?readLibraryQuery(params):saved;
   assert.deepEqual(resolve(new URLSearchParams()),saved);
   assert.deepEqual(resolve(new URLSearchParams('p=1&size=6')),normalizeLibraryState(null));
+  const entry=canonicalEntryState({other:'preserved'},'/compositions');
+  assert.equal(entry.other,'preserved');
+  assert.deepEqual(resolve(new URLSearchParams(),entry),normalizeLibraryState(null));
+  assert.equal(isCanonicalEntry(entry,'/exercises'),false);
+  assert.equal(isCanonicalEntry(null,'/compositions'),false);
+  assert.equal(isCanonicalEntry({kuylabCanonicalPath:42},'/compositions'),false);
 });
 
 test('tab session state is isolated per account and survives returning to the library',t=>{

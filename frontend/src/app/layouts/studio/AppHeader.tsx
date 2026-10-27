@@ -11,6 +11,7 @@ import {
 } from '@mui/icons-material';
 import { Avatar, Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
+import { isPlainLinkClick, routePath } from '@shared/routing';
 import { useState } from 'react';
 import PianoLogo from './PianoLogo';
 
@@ -47,9 +48,10 @@ export default function AppHeader({
           <MenuRounded />
         </IconButton>
         <a
-          href="/"
+          href={routePath('dashboard')}
           className="brand"
           onClick={(event) => {
+            if (!isPlainLinkClick(event)) return;
             event.preventDefault();
             onHome();
           }}

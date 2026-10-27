@@ -13,7 +13,7 @@ import {
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 
-import type { Page } from '@shared/routing';
+import { isPlainLinkClick, routePath, type Page } from '@shared/routing';
 const mainListItems = [
   { id: 'dashboard' as Page, text: 'Bosh sahifa', icon: <GridViewRounded /> },
   { id: 'library' as Page, text: 'Kompozitsiyalar', icon: <MusicNoteRounded /> },
@@ -36,6 +36,8 @@ export default function MenuContent({
   const renderItem = (item: (typeof mainListItems)[number]) => (
     <ListItem key={item.id} disablePadding>
       <ListItemButton
+        component="a"
+        href={routePath(item.id)}
         aria-label={tr(item.text)}
         aria-current={
           page === item.id || (['detail', 'lesson'].includes(page) && item.id === 'library')
@@ -45,7 +47,11 @@ export default function MenuContent({
         selected={
           page === item.id || (['detail', 'lesson'].includes(page) && item.id === 'library')
         }
-        onClick={() => onNavigate(item.id)}
+        onClick={(event) => {
+          if (!isPlainLinkClick(event)) return;
+          event.preventDefault();
+          onNavigate(item.id);
+        }}
       >
         <ListItemIcon>{item.icon}</ListItemIcon>
         <ListItemText primary={tr(item.text)} />

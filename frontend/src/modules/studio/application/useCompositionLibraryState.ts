@@ -12,13 +12,15 @@ import { useStudio } from './studio-provider';
 
 export function useCompositionLibraryState() {
   const { repository } = useStudio();
-  const { params } = useRoute();
+  const { params, canonical } = useRoute();
   const signature = params.toString();
   const state = useMemo(
-    () => (hasLibraryQuery(params) ? readLibraryQuery(params) : repository.readLibraryState()),
-    [signature, repository],
+    () =>
+      hasLibraryQuery(params) || canonical
+        ? readLibraryQuery(params)
+        : repository.readLibraryState(),
+    [signature, canonical, repository],
   );
-  const canonical = libraryQuery(state);
   useEffect(() => {
     repository.saveLibraryState(state);
     // Normalize only this route; a bare fresh visit restores this tab's session.
@@ -43,6 +45,6 @@ export function useCompositionLibraryState() {
     reset() {
       commit(normalizeLibraryState({ size: state.size }));
     },
-    canonical,
+    canonical: libraryQuery(state),
   };
 }

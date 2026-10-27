@@ -1,8 +1,10 @@
 import { useSyncExternalStore } from 'react';
 import { parseRoute, routePath, type Page } from './paths.ts';
 import { isPlainLinkClick } from './linkIntent.ts';
+import { canonicalEntryState, isCanonicalEntry } from './historyState.ts';
 import type { MouseEvent } from 'react';
 export { routePath, type Page } from './paths.ts';
+export { isPlainLinkClick } from './linkIntent.ts';
 export function followRouteLink(event: MouseEvent<HTMLAnchorElement>) {
   if (
     !isPlainLinkClick(event) ||
@@ -74,11 +76,11 @@ export function navigate(page: Page, values: Record<string, string | number | nu
 }
 /** Canonical aliases replace history, so Back cannot enter a redirect loop. */
 export function replaceRoute(page: Page, values: Record<string, string | number | null>) {
-  const path = routePath(page, values) + location.hash;
-  if (location.pathname + location.search + location.hash !== path) {
-    history.replaceState({}, '', path);
-    notify();
-  }
+  const path = routePath(page, values);
+  const changed = location.pathname + location.search !== path;
+  if (!changed && isCanonicalEntry(history.state, path)) return;
+  history.replaceState(canonicalEntryState(history.state, path), '', path + location.hash);
+  if (changed) notify();
 }
 export function openPractice(composition?: number) {
   const values: Record<string, string | number | null> = {
@@ -135,6 +137,7 @@ export function useRoute() {
   return {
     page,
     params,
+    canonical: isCanonicalEntry(history.state, search),
     compositionId: positiveId(params.get('composition'), 1),
     lessonId: positiveId(params.get('lesson'), 0),
   };

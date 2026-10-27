@@ -31,7 +31,7 @@ export default function Router() {
   const Page = pages[page];
   return (
     <RouteBoundary
-      key={params.toString()}
+      key={page === 'library' ? page : params.toString()}
       fallback={
         <ErrorState
           title={tr('Sahifani ochib bo‘lmadi')}

@@ -63,9 +63,7 @@ export function libraryQuery(
     collection: filter.collection || null,
     favorites: filter.favoritesOnly ? '1' : null,
     sort: filter.sort === 'curated' ? null : filter.sort,
-    // Explicit page distinguishes a default history entry from a fresh visit
-    // that should restore this account's session state.
-    p: page,
-    size,
+    p: page === 1 ? null : page,
+    size: size === 6 ? null : size,
   };
 }

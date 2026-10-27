@@ -34,6 +34,13 @@ export default function LibraryPage() {
   const query = useDeferredValue(filter.query);
   const list = useRef<HTMLDivElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const scrollToList = () =>
+    requestAnimationFrame(() =>
+      list.current?.scrollIntoView({
+        block: 'start',
+        behavior: reduced ? 'instant' : 'smooth',
+      }),
+    );
   const items = catalog?.compositions || [];
   const collections = [...new Set(items.map((item) => item.collection || '__other__'))];
   const shown = filterCompositions(items, { ...filter, query }, favorites);
@@ -201,12 +208,7 @@ export default function LibraryPage() {
               }
               onChange={(_, next) => {
                 setPage(next);
-                requestAnimationFrame(() =>
-                  list.current?.scrollIntoView({
-                    block: 'start',
-                    behavior: reduced ? 'instant' : 'smooth',
-                  }),
-                );
+                scrollToList();
               }}
             />
             <FormControl size="small" className="composition-page-size">
@@ -217,6 +219,7 @@ export default function LibraryPage() {
                 value={size}
                 onChange={(event) => {
                   setSize(Number(event.target.value));
+                  scrollToList();
                 }}
               >
                 {[6, 12, 24].map((count) => (

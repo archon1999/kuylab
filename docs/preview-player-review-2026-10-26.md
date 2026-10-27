@@ -31,6 +31,10 @@ filter/page changes add entries, and Back/Forward restore controls and results.
 Invalid page sizes and sort values normalize; page numbers clamp to real results.
 Blocked session storage still leaves URL controls usable.
 
+The 27 October navigation follow-up omits default query values and retains clean
+default history entries without visible marker parameters. See
+`navigation-review-2026-10-27.md` for the browser review and follow-up findings.
+
 Tempo audit: the owner's global multiplier was 100%; Rondo alla Turca's source
 contains a 60-quarter-BPM tempo, and its existing override was 200%. Some editions
 are notation renders rather than human performance exports. A blanket multiplier

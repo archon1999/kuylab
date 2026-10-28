@@ -6,10 +6,11 @@ already held at the boundary. No melody-only sampling or invented MIDI is used.
 from django.http import Http404
 from rest_framework.exceptions import NotFound
 
-from .all_in_package import variant_definitions
+from .performance_variants import variant_definitions
 from .models import StudioAsset
 from .repertoire import SOURCES, SOURCE_BY_CODE
 from .curated_repertoire import active_entries
+from .ivory_repertoire import GROUPS as IVORY_GROUPS, GROUP_BY_CODE as IVORY_BY_CODE, variant_entry
 
 
 # Seconds refer to the exact supplied exports and their reviewed course landmarks.
@@ -27,10 +28,17 @@ SHOWCASE = {
 }
 SHOWCASE.update({entry["code"]: {"difficulty": entry["difficulty"], "start": entry["preview_start"],
                                   "duration": entry["preview_duration"]} for entry in active_entries()})
+SHOWCASE.update({group["code"]: {"difficulty": group["variants"][0]["difficulty"],
+                                  "start": group["variants"][0]["preview_start"],
+                                  "duration": group["variants"][0]["preview_duration"]} for group in IVORY_GROUPS})
 
 
 def presentation(code, variant=None):
     value = SHOWCASE[code]
+    if code in IVORY_BY_CODE:
+        selected = variant_entry(code, variant)
+        return {"difficulty": selected["difficulty"], "collection": SOURCE_BY_CODE[code].collection,
+                "preview_start_seconds": selected["preview_start"], "playback_revision": selected["sha256"][:16]}
     return {"difficulty": value.get("variants", {}).get(variant, value["difficulty"]),
             "collection": SOURCE_BY_CODE[code].collection,
             "preview_start_seconds": value["start"]}
@@ -76,9 +84,13 @@ def composition_preview(composition_id, variant=None):
             raise NotFound("Performance variant not found")
     else:
         score = original.score
-    reviewed = SHOWCASE[source.code]
-    start = reviewed["start"]
-    duration = min(reviewed["duration"], score.parsed["metadata"]["duration_seconds"] - start)
+    if source.code in IVORY_BY_CODE:
+        reviewed = variant_entry(source.code, selected["id"] if selected else None)
+        start, excerpt_duration = reviewed["preview_start"], reviewed["preview_duration"]
+    else:
+        reviewed = SHOWCASE[source.code]
+        start, excerpt_duration = reviewed["start"], reviewed["duration"]
+    duration = min(excerpt_duration, score.parsed["metadata"]["duration_seconds"] - start)
     return {"composition_id": composition_id, "score_id": score.pk,
             "variant_id": selected["id"] if selected else None,
             "start_seconds": start, "duration_seconds": duration,

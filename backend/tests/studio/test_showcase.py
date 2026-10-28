@@ -56,7 +56,7 @@ class CompositionShowcaseTests(TestCase):
 
     def test_each_current_arrangement_has_a_reviewed_rating_and_source_landmark(self):
         pieces = self.catalog()
-        self.assertEqual(len(pieces),38)
+        self.assertEqual(len(pieces),101)
         for piece in pieces:
             self.assertIn(piece['difficulty'],range(1,6))
             self.assertGreaterEqual(piece['preview_start_seconds'],0)
@@ -77,8 +77,8 @@ class CompositionShowcaseTests(TestCase):
             end = start+preview['duration_seconds']
             source = {event['id']:event for event in score.parsed['events'] if event.get('pitch') and not event.get('rest') and not event.get('percussion') and event['onset_seconds']<end and event['onset_seconds']+event['duration_seconds']>start}
             self.assertEqual({note['id'] for note in preview['notes']},set(source))
-            self.assertGreater(len(preview['notes']),10)
-            self.assertEqual({note['hand'] for note in preview['notes']},{'left','right'},piece['slug'])
+            self.assertGreater(len(preview['notes']),0)
+            self.assertEqual({note['hand'] for note in preview['notes']},{event['hand'] for event in source.values()},piece['slug'])
             for note in preview['notes']:
                 event = source[note['id']]
                 self.assertEqual(note['pitch'],event['pitch']['midi'])

@@ -2,7 +2,13 @@ import { useDeferredValue, useEffect, useRef } from 'react';
 import EmptyState from '@shared/ui/EmptyState';
 import { useActivity } from '@modules/activity';
 import { useTranslation } from '@shared/i18n';
-import { ClearRounded, FavoriteBorderRounded, SearchRounded } from '@mui/icons-material';
+import {
+  ClearRounded,
+  FavoriteBorderRounded,
+  GridViewRounded,
+  SearchRounded,
+  ViewAgendaOutlined,
+} from '@mui/icons-material';
 import {
   Button,
   FormControl,
@@ -13,12 +19,20 @@ import {
   Pagination,
   Select,
   TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+  Tooltip,
   useMediaQuery,
 } from '@mui/material';
 import { useStudio } from '../../../application';
 import { useCompositionLibraryState } from '../../../application/useCompositionLibraryState';
 import {
   compositionPage,
+  compositionGroups,
+  compositionCollections,
+  inferCompositionGroup,
+  collectionForGroup,
+  compositionCollectionLabel,
   emptyCompositionFilter,
   filterCompositions,
   type CompositionFilter,
@@ -30,7 +44,8 @@ export default function LibraryPage() {
   const { catalog } = useStudio();
   const { favorites } = useActivity();
   const tr = useTranslation();
-  const { filter, page, size, change, reset, setPage, setSize } = useCompositionLibraryState();
+  const { filter, page, size, view, change, reset, setPage, setSize, setView } =
+    useCompositionLibraryState();
   const query = useDeferredValue(filter.query);
   const list = useRef<HTMLDivElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
@@ -42,7 +57,9 @@ export default function LibraryPage() {
       }),
     );
   const items = catalog?.compositions || [];
-  const collections = [...new Set(items.map((item) => item.collection || '__other__'))];
+  const groups = compositionGroups(items);
+  const activeGroup = filter.group || inferCompositionGroup(items, filter.collection);
+  const collections = compositionCollections(items, activeGroup);
   const shown = filterCompositions(items, { ...filter, query }, favorites);
   const result = compositionPage(shown, page, size);
   useEffect(() => {
@@ -86,6 +103,61 @@ export default function LibraryPage() {
               }}
             />
             <FormControl>
+              <InputLabel id="composition-group-label">{tr('Yo‘nalish')}</InputLabel>
+              <Select
+                labelId="composition-group-label"
+                label={tr('Yo‘nalish')}
+                value={activeGroup}
+                onChange={(event) =>
+                  change({
+                    group: event.target.value,
+                    collection: collectionForGroup(items, event.target.value, filter.collection),
+                  })
+                }
+              >
+                <MenuItem value="">{tr('Barchasi')}</MenuItem>
+                {activeGroup && !groups.some((group) => group.id === activeGroup) && (
+                  <MenuItem value={activeGroup}>{activeGroup}</MenuItem>
+                )}
+                {groups.map((group) => (
+                  <MenuItem key={group.id} value={group.id}>
+                    {group.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl disabled={!activeGroup && !filter.collection}>
+              <InputLabel id="composition-collection-label" shrink>
+                {tr('To‘plam')}
+              </InputLabel>
+              <Select
+                labelId="composition-collection-label"
+                label={tr('To‘plam')}
+                value={filter.collection}
+                onChange={(event) => change({ group: activeGroup, collection: event.target.value })}
+                displayEmpty
+                notched
+                renderValue={(value) =>
+                  value
+                    ? compositionCollectionLabel(items, value)
+                    : tr(activeGroup ? 'Barchasi' : 'Avval yo‘nalishni tanlang')
+                }
+              >
+                <MenuItem value="">{tr('Barchasi')}</MenuItem>
+                {filter.collection &&
+                  !collections.some((item) => item.id === filter.collection) && (
+                    <MenuItem value={filter.collection}>
+                      {compositionCollectionLabel(items, filter.collection)}
+                    </MenuItem>
+                  )}
+                {collections.map((value) => (
+                  <MenuItem key={value.id} value={value.id}>
+                    {value.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
               <InputLabel id="composition-difficulty-label">{tr('Qiyinchilik')}</InputLabel>
               <Select
                 labelId="composition-difficulty-label"
@@ -98,25 +170,6 @@ export default function LibraryPage() {
                   <MenuItem key={value} value={value}>
                     {'★'.repeat(value)}
                     {'☆'.repeat(5 - value)} · {value}/5
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <InputLabel id="composition-collection-label">{tr('To‘plam')}</InputLabel>
-              <Select
-                labelId="composition-collection-label"
-                label={tr('To‘plam')}
-                value={filter.collection}
-                onChange={(event) => change({ collection: event.target.value })}
-              >
-                <MenuItem value="">{tr('Barchasi')}</MenuItem>
-                {filter.collection && !collections.includes(filter.collection) && (
-                  <MenuItem value={filter.collection}>{filter.collection}</MenuItem>
-                )}
-                {collections.map((value) => (
-                  <MenuItem key={value} value={value}>
-                    {value === '__other__' ? tr('Alohida asarlar') : value}
                   </MenuItem>
                 ))}
               </Select>
@@ -155,6 +208,25 @@ export default function LibraryPage() {
               >
                 {tr('Sevimlilar')}
               </Button>
+              <ToggleButtonGroup
+                className="composition-view-switch"
+                value={view}
+                exclusive
+                size="small"
+                aria-label={tr('Kompozitsiyalar ko‘rinishi')}
+                onChange={(_, next: 'list' | 'grid' | null) => next && setView(next)}
+              >
+                <Tooltip title={tr('Ro‘yxat ko‘rinishi')}>
+                  <ToggleButton value="list" aria-label={tr('Ro‘yxat ko‘rinishi')}>
+                    <ViewAgendaOutlined fontSize="small" />
+                  </ToggleButton>
+                </Tooltip>
+                <Tooltip title={tr('Katakli ko‘rinish')}>
+                  <ToggleButton value="grid" aria-label={tr('Katakli ko‘rinish')}>
+                    <GridViewRounded fontSize="small" />
+                  </ToggleButton>
+                </Tooltip>
+              </ToggleButtonGroup>
             </div>
           </div>
         </>
@@ -174,7 +246,10 @@ export default function LibraryPage() {
         />
       ) : (
         <>
-          <div ref={list} className="studio-compositions">
+          <div
+            ref={list}
+            className={`studio-compositions${view === 'grid' ? ' studio-compositions-grid' : ''}`}
+          >
             {result.items.map((composition) => (
               <CompositionCard
                 key={composition.id}

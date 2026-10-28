@@ -33,6 +33,9 @@ export type StudyStageDto = {
 };
 
 export type CompositionDto = {
+  playback_revision?: string;
+  library_group?: { id: string; label: string };
+  library_collection?: { id: string; label: string };
   difficulty?: number;
   collection?: string;
   preview_start_seconds?: number;
@@ -45,6 +48,7 @@ export type CompositionDto = {
   duration_seconds: number;
   lesson_ids: string[];
   variants?: {
+    playback_revision?: string;
     difficulty?: number;
     id: string;
     title: string;

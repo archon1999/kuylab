@@ -33,6 +33,7 @@ export type StudyStage = {
 };
 
 export type CompositionVariant = {
+  playback_revision?: string;
   id: string;
   title: string;
   description: string;
@@ -42,6 +43,9 @@ export type CompositionVariant = {
 };
 
 export type Composition = {
+  playback_revision?: string;
+  library_group?: { id: string; label: string };
+  library_collection?: { id: string; label: string };
   id: number;
   slug: string;
   title: string;
@@ -78,6 +82,7 @@ export type CompositionPreview = {
 export type CompositionFilter = {
   query: string;
   difficulty: number;
+  group: string;
   collection: string;
   favoritesOnly: boolean;
   sort: 'curated' | 'title' | 'difficulty' | 'duration';

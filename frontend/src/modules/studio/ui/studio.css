@@ -1497,6 +1497,8 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 .composition-variants > span {
   font-size: 14px;
@@ -1517,8 +1519,56 @@
   color: var(--accent);
   background: color-mix(in srgb, var(--accent) 14%, var(--soft));
 }
+.composition-variant-select.MuiInputBase-root {
+  min-width: 180px;
+  max-width: 280px;
+  width: 100%;
+  font: 600 14px/1.3 var(--font-ui);
+  border-radius: 10px;
+  background: var(--soft);
+}
+.composition-variant-select .MuiSelect-select {
+  padding-block: 10px;
+}
+.composition-variant-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+.composition-variant-menu .MuiMenuItem-root {
+  max-width: min(400px, calc(100vw - 32px));
+  white-space: normal;
+  padding-block: 12px;
+}
+.composition-variant-option {
+  display: grid;
+  gap: 4px;
+}
+.composition-variant-option strong {
+  font: 600 14px/1.4 var(--font-ui);
+}
+.composition-variant-option small {
+  font: 400 12px/1.5 var(--font-ui);
+  color: var(--secondary);
+}
 .studio-toolbar .composition-variants-compact {
   flex: 0 0 auto;
+}
+.studio-toolbar .composition-variant-select.MuiInputBase-root {
+  width: 180px;
+  min-width: 100px;
+  max-width: min(180px, calc(100vw - 48px));
+  background: var(--studio-soft);
+  color: var(--studio-ink);
+  font: inherit;
+  font-size: 13px;
+}
+.studio-toolbar .composition-variant-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--studio-line);
+}
+.studio-toolbar .composition-variant-select .MuiSelect-icon {
+  color: var(--studio-muted);
+}
+.studio-toolbar .composition-variant-select .MuiSelect-select {
+  padding-block: 9px;
 }
 .studio-toolbar .composition-variants .MuiToggleButton-root {
   min-width: 52px;

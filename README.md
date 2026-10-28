@@ -111,14 +111,28 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The curated repertoire contains 38 compositions. The original eight are Still, What Is
-a Youth, Star, Tears in Your Eyes, My Memory, Premonition, Memories and All in — Soundtrack.
-Thirty additional classical, contemporary and film piano editions are pinned in
-[the catalog manifest](backend/apps/studio/assets/catalog/manifest.json), with hashes,
-source credits, difficulty, real-note preview passages and UZ/RU/EN lesson plans.
-Each new edition has three focused lessons and one complete-piece path with
-five playable stages, progressing from sparse source notes to the full source.
-There are 147 composition lessons and 91 continuity paths in total.
+The curated repertoire contains 101 compositions: the original eight, 24 retained
+classical/contemporary editions, and 69 works grouped from 83 owner-supplied Ivory
+performances. [The Ivory manifest](backend/apps/studio/assets/ivory/manifest.json)
+pins each arrangement, difficulty, preview, source attribution and import hash.
+Multiple performances share one composition and expose separate player variants.
+Ode to Joy, Moonlight Sonata I, Rondo alla Turca, Time, He’s a Pirate and My Heart
+Will Go On use the replacement performances while retaining their composition IDs
+and slugs. Nine confirmed channel jingles are omitted; the other 74 openings are
+preserved. Original downloads and precise trim provenance remain available for audit.
+The earlier source-specific lessons for replaced editions are retired from the
+active catalog; learner history is preserved. New imports do not claim to have
+newly authored lessons. The 24 retained editions in
+[the earlier catalog manifest](backend/apps/studio/assets/catalog/manifest.json)
+keep their reviewed UZ/RU/EN courses. There are 129 composition lessons and 85
+continuity paths in total. The library supports list and grid views, with the
+selected view, filters and pagination retained in URLs and per-account sessions.
+Browsing groups are independent of source albums: Classical groups editions by
+composer, Anime groups Naruto/Boruto and Shiki, and Dramas groups Winter Sonata
+and All in. Choose a group before narrowing to its collections; original album
+metadata and existing collection links remain available. Imported editions also
+scope playback positions and timestamp notes to their source revision, so a new
+arrangement never inherits a timestamp from a different performance.
 All in
 has two byte-preserved full-length arrangements, Easy and Hard, in one player
 with nine shared lessons and five continuity paths. Variant switching pauses

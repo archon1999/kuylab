@@ -12,7 +12,17 @@ export const pagePaths = {
   notFound: '/404',
 } as const;
 export type Page = keyof typeof pagePaths;
-const libraryQueryKeys = ['q', 'difficulty', 'collection', 'favorites', 'sort', 'p', 'size'];
+const libraryQueryKeys = [
+  'q',
+  'group',
+  'difficulty',
+  'collection',
+  'favorites',
+  'sort',
+  'p',
+  'size',
+  'view',
+];
 
 export function routePath(
   page: Page,

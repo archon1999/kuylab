@@ -1,4 +1,23 @@
 export const studioMessages: Record<string, { ru: string; en: string }> = {
+  'Kompozitsiyalar ko‘rinishi': { ru: 'Вид каталога', en: 'Library view' },
+  'Ro‘yxat ko‘rinishi': { ru: 'Список', en: 'List view' },
+  'Katakli ko‘rinish': { ru: 'Сетка', en: 'Grid view' },
+  Batafsil: { ru: 'Подробнее', en: 'Details' },
+  'Yo‘nalish': { ru: 'Направление', en: 'Category' },
+  'Avval yo‘nalishni tanlang': {
+    ru: 'Сначала выберите направление',
+    en: 'Choose a category first',
+  },
+  'Oldingi ijro': { ru: 'Предыдущая версия', en: 'Previous performance' },
+  'Playerda o‘rganish': { ru: 'Занятия в плеере', en: 'Learn in the player' },
+  'Bu kompozitsiya uchun alohida darslar hali tayyorlanmagan.': {
+    ru: 'Для этого произведения отдельные уроки пока не подготовлены.',
+    en: 'Separate lessons have not been prepared for this piece yet.',
+  },
+  'Darslar barcha ijro variantlari uchun umumiy.': {
+    ru: 'Уроки общие для всех вариантов исполнения.',
+    en: 'Lessons are shared across all arrangements.',
+  },
   'Sahifa topilmadi': { ru: 'Страница не найдена', en: 'Page not found' },
   'Bu manzil o‘zgargan yoki mavjud emas.': {
     ru: 'Этот адрес изменился или не существует.',

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compositionPage, emptyCompositionFilter, filterCompositions, libraryVariant } from '../src/modules/studio/domain/compositionLibrary.ts';
+import { compositionPage, emptyCompositionFilter, filterCompositions, libraryVariant, compositionGroups, compositionCollections, inferCompositionGroup, collectionForGroup, compositionCollectionLabel } from '../src/modules/studio/domain/compositionLibrary.ts';
 import { selectResumeStudy } from '../src/modules/studio/domain/resumeStudy.ts';
 
 const piece = (id, title, difficulty, collection = '') => ({id,title,difficulty,collection,composer:'',subtitle:'',duration_seconds:id*30,lesson_ids:[],score_id:id,slug:title});
@@ -43,6 +43,41 @@ test('pagination is bounded, retains all 38 future repertoire entries and handle
   assert.equal(compositionPage([],7,6).page,1);
   assert.equal(compositionPage(all,NaN,0).pageSize,6);
   assert.equal(compositionPage(all,-2,12).items.length,12);
+});
+
+const classified=[
+  {...piece(1,'Moonlight',4,'Sonata Op.27'),library_group:{id:'classical',label:'Classics'},library_collection:{id:'beethoven',label:'Beethoven'}},
+  {...piece(2,'Ode to Joy',2,'Symphony No.9'),library_group:{id:'classical',label:'Classics'},library_collection:{id:'beethoven',label:'Beethoven'}},
+  {...piece(3,'Senya',4,'Naruto Shippuden OST'),library_group:{id:'anime',label:'Anime'},library_collection:{id:'naruto',label:'Naruto'}},
+  {...piece(4,'Epitaph',3,'Shiki OST'),library_group:{id:'anime',label:'Anime'},library_collection:{id:'shiki',label:'Shiki'}},
+  {...piece(5,'Halo',3),library_group:{id:'songs',label:'Songs'},library_collection:{id:'beyonce',label:'Beyoncé'}},
+];
+
+test('two-level options collapse album/opus metadata and never expose a flat collection list by default',()=>{
+  assert.deepEqual(compositionGroups(classified).map(v=>v.id),['anime','classical','songs']);
+  assert.deepEqual(compositionCollections(classified,'classical'),[{id:'beethoven',label:'Beethoven'}]);
+  assert.deepEqual(compositionCollections(classified,'anime').map(v=>v.id),['naruto','shiki']);
+  assert.deepEqual(compositionCollections(classified,''),[]);
+  assert.equal(collectionForGroup(classified,'anime','naruto'),'naruto');
+  assert.equal(collectionForGroup(classified,'classical','naruto'),'');
+  assert.equal(collectionForGroup(classified,'','naruto'),'');
+});
+
+test('canonical collection IDs and exact legacy album URLs both filter correctly and infer a display parent',()=>{
+  assert.deepEqual(filterCompositions(classified,filter({group:'classical',collection:'beethoven'}),[]).map(p=>p.id),[1,2]);
+  assert.deepEqual(filterCompositions(classified,filter({collection:'Symphony No.9'}),[]).map(p=>p.id),[2]);
+  assert.equal(inferCompositionGroup(classified,'Symphony No.9'),'classical');
+  assert.equal(inferCompositionGroup(classified,'beethoven'),'classical');
+  assert.equal(inferCompositionGroup(classified,'unknown'),'');
+  assert.equal(compositionCollectionLabel(classified,'Symphony No.9'),'Beethoven');
+  assert.equal(collectionForGroup(classified,'classical','Symphony No.9'),'Symphony No.9');
+});
+
+test('taxonomy combines with difficulty/favorites and localized artist names remain searchable with a blank composer',()=>{
+  assert.deepEqual(filterCompositions(classified,filter({group:'anime',collection:'naruto',difficulty:4,favoritesOnly:true}),['composition:3']).map(p=>p.id),[3]);
+  assert.equal(filterCompositions(classified,filter({group:'classical',collection:'naruto'}),[]).length,0);
+  assert.deepEqual(filterCompositions(classified,filter({query:'beyonce'}),[]).map(p=>p.id),[5]);
+  assert.deepEqual(filterCompositions(classified,filter({query:'classics Beethoven'}),[]).map(p=>p.id),[1,2]);
 });
 test('resume skips the most recent mastered lesson and composition entries', () => {
   const items = [lesson('done'),lesson('ongoing')];

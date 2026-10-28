@@ -1,6 +1,6 @@
 import EmptyState from '@shared/ui/EmptyState';
 import { useActivity } from '@modules/activity';
-import { ArrowBackRounded, PlayArrowRounded } from '@mui/icons-material';
+import { ArrowBackRounded, PianoOutlined, PlayArrowRounded } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { followRouteLink, navigate, replaceRoute, routePath, useRoute } from '@shared/routing';
@@ -14,14 +14,7 @@ import {
 import CompositionVariants from '../../shared/CompositionVariants';
 import DifficultyStars from '../../shared/DifficultyStars';
 import { StudyStatusFilter } from '../../shared/StudyStatus';
-import {
-  Favorite,
-  Heading,
-  SectionTitle,
-  StudyCard,
-  StudioError,
-  openComposition,
-} from '../../shared/StudioParts';
+import { Favorite, Heading, SectionTitle, StudyCard, StudioError } from '../../shared/StudioParts';
 import '../../studio.css';
 export default function DetailPage() {
   const { params } = useRoute();
@@ -81,7 +74,9 @@ export default function DetailPage() {
               }}
             />
             <p>{variant.description}</p>
-            <small>{tr('Darslar Easy va Hard uchun umumiy.')}</small>
+            {!!lessons.length && (
+              <small>{tr('Darslar barcha ijro variantlari uchun umumiy.')}</small>
+            )}
           </div>
         )}
         <div className="studio-actions">
@@ -104,37 +99,42 @@ export default function DetailPage() {
           )}
         </div>
       </div>
-      <div className="studio-lesson-filter">
-        <span>{tr('Darslarni holat bo‘yicha ko‘rsatish')}</span>
-        <StudyStatusFilter value={status} onChange={setStatus} />
-      </div>
-      <section>
-        <SectionTitle title={tr('Kompozitsiya darslari')} />
-        {!lessons.length && (
-          <EmptyState
-            kind="lessons"
-            title={tr('Bu kompozitsiya uchun hali darslar yo‘q')}
-            action={{ label: tr('Playerni ochish'), onClick: () => openComposition(composition) }}
-          />
-        )}
-        {!!lessons.length && !shownLessons.length && (
-          <EmptyState
-            compact
-            kind="search"
-            title={tr('Bu holatda darslar yo‘q')}
-            action={{ label: tr('Barcha darslar'), onClick: () => setStatus('') }}
-          />
-        )}
-        <div className="studio-card-grid">
-          {shownLessons.map((item) => (
-            <StudyCard
-              key={item.id}
-              item={item}
-              number={lessons.findIndex((value) => value.id === item.id) + 1}
-            />
-          ))}
+      {!!(lessons.length || journeys.length) && (
+        <div className="studio-lesson-filter">
+          <span>{tr('Darslarni holat bo‘yicha ko‘rsatish')}</span>
+          <StudyStatusFilter value={status} onChange={setStatus} />
         </div>
-      </section>
+      )}
+      {lessons.length ? (
+        <section>
+          <SectionTitle title={tr('Kompozitsiya darslari')} />
+          {!shownLessons.length && (
+            <EmptyState
+              compact
+              kind="search"
+              title={tr('Bu holatda darslar yo‘q')}
+              action={{ label: tr('Barcha darslar'), onClick: () => setStatus('') }}
+            />
+          )}
+          <div className="studio-card-grid">
+            {shownLessons.map((item) => (
+              <StudyCard
+                key={item.id}
+                item={item}
+                number={lessons.findIndex((value) => value.id === item.id) + 1}
+              />
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div className="composition-course-note" role="note">
+          <PianoOutlined aria-hidden="true" />
+          <div>
+            <h2>{tr('Playerda o‘rganish')}</h2>
+            <p>{tr('Bu kompozitsiya uchun alohida darslar hali tayyorlanmagan.')}</p>
+          </div>
+        </div>
+      )}
       {!!journeys.length && (
         <section id="whole-performance" style={{ scrollMarginTop: 24 }}>
           <SectionTitle title={tr('To‘liq ijroga tayyorgarlik')} />

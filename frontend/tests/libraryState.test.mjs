@@ -18,7 +18,7 @@ test('search, filters, order, page and page size round-trip through a canonical 
 
 test('invalid URL values cannot create unbounded pages, unsafe sizes or unknown sort modes',()=>{
   const state=readLibraryQuery(new URLSearchParams('p=Infinity&size=999&difficulty=9&sort=script&favorites=true&q=abc%00def'));
-  assert.deepEqual(state,{filter:{query:'abcdef',difficulty:0,collection:'',favoritesOnly:false,sort:'curated'},page:1,size:6});
+  assert.deepEqual(state,{filter:{query:'abcdef',difficulty:0,group:'',collection:'',favoritesOnly:false,sort:'curated'},page:1,size:6,view:'list'});
   assert.equal(readLibraryQuery(new URLSearchParams('p=-2&size=24')).page,1);
   assert.equal(readLibraryQuery(new URLSearchParams('p=999999999')).page,100000);
   assert.equal(hasLibraryQuery(new URLSearchParams('utm_source=example')),false);
@@ -49,11 +49,23 @@ test('clean default history entries override later session filters; fresh visits
 test('tab session state is isolated per account and survives returning to the library',t=>{
   const map=new Map(); const storage={getItem:key=>map.get(key)||null,setItem:(key,value)=>map.set(key,value)};
   const port=createLibraryStateRepository(storage); t.after(()=>setAccountScope(null));
-  const state=normalizeLibraryState({filter:{query:'Chopin',sort:'title'},page:2,size:12});
+  const state=normalizeLibraryState({filter:{query:'Chopin',group:'classical',collection:'chopin',sort:'title'},page:2,size:12,view:'grid'});
   setAccountScope(10); port.write(state);
   assert.deepEqual(createLibraryStateRepository(storage).read(),state);
   setAccountScope(11); assert.deepEqual(port.read(),normalizeLibraryState(null));
   setAccountScope(10); assert.deepEqual(port.read(),state);
+});
+
+test('grid links retain filters and pagination while list remains the clean default',()=>{
+  const grid=normalizeLibraryState({filter:{query:'Naruto',difficulty:3},page:2,size:12,view:'grid'});
+  const path=routePath('library',libraryQuery(grid));
+  assert.equal(path,'/compositions?q=Naruto&difficulty=3&p=2&size=12&view=grid');
+  const parsed=parseRoute('/compositions',path.slice(path.indexOf('?')));
+  assert.deepEqual(readLibraryQuery(parsed.params),grid);
+  assert.equal(hasLibraryQuery(new URLSearchParams('view=grid')),true);
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState({view:'list'}))),'/compositions');
+  assert.equal(readLibraryQuery(new URLSearchParams('view=invalid')).view,'list');
+  assert.equal(normalizeLibraryState({page:3}).view,'list');
 });
 
 test('blocked or corrupted session storage leaves URL-driven filtering usable',()=>{
@@ -61,6 +73,18 @@ test('blocked or corrupted session storage leaves URL-driven filtering usable',(
   assert.deepEqual(denied.read(),normalizeLibraryState(null));
   assert.doesNotThrow(()=>denied.write(normalizeLibraryState(null)));
   assert.deepEqual(createLibraryStateRepository({getItem:()=>'{bad',setItem(){}}).read(),normalizeLibraryState(null));
+});
+
+test('hierarchy filters share stable IDs across localized URLs while default group stays omitted',()=>{
+  const state=normalizeLibraryState({filter:{group:'anime',collection:'naruto'},page:3,view:'grid'});
+  const path=routePath('library',libraryQuery(state));
+  assert.equal(path,'/compositions?group=anime&collection=naruto&p=3&view=grid');
+  assert.deepEqual(readLibraryQuery(new URLSearchParams(path.split('?')[1])),state);
+  assert.equal(hasLibraryQuery(new URLSearchParams('group=classical')),true);
+  assert.equal(routePath('library',libraryQuery(normalizeLibraryState({filter:{group:''}}))),'/compositions');
+  const legacy=readLibraryQuery(new URLSearchParams('collection=Winter%20Sonata'));
+  assert.equal(legacy.filter.collection,'Winter Sonata');
+  assert.equal(legacy.filter.group,'');
 });
 
 test('Ctrl/Command/middle/Shift clicks keep browser new-tab behavior',()=>{

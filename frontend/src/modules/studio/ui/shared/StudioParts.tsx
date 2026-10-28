@@ -167,7 +167,9 @@ export function CompositionCard({
         </div>
         <div className="studio-composition-meta">
           <span>{durationLabel(variant?.duration_seconds || composition.duration_seconds)}</span>
-          <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
+          {!!composition.lesson_ids.length && (
+            <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
+          )}
           {!!composition.variants?.length && (
             <span>{composition.variants.map((variant) => variant.title).join(' / ')}</span>
           )}
@@ -190,7 +192,7 @@ export function CompositionCard({
             href={routePath('detail', { compositionSlug: composition.slug })}
             onClick={followRouteLink}
           >
-            {tr('Darslar')}
+            {tr(composition.lesson_ids.length ? 'Darslar' : 'Batafsil')}
           </Button>
         </div>
       </div>

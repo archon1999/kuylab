@@ -166,8 +166,10 @@ try:
         assert status == 200 and hashlib.sha256(original_bytes).hexdigest() == source.sha256
         piece = next(item for item in catalog["compositions"] if item["id"] == source_score.arrangement.composition_id)
         paths = [item for item in catalog["journeys"] if item["composition_id"] == piece["id"]]
-        expected = (0, 0) if source.course_kind == "ivory" else (3, 1) if source.course_kind == "curated" else (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8)
-        assert (len(piece["lesson_ids"]), len(paths)) == expected
+        scoped = [item for item in definitions if item.get("_composition", "still") == source.code]
+        expected = tuple(sum(item["kind"] == kind for item in scoped) for kind in ("lesson", "journey"))
+        actual = (len(piece["lesson_ids"]), len(paths))
+        assert actual == expected, (source.code, actual, expected)
         if paths:
             assert paths[-1]["stages"][-1]["score_id"] == source_score.pk
         if source.code in {group["code"] for group in IVORY_GROUPS}:

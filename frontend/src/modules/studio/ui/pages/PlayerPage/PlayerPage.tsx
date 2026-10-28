@@ -30,6 +30,7 @@ export default function PlayerPage() {
     composition,
     params.get('variant'),
     lastStages[`${id}:variant`],
+    params.has('at'),
   );
   const context = composition ? compositionPlaybackContext(composition, variant?.id) : '';
   const scoreId = variant?.score_id ?? composition?.score_id;
@@ -98,7 +99,12 @@ export default function PlayerPage() {
           )}
           score={score}
           markers={catalog?.lessons
-            .filter((item) => item.composition_id === composition.id && item.source)
+            .filter(
+              (item) =>
+                item.composition_id === composition.id &&
+                item.source &&
+                !variant?.playback_revision,
+            )
             .filter(
               (item, index, array) =>
                 array.findIndex(

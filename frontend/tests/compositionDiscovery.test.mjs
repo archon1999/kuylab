@@ -13,6 +13,15 @@ test('search matches all words across names, composer and collection, including 
   assert.deepEqual(filterCompositions(pieces,filter({query:'CLAIR classics'}),[]).map(p=>p.id),[1]);
   assert.equal(filterCompositions(pieces,filter({query:'unknown'}),[]).length,0);
 });
+
+test('another performance title and performer find the existing work without duplicating it', () => {
+  const work={...piece(9,'What Is a Youth',4,'Romeo & Juliet'),variants:[
+    {id:'original',title:'Lesson edition'},
+    {id:'fabrizio-caligaris',title:'A Time for Us · Fabrizio Caligaris',description:'The Romeo & Juliet love theme'},
+  ]};
+  assert.deepEqual(filterCompositions([work],filter({query:'a time for us'}),[]).map(p=>p.id),[9]);
+  assert.deepEqual(filterCompositions([work],filter({query:'fabrizio caligaris'}),[]).map(p=>p.id),[9]);
+});
 test('difficulty, collection and favorites combine without changing the source order', () => {
   const before = [...pieces];
   assert.deepEqual(filterCompositions(pieces,filter({difficulty:4,collection:'Soundtrack',favoritesOnly:true}),['composition:2']).map(p=>p.id),[2]);

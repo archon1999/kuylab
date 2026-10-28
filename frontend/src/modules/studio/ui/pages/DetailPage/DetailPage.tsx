@@ -76,7 +76,7 @@ export default function DetailPage() {
               }}
             />
             <p>{variant.description}</p>
-            {!!lessons.length && (
+            {!!lessons.length && !composition.variants.some((value) => value.playback_revision) && (
               <small>{tr('Darslar barcha ijro variantlari uchun umumiy.')}</small>
             )}
           </div>

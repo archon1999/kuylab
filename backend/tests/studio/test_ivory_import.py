@@ -97,18 +97,22 @@ class IvorySourceTests(SimpleTestCase):
         from apps.studio.composition_showcase import presentation
 
         for group in GROUPS:
-            self.assertEqual(presentation(group['code'])['playback_revision'],group['variants'][0]['sha256'][:16])
+            if group.get('base_variant'):
+                self.assertNotIn('playback_revision',presentation(group['code']))
+                self.assertNotIn('playback_revision',presentation(group['code'],group['base_variant']['id']))
+            else:
+                self.assertEqual(presentation(group['code'])['playback_revision'],group['variants'][0]['sha256'][:16])
             for variant in group['variants']:
                 self.assertEqual(presentation(group['code'],variant['id'])['playback_revision'],variant['sha256'][:16])
         self.assertNotIn('playback_revision',presentation('all-in','easy'))
         self.assertNotIn('playback_revision',presentation('still'))
 
-    def test_all_83_performances_are_grouped_pinned_and_playable(self):
+    def test_all_87_performances_are_grouped_pinned_and_playable(self):
         variants = [(group,variant) for group in GROUPS for variant in group['variants']]
-        self.assertEqual(len(GROUPS),69)
-        self.assertEqual(len(variants),83)
-        self.assertEqual(len({variant['filename'] for _,variant in variants}),83)
-        self.assertEqual(len({source.slug for source in SOURCES}),101)
+        self.assertEqual(len(GROUPS),72)
+        self.assertEqual(len(variants),87)
+        self.assertEqual(len({variant['filename'] for _,variant in variants}),87)
+        self.assertEqual(len({source.slug for source in SOURCES}),103)
         for group,variant in variants:
             content,parsed = performance_source(group['code'],variant['id'])
             self.assertEqual(hashlib.sha256(content).hexdigest(),variant['sha256'])
@@ -168,23 +172,37 @@ class IvorySeedTests(TestCase):
 
     def test_variants_are_distinct_arrangements_of_one_composition_and_localized(self):
         catalogs = {lang:studio_catalog(lang) for lang in ('uz','ru','en')}
-        self.assertEqual(len(catalogs['uz']['compositions']),101)
+        self.assertEqual(len(catalogs['uz']['compositions']),103)
         for group in GROUPS:
             piece = next(p for p in catalogs['uz']['compositions'] if p['slug']==group['slug'])
-            self.assertEqual(piece['lesson_ids'],[])
-            self.assertEqual(piece['playback_revision'],group['variants'][0]['sha256'][:16])
+            base = group.get('base_variant')
+            if base:
+                self.assertEqual(len(piece['lesson_ids']),6)
+                self.assertNotIn('playback_revision',piece)
+            else:
+                self.assertEqual(piece['lesson_ids'],[])
+                self.assertEqual(piece['playback_revision'],group['variants'][0]['sha256'][:16])
             variants = piece.get('variants',[])
-            self.assertEqual(len(variants),len(group['variants']) if len(group['variants'])>1 else 0)
+            self.assertEqual(len(variants),len(group['variants']) + bool(base) if base or len(group['variants'])>1 else 0)
             if variants:
-                self.assertEqual(piece['default_variant_id'],group['variants'][0]['id'])
+                self.assertEqual(piece['default_variant_id'],base['id'] if base else group['variants'][0]['id'])
                 arrangements = Score.objects.filter(pk__in=[v['score_id'] for v in variants]).values_list('arrangement_id',flat=True)
                 self.assertEqual(len(set(arrangements)),len(variants))
-                self.assertEqual({v['id'] for v in variants},{v['id'] for v in group['variants']})
+                self.assertEqual({v['id'] for v in variants},{v['id'] for v in group['variants']} | ({base['id']} if base else set()))
                 expected = {v['id']:v['sha256'][:16] for v in group['variants']}
-                self.assertEqual({v['id']:v['playback_revision'] for v in variants},expected)
+                self.assertEqual({v['id']:v['playback_revision'] for v in variants if 'playback_revision' in v},expected)
         self.assertEqual(Profile.objects.get().display_name,'Kept learner')
 
     def test_second_seed_changes_neither_scores_nor_composition_ids(self):
+        source = SOURCE_BY_CODE['youth']
+        original = StudioAsset.objects.select_related('score__arrangement').get(pk=source.asset_key)
+        composition_id = original.score.arrangement.composition_id
+        lesson_id = next(item['id'] for item in all_items() if item['kind']=='lesson' and item.get('_composition')=='youth')
+        library = PersonalLibrary.objects.create(profile=Profile.objects.get(),
+            favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered'},
+            positions={f'composition:{composition_id}':42.5})
+        note = PracticeNote.objects.create(profile=library.profile,content_id=f'composition:{composition_id}',
+            position_seconds=42.5,text='Keep my original course timestamp')
         before = list(Composition.objects.values_list('seed_key','id'))
         assets = list(StudioAsset.objects.order_by('key').values_list('key','score_id'))
         scores = Score.objects.count()
@@ -192,6 +210,39 @@ class IvorySeedTests(TestCase):
         self.assertEqual(list(Composition.objects.values_list('seed_key','id')),before)
         self.assertEqual(list(StudioAsset.objects.order_by('key').values_list('key','score_id')),assets)
         self.assertEqual(Score.objects.count(),scores)
+        original.refresh_from_db()
+        self.assertEqual(original.score.content_sha256,source.sha256)
+        self.assertEqual(original.score.arrangement.composition_id,composition_id)
+        library.refresh_from_db()
+        self.assertEqual(library.positions,{f'composition:{composition_id}':42.5})
+        self.assertEqual(library.favorites,[f'composition:{composition_id}',lesson_id])
+        self.assertEqual(library.progress,{lesson_id:'mastered'})
+        note.refresh_from_db()
+        self.assertEqual((note.position_seconds,note.text),(42.5,'Keep my original course timestamp'))
+
+    def test_added_recording_preserves_the_youth_course_source_and_preview(self):
+        from apps.studio.composition_showcase import composition_preview
+        from apps.studio.repertoire import repertoire_source
+
+        catalog = studio_catalog('en')
+        piece = next(p for p in catalog['compositions'] if p['slug']=='what-is-a-youth')
+        self.assertEqual(piece['default_variant_id'],'original')
+        raw, parsed = repertoire_source('youth')
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),SOURCE_BY_CODE['youth'].sha256)
+        self.assertEqual({event['pitch']['midi'] for event in parsed['events'] if event['onset_seconds']==0},{71,83})
+        self.assertEqual(len(piece['lesson_ids']),6)
+        base, added = piece['variants']
+        self.assertEqual((base['id'],added['id']),('original','fabrizio-caligaris'))
+        self.assertEqual(composition_preview(piece['id'])['score_id'],base['score_id'])
+        self.assertEqual(composition_preview(piece['id'],'original')['score_id'],base['score_id'])
+        self.assertEqual(composition_preview(piece['id'],added['id'])['score_id'],added['score_id'])
+        stages = [stage for item in all_items() if item['kind']=='lesson' and item.get('_composition')=='youth' for stage in item['stages']]
+        for stage in stages:
+            score = StudioAsset.objects.get(pk=stage['_asset_key']).score
+            self.assertEqual(score.source_provenance['source_sha256'],SOURCE_BY_CODE['youth'].sha256)
+        added_score = Score.objects.get(pk=added['score_id'])
+        self.assertEqual(added_score.source_provenance['kind'],'owner_supplied_ivory_performance')
+        self.assertEqual(added_score.original_filename,'romeo-juliet-a-time-for-us-fabrizio-caligaris.mid')
 
     def test_replacement_retires_old_active_midi_but_preserves_learner_and_source_history(self):
         from apps.studio.curated_repertoire import edition_source

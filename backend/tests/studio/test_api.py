@@ -67,7 +67,7 @@ class StudioTests(TestCase):
         with self.assertRaises(CommandError): call_command("seed_studio",stdout=io.StringIO())
         self.assertTrue(Composition.objects.filter(pk=old.pk).exists())
         call_command("seed_studio",replace_compositions=True,stdout=io.StringIO())
-        self.assertEqual(Composition.objects.count(),101)
+        self.assertEqual(Composition.objects.count(),103)
         self.assertEqual(Profile.objects.get(pk=1).display_name,"Preserved learner")
 
     def test_teaching_copy_changes_keep_existing_midi_versions(self):
@@ -88,7 +88,7 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(101,129,48,24))
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,129,48,24))
         self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),201)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
@@ -185,7 +185,7 @@ class StudioTests(TestCase):
         from apps.studio.services import studio_catalog
         with self.assertNumQueries(2):
             catalog = studio_catalog("uz")
-        self.assertEqual(len(catalog["compositions"]), 101)
+        self.assertEqual(len(catalog["compositions"]), 103)
 
     def test_readonly_catalog_and_legacy_content_write_endpoints(self):
         score=StudioAsset.objects.first().score

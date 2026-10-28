@@ -107,7 +107,7 @@ export function filterCompositions(
   const terms = searchable(filter.query).trim().split(/\s+/).filter(Boolean);
   const shown = items.filter((item) => {
     const haystack = searchable(
-      `${item.title} ${item.composer} ${item.collection || ''} ${item.subtitle} ${item.library_group?.label || ''} ${item.library_collection?.label || ''}`,
+      `${item.title} ${item.composer} ${item.collection || ''} ${item.subtitle} ${item.library_group?.label || ''} ${item.library_collection?.label || ''} ${(item.variants || []).map((variant) => `${variant.title} ${variant.description || ''}`).join(' ')}`,
     );
     return (
       terms.every((word) => haystack.includes(word)) &&

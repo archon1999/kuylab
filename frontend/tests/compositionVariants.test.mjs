@@ -117,3 +117,25 @@ test('transport mapping preserves reviewed revisions and rejects invalid context
   assert.equal(malformed.playback_revision,undefined);
   assert.equal(malformed.variants[0].playback_revision,undefined);
 });
+
+test('a retained lesson edition keeps its positions, notes and timestamp links when a recording is added',()=>{
+  const supplemented={id:9,default_variant_id:'original',variants:[
+    {id:'original',title:'Lesson edition',score_id:20},
+    {id:'fabrizio-caligaris',title:'A Time for Us',score_id:21,playback_revision:'1122334455667788'},
+  ]};
+  const saved=Object.freeze({'composition:9':24,'composition:9:source:1122334455667788':7});
+  assert.equal(compositionPlaybackContext(supplemented,'original'),'composition:9');
+  assert.deepEqual(compositionPositionKeys(supplemented,'original'),['composition:9']);
+  assert.equal(compositionResumePosition(supplemented,saved,'original'),24);
+  assert.equal(compositionResumePosition(supplemented,saved,'fabrizio-caligaris'),7);
+  assert.equal(compositionNotebookContext(supplemented,'original'),'composition:9');
+  assert.equal(compositionNotebookContext(supplemented,'fabrizio-caligaris'),'composition:9:source:1122334455667788');
+  const oldNote=compositionNoteTarget([supplemented],'composition:9');
+  assert.equal(oldNote.currentSource,true);
+  assert.equal(oldNote.variant.id,'original');
+  assert.equal(selectCompositionVariant(supplemented,null,'fabrizio-caligaris',true).id,'original');
+  assert.equal(selectCompositionVariant(supplemented,null,'fabrizio-caligaris').id,'fabrizio-caligaris');
+  assert.equal(selectCompositionVariant(supplemented,'fabrizio-caligaris','original',true).id,'fabrizio-caligaris');
+  assert.equal(compositionVariantStartPosition(supplemented,'original',67),null);
+  assert.equal(compositionVariantStartPosition(supplemented,'fabrizio-caligaris',67),null);
+});

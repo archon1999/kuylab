@@ -11,9 +11,9 @@ users do not upload or edit shared content through the website.
 
 Personal timestamp notes open the player at the saved moment and can be edited or
 removed with undo. Color-coded learning status is stored per lesson stage and
-appears on study cards, filters and statistics. Composition and variant players
-retain separate settings; every lesson, exercise, stage and comparison shares one
-study-player settings profile per account. Playback positions remain separate.
+appears on study cards, filters and statistics. Sound, appearance, visible key
+count and playback speed share one settings profile per account across all
+players. Playback positions remain separate.
 Still includes eight continuity studies (four
 parts, three joins and a full-piece path) alongside its 12 lessons. The independent
 curriculum has 48 exercises in 16 families and 24 theory topics, each with a
@@ -28,9 +28,10 @@ updates. Activities do not grade physical playing or lock other lessons.
 The dashboard resumes unfinished recent studies and stages. The composition
 library offers arrangement-specific 1–5-star difficulty, search, collection and
 favorite filters, sorting and pagination. Each card previews all source notes in
-a reviewed passage with a silent falling-note animation and synchronized keys.
+a reviewed passage with a paused falling-note preview, synchronized keys and
+sampled piano audio after pressing Play.
 The [30-piece candidate list](docs/repertoire-candidates-2026-10-26.md) records
-future repertoire choices separately from playable, source-verified content.
+repertoire choices and sources for the playable catalog.
 
 ## Structure
 

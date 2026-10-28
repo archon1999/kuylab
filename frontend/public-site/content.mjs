@@ -28,8 +28,9 @@ export const content = {
     headline: 'Sevgan kuyingizni pianinoda o‘rganing.',
     intro:
       'Tushayotgan MIDI notalari, kompozitsiya darslari va amaliy musiqa nazariyasi. Eshiting, tezlikni pasaytiring va o‘z pianinongizda mashq qiling.',
-    note: 'Brauzerda ishlaydi. Pianinoni ulash shart emas.',
     preview: 'MIDI player ko‘rinishi',
+    pauseMotion: 'Animatsiyani to‘xtatish',
+    resumeMotion: 'Animatsiyani davom ettirish',
     previewAlt:
       'Chap va o‘ng qo‘l notalari pianino klavishlari tomon tushayotgan MIDI player tasviri',
     piece: 'Winter Sonata — Still',
@@ -73,7 +74,7 @@ export const content = {
       ],
       [
         'Hozir qaysi asardan boshlash mumkin?',
-        'Studiyada 8 ta kompozitsiya va 57 ta kompozitsiya darsi bor: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’ning What Is a Youth asari, Memories va All in — Soundtrack. All in uchun bitta playerda Easy va Hard variantlari, umumiy 9 ta dars mavjud. Har bir kompozitsiyada to‘liq yuborilgan MIDI, osonlashtirilgan mashqlar va butun ijroga tayyorgarlik yo‘li bor.',
+        'Studiyada 38 ta kompozitsiya va 147 ta kompozitsiya darsi bor. Winter Sonata asarlari, Nino Rota, Yiruma, Chopin va Beethoven kompozitsiyalaridan boshlash mumkin. All in — Soundtrack uchun bitta playerda Easy va Hard variantlari, umumiy 9 ta dars mavjud. Asarga oid soddalashtirilgan mashqlar original ijroga bosqichma-bosqich tayyorlaydi.',
       ],
     ],
     about:
@@ -241,8 +242,9 @@ export const content = {
     headline: 'Учитесь играть то, что любите.',
     intro:
       'Падающие MIDI-ноты, уроки по произведениям и практическая теория музыки. Слушайте, снижайте темп и занимайтесь за своим пианино.',
-    note: 'Работает в браузере. Подключать пианино не обязательно.',
     preview: 'Так выглядит MIDI-плеер',
+    pauseMotion: 'Остановить анимацию',
+    resumeMotion: 'Продолжить анимацию',
     previewAlt: 'Ноты левой и правой руки опускаются к клавиатуре пианино в MIDI-плеере',
     piece: 'Winter Sonata — Still',
     pieceMeta: '3:34 · 12 уроков',
@@ -285,7 +287,7 @@ export const content = {
       ],
       [
         'Какое произведение уже доступно?',
-        'Доступны 8 произведений и 57 уроков: Still, Star, Tears in Your Eyes, My Memory, Premonition, What Is a Youth Нино Роты, Memories и All in — Soundtrack. У All in два варианта Easy и Hard в одном плеере и 9 общих уроков. Для каждого произведения есть переданный MIDI целиком, упрощённые упражнения и путь к полному исполнению.',
+        'В студии 38 произведений и 147 уроков по композициям. Можно начать с музыки Winter Sonata, Нино Роты, Yiruma, Шопена и Бетховена. У All in — Soundtrack два варианта Easy и Hard в одном плеере и 9 общих уроков. Отдельные упрощённые упражнения постепенно готовят к оригинальному исполнению.',
       ],
     ],
     about:
@@ -453,8 +455,9 @@ export const content = {
     headline: 'Learn to play the music you love.',
     intro:
       'Falling MIDI notes, composition lessons and practical music theory. Listen, slow the tempo and practise at your own piano.',
-    note: 'Works in your browser. No piano connection required.',
     preview: 'A look at the MIDI player',
+    pauseMotion: 'Pause animation',
+    resumeMotion: 'Resume animation',
     previewAlt: 'Left- and right-hand MIDI notes falling towards a piano keyboard',
     piece: 'Winter Sonata — Still',
     pieceMeta: '3:34 · 12 lessons',
@@ -497,7 +500,7 @@ export const content = {
       ],
       [
         'Which piece is available now?',
-        'The studio includes 8 pieces and 57 composition lessons: Still, Star, Tears in Your Eyes, My Memory, Premonition, Nino Rota’s What Is a Youth, Memories and All in — Soundtrack. All in has Easy and Hard versions in one player with 9 shared lessons. Each piece has its complete supplied MIDI, simplified studies and a path towards a full performance.',
+        'The studio includes 38 pieces and 147 composition lessons. Start with Winter Sonata, Nino Rota, Yiruma, Chopin or Beethoven. All in — Soundtrack has Easy and Hard versions in one player with 9 shared lessons. Separate simplified studies build towards the original performance.',
       ],
     ],
     about:

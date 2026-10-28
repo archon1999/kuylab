@@ -1,5 +1,17 @@
 import BrandMark from '@shared/ui/BrandMark';
-import { Alert, CircularProgress, Drawer, IconButton, Tooltip, useMediaQuery } from '@mui/material';
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Drawer,
+  IconButton,
+  Menu,
+  MenuItem,
+  Popover,
+  Slider,
+  Tooltip,
+  useMediaQuery,
+} from '@mui/material';
 import {
   AddCircleOutlineRounded,
   RemoveCircleOutlineRounded,
@@ -8,11 +20,13 @@ import {
   FullscreenExitRounded,
   FullscreenRounded,
   LightModeOutlined,
-  PauseCircleOutlineRounded,
-  PlayCircleOutlineRounded,
+  KeyboardArrowDownRounded,
+  PauseRounded,
+  PlayArrowRounded,
   RestartAltRounded,
   SettingsOutlined,
   BookmarkBorderRounded,
+  MoreHorizRounded,
 } from '@mui/icons-material';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { readableRollNotes } from '../../domain/readableNotes';
@@ -21,7 +35,7 @@ import type { StudioAudioPort } from '../../domain/contracts/studio-audio.port';
 import { useStudioPlayer, type StudioPlayerProps } from '../../application/useStudioPlayer';
 import { useStudioPreferences } from '../../application/useStudioPreferences';
 import type { StudioPreferencePort } from '../../domain/studioPreferences';
-import StudioRoll from './StudioRoll';
+import StudioRollViewport from './StudioRollViewport';
 import StudioTimeline from './StudioTimeline';
 import StudioSettings from './StudioSettings';
 import { studioLabels } from './studioLabels';
@@ -51,11 +65,15 @@ export default function StudioPlayerView(
   };
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [notebookOpen, setNotebookOpen] = useState(false);
+  const [speedAnchor, setSpeedAnchor] = useState<HTMLElement | null>(null);
+  const [moreAnchor, setMoreAnchor] = useState<HTMLElement | null>(null);
+  const [visibleKeys, setVisibleKeys] = useState(88);
   const notePosition = useRef(0);
   useEffect(() => {
     if (transport.speed !== settings.speed) transport.changeSpeed(settings.speed);
   }, [settings.speed]);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const mobile = useMediaQuery('(max-width: 680px)');
   const { volume, reverb, leftVolume, rightVolume } = settings;
   const [full, setFull] = useState(false);
   const element = useRef<HTMLElement>(null);
@@ -72,6 +90,8 @@ export default function StudioPlayerView(
       const target = event.target as HTMLElement;
       if (
         settingsOpen ||
+        speedAnchor ||
+        moreAnchor ||
         event.altKey ||
         event.ctrlKey ||
         event.metaKey ||
@@ -101,7 +121,7 @@ export default function StudioPlayerView(
     };
     document.addEventListener('keydown', keydown);
     return () => document.removeEventListener('keydown', keydown);
-  }, [settingsOpen]);
+  }, [settingsOpen, speedAnchor, moreAnchor]);
   useEffect(() => {
     const changed = () => setFull(document.fullscreenElement === element.current);
     document.addEventListener('fullscreenchange', changed);
@@ -114,6 +134,13 @@ export default function StudioPlayerView(
     } catch {
       /* Embedded browsers can disallow full screen; regular player remains available. */
     }
+  };
+  const openNotebook = () => {
+    notePosition.current = player.position;
+    player.pause();
+    setSettingsOpen(false);
+    setMoreAnchor(null);
+    setNotebookOpen(true);
   };
   return (
     <section
@@ -133,7 +160,7 @@ export default function StudioPlayerView(
           </button>
         )}
         <Tooltip title={`${player.playing ? text.pause : text.play} · Space`}>
-          <span>
+          <span className="studio-play-wrap">
             <IconButton
               className="studio-play"
               aria-label={player.playing ? text.pause : text.play}
@@ -143,9 +170,9 @@ export default function StudioPlayerView(
               {player.loading ? (
                 <CircularProgress size={28} />
               ) : player.playing ? (
-                <PauseCircleOutlineRounded />
+                <PauseRounded />
               ) : (
-                <PlayCircleOutlineRounded />
+                <PlayArrowRounded />
               )}
             </IconButton>
           </span>
@@ -180,6 +207,17 @@ export default function StudioPlayerView(
             <AddCircleOutlineRounded className="studio-circle-sign" />
           </IconButton>
         </div>
+        <button
+          className="studio-mobile-speed"
+          aria-label={`${text.speed}: ${Math.round(player.speed * 100)}%`}
+          aria-haspopup="dialog"
+          aria-expanded={!!speedAnchor}
+          onClick={(event) => setSpeedAnchor(event.currentTarget)}
+        >
+          <span>{text.speed}</span>
+          <b>{Math.round(player.speed * 100)}%</b>
+          <KeyboardArrowDownRounded aria-hidden="true" />
+        </button>
         {props.toolbarAccessory?.(player.position, player.pause)}
         <Tooltip title={text.reset}>
           <IconButton
@@ -195,12 +233,7 @@ export default function StudioPlayerView(
             <IconButton
               className="studio-notebook-button"
               aria-label={tr('Qaydlar')}
-              onClick={() => {
-                notePosition.current = player.position;
-                if (player.playing) void player.toggle();
-                setSettingsOpen(false);
-                setNotebookOpen(true);
-              }}
+              onClick={openNotebook}
               aria-expanded={notebookOpen}
             >
               <BookmarkBorderRounded />
@@ -235,9 +268,18 @@ export default function StudioPlayerView(
             {mode === 'dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
           </IconButton>
         )}
+        <IconButton
+          className="studio-more-button"
+          aria-label={text.more}
+          aria-haspopup="menu"
+          aria-expanded={!!moreAnchor}
+          onClick={(event) => setMoreAnchor(event.currentTarget)}
+        >
+          <MoreHorizRounded />
+        </IconButton>
       </div>
       <div className="studio-roll-frame">
-        <StudioRoll
+        <StudioRollViewport
           notes={rollNotes}
           position={player.position}
           playing={player.playing}
@@ -245,6 +287,9 @@ export default function StudioPlayerView(
           settings={settings}
           dark={mode === 'dark'}
           label={text.keyboard}
+          text={text}
+          onZoom={(zoom) => update('visibleKeys', Math.round(88 / zoom))}
+          onVisibleKeysChange={setVisibleKeys}
         />
         {!player.playing && !player.loading && player.position < 0.2 && (
           <div className="studio-piece-label">
@@ -265,8 +310,89 @@ export default function StudioPlayerView(
           </Alert>
         )}
       </div>
+      <Popover
+        open={!!speedAnchor}
+        anchorEl={speedAnchor}
+        onClose={() => setSpeedAnchor(null)}
+        container={() => element.current || document.body}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        slotProps={{
+          paper: { className: 'studio-speed-popover', role: 'dialog', 'aria-label': text.speed },
+        }}
+      >
+        <div className="studio-speed-popover-heading">
+          <strong>{text.speed}</strong>
+          <output>{Math.round(player.speed * 100)}%</output>
+        </div>
+        <Slider
+          min={20}
+          max={200}
+          step={5}
+          value={Math.round(player.speed * 100)}
+          aria-label={text.speed}
+          onChange={(_, value) => player.changeSpeed(Number(value) / 100)}
+        />
+        <div className="studio-speed-presets">
+          {[0.5, 0.75, 1, 1.5].map((speed) => (
+            <Button
+              key={speed}
+              aria-pressed={player.speed === speed}
+              onClick={() => {
+                player.changeSpeed(speed);
+                setSpeedAnchor(null);
+              }}
+            >
+              {Math.round(speed * 100)}%
+            </Button>
+          ))}
+        </div>
+      </Popover>
+      <Menu
+        open={!!moreAnchor}
+        anchorEl={moreAnchor}
+        onClose={() => setMoreAnchor(null)}
+        container={() => element.current || document.body}
+        slotProps={{ paper: { className: 'studio-actions-menu' } }}
+      >
+        {mobile && props.notebook && (
+          <MenuItem onClick={openNotebook}>
+            <BookmarkBorderRounded />
+            {tr('Qaydlar')}
+          </MenuItem>
+        )}
+        <MenuItem
+          onClick={() => {
+            player.seek(0);
+            setMoreAnchor(null);
+          }}
+        >
+          <RestartAltRounded />
+          {text.reset}
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            void fullscreen();
+            setMoreAnchor(null);
+          }}
+        >
+          <FullscreenRounded />
+          {full ? text.exitFull : text.full}
+        </MenuItem>
+        {mobile && !props.compact && (
+          <MenuItem
+            onClick={() => {
+              toggleMode();
+              setMoreAnchor(null);
+            }}
+          >
+            {mode === 'dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
+            {tr(mode === 'dark' ? 'Yorug‘ rejim' : 'Qorong‘i rejim')}
+          </MenuItem>
+        )}
+      </Menu>
       <Drawer
-        anchor="right"
+        anchor={mobile ? 'bottom' : 'right'}
         open={settingsOpen}
         onClose={() => setSettingsOpen(false)}
         container={full ? element.current : undefined}
@@ -285,11 +411,12 @@ export default function StudioPlayerView(
           reducedMotion={reducedMotion}
           onClose={() => setSettingsOpen(false)}
           readableHolds={props.readableHolds}
+          visibleKeys={visibleKeys}
         />
       </Drawer>
       {props.notebook && (
         <Drawer
-          anchor="right"
+          anchor={mobile ? 'bottom' : 'right'}
           open={notebookOpen}
           onClose={() => setNotebookOpen(false)}
           container={full ? element.current : undefined}

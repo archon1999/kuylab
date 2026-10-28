@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { pianoKeyLayout, type StudioNote } from '../../domain/studioTransport';
 import type { RollSettings } from '../../domain/studioPreferences';
+import type { KeyboardViewport } from '../../domain/keyboardViewport';
 import {
   allowsStrikeEffects,
   brighten,
@@ -20,6 +21,7 @@ export default function StudioRoll({
   settings,
   dark,
   label,
+  viewport,
 }: {
   notes: StudioNote[];
   position: number;
@@ -28,14 +30,15 @@ export default function StudioRoll({
   settings: RollSettings;
   dark: boolean;
   label: string;
+  viewport: KeyboardViewport;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const frames = useMemo(
     () => notes.map((note) => ({ ...note, end: note.onset + note.duration })),
     [notes],
   );
-  const current = useRef({ position, playing, reducedMotion, settings, dark });
-  current.current = { position, playing, reducedMotion, settings, dark };
+  const current = useRef({ position, playing, reducedMotion, settings, dark, viewport });
+  current.current = { position, playing, reducedMotion, settings, dark, viewport };
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
@@ -49,12 +52,9 @@ export default function StudioRoll({
     let lastDark = current.current.dark;
     let lastMotion = current.current.reducedMotion;
     let lastSettings: RollSettings | null = null;
+    let lastViewport: KeyboardViewport | null = null;
     let dirty = true;
     let particlesVisible = false;
-    const pitches = notes.map((note) => note.pitch);
-    // White-key boundaries keep edge accidentals intact. Range stays fixed during playback.
-    const low = Math.max(21, Math.floor((Math.min(60, ...pitches) - 2) / 12) * 12);
-    const high = Math.min(108, Math.ceil((Math.max(72, ...pitches) + 2) / 12) * 12 - 1);
     let keys = pianoKeyLayout(0);
     let whiteKeys = keys.filter((key) => key.white);
     let blackKeys = keys.filter((key) => !key.white);
@@ -82,7 +82,18 @@ export default function StudioRoll({
     const fontFamily = getComputedStyle(element).fontFamily;
     const render = (milliseconds: number) => {
       const now = milliseconds / 1000;
-      const { position, playing, reducedMotion, settings, dark } = current.current;
+      const { position, playing, reducedMotion, settings, dark, viewport } = current.current;
+      if (viewport !== lastViewport || dirty) {
+        keys = pianoKeyLayout(viewport.worldWidth, viewport.low, viewport.high).map((key) => ({
+          ...key,
+          x: key.x - viewport.offset,
+        }));
+        whiteKeys = keys.filter((key) => key.white);
+        blackKeys = keys.filter((key) => !key.white);
+        byPitch.fill(undefined);
+        for (const key of keys) byPitch[key.pitch] = key;
+        particles.clear();
+      }
       const effects = allowsStrikeEffects(playing, settings.particles, reducedMotion);
       const moved = position !== lastPosition;
       const continuous = isContinuousStep(lastPosition, position);
@@ -92,6 +103,7 @@ export default function StudioRoll({
       const changed =
         particlesVisible !== activeParticles ||
         dirty ||
+        viewport !== lastViewport ||
         moved ||
         settings !== lastSettings ||
         dark !== lastDark ||
@@ -122,6 +134,7 @@ export default function StudioRoll({
       lastDark = dark;
       lastSettings = settings;
       lastMotion = reducedMotion;
+      lastViewport = viewport;
       dirty = false;
       particlesVisible = activeParticles;
       const ratio = Math.min(devicePixelRatio || 1, 2);
@@ -151,7 +164,7 @@ export default function StudioRoll({
         if (note.onset > position + settings.lookahead) break;
         if (!settings[note.hand]) continue;
         const key = byPitch[note.pitch];
-        if (!key) continue;
+        if (!key || key.x + key.width < 0 || key.x > width) continue;
         const color = note.hand === 'left' ? settings.leftColor : settings.rightColor;
         const shade = shades[index];
         if (
@@ -295,11 +308,6 @@ export default function StudioRoll({
       const ratio = Math.min(devicePixelRatio || 1, 2);
       element.width = Math.round(width * ratio);
       element.height = Math.round(height * ratio);
-      keys = pianoKeyLayout(width, settings.focusKeys ? low : 21, settings.focusKeys ? high : 108);
-      whiteKeys = keys.filter((key) => key.white);
-      blackKeys = keys.filter((key) => !key.white);
-      byPitch.fill(undefined);
-      for (const key of keys) byPitch[key.pitch] = key;
       particles.clear();
       dirty = true;
     });
@@ -309,6 +317,6 @@ export default function StudioRoll({
       observer.disconnect();
       cancelAnimationFrame(frame);
     };
-  }, [frames, settings.focusKeys]);
+  }, [frames]);
   return <canvas ref={canvas} className="studio-roll" role="img" aria-label={label} />;
 }

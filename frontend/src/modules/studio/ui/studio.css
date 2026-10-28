@@ -1535,75 +1535,16 @@
   outline-offset: -3px;
 }
 @media (max-width: 680px) {
-  .studio-toolbar:has(.composition-variants) {
-    display: grid;
-    grid-template-columns: 52px 44px minmax(0, 1fr) 44px 44px;
-    gap: 5px;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-back-brand {
-    grid-column: 1;
-    grid-row: 1;
-    margin: 0;
-  }
-  .studio-toolbar:has(.composition-variants) > span {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-speed {
-    grid-column: 3;
-    grid-row: 1;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-    border: 0;
-    justify-content: center;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-speed > div {
-    min-width: 48px;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-notebook-button {
-    grid-column: 4;
-    grid-row: 1;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-settings-button {
-    grid-column: 5;
-    grid-row: 1;
-  }
   .studio-toolbar .composition-variants {
-    grid-column: 4 / 6;
+    grid-column: 1 / -1;
     grid-row: 2;
-    justify-self: end;
-    margin: 0;
+    justify-self: center;
+    margin: 0 0 2px;
   }
   .studio-toolbar .composition-variants .MuiToggleButton-root {
-    min-width: 44px;
-    padding: 8px 7px;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-time {
-    grid-column: 1 / 4;
-    grid-row: 2;
-    min-width: 0;
-    margin: 0;
-  }
-}
-@media (max-width: 360px) {
-  .studio-toolbar:has(.composition-variants) {
-    grid-template-columns: 44px 40px minmax(0, 1fr) 40px;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-settings-button {
-    grid-column: 4;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-notebook-button {
-    grid-column: 4;
-    grid-row: 3;
-  }
-  .studio-toolbar:has(.composition-variants) .studio-time {
-    grid-column: 1 / -1;
-  }
-  .studio-toolbar .composition-variants {
-    grid-column: 1 / 4;
-    grid-row: 3;
-    justify-self: start;
+    min-width: 52px;
+    min-height: 32px;
+    padding: 6px 12px;
   }
 }
 .study-progress-caption {

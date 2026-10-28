@@ -70,12 +70,13 @@ class AccountTests(TestCase):
 
     def test_player_preferences_are_per_user_and_survive_new_session(self):
         self.register(self.a,'learner_a'); self.register(self.b,'learner_b')
-        self.patch(self.a,'/api/auth/player-preferences/',{'leftVolume':0,'rightVolume':80,'focusKeys':True})
+        self.patch(self.a,'/api/auth/player-preferences/',{'leftVolume':0,'rightVolume':80,'focusKeys':True,'visibleKeys':36})
         self.assertEqual(self.b.get('/api/auth/player-preferences/').json(),{})
         other = APIClient(enforce_csrf_checks=True)
         token = other.get('/api/auth/session/').json()['csrfToken']
         self.assertEqual(other.post('/api/auth/login/',{'username':'learner_a','password':'piano-Strong-8247!'},format='json',HTTP_X_CSRFTOKEN=token).status_code,200)
         self.assertEqual(other.get('/api/auth/player-preferences/').json()['leftVolume'],0)
+        self.assertEqual(other.get('/api/auth/player-preferences/').json()['visibleKeys'],36)
 
     def test_weak_password_rejected_without_creating_account(self):
         token=self.a.get('/api/auth/session/').json()['csrfToken']

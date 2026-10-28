@@ -9,6 +9,7 @@ import { useStudio } from '../../../application';
 import {
   filterByStudyStatus,
   selectCompositionVariant,
+  compositionAttribution,
   type StudyStatusFilter as StatusFilter,
 } from '../../../domain';
 import CompositionVariants from '../../shared/CompositionVariants';
@@ -36,6 +37,7 @@ export default function DetailPage() {
       replaceRoute('detail', { compositionSlug: composition.slug });
   }, [composition?.slug, params.has('compositionSlug')]);
   if (!composition) return <StudioError message={tr('Kompozitsiya topilmadi.')} />;
+  const attribution = compositionAttribution(composition);
   const variant = selectCompositionVariant(
     composition,
     requestedVariant,
@@ -56,13 +58,13 @@ export default function DetailPage() {
         {tr('Kompozitsiyalar')}
       </Button>
       <Heading
-        eyebrow={composition.subtitle}
+        eyebrow={attribution.category || composition.subtitle}
         title={composition.title}
         action={<Favorite id={`composition:${composition.id}`} />}
       />
       <div className="studio-detail-intro">
         <DifficultyStars value={variant?.difficulty || composition.difficulty} />
-        {composition.composer && <p>{composition.composer}</p>}
+        {attribution.composer && <p>{attribution.composer}</p>}
         {composition.variants && variant && (
           <div className="composition-variant-intro">
             <CompositionVariants

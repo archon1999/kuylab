@@ -1,5 +1,6 @@
 """Prepare the curated library. Repertoire replacement requires an explicit flag."""
 import hashlib
+import json
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -14,39 +15,39 @@ from apps.studio.midi_authoring import SOURCE_SHA256, source_data, lesson_stage_
 from apps.studio.models import StudioAsset
 from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
 from apps.studio.all_in_package import additional_assets, package_source, study_file, HASHES
-from apps.studio.curated_repertoire import ENTRY_BY_CODE, edition_provenance
+from apps.studio.curated_repertoire import ENTRY_BY_CODE, edition_provenance, edition_source
 from apps.studio.ivory_repertoire import GROUP_BY_CODE as IVORY_BY_CODE, additional_assets as ivory_assets, performance_provenance, performance_source
 
 ORIGINAL_KEY = "composition:still:original"
 
 
-def prepared_assets():
+def iter_prepared_assets():
     content, parsed = source_data()
-    assets = [(ORIGINAL_KEY, "Winter Sonata — Still", content, parsed, {
+    yield (ORIGINAL_KEY, "Winter Sonata — Still", content, parsed, {
         "kind": "user_supplied_original_midi", "filename": "Winter Sonata Classics - Still.mid",
         "source_sha256": SOURCE_SHA256, "preserved_original_bytes": True,
         "completeness_scope": "All bytes and all 1092 notes of the user-supplied file; not independently verified against a published arrangement.",
         "hand_assignment": "Track 0 upper/melody => right; track 1 lower/accompaniment => left. Curated role inference, not source metadata.",
         "unknown_metadata": ["composer", "arranger", "key_signature", "time_signature"],
-    })]
+    })
     for source in SOURCES[1:]:
         content, source_parsed = repertoire_source(source.code)
         if source.course_kind == "ivory":
-            assets.append((source.asset_key, source.title, content, source_parsed, performance_provenance(source.code)))
+            yield (source.asset_key, source.title, content, source_parsed, performance_provenance(source.code))
             continue
         if source.course_kind == "curated":
-            assets.append((source.asset_key, source.title, content, source_parsed, edition_provenance(source.code)))
+            yield (source.asset_key, source.title, content, source_parsed, edition_provenance(source.code))
             continue
         if source.course_kind == "package":
-            assets.append((source.asset_key, source.title, content, source_parsed, {
+            yield (source.asset_key, source.title, content, source_parsed, {
                 "kind": "user_supplied_original_midi", "filename": source.filename,
                 "composition_code": source.code, "source_sha256": source.sha256,
                 "preserved_original_bytes": True, "hand_assignment": "supplied_track_names",
                 "completeness_scope": "Complete supplied Full +5 arrangement, not independently verified against a published edition.",
                 "unknown_metadata": ["composer", "arranger", "redistribution_license"],
-            }))
+            })
             continue
-        assets.append((source.asset_key, source.title, content, source_parsed, {
+        yield (source.asset_key, source.title, content, source_parsed, {
             "kind": "user_supplied_original_midi", "filename": source.filename,
             "composition_code": source.code, "source_sha256": source.sha256,
             "preserved_original_bytes": True,
@@ -55,9 +56,9 @@ def prepared_assets():
             "unknown_metadata": ["arranger", "key_signature", "time_signature"] + ([] if source.composer else ["composer"]),
             "composer_evidence": "user_supplied_filename" if source.composer else "not_supplied",
             "note_release_basis": "User's replacement performance export without pedal-extended note durations; no CC64 events supplied.",
-        }))
-    assets.extend(additional_assets())
-    assets.extend(ivory_assets())
+        })
+    yield from additional_assets()
+    yield from ivory_assets()
     for item in all_items():
         provenance = {"kind":"original_authored_study", "catalog_id":item["id"], "revision":REVISION}
         if item["kind"] in {"lesson", "journey"}:
@@ -70,9 +71,9 @@ def prepared_assets():
                 if stage.get("_package_file"):
                     data, details = study_file(stage["_package_file"])
                     title = item["title"]["uz"] + " · " + stage["title"]["uz"]
-                    assets.append((stage["_asset_key"], title, data, parse_midi(data, title), {
+                    yield (stage["_asset_key"], title, data, parse_midi(data, title), {
                         **provenance, **details, "stage_id": stage["id"],
-                    }))
+                    })
                     continue
                 if source_code == "all-in":
                     filename = "All_In_Plus5_Easy_LH.mid" if stage.get("_source_variant") == "easy" else "All_In_Plus5_Full.mid"
@@ -100,7 +101,7 @@ def prepared_assets():
                 if source_code == "all-in":
                     stage_provenance["source_variant"] = stage["_source_variant"]
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
-                assets.append((stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance))
+                yield (stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance)
             continue
         spec = item["_generator"]
         if item["kind"] == "exercise":
@@ -108,13 +109,69 @@ def prepared_assets():
             provenance.update(details)
         else:
             data = theory_midi(spec["topic"])
-        assets.append((item["id"], item["title"]["uz"], data, parse_midi(data,item["title"]["uz"]), provenance))
+        yield (item["id"], item["title"]["uz"], data, parse_midi(data,item["title"]["uz"]), provenance)
     for topic in COMPARISONS:
         for variant in definitions(topic):
             data = comparison_midi(topic, variant["id"].split(":")[-1])
             title = variant["title"]["uz"]
-            assets.append((variant["id"], title, data, parse_midi(data, title), {"kind":"original_authored_comparison", "topic":topic, "variant":variant["id"]}))
-    return assets
+            yield (variant["id"], title, data, parse_midi(data, title), {"kind":"original_authored_comparison", "topic":topic, "variant":variant["id"]})
+
+
+def prepared_assets():
+    """Compatibility helper for callers that explicitly need a materialized list."""
+    return list(iter_prepared_assets())
+
+
+def clear_parsed_source_caches():
+    # A seed is a batch job, not a long-lived audio reader. Otherwise the source
+    # LRUs retain dozens of full note graphs after the current asset is finished.
+    for loader in (repertoire_source, performance_source, edition_source, package_source):
+        loader.cache_clear()
+
+
+def asset_fingerprint(asset):
+    key, title, content, parsed, provenance = asset
+    digest = hashlib.sha256(content).hexdigest()
+    identity = json.dumps([key, title, digest, parsed, provenance], sort_keys=True,
+                          ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return {"fingerprint": hashlib.sha256(identity).hexdigest(), "content_sha256": digest,
+            "quarter_bpm": parsed["metadata"]["tempo"]["quarter_bpm"]}
+
+
+def validate_assets():
+    """Exhaust every parser/generator before DB writes, retaining small receipts."""
+    validated = {}
+    try:
+        for asset in iter_prepared_assets():
+            key = asset[0]
+            if key in validated:
+                raise CommandError(f"Duplicate curated asset identity: {key}")
+            validated[key] = asset_fingerprint(asset)
+            clear_parsed_source_caches()
+    finally:
+        clear_parsed_source_caches()
+    if not validated:
+        raise CommandError("The curated library contains no assets.")
+    return validated
+
+
+def validated_assets(validated):
+    """Regenerate one asset at a time; reject drift before writing its version."""
+    seen = set()
+    try:
+        for asset in iter_prepared_assets():
+            key = asset[0]
+            if key in seen or key not in validated or asset_fingerprint(asset) != validated[key]:
+                raise CommandError(f"Curated asset changed after validation: {key}")
+            seen.add(key)
+            try:
+                yield asset
+            finally:
+                clear_parsed_source_caches()
+        if seen != set(validated):
+            raise CommandError("Curated assets disappeared after validation.")
+    finally:
+        clear_parsed_source_caches()
 
 
 class Command(BaseCommand):
@@ -125,7 +182,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Validate every byte and teaching example before a destructive transaction.
-        assets = prepared_assets()
+        validated = validate_assets()
         others = Composition.objects.exclude(seed_key__in=[source.composition_key for source in SOURCES])
         if others.exists() and not options["replace_compositions"]:
             raise CommandError("Other compositions exist. Take a database snapshot, then pass --replace-compositions to replace them explicitly.")
@@ -150,7 +207,7 @@ class Command(BaseCommand):
                     arrangements[source.code] = arrangement
                     if source.course_kind == "ivory":
                         for index, variant in enumerate(IVORY_BY_CODE[source.code]["variants"]):
-                            _, parsed = performance_source(source.code, variant["id"])
+                            asset_key = source.asset_key if index == 0 else f"composition:{source.code}:{variant['id']}"
                             title = variant["title"]
                             label = title["uz"] if isinstance(title, dict) else title
                             defaults = {"composition": composition, "is_default": index == 0,
@@ -160,7 +217,7 @@ class Command(BaseCommand):
                                 "rights_note": "Owner-supplied Ivory Performance MIDI; owner instructed import. Original musical rights retained.",
                                 "arranger": variant.get("performer", "")[:120],
                                 "exact_version_confirmed": True, "workflow_status": "curated_studio",
-                                "tempo_bpm": round(parsed["metadata"]["tempo"]["quarter_bpm"]),
+                                "tempo_bpm": round(validated[asset_key]["quarter_bpm"]),
                                 "tempo_beat_unit": "quarter", "key_signature": "", "time_signature": "",
                                 "full_score_format": "midi", "full_score_verified_at": None}
                             if index == 0:
@@ -186,16 +243,17 @@ class Command(BaseCommand):
                         arrangement.time_signature = entry["time_label"]
                         arrangement.save(update_fields=["source_url", "source_kind", "rights_status", "rights_note", "arranger", "tempo_bpm", "key_signature", "time_signature"])
                     if source.course_kind == "package":
-                        _, parsed = repertoire_source(source.code)
-                        arrangement.tempo_bpm = round(parsed["metadata"]["tempo"]["quarter_bpm"])
+                        arrangement.tempo_bpm = round(validated[source.asset_key]["quarter_bpm"])
                         arrangement.key_signature = "D minor"
                         arrangement.time_signature = "mixed"
                         arrangement.save(update_fields=["tempo_bpm", "key_signature", "time_signature"])
-                for key, title, content, parsed, provenance in assets:
+                for key, title, content, parsed, provenance in validated_assets(validated):
                     source = SOURCE_BY_CODE[provenance.get("composition_code", "still")]
                     arrangement = variant_arrangements.get((source.code, provenance.get("variant_id")), arrangements[source.code])
                     digest = hashlib.sha256(content).hexdigest()
-                    old = StudioAsset.objects.select_related("score").filter(pk=key).first()
+                    old = StudioAsset.objects.select_related("score").only(
+                        "key", "revision", "score", "score__content_sha256",
+                        "score__source_provenance", "score__musicxml").filter(pk=key).first()
                     # Teaching copy can change without changing a MIDI version.
                     # Keep the original score's historical description; source,
                     # selected events and timing still participate in identity.

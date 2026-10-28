@@ -79,7 +79,7 @@ class StudioTests(TestCase):
         for _, _, _, _, provenance in assets:
             if provenance.get("kind") == "teaching_adaptation":
                 provenance["transformation_description"] = "A clearer instruction for the same music."
-        with patch("apps.studio.management.commands.seed_studio.prepared_assets", return_value=assets):
+        with patch("apps.studio.management.commands.seed_studio.iter_prepared_assets", side_effect=lambda: iter(assets)):
             call_command("seed_studio", stdout=io.StringIO())
         self.assertEqual(before, list(StudioAsset.objects.order_by("key").values_list("key", "score_id")))
         self.assertEqual(count, Score.objects.count())

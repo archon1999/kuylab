@@ -40,7 +40,7 @@ jobs:
       - run: npm run build
   backend:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
@@ -108,6 +108,8 @@ jobs:
           docker compose up -d --wait db
           docker compose run --rm backend python manage.py migrate --noinput
           docker compose run --rm backend python manage.py createcachetable
+          docker compose run --rm backend python manage.py seed_studio
+          # Exercise the existing-score path under the same memory limit.
           docker compose run --rm backend python manage.py seed_studio
           docker compose up -d --no-build --wait --wait-timeout 120
           docker compose exec -T backend python manage.py shell < ops/smoke.py

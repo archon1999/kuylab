@@ -332,36 +332,56 @@
   display: none;
 }
 .studio-settings-body {
-  margin-top: 22px;
+  margin-top: 20px;
+}
+.studio-settings-body > [role='tabpanel']:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .studio-settings-body > [hidden] {
   display: none;
 }
 .studio-settings-panel fieldset {
-  margin: 0 0 20px;
+  margin: 0;
   padding: 0;
   border: 0;
   min-width: 0;
 }
 .studio-settings-panel legend {
+  display: block;
+  width: 100%;
+  padding: 0;
   font-size: 11px;
   font-weight: 600;
+  line-height: 1.5;
   color: var(--studio-muted);
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
-.studio-setting-toggle.MuiFormControlLabel-root {
-  display: flex;
-  justify-content: space-between;
+.studio-setting-toggle.MuiFormControlLabel-root,
+.studio-hand-row .MuiFormControlLabel-root {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  align-items: center;
   margin: 0;
-  min-height: 37px;
-  gap: 10px;
+  min-width: 0;
+  min-height: 38px;
+  gap: 12px;
 }
-.studio-setting-toggle .MuiFormControlLabel-label {
+.studio-setting-toggle .MuiFormControlLabel-label,
+.studio-hand-row .MuiFormControlLabel-label {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
   font-size: 13px;
+  line-height: 1.5;
 }
 .studio-settings-panel .MuiSwitch-root {
   flex-shrink: 0;
-  margin-right: -3px;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  margin-right: -4px;
 }
 .studio-settings-panel .MuiSwitch-track {
   background-color: var(--studio-muted);
@@ -379,30 +399,42 @@
   opacity: 0.7;
 }
 .studio-setting-slider {
-  display: block;
+  display: grid;
   font-size: 13px;
   font-weight: 500;
-  margin: 0 0 22px;
+  line-height: 1.5;
+  margin: 0;
   color: inherit;
 }
 .studio-setting-slider-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
 }
 .studio-setting-slider output {
   font-family: 'Alan Sans Variable', 'Inter Variable', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
   color: var(--studio-muted);
 }
 .studio-settings-panel .MuiSlider-root {
+  display: block;
   color: var(--studio-accent);
-  padding: 15px 0 5px;
-  width: calc(100% - 4px);
-  margin-left: 2px;
+  padding: 12px 0;
+  width: calc(100% - 12px);
+  margin: 0 6px;
+}
+.studio-settings-panel .MuiSlider-marked {
+  padding-bottom: 26px;
+}
+.studio-settings-panel .MuiSlider-markLabel {
+  top: 26px;
+  line-height: 1.4;
 }
 .studio-settings-panel .MuiSlider-thumb {
   width: 11px;
@@ -418,22 +450,22 @@
   border: 0;
 }
 .studio-settings-panel .studio-hand-fieldset {
-  margin-bottom: 12px;
+  margin: 0;
 }
 .studio-hand-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display: grid;
+  gap: 2px;
 }
 .studio-hand-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
-  min-height: 38px;
+  gap: 12px;
+  min-height: 40px;
 }
 .studio-hand-row input {
-  width: 27px;
-  height: 27px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border: 0;
   border-radius: 7px;
@@ -452,17 +484,8 @@
   border: 0;
   border-radius: 7px;
 }
-.studio-hand-row .MuiFormControlLabel-root {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  margin: 0;
-}
-.studio-hand-row .MuiFormControlLabel-label {
-  font-size: 13px;
-}
 .studio-settings-hint {
-  margin: 4px 0 8px;
+  margin: 4px 0 0;
   color: var(--studio-muted);
   font-size: 11px;
   line-height: 1.5;
@@ -470,7 +493,7 @@
 .studio-shortcuts {
   padding-top: 14px;
   border-top: 1px solid var(--studio-line);
-  margin-top: 4px;
+  margin-top: 20px;
   font-size: 12px;
   color: var(--studio-muted);
 }
@@ -693,6 +716,17 @@
   }
   .studio-settings-panel .MuiSlider-root {
     padding: 18px 0;
+  }
+  .studio-settings-panel .MuiSlider-marked {
+    padding-bottom: 30px;
+  }
+  .studio-settings-panel .MuiSlider-markLabel {
+    top: 34px;
+  }
+  .studio-setting-toggle.MuiFormControlLabel-root,
+  .studio-hand-row .MuiFormControlLabel-root,
+  .studio-hand-row {
+    min-height: 44px;
   }
 }
 @media (max-width: 1000px) and (orientation: landscape) {

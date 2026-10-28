@@ -36,6 +36,8 @@
         "note_count": 902,
         "duration_seconds": 225.98958333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -80,6 +82,8 @@
         "note_count": 2301,
         "duration_seconds": 309.2604166666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -114,6 +118,8 @@
         "note_count": 774,
         "duration_seconds": 208.83333333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -162,6 +168,8 @@
         "note_count": 553,
         "duration_seconds": 132.94270833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -210,6 +218,8 @@
         "note_count": 1024,
         "duration_seconds": 155.984375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -258,6 +268,8 @@
         "note_count": 831,
         "duration_seconds": 142.39583333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -306,6 +318,8 @@
         "note_count": 1047,
         "duration_seconds": 191.171875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -350,6 +364,8 @@
         "note_count": 639,
         "duration_seconds": 153.546875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -388,6 +404,8 @@
         "note_count": 1021,
         "duration_seconds": 180.54166666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -436,6 +454,8 @@
         "note_count": 729,
         "duration_seconds": 188.18229166666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -479,11 +499,23 @@
           "peak_notes_per_second": 3.4,
           "peak_simultaneous_notes": 4
         },
-        "sha256": "6c39f9c7f5a5eea8a14c91da966ab29936eb76f71d67c3f557e795e3e0103d20",
+        "note_additions": [
+          {
+            "track_index": 1,
+            "channel": 0,
+            "pitch": 83,
+            "start_ticks": 164,
+            "end_ticks": 959,
+            "velocity": 48,
+            "reason": "User-directed restoration of sequential E-G-B: B5 follows G5. Timing and velocity are editorial inferences from the accompaniment and phrase landmarks, not a recovered original MIDI event."
+          }
+        ],
+        "sha256": "914559dfcf9087c455bff1c0a5dfa9fb456e3302f031a4cc0b0576f013238af5",
         "trim_start_ticks": 0,
-        "note_count": 308,
+        "note_count": 309,
         "duration_seconds": 140.90104166666666,
         "omitted_note_count": 0,
+        "added_note_count": 1,
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -518,6 +550,8 @@
         "note_count": 404,
         "duration_seconds": 169.57291666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -566,6 +600,8 @@
         "note_count": 2456,
         "duration_seconds": 414.7135416666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -614,6 +650,8 @@
         "note_count": 962,
         "duration_seconds": 156.515625,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -662,6 +700,8 @@
         "note_count": 2386,
         "duration_seconds": 163.92708333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -706,6 +746,8 @@
         "note_count": 582,
         "duration_seconds": 137.65104166666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -754,6 +796,8 @@
         "note_count": 6424,
         "duration_seconds": 449.1354166666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -802,6 +846,8 @@
         "note_count": 1160,
         "duration_seconds": 439.3802083333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -850,6 +896,8 @@
         "note_count": 2063,
         "duration_seconds": 169.40104166666666,
         "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -898,6 +946,8 @@
         "note_count": 2595,
         "duration_seconds": 206.6875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -946,6 +996,8 @@
         "note_count": 1773,
         "duration_seconds": 212.86458333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -994,6 +1046,8 @@
         "note_count": 1964,
         "duration_seconds": 263.2083333333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1028,6 +1082,8 @@
         "note_count": 1994,
         "duration_seconds": 227.11979166666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1076,6 +1132,8 @@
         "note_count": 434,
         "duration_seconds": 192.375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1124,6 +1182,8 @@
         "note_count": 275,
         "duration_seconds": 84.21875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1172,6 +1232,8 @@
         "note_count": 2247,
         "duration_seconds": 251.38020833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1220,6 +1282,8 @@
         "note_count": 2128,
         "duration_seconds": 191.94791666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1258,6 +1322,8 @@
         "note_count": 845,
         "duration_seconds": 101.203125,
         "omitted_note_count": 18,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1296,6 +1362,8 @@
         "note_count": 1127,
         "duration_seconds": 89.84895833333333,
         "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1344,6 +1412,8 @@
         "note_count": 457,
         "duration_seconds": 150.578125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1392,6 +1462,8 @@
         "note_count": 1682,
         "duration_seconds": 215.47395833333334,
         "omitted_note_count": 18,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1440,6 +1512,8 @@
         "note_count": 2564,
         "duration_seconds": 304.375,
         "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1478,6 +1552,8 @@
         "note_count": 2599,
         "duration_seconds": 330.3697916666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1526,6 +1602,8 @@
         "note_count": 574,
         "duration_seconds": 115.98958333333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1574,6 +1652,8 @@
         "note_count": 1901,
         "duration_seconds": 358.8645833333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1622,6 +1702,8 @@
         "note_count": 470,
         "duration_seconds": 152.73958333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1660,6 +1742,8 @@
         "note_count": 1093,
         "duration_seconds": 190.27083333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1694,6 +1778,8 @@
         "note_count": 811,
         "duration_seconds": 147.609375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1742,6 +1828,8 @@
         "note_count": 1799,
         "duration_seconds": 314.5677083333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1790,6 +1878,8 @@
         "note_count": 803,
         "duration_seconds": 206.953125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1838,6 +1928,8 @@
         "note_count": 312,
         "duration_seconds": 84.69270833333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1882,6 +1974,8 @@
         "note_count": 1495,
         "duration_seconds": 246.875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1930,6 +2024,8 @@
         "note_count": 1996,
         "duration_seconds": 339.2760416666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -1964,6 +2060,8 @@
         "note_count": 519,
         "duration_seconds": 187.30208333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2002,6 +2100,8 @@
         "note_count": 524,
         "duration_seconds": 193.41666666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2050,6 +2150,8 @@
         "note_count": 622,
         "duration_seconds": 182.4375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2098,6 +2200,8 @@
         "note_count": 2487,
         "duration_seconds": 268.2760416666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2146,6 +2250,8 @@
         "note_count": 2318,
         "duration_seconds": 221.81770833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2194,6 +2300,8 @@
         "note_count": 2378,
         "duration_seconds": 332.9739583333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2242,6 +2350,8 @@
         "note_count": 465,
         "duration_seconds": 110.53125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2290,6 +2400,8 @@
         "note_count": 797,
         "duration_seconds": 138.64583333333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2338,6 +2450,8 @@
         "note_count": 1119,
         "duration_seconds": 310.1302083333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2382,6 +2496,8 @@
         "note_count": 2057,
         "duration_seconds": 188.453125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2420,6 +2536,8 @@
         "note_count": 1038,
         "duration_seconds": 116.05208333333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2468,6 +2586,8 @@
         "note_count": 742,
         "duration_seconds": 183.0625,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2506,6 +2626,8 @@
         "note_count": 672,
         "duration_seconds": 203.38541666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2554,6 +2676,8 @@
         "note_count": 1077,
         "duration_seconds": 203.96354166666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2602,6 +2726,8 @@
         "note_count": 700,
         "duration_seconds": 102.88541666666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2650,6 +2776,8 @@
         "note_count": 881,
         "duration_seconds": 173.63541666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2698,6 +2826,8 @@
         "note_count": 935,
         "duration_seconds": 214.22395833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2746,6 +2876,8 @@
         "note_count": 3015,
         "duration_seconds": 274.9635416666667,
         "omitted_note_count": 12,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2794,6 +2926,8 @@
         "note_count": 760,
         "duration_seconds": 142.4375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2842,6 +2976,8 @@
         "note_count": 1882,
         "duration_seconds": 155.125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2890,6 +3026,8 @@
         "note_count": 1404,
         "duration_seconds": 284.625,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2938,6 +3076,8 @@
         "note_count": 1736,
         "duration_seconds": 172.921875,
         "omitted_note_count": 14,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -2986,6 +3126,8 @@
         "note_count": 714,
         "duration_seconds": 263.9635416666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3034,6 +3176,8 @@
         "note_count": 1028,
         "duration_seconds": 176.71875,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3082,6 +3226,8 @@
         "note_count": 548,
         "duration_seconds": 183.50520833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3130,6 +3276,8 @@
         "note_count": 2252,
         "duration_seconds": 243.578125,
         "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3178,6 +3326,8 @@
         "note_count": 1854,
         "duration_seconds": 175.09375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3216,6 +3366,8 @@
         "note_count": 1448,
         "duration_seconds": 160.359375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3264,6 +3416,8 @@
         "note_count": 3540,
         "duration_seconds": 326.8385416666667,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3312,6 +3466,8 @@
         "note_count": 961,
         "duration_seconds": 197.125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3360,6 +3516,8 @@
         "note_count": 399,
         "duration_seconds": 398.9270833333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3408,6 +3566,8 @@
         "note_count": 1293,
         "duration_seconds": 264.0520833333333,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3456,6 +3616,8 @@
         "note_count": 1869,
         "duration_seconds": 210.65625,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3504,6 +3666,8 @@
         "note_count": 932,
         "duration_seconds": 146.19270833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3552,6 +3716,8 @@
         "note_count": 1642,
         "duration_seconds": 211.10416666666666,
         "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3600,6 +3766,8 @@
         "note_count": 555,
         "duration_seconds": 151.22395833333334,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3648,6 +3816,8 @@
         "note_count": 1448,
         "duration_seconds": 131.51041666666666,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3696,6 +3866,8 @@
         "note_count": 2459,
         "duration_seconds": 187.53125,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3744,6 +3916,8 @@
         "note_count": 1076,
         "duration_seconds": 85.734375,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
@@ -3792,6 +3966,8 @@
         "note_count": 1390,
         "duration_seconds": 207.765625,
         "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {

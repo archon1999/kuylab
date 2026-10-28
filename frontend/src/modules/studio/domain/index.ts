@@ -48,4 +48,5 @@ export {
   inferCompositionGroup,
   collectionForGroup,
   compositionCollectionLabel,
+  compositionAttribution,
 } from './compositionLibrary.ts';

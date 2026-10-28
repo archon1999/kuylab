@@ -1,5 +1,5 @@
 import type { CompositionFilter } from './entities/studio.types.ts';
-import { emptyCompositionFilter } from './compositionLibrary.ts';
+import { canonicalCompositionCollection, emptyCompositionFilter } from './compositionLibrary.ts';
 
 export type CompositionLibraryState = {
   filter: CompositionFilter;
@@ -33,7 +33,7 @@ export function normalizeLibraryState(value: unknown): CompositionLibraryState {
     filter: {
       query: text('query'),
       group: text('group'),
-      collection: text('collection'),
+      collection: canonicalCompositionCollection(text('collection')),
       difficulty:
         Number.isInteger(difficulty) && difficulty >= 1 && difficulty <= 5 ? difficulty : 0,
       favoritesOnly: filter.favoritesOnly === true,

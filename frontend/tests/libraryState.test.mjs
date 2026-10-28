@@ -87,6 +87,15 @@ test('hierarchy filters share stable IDs across localized URLs while default gro
   assert.equal(legacy.filter.group,'');
 });
 
+test('the former Thomas Bergersen collection migrates in URLs and saved sessions without losing browsing state',()=>{
+  const params=new URLSearchParams('group=epic&collection=thomas-bergersen&q=Red&p=2&view=grid');
+  const state=readLibraryQuery(params);
+  assert.equal(state.filter.collection,'two-steps-from-hell');
+  assert.equal(routePath('library',libraryQuery(state)),'/compositions?q=Red&group=epic&collection=two-steps-from-hell&p=2&view=grid');
+  const legacySession={...state,filter:{...state.filter,collection:'thomas-bergersen'}};
+  assert.deepEqual(normalizeLibraryState(legacySession),state);
+});
+
 test('Ctrl/Command/middle/Shift clicks keep browser new-tab behavior',()=>{
   const plain={button:0,ctrlKey:false,metaKey:false,shiftKey:false,altKey:false,defaultPrevented:false};
   assert.equal(isPlainLinkClick(plain),true);

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compositionPage, emptyCompositionFilter, filterCompositions, libraryVariant, compositionGroups, compositionCollections, inferCompositionGroup, collectionForGroup, compositionCollectionLabel } from '../src/modules/studio/domain/compositionLibrary.ts';
+import { compositionPage, emptyCompositionFilter, filterCompositions, libraryVariant, compositionGroups, compositionCollections, inferCompositionGroup, collectionForGroup, compositionCollectionLabel, compositionAttribution } from '../src/modules/studio/domain/compositionLibrary.ts';
 import { selectResumeStudy } from '../src/modules/studio/domain/resumeStudy.ts';
 
 const piece = (id, title, difficulty, collection = '') => ({id,title,difficulty,collection,composer:'',subtitle:'',duration_seconds:id*30,lesson_ids:[],score_id:id,slug:title});
@@ -78,6 +78,32 @@ test('taxonomy combines with difficulty/favorites and localized artist names rem
   assert.equal(filterCompositions(classified,filter({group:'classical',collection:'naruto'}),[]).length,0);
   assert.deepEqual(filterCompositions(classified,filter({query:'beyonce'}),[]).map(p=>p.id),[5]);
   assert.deepEqual(filterCompositions(classified,filter({query:'classics Beethoven'}),[]).map(p=>p.id),[1,2]);
+});
+
+const epic = [
+  {...piece(1,'Lion Heart',4),composer:'Ivan Torrent',library_group:{id:'epic',label:'Epic music'},library_collection:{id:'ivan-torrent',label:'Ivan Torrent'}},
+  {...piece(2,'Red',4,'Humanity — Chapter II'),composer:'Thomas Bergersen',library_group:{id:'epic',label:'Epic music'},library_collection:{id:'two-steps-from-hell',label:'Two Steps From Hell'}},
+  {...piece(3,'Victory',4,'Battlecry'),composer:'Thomas Bergersen',library_group:{id:'epic',label:'Epic music'},library_collection:{id:'two-steps-from-hell',label:'Two Steps From Hell'}},
+];
+
+test('card and detail attribution lead with the curated artist and retain only distinct composer credits',()=>{
+  const before = structuredClone(epic);
+  assert.deepEqual(compositionAttribution(epic[0]),{category:'Ivan Torrent',composer:''});
+  assert.deepEqual(compositionAttribution(epic[1]),{category:'Two Steps From Hell',composer:'Thomas Bergersen'});
+  assert.deepEqual(compositionAttribution({...piece(4,'Untyped',2,'Original collection'),composer:'Original composer'}),{category:'Original collection',composer:'Original composer'});
+  assert.deepEqual(compositionAttribution({...piece(5,'Unclassified',2),composer:' Artist '}),{category:'Artist',composer:''});
+  assert.deepEqual(compositionAttribution(piece(6,'Unknown',2)),{category:'',composer:''});
+  assert.deepEqual(epic,before);
+});
+
+test('Thomas Bergersen works use a single Two Steps From Hell collection while composer search and old links keep working',()=>{
+  assert.deepEqual(compositionCollections(epic,'epic'),[{id:'ivan-torrent',label:'Ivan Torrent'},{id:'two-steps-from-hell',label:'Two Steps From Hell'}]);
+  assert.deepEqual(filterCompositions(epic,filter({group:'epic',collection:'two-steps-from-hell'}),[]).map(p=>p.id),[2,3]);
+  assert.deepEqual(filterCompositions(epic,filter({query:'Thomas Bergersen'}),[]).map(p=>p.id),[2,3]);
+  assert.deepEqual(filterCompositions(epic,filter({collection:'thomas-bergersen'}),[]).map(p=>p.id),[2,3]);
+  assert.equal(compositionCollectionLabel(epic,'thomas-bergersen'),'Two Steps From Hell');
+  assert.equal(inferCompositionGroup(epic,'thomas-bergersen'),'epic');
+  assert.equal(collectionForGroup(epic,'epic','thomas-bergersen'),'thomas-bergersen');
 });
 test('resume skips the most recent mastered lesson and composition entries', () => {
   const items = [lesson('done'),lesson('ongoing')];

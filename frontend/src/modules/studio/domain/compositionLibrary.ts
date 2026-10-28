@@ -15,8 +15,28 @@ const searchable = (value: string) =>
     .replace(/[‘’ʼ`]/g, "'")
     .toLocaleLowerCase();
 
+/** Keep saved links to the former separate artist collection usable. */
+export const canonicalCompositionCollection = (collection: string) =>
+  collection === 'thomas-bergersen' ? 'two-steps-from-hell' : collection;
+
 const matchesCollection = (item: Composition, collection: string) =>
-  item.library_collection?.id === collection || (item.collection || '__other__') === collection;
+  item.library_collection?.id === canonicalCompositionCollection(collection) ||
+  (item.collection || '__other__') === collection;
+
+/** Curated artist/franchise names lead; preserve a distinct composer credit. */
+export function compositionAttribution(composition: Composition) {
+  const category = (
+    composition.library_collection?.label ||
+    composition.collection ||
+    composition.composer ||
+    ''
+  ).trim();
+  const composer = composition.composer.trim();
+  return {
+    category,
+    composer: searchable(category) === searchable(composer) ? '' : composer,
+  };
+}
 
 export function compositionGroups(items: Composition[]) {
   return [

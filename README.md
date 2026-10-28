@@ -118,8 +118,10 @@ pins each arrangement, difficulty, preview, source attribution and import hash.
 Multiple performances share one composition and expose separate player variants.
 Ode to Joy, Moonlight Sonata I, Rondo alla Turca, Time, He’s a Pirate and My Heart
 Will Go On use the replacement performances while retaining their composition IDs
-and slugs. Nine confirmed channel jingles are omitted; the other 74 openings are
-preserved. Original downloads and precise trim provenance remain available for audit.
+and slugs. Nine confirmed channel jingles are omitted; 73 exports retain their
+original bytes, and Blue Bell's first performance has one documented user-directed
+B5 addition after G5. Original downloads, precise cuts and editorial provenance
+remain available for audit.
 The earlier source-specific lessons for replaced editions are retired from the
 active catalog; learner history is preserved. New imports do not claim to have
 newly authored lessons. The 24 retained editions in

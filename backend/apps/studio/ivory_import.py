@@ -1,5 +1,5 @@
-"""Offline preparation of a reviewed import plan; never guesses intro cuts."""
-from collections import defaultdict, deque
+"""Offline preparation of explicitly reviewed cuts and editorial note repairs."""
+from collections import Counter, defaultdict, deque
 from hashlib import sha256
 import io
 import json
@@ -9,6 +9,85 @@ from statistics import median
 
 import mido
 from apps.scores.midi import parse_midi
+
+
+MAX_REVIEWED_NOTE_ADDITIONS = 8
+
+
+def add_reviewed_notes(data, additions):
+    """Add bounded, documented notes without moving any original event.
+
+    Tick positions refer to the playable MIDI after a separately reviewed intro
+    cut. Timing and velocity are editorial decisions, not recovered source data.
+    Overlapping same-pitch port/channel notes are rejected to avoid ambiguous
+    releases. Existing message order, absolute ticks and track ends are retained.
+    """
+    if not isinstance(additions, list) or len(additions) > MAX_REVIEWED_NOTE_ADDITIONS:
+        raise ValueError("At most eight explicitly reviewed note additions are supported.")
+    if not additions:
+        return data
+    original = mido.MidiFile(file=io.BytesIO(data))
+    before = parse_midi(data)
+    timelines = []
+    for track in original.tracks:
+        tick, messages = 0, []
+        for order, message in enumerate(track):
+            tick += message.time
+            messages.append((tick, order, message))
+        timelines.append(messages)
+    required = {"track_index", "channel", "pitch", "start_ticks", "end_ticks", "velocity", "reason"}
+    reviewed = []
+    for addition in additions:
+        if not isinstance(addition, dict) or set(addition) != required:
+            raise ValueError("A reviewed note needs exact track, channel, pitch, tick, velocity and reason fields.")
+        numeric = required - {"reason"}
+        if any(type(addition[key]) is not int for key in numeric):
+            raise ValueError("Reviewed note coordinates must be integers.")
+        track, channel, pitch = (addition[key] for key in ("track_index", "channel", "pitch"))
+        start, end, velocity = (addition[key] for key in ("start_ticks", "end_ticks", "velocity"))
+        reason = addition["reason"]
+        if not isinstance(reason, str) or not reason.strip() or len(reason) > 1000:
+            raise ValueError("An explicit bounded editorial reason is required for every added note.")
+        if not 0 <= track < len(timelines) or not 0 <= channel <= 15 or channel == 9 or not 0 <= pitch <= 127 or not 1 <= velocity <= 127:
+            raise ValueError("Reviewed note track, piano channel, pitch or velocity is outside its range.")
+        if not timelines[track] or not 0 <= start < end <= timelines[track][-1][0]:
+            raise ValueError("A reviewed note must remain inside its existing track timeline.")
+        port = 0
+        for tick, _, message in timelines[track]:
+            if message.type == "midi_port":
+                if tick <= start:
+                    port = message.port
+                elif tick < end:
+                    raise ValueError("An added note cannot cross a MIDI port change.")
+        for event in before["events"]:
+            if (event.get("port", 0), event.get("channel"), event["pitch"]["midi"]) == (port, channel, pitch) and event["start_ticks"] < end and start < event["end_ticks"]:
+                raise ValueError("An added note overlaps an existing same-pitch port/channel note.")
+        if any((other["port"], other["channel"], other["pitch"]) == (port, channel, pitch) and other["start_ticks"] < end and start < other["end_ticks"] for other in reviewed):
+            raise ValueError("Reviewed note additions overlap one another.")
+        reviewed.append({**addition, "port": port})
+    output = mido.MidiFile(type=original.type, ticks_per_beat=original.ticks_per_beat, charset=original.charset)
+    for track_index, messages in enumerate(timelines):
+        events = [(tick, 0, order, message) for tick, order, message in messages]
+        for order, addition in enumerate(reviewed):
+            if addition["track_index"] == track_index:
+                events.append((addition["start_ticks"], 1, order, mido.Message("note_on", channel=addition["channel"], note=addition["pitch"], velocity=addition["velocity"])))
+                events.append((addition["end_ticks"], -1, order, mido.Message("note_off", channel=addition["channel"], note=addition["pitch"], velocity=0)))
+        track, previous = mido.MidiTrack(), 0
+        output.tracks.append(track)
+        for tick, _, _, message in sorted(events, key=lambda row: row[:3]):
+            track.append(message.copy(time=tick-previous))
+            previous = tick
+    buffer = io.BytesIO()
+    output.save(file=buffer)
+    content = buffer.getvalue()
+    after = parse_midi(content)
+
+    def signature(event):
+        return (event["track_index"], event.get("port", 0), event["channel"], event["pitch"]["midi"], event["velocity"], event["start_ticks"], event["end_ticks"], event["sound_end_ticks"])
+
+    if len(after["events"]) != len(before["events"]) + len(reviewed) or Counter(map(signature, before["events"])) - Counter(map(signature, after["events"])):
+        raise ValueError("An editorial addition changed an original note event.")
+    return content
 
 
 def trim_channel_intro(data, start_seconds):
@@ -134,7 +213,7 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
         if not group["variants"] or len({v["id"] for v in group["variants"]})!=len(group["variants"]):
             raise ValueError("Each composition needs uniquely identified performances.")
         entry = {key:group[key] for key in ("code","slug","title","composer","collection")}
-        entry["replaces_existing"] = bool(group.get("existing_code"))
+        entry["replaces_existing"] = bool(group.get("existing_code") or group.get("replaces_existing"))
         entry["variants"] = []
         for variant in group["variants"]:
             name, identifier = variant["filename"],variant["id"]
@@ -151,6 +230,12 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             if start<0 or start and not variant.get("trim_reason"):
                 raise ValueError("Only an explicitly reviewed channel-intro cut is supported.")
             content, tick, actual_start = trim_channel_intro(data,start)
+            retained_source_count = len(parse_midi(content,group["title"])["events"])
+            omitted_count = original["validation"]["note_count"] - retained_source_count
+            if omitted_count < 0:
+                raise ValueError(f"{name}: source note count metadata needs review.")
+            additions = variant.get("note_additions", [])
+            content = add_reviewed_notes(content, additions)
             parsed = parse_midi(content,group["title"])
             if parsed["pedal_events"]:
                 raise ValueError(f"{name}: a pedal-free performance was expected.")
@@ -163,7 +248,8 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             value = {**variant, "sha256":sha256(content).hexdigest(), "source_sha256":digest,
                      "trim_start_seconds":actual_start, "trim_start_ticks":tick,
                      "note_count":len(parsed["events"]), "duration_seconds":duration,
-                     "omitted_note_count":original["validation"]["note_count"]-len(parsed["events"]),
+                     "omitted_note_count":omitted_count, "added_note_count":len(additions),
+                     "note_additions":additions,
                      "hand_roles":display_roles(parsed), "preview_start":preview_start,
                      "preview_duration":min(float(variant.get("preview_duration",16)),duration-preview_start),
                      "source_url":variant.get("source_url",original["url"]),
@@ -171,7 +257,7 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             if original.get("performer") and not value.get("performer"):
                 value["performer"] = original["performer"]
             prepared[name] = content
-            if start:
+            if start or additions:
                 original_files[name] = data
             entry["variants"].append(value)
         output_groups.append(entry)

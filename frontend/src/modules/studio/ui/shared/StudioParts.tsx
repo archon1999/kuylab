@@ -21,6 +21,7 @@ import {
   studyProgress,
   allStudyItems,
   libraryVariant,
+  compositionAttribution,
   type Composition,
   type StudyItem,
 } from '../../domain';
@@ -151,16 +152,17 @@ export function CompositionCard({
   const tr = useTranslation();
   const { language } = usePreferences();
   const variant = libraryVariant(composition, difficulty);
+  const attribution = compositionAttribution(composition);
   return (
     <article className="studio-composition-card">
       <CompositionPreview composition={composition} variant={variant?.id} />
       <div className="studio-composition-content">
         <div className="studio-card-top">
-          <span className="studio-card-category">{composition.collection}</span>
+          <span className="studio-card-category">{attribution.category}</span>
           <Favorite id={`composition:${composition.id}`} />
         </div>
         <h2>{composition.title}</h2>
-        <p>{composition.composer}</p>
+        {attribution.composer && <p>{attribution.composer}</p>}
         <div className="composition-difficulty-row">
           <DifficultyStars value={variant?.difficulty || composition.difficulty} />
           {variant && <span className="composition-current-variant">{variant.title}</span>}

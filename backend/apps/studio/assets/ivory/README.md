@@ -23,7 +23,7 @@ Ivory references, arrangement difficulty, preview passage and display-layer
 inference. Unknown composers remain blank. The original rights are retained by
 their owners; these files are not relabeled as public-domain editions.
 
-Seventy-four exports retain every original byte. Nine reviewed recordings begin
+Seventy-three exports retain every original byte. Nine reviewed recordings begin
 with shared channel-jingle pitch/timing signatures also present before unrelated
 pieces. Only those demonstrated prefixes were removed. The untouched exports for
 these nine are retained in `originals/` for audit. Cuts are MIDI timeline seconds,
@@ -41,6 +41,18 @@ not claims about YouTube video offsets:
 | skyrim-dragonborn.mid | 4.265625 | 13 |
 | chariots-of-fire.mid | 4.328125 | 13 |
 
+Blue Bell's first performance contains one user-directed editorial repair: B5
+(MIDI 83) enters after G5 at tick 164 (0.854167 seconds) and releases at tick 959
+(4.994792 seconds), with accompaniment velocity 48 in track 1/channel 0. The user
+specified a sequential E-G-B figure, rather than a simultaneous added chord tone.
+This note's timing and velocity are inferred editorial values, not recovered
+events from the supplied export. Every original note remains unchanged. The raw
+308-note export is retained in `originals/shiki-blue-bell.mid`, pinned by SHA-256
+`6c39f9c7f5a5eea8a14c91da966ab29936eb76f71d67c3f557e795e3e0103d20`;
+the playable repair contains 309 notes. The manifest records `note_additions`,
+`added_note_count: 1` and `omitted_note_count: 0` separately, so rebuilding does
+not disguise the addition as an original or an intro cut.
+
 All retained note pitches, velocities, durations, and relative attack times are
 unchanged. Source tempo/program/controller state is restored at the new origin.
 No generic onset-gap trimming, quantization or removal of musical introductions
@@ -52,3 +64,5 @@ roles are visual layers, not verified physical hand or fingering information.
 validates and prepares these assets offline. Normal `seed_studio` imports them
 idempotently into SQLite or PostgreSQL without downloading content or deleting
 users, saved progress or historical score versions.
+The checked-in manifest can also serve as the reviewed plan, with raw source
+exports supplied to the builder; it retains explicit cuts and editorial repairs.

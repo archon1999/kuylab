@@ -69,14 +69,18 @@ def performance_provenance(code, variant_id=None):
             "variant_id": entry["id"], "filename": entry["filename"],
             "source_url": entry["source_url"], "ivory_player_url": entry.get("ivory_player_url", ""),
             "source_sha256": entry["source_sha256"], "import_sha256": entry["sha256"],
-            "preserved_original_bytes": entry["trim_start_seconds"] == 0,
+            "preserved_original_bytes": entry["trim_start_seconds"] == 0 and not entry.get("added_note_count", 0),
             "trim_start_seconds": entry["trim_start_seconds"],
             "trim_start_ticks": entry.get("trim_start_ticks", 0),
             "trim_reason": entry.get("trim_reason", ""),
             "omitted_note_count": entry.get("omitted_note_count", 0),
+            "added_note_count": entry.get("added_note_count", 0),
+            "note_additions": entry.get("note_additions", []),
+            "editorial_repair": bool(entry.get("added_note_count", 0)),
+            "editorial_repair_reason": "; ".join(note["reason"] for note in entry.get("note_additions", [])),
             "retained_timing_and_velocity_preserved": True,
             "pedal_extended": False, "hand_assignment": entry["hand_roles"]["evidence"],
-            "completeness_scope": "All source performance notes after the explicitly reviewed channel-intro boundary; no musical introduction is automatically removed.",
+            "completeness_scope": "All source performance notes after the explicitly reviewed channel-intro boundary, plus any separately documented user-directed editorial note additions; no musical introduction is automatically removed.",
             "permission_basis": "Owner supplied these files and instructed import; original rights retained."}
 
 

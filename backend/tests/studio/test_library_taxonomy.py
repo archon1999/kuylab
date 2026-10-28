@@ -19,6 +19,13 @@ class LibraryTaxonomyTests(SimpleTestCase):
         self.assertEqual(taxonomy('prelude-e-minor')['library_collection']['id'], 'chopin')
         self.assertEqual(taxonomy('waltz-a-minor')['library_collection']['id'], 'chopin')
 
+    def test_thomas_bergersen_works_share_two_steps_from_hell_collection(self):
+        self.assertNotIn('thomas-bergersen', COLLECTIONS)
+        for code in ('thomas-bergersen-one-last-day', 'thomas-bergersen-red', 'thomas-bergersen-children-of-the-sun', 'two-steps-from-hell-victory'):
+            value = taxonomy(code)
+            self.assertEqual(value['library_group']['id'], 'epic')
+            self.assertEqual(value['library_collection'], {'id': 'two-steps-from-hell', 'label': 'Two Steps From Hell'})
+
     def test_franchises_share_collections_and_labels_are_localized(self):
         self.assertEqual(taxonomy('naruto-senya')['library_collection']['id'], taxonomy('boruto-spin-and-burst-reverse-situation')['library_collection']['id'])
         for language in ('uz', 'ru', 'en'):

@@ -1,4 +1,5 @@
 import type { StudioPreferences, RollSettings } from './entities/studio-preferences.types.ts';
+import { normalizeVisibleKeys } from './keyboardViewport.ts';
 export type { StudioPreferences, RollSettings } from './entities/studio-preferences.types.ts';
 export type { StudioPreferencePort } from './contracts/studio-preferences.repository.ts';
 
@@ -20,6 +21,7 @@ export const defaultStudioPreferences: Readonly<StudioPreferences> = {
   rightVolume: 100,
   countIn: 0,
   focusKeys: false,
+  visibleKeys: 0,
   compactNoteLengths: true,
 };
 
@@ -61,6 +63,10 @@ export function normalizeStudioPreferences(value: unknown): StudioPreferences {
     rightVolume: number('rightVolume', 0, 100, 1),
     countIn: [2, 3].includes(Number(raw.countIn)) ? Number(raw.countIn) : 0,
     focusKeys: bool('focusKeys'),
+    visibleKeys: normalizeVisibleKeys(
+      raw.visibleKeys ??
+        (typeof raw.keyboardZoom === 'number' && raw.keyboardZoom > 0 ? 88 / raw.keyboardZoom : 0),
+    ),
     compactNoteLengths: bool('compactNoteLengths'),
     noteNames: bool('noteNames'),
     keyNames: bool('keyNames'),

@@ -16,6 +16,7 @@ export type StudioPreferences = {
   rightVolume: number;
   countIn: number;
   focusKeys: boolean;
+  visibleKeys: number;
   compactNoteLengths: boolean;
 };
 

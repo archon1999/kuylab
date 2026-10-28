@@ -28,6 +28,7 @@ export default function StudioSettings({
   reducedMotion,
   readableHolds,
   onClose,
+  visibleKeys,
 }: {
   settings: StudioPreferences;
   update: <K extends keyof StudioPreferences>(
@@ -38,6 +39,7 @@ export default function StudioSettings({
   reducedMotion: boolean;
   readableHolds?: boolean;
   onClose: () => void;
+  visibleKeys: number;
 }) {
   const [tab, setTab] = useState(0);
   const id = useId();
@@ -86,13 +88,30 @@ export default function StudioSettings({
             <legend>{text.labels}</legend>
             {toggle('noteNames', text.noteNames)}
             {toggle('keyNames', text.keyNames)}
-            {toggle('focusKeys', text.focusKeys)}
             {readableHolds && (
               <>
                 {toggle('compactNoteLengths', text.compactNoteLengths)}
                 <p className="studio-settings-hint">{text.compactNoteLengthsHint}</p>
               </>
             )}
+          </fieldset>
+          <fieldset>
+            <legend>{text.viewport}</legend>
+            <div className="studio-setting-slider">
+              <div className="studio-setting-slider-heading">
+                <span>{text.visibleKeys}</span>
+                <output>{visibleKeys}</output>
+              </div>
+              <Slider
+                min={12}
+                max={88}
+                step={1}
+                value={visibleKeys}
+                aria-label={text.visibleKeys}
+                marks={[12, 36, 61, 88].map((value) => ({ value, label: String(value) }))}
+                onChange={(_, value) => update('visibleKeys', Number(value))}
+              />
+            </div>
           </fieldset>
           <fieldset>
             <legend>{text.effects}</legend>

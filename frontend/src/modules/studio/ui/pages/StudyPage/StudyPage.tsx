@@ -11,7 +11,12 @@ import { navigate, useRoute } from '@shared/routing';
 import { useEffect, useRef } from 'react';
 import { useStudyEngagement } from '../../../application/useStudyEngagement';
 import { useStudio, useStudyScore } from '../../../application';
-import { allStudyItems, durationLabel, selectStudyStage } from '../../../domain';
+import {
+  allStudyItems,
+  durationLabel,
+  selectStudyStage,
+  compositionPositionKeys,
+} from '../../../domain';
 import { Favorite, Heading, Loading, SectionTitle, StudioError } from '../../shared/StudioParts';
 import Fingering from '../../shared/Fingering';
 import StudyProgress from '../../shared/StudyProgress';
@@ -56,7 +61,7 @@ export default function StudyPage() {
         : item.kind === 'exercise'
           ? 'exercises'
           : 'theory',
-      { composition: item.composition_id ?? null },
+      { compositionSlug: composition?.slug ?? null, composition: null },
     );
   const related = catalog
     ? allStudyItems(catalog).filter(
@@ -191,13 +196,15 @@ export default function StudyPage() {
             <Button
               onClick={() => {
                 setPlaying(false);
-                setPosition(`composition:${composition.id}`, item.source!.start_seconds);
+                const variantId =
+                  stage.composition_variant_id ?? item.source!.composition_variant_id;
+                for (const key of compositionPositionKeys(composition, variantId))
+                  setPosition(key, item.source!.start_seconds);
                 navigate('practice', {
                   composition: composition.id,
-                  score: composition.score_id,
                   item: null,
                   stage: null,
-                  variant: stage.composition_variant_id ?? null,
+                  variant: variantId ?? null,
                   at: item.source!.start_seconds,
                 });
               }}

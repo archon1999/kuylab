@@ -67,7 +67,7 @@ class StudioTests(TestCase):
         with self.assertRaises(CommandError): call_command("seed_studio",stdout=io.StringIO())
         self.assertTrue(Composition.objects.filter(pk=old.pk).exists())
         call_command("seed_studio",replace_compositions=True,stdout=io.StringIO())
-        self.assertEqual(Composition.objects.count(),8)
+        self.assertEqual(Composition.objects.count(),103)
         self.assertEqual(Profile.objects.get(pk=1).display_name,"Preserved learner")
 
     def test_teaching_copy_changes_keep_existing_midi_versions(self):
@@ -79,7 +79,7 @@ class StudioTests(TestCase):
         for _, _, _, _, provenance in assets:
             if provenance.get("kind") == "teaching_adaptation":
                 provenance["transformation_description"] = "A clearer instruction for the same music."
-        with patch("apps.studio.management.commands.seed_studio.prepared_assets", return_value=assets):
+        with patch("apps.studio.management.commands.seed_studio.iter_prepared_assets", side_effect=lambda: iter(assets)):
             call_command("seed_studio", stdout=io.StringIO())
         self.assertEqual(before, list(StudioAsset.objects.order_by("key").values_list("key", "score_id")))
         self.assertEqual(count, Score.objects.count())
@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(8,57,48,24))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),129)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,162,48,24))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),234)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)
@@ -123,12 +123,15 @@ class StudioTests(TestCase):
             self.assertEqual(original.content_sha256, source.sha256)
             lessons = [item for item in catalog["lessons"] if item["id"] in composition["lesson_ids"]]
             journeys = [item for item in catalog["journeys"] if item["composition_id"] == composition["id"]]
-            self.assertEqual((len(lessons), len(journeys)), (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8))
+            from apps.studio.performance_course_plans import PLANS
+            expected = (3, 1) if source.code in PLANS or source.course_kind == "curated" else (0, 0) if source.course_kind == "ivory" else (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8)
+            self.assertEqual((len(lessons), len(journeys)), expected)
             for item in lessons + journeys:
                 self.assertEqual(item["composition_id"], composition["id"])
                 for stage in item["stages"]:
                     self.assertEqual(Score.objects.get(pk=stage["score_id"]).arrangement.composition_id, composition["id"])
-            self.assertEqual(journeys[-1]["stages"][-1]["score_id"], original.pk)
+            if journeys:
+                self.assertEqual(journeys[-1]["stages"][-1]["score_id"], original.pk)
 
     def test_source_replacement_keeps_content_ids_progress_notes_and_historical_files(self):
         from django.core.files.base import ContentFile
@@ -183,7 +186,7 @@ class StudioTests(TestCase):
         from apps.studio.services import studio_catalog
         with self.assertNumQueries(2):
             catalog = studio_catalog("uz")
-        self.assertEqual(len(catalog["compositions"]), 8)
+        self.assertEqual(len(catalog["compositions"]), 103)
 
     def test_readonly_catalog_and_legacy_content_write_endpoints(self):
         score=StudioAsset.objects.first().score

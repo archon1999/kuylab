@@ -1,9 +1,11 @@
-from .content import REVISION, CATEGORIES, GOALS, all_items, localize, tr
+from .content import REVISION, CATEGORIES, GOALS, all_items, localize
 from .models import StudioAsset
 from .comparisons import definitions as comparison_definitions
 from .interactive import challenges
 from .repertoire import SOURCES, SOURCE_BY_CODE
-from .all_in_package import variant_definitions
+from .performance_variants import variant_definitions
+from .composition_showcase import presentation
+from .library_taxonomy import taxonomy
 
 
 class CatalogNotPrepared(Exception):
@@ -51,10 +53,11 @@ def studio_catalog(language):
     for source in SOURCES:
         original = originals[source.asset_key]
         composition_id = original["score__arrangement__composition_id"]
-        prefix = source.collection + " · " if source.collection else ""
         compositions.append({
+            **presentation(source.code),
+            **localize(taxonomy(source.code), language),
             "id":composition_id,"slug":source.slug,"title":original["score__arrangement__composition__title"],
-            "subtitle":prefix + localize(tr("Siz tanlagan MIDI", "Выбранный вами MIDI", "Your selected MIDI"),language),
+            "subtitle":source.collection,
             "composer":original["score__arrangement__composition__composer"],"score_id":original["score_id"],
             "duration_seconds":original["score__parsed__metadata__duration_seconds"],
             "lesson_ids":[item["id"] for item in groups["lesson"] if item["composition_id"] == composition_id],
@@ -62,13 +65,13 @@ def studio_catalog(language):
         variants = variant_definitions(source.code)
         if variants:
             compositions[-1]["variants"] = [
-                {"id": value["id"], "title": value["title"],
+                {**presentation(source.code, value["id"]), "id": value["id"], "title": localize(value["title"], language),
                  "description": localize(value["description"], language),
                  "score_id": assets[value["_asset_key"]],
                  "duration_seconds": originals[value["_asset_key"]]["score__parsed__metadata__duration_seconds"]}
                 for value in variants
             ]
-            compositions[-1]["default_variant_id"] = "easy"
+            compositions[-1]["default_variant_id"] = variants[0]["id"]
             compositions[-1]["readable_holds"] = source.code == "all-in"
             compositions[-1]["score_id"] = assets[variants[0]["_asset_key"]]
     result = {"revision":REVISION,"compositions":compositions,"lessons":groups["lesson"],"exercises":groups["exercise"],"theory":groups["theory"],

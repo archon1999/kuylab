@@ -6,7 +6,15 @@ import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
 import { useEffect } from 'react';
 import { useStudio, useStudyScore } from '../../../application';
-import { compositionPlaybackContext, selectCompositionVariant } from '../../../domain';
+import {
+  compositionNotebookContext,
+  compositionPlaybackContext,
+  compositionPositionKeys,
+  compositionResumePosition,
+  compositionVariantStartPosition,
+  selectCompositionVariant,
+  studyMatchesPerformance,
+} from '../../../domain';
 import CompositionVariants from '../../shared/CompositionVariants';
 import { Loading, StudioError } from '../../shared/StudioParts';
 import '../../studio.css';
@@ -23,6 +31,7 @@ export default function PlayerPage() {
     composition,
     params.get('variant'),
     lastStages[`${id}:variant`],
+    params.has('at'),
   );
   const context = composition ? compositionPlaybackContext(composition, variant?.id) : '';
   const scoreId = variant?.score_id ?? composition?.score_id;
@@ -34,7 +43,8 @@ export default function PlayerPage() {
     if (id) recordOpen(id);
     return () => setPlaying(false);
   }, [id, recordOpen, setPlaying]);
-  const onBack = () => navigate('detail', { composition: composition?.id ?? null });
+  const onBack = () =>
+    composition ? navigate('detail', { compositionSlug: composition.slug }) : navigate('library');
   if (!composition)
     return (
       <div className="studio-player-fallback">
@@ -73,7 +83,7 @@ export default function PlayerPage() {
                       navigate('practice', {
                         composition: composition.id,
                         variant: next,
-                        at: Number(position.toFixed(3)),
+                        at: compositionVariantStartPosition(composition, next, position),
                       });
                     }}
                   />
@@ -81,11 +91,16 @@ export default function PlayerPage() {
               : undefined
           }
           notebook={(position, seek, close) => (
-            <PracticeNotebook contentId={id!} position={position} onSeek={seek} onClose={close} />
+            <PracticeNotebook
+              contentId={compositionNotebookContext(composition, variant?.id)}
+              position={position}
+              onSeek={seek}
+              onClose={close}
+            />
           )}
           score={score}
           markers={catalog?.lessons
-            .filter((item) => item.composition_id === composition.id && item.source)
+            .filter((item) => studyMatchesPerformance(item, composition, variant?.id))
             .filter(
               (item, index, array) =>
                 array.findIndex(
@@ -98,11 +113,11 @@ export default function PlayerPage() {
           initialPosition={
             params.has('at')
               ? Number(params.get('at'))
-              : (positions[context] ?? positions[id!] ?? 0)
+              : compositionResumePosition(composition, positions, variant?.id)
           }
           onPositionChange={(seconds) => {
-            setPosition(context, seconds);
-            if (context !== id) setPosition(id!, seconds);
+            for (const key of compositionPositionKeys(composition, variant?.id))
+              setPosition(key, seconds);
           }}
           onPlaybackChange={setPlaying}
         />

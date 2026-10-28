@@ -1,22 +1,10 @@
-![KuyLab — turn a score into a practice system](assets/banner.svg)
-
-**Learn the piece. Understand the music. Keep your progress.**
-
-[Open KuyLab](https://kuylab.uz/) · [Local development](#local-development) · [Verification](#verification) · [Content and attribution](#content-and-attribution)
-
-A composition-first studio where synchronized MIDI playback, guided lesson stages and personal study tools work together. The experience is available in **Uzbek, Russian and English**.
-
-| Practice | Learn | Continue |
-| --- | --- | --- |
-| Falling notes, playback speed and arrangement-aware players | Composition lessons, independent exercises and music theory | Saved positions, timestamp notes and account-owned progress |
-
-The implementation separates musical transport and audio behavior from the interface, while a Django backend owns learner state. The repository documents source provenance and third-party rights alongside its code.
-
-Built by [Nazarbek Baltabaev](https://github.com/archon1999).
-
----
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg"><img src="assets/banner-light.svg" alt="KuyLab" width="100%"></picture>
 
 # KuyLab
+
+[Website](https://kuylab.uz/) · [Product & architecture](https://github.com/archon1999/engineering-portfolio/blob/main/projects/kuylab.md) · [Nazarbek Baltabaev](https://github.com/archon1999)
+
+[![CI](https://github.com/archon1999/kuylab/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/archon1999/kuylab/actions/workflows/ci.yml)
 
 A composition-first piano learning studio built with Django, React, TypeScript and
 MUI. Learn with a falling-note MIDI player, separately authored composition
@@ -29,9 +17,9 @@ users do not upload or edit shared content through the website.
 
 Personal timestamp notes open the player at the saved moment and can be edited or
 removed with undo. Color-coded learning status is stored per lesson stage and
-appears on study cards, filters and statistics. Composition and variant players
-retain separate settings; every lesson, exercise, stage and comparison shares one
-study-player settings profile per account. Playback positions remain separate.
+appears on study cards, filters and statistics. Sound, appearance, visible key
+count and playback speed share one settings profile per account across all
+players. Playback positions remain separate.
 Still includes eight continuity studies (four
 parts, three joins and a full-piece path) alongside its 12 lessons. The independent
 curriculum has 48 exercises in 16 families and 24 theory topics, each with a
@@ -42,6 +30,14 @@ saved per account: a wrong answer marks a difficulty, and completing every task
 marks mastery. Reading or interacting starts an untouched lesson; opening a route
 alone does not. The status controls at the top and bottom also allow manual
 updates. Activities do not grade physical playing or lock other lessons.
+
+The dashboard resumes unfinished recent studies and stages. The composition
+library offers arrangement-specific 1–5-star difficulty, search, collection and
+favorite filters, sorting and pagination. Each card previews all source notes in
+a reviewed passage with a paused falling-note preview, synchronized keys and
+sampled piano audio after pressing Play.
+The [30-piece candidate list](docs/repertoire-candidates-2026-10-26.md) records
+repertoire choices and sources for the playable catalog.
 
 ## Structure
 
@@ -85,6 +81,7 @@ explicit destructive replacement flag is not part of normal setup or deployment.
 ```sh
 cd backend
 poetry run python manage.py test tests --settings=config.settings.test --noinput
+poetry run python manage.py audit_midi_catalog
 ```
 
 ```sh
@@ -121,14 +118,59 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The curated repertoire contains eight compositions: Still, What Is
-a Youth, Star, Tears in Your Eyes, My Memory, Premonition, Memories and All in — Soundtrack. All in
+The curated repertoire contains 103 compositions: the original eight, 24 retained
+classical/contemporary editions, and 71 additional works. The 87 owner-supplied
+Ivory performances form 72 work groups, including an additional recording for
+the existing What Is a Youth course. [The Ivory manifest](backend/apps/studio/assets/ivory/manifest.json)
+pins each arrangement, difficulty, preview, source attribution and import hash.
+Multiple performances share one composition and expose separate player variants.
+Ode to Joy, Moonlight Sonata I, Rondo alla Turca, Time, He’s a Pirate and My Heart
+Will Go On use the replacement performances while retaining their composition IDs
+and slugs. Nine confirmed channel jingles and Rondo's unrelated end-card music
+are omitted; 75 exports retain their
+original bytes, and Blue Bell's first performance has one documented user-directed
+B5 addition after G5. Original downloads, precise cuts and editorial provenance
+remain available for audit.
+The Sound of Silence is transposed down one semitone in the MIDI itself; its
+untransposed download is retained alongside exact timing/velocity verification.
+Interstellar Main Theme has Pietschmann and The Piano Lab variants, separate from
+Cornfield Chase. A Time for Us is a Fabrizio Caligaris recording of the Romeo &
+Juliet theme; the original What Is a Youth edition and its six lessons remain
+the default, with their existing IDs, saved positions and timestamp notes intact.
+The earlier source-specific lessons for replaced editions are retired from the
+active catalog; learner history is preserved. Eleven reviewed recordings now
+have three focused UZ/RU/EN lessons each, five progressive MIDI stages per lesson,
+and a complete-piece path at 60%, 80% and the original speed. These courses pin
+their exact source hash and note selections; another performance does not inherit
+their timestamps. The 24 retained editions in
+[the earlier catalog manifest](backend/apps/studio/assets/catalog/manifest.json)
+keep their reviewed UZ/RU/EN courses. There are 162 composition lessons and 96
+continuity paths in total. The library supports list and grid views, with the
+selected view, filters and pagination retained in URLs and per-account sessions.
+Browsing groups are independent of source albums: Classical groups editions by
+composer, Anime groups Naruto/Boruto and Shiki, and Dramas groups Winter Sonata
+and All in. Choose a group before narrowing to its collections; original album
+metadata and existing collection links remain available. Imported editions also
+scope playback positions and timestamp notes to their source revision, so a new
+arrangement never inherits a timestamp from a different performance.
+
+`audit_midi_catalog` checks all 120 full performances for parse warnings, invalid
+timelines, keyboard range, layer roles and unexpected duplicate/overlapping
+attacks. Existing source voices and long holds are retained rather than globally
+shortened or deduplicated. Reviewed diagnostic receipts are bound to exact bytes.
+Gymnopédie No. 1 discards only two orphan release messages while retaining every
+musical event; its original download is bundled. The audit establishes technical
+integrity, not equivalence to an unavailable published score.
+All in
 has two byte-preserved full-length arrangements, Easy and Hard, in one player
 with nine shared lessons and five continuity paths. Variant switching pauses
-playback at the same timestamp; settings and resume positions are scoped per
-variant. Its optional compact note display abbreviates overlapping long blocks
+playback at the same timestamp; resume positions are scoped per variant.
+Player settings, including speed, volume, hand balance, reverb and appearance,
+are shared across all compositions, lessons and previews within the same account.
+Other open player tabs receive changes through account-scoped browser storage.
+Its optional compact note display abbreviates overlapping long blocks
 without changing sound or claiming to reconstruct finger releases. The six
-new pieces each include six source-specific lessons and eight continuity studies,
+earlier replacement exports each include six source-specific lessons and eight continuity studies,
 all with five MIDI stages: sparse landmarks, focused layer, complete hands at
 60%, complete hands at 80%, and the 100% original. The six current files are the
 user's replacement exports without pedal-extended key durations; every original
@@ -137,12 +179,19 @@ and eight studies with their existing three-stage progression.
 Every complete-piece path ends with the unchanged supplied original. General
 exercises are independently authored examples. Source bytes and
 provenance are documented in [the studio notes](backend/apps/studio/README.md).
-Composition files and historical reference fixtures do not carry a blanket
-open-source redistribution license. Review their provenance before republishing
-musical content. Public repository visibility does not change third-party rights.
+Composition previews load piano samples only after Play, use the main player's
+Steinway engine, and pause on focus loss, backgrounding or leaving the viewport.
+Only one preview plays at a time. The library keeps search, filters, sort, page
+and page size in URLs such as `/compositions?q=Yiruma` or `/compositions?p=2&size=12`, backed by
+per-account `sessionStorage`. Explicit URL values take priority; Back/Forward and
+native Ctrl/Command/middle-click player links retain normal browser behavior.
+The ten added classical editions retain their public-domain or individual CC terms.
+For the twenty added contemporary editions, the project owner explicitly confirmed
+permission to include MIDI files and adaptations in the website and public repository
+on 2026-10-26. [Edition notices](backend/apps/studio/assets/catalog/README.md) record
+that basis and source attribution; the code license does not relicense musical content.
 
 Piano samples, fonts, MUI and audio worklet notices are in
 [third-party notices](frontend/THIRD_PARTY_NOTICES.md) and the app's `/licenses.html`.
 
 Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
-

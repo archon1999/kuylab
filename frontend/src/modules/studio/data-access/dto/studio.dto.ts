@@ -19,7 +19,13 @@ export type StudyItemDto = {
   comparisons?: { id: string; title: string; instruction: string; score_id: number }[];
   ready_when?: string;
   stages?: StudyStageDto[];
-  source?: { start_seconds: number; end_seconds: number; transformation: string };
+  source?: {
+    start_seconds: number;
+    end_seconds: number;
+    transformation: string;
+    composition_variant_id?: string;
+    playback_revision?: string;
+  };
 };
 
 export type StudyStageDto = {
@@ -33,6 +39,12 @@ export type StudyStageDto = {
 };
 
 export type CompositionDto = {
+  playback_revision?: string;
+  library_group?: { id: string; label: string };
+  library_collection?: { id: string; label: string };
+  difficulty?: number;
+  collection?: string;
+  preview_start_seconds?: number;
   id: number;
   slug: string;
   title: string;
@@ -42,6 +54,8 @@ export type CompositionDto = {
   duration_seconds: number;
   lesson_ids: string[];
   variants?: {
+    playback_revision?: string;
+    difficulty?: number;
     id: string;
     title: string;
     description: string;

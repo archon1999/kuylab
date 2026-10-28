@@ -44,6 +44,20 @@ test('denied browser storage cannot prevent opening a player or changing current
   assert.doesNotThrow(() => port.write({ ...defaultStudioPreferences, volume: 0 }));
 });
 
+test('all player instances share account preferences and notify already-open views', () => {
+  const map = new Map();
+  const storage = { getItem: key => map.get(key) || null, setItem: (key, value) => map.set(key, value) };
+  const main = createStudioPreferences(storage), study = createStudioPreferences(storage), preview = createStudioPreferences(storage);
+  let updates = 0;
+  const stop = preview.subscribe(() => updates++);
+  main.write({ ...defaultStudioPreferences, speed: 1.5, volume: 44, leftColor: '#abcdef' });
+  assert.equal(study.read().speed, 1.5);
+  assert.equal(preview.read().volume, 44);
+  assert.equal(preview.read().leftColor, '#abcdef');
+  assert.equal(updates, 1);
+  stop();
+});
+
 
 test('visual effect preferences default on, validate booleans and persist disabled choices', () => {
   const oldPreferences = normalizeStudioPreferences({ volume: 65 });

@@ -1,0 +1,4199 @@
+[
+  {
+    "code": "shiki-epitaph",
+    "slug": "shiki-epitaph",
+    "title": "Epitaph",
+    "composer": "",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "shiki-epitaph.mid",
+        "original_filename": "Shiki OST Suite - _Epitaph_ Piano Played with Only Ten Fingers.mid",
+        "source_url": "https://www.youtube.com/watch?v=6JPTwYzDsx8",
+        "source_sha256": "c7d0991aa4d00256d7e4ced93a83a3c9cc73deaca944c9b2c76eb4bff32e995a",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBQkN",
+        "difficulty": 3,
+        "preview_start": 6.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 6.8,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "c7d0991aa4d00256d7e4ced93a83a3c9cc73deaca944c9b2c76eb4bff32e995a",
+        "trim_start_ticks": 0,
+        "note_count": 902,
+        "duration_seconds": 225.98958333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "tum-hi-ho",
+    "slug": "tum-hi-ho",
+    "title": "Tum Hi Ho",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "vishal",
+        "title": "Vishal",
+        "performer": "Vishal",
+        "filename": "tum-hi-ho-vishal.mid",
+        "original_filename": "Tum Hi Ho û Piano Cover by Vishal Piano (2.6M+ Views).mid",
+        "source_url": "https://www.youtube.com/watch?v=lzRbjggrY9s",
+        "source_sha256": "770fb7c1a283d47476be998714409a99b8381c2f530f9a32716250d35c790db4",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAAE",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.0,
+          "peak_notes_per_second": 13.8,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "770fb7c1a283d47476be998714409a99b8381c2f530f9a32716250d35c790db4",
+        "trim_start_ticks": 0,
+        "note_count": 2301,
+        "duration_seconds": 309.2604166666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "aakash-desai",
+        "title": "Aakash Desai",
+        "performer": "Aakash Desai",
+        "filename": "tum-hi-ho-aakash-desai.mid",
+        "original_filename": "Tum Hi Ho _ Piano Cover _ Arijit Singh _ Aakash Desai.mid",
+        "source_url": "https://www.youtube.com/watch?v=gnwiwgdmeZI",
+        "source_sha256": "2d9860f4df9a2a25198a1f408321f48ec7afbb04476e3abc79bb4faa1bd4af5c",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEF",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 5.6,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "2d9860f4df9a2a25198a1f408321f48ec7afbb04476e3abc79bb4faa1bd4af5c",
+        "trim_start_ticks": 0,
+        "note_count": 774,
+        "duration_seconds": 208.83333333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "kara-sevda-anlatamam",
+    "slug": "kara-sevda-anlatamam",
+    "title": "Anlatamam",
+    "composer": "Toygar Işıklı",
+    "collection": "Kara Sevda OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "kara-sevda-anlatamam.mid",
+        "original_filename": "Anlatamam - Kara Sevda - Toygar Ikl [PIANO TUTORIAL].mid",
+        "source_url": "https://www.youtube.com/watch?v=CXxzHXsvOsI",
+        "source_sha256": "29fa18919f4378a4c4e482e46c4d88d6bd103296116b812b44da5860ddcad5b4",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAAA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.0,
+          "peak_notes_per_second": 6.8,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "29fa18919f4378a4c4e482e46c4d88d6bd103296116b812b44da5860ddcad5b4",
+        "trim_start_ticks": 0,
+        "note_count": 553,
+        "duration_seconds": 132.94270833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "passacaglia",
+    "slug": "passacaglia",
+    "title": "Passacaglia",
+    "composer": "George Frideric Handel · Johan Halvorsen",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "passacaglia.mid",
+        "original_filename": "Passacaglia û Handel_Halvorsen (Piano Solo).mid",
+        "source_url": "https://www.youtube.com/watch?v=GAIZxaToV2A",
+        "source_sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAAM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.4,
+          "peak_notes_per_second": 8.4,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7",
+        "trim_start_ticks": 0,
+        "note_count": 1024,
+        "duration_seconds": 155.984375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "mohabbatein",
+    "slug": "mohabbatein",
+    "title": "Mohabbatein",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "mohabbatein.mid",
+        "original_filename": "_Mohabbatein_ - Efsane Hint Mⁿzii - Piano by VN.mid",
+        "source_url": "https://www.youtube.com/watch?v=G074Bu_5zt8",
+        "source_sha256": "a9cc3335a0c3b343ccd890029351e8b5ac61ef3e6afa73971de61c9d3f75430d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEH",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.8,
+          "peak_notes_per_second": 9.6,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "a9cc3335a0c3b343ccd890029351e8b5ac61ef3e6afa73971de61c9d3f75430d",
+        "trim_start_ticks": 0,
+        "note_count": 831,
+        "duration_seconds": 142.39583333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "dae-jang-geum-apna",
+    "slug": "dae-jang-geum-apna",
+    "title": "APNA",
+    "composer": "",
+    "collection": "Dae Jang Geum OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "dae-jang-geum-apna.mid",
+        "original_filename": "Piano Music Collection _ ___ APNA ___.mid",
+        "source_url": "https://www.youtube.com/watch?v=k0_mTFRzAeU",
+        "source_sha256": "75e1fb610a47a89d2b623fe0f582fbc48ab1e35dd542d573f66b5fba948e7720",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEB",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.2,
+          "peak_notes_per_second": 8.4,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "75e1fb610a47a89d2b623fe0f582fbc48ab1e35dd542d573f66b5fba948e7720",
+        "trim_start_ticks": 0,
+        "note_count": 1047,
+        "duration_seconds": 191.171875,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "shiki-day-and-night",
+    "slug": "shiki-day-and-night",
+    "title": "Day and Night",
+    "composer": "",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "shane-stapylton",
+        "title": "Shane Stapylton",
+        "performer": "Shane Stapylton",
+        "filename": "shiki-day-and-night-shane-stapylton.mid",
+        "original_filename": "Shiki OST - Day and Night (Shane Stapylton Cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=Rj_8y2CkP7g",
+        "source_sha256": "b84d4cf724e67220acd6c0dca6f36cda5836f01cc29db3edd82f33ebbe7dbc88",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEC",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.6,
+          "peak_notes_per_second": 5.8,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "b84d4cf724e67220acd6c0dca6f36cda5836f01cc29db3edd82f33ebbe7dbc88",
+        "trim_start_ticks": 0,
+        "note_count": 639,
+        "duration_seconds": 153.546875,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "shiki-day-and-night.mid",
+        "original_filename": "Shiki OST - Day and Night - Piano tutorial and cover (Sheets + MIDI).mid",
+        "source_url": "https://www.youtube.com/watch?v=hrz9QhkbG9Q",
+        "source_sha256": "80c0d41ac92fefe4a0ee2e8d8eeec19eec290023ff2ac8d4fbf71102c1956a0f",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAIG",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.6,
+          "peak_notes_per_second": 8.0,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "80c0d41ac92fefe4a0ee2e8d8eeec19eec290023ff2ac8d4fbf71102c1956a0f",
+        "trim_start_ticks": 0,
+        "note_count": 1021,
+        "duration_seconds": 180.54166666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "shiki-requiem",
+    "slug": "shiki-requiem",
+    "title": "Requiem",
+    "composer": "",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "shiki-requiem.mid",
+        "original_filename": "Shiki OST - Requiem  _  Piano Cover.mid",
+        "source_url": "https://www.youtube.com/watch?v=YT_SSs4XB7c",
+        "source_sha256": "b5f6870c1d7d67647c12ca13a35f5819cc890292e7a06aaecc6f05b0a73e9d17",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 7.8,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "b5f6870c1d7d67647c12ca13a35f5819cc890292e7a06aaecc6f05b0a73e9d17",
+        "trim_start_ticks": 0,
+        "note_count": 729,
+        "duration_seconds": 188.18229166666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "shiki-blue-bell",
+    "slug": "shiki-blue-bell",
+    "title": "Blue Bell",
+    "composer": "Yasuharu Takanashi",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "shiki-blue-bell.mid",
+        "original_filename": "Blue Bell _ Shiki  Piano Cover.mid",
+        "source_url": "https://www.youtube.com/watch?v=OLbunx4z0KE",
+        "source_sha256": "6c39f9c7f5a5eea8a14c91da966ab29936eb76f71d67c3f557e795e3e0103d20",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAEN",
+        "difficulty": 2,
+        "preview_start": 4.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.2,
+          "peak_notes_per_second": 3.4,
+          "peak_simultaneous_notes": 4
+        },
+        "note_additions": [
+          {
+            "track_index": 1,
+            "channel": 0,
+            "pitch": 83,
+            "start_ticks": 164,
+            "end_ticks": 959,
+            "velocity": 48,
+            "reason": "User-directed restoration of sequential E-G-B: B5 follows G5. Timing and velocity are editorial inferences from the accompaniment and phrase landmarks, not a recovered original MIDI event."
+          }
+        ],
+        "sha256": "914559dfcf9087c455bff1c0a5dfa9fb456e3302f031a4cc0b0576f013238af5",
+        "trim_start_ticks": 0,
+        "note_count": 309,
+        "duration_seconds": 140.90104166666666,
+        "omitted_note_count": 0,
+        "added_note_count": 1,
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "pianodeuss",
+        "title": "PianoDeuss",
+        "performer": "PianoDeuss",
+        "filename": "shiki-blue-bell-deuss.mid",
+        "original_filename": "The most beautiful horror anime music theme (which everybody can learn).mid",
+        "source_url": "https://www.youtube.com/watch?v=fcY0yCV-YT0",
+        "source_sha256": "5eb2675c17d43a378dfb49d58553d0dc16145a8f6c14899f4a94fafdf1993a02",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAIC",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.6,
+          "peak_notes_per_second": 3.2,
+          "peak_simultaneous_notes": 3
+        },
+        "sha256": "5eb2675c17d43a378dfb49d58553d0dc16145a8f6c14899f4a94fafdf1993a02",
+        "trim_start_ticks": 0,
+        "note_count": 404,
+        "duration_seconds": 169.57291666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "shiki-shi-ki",
+    "slug": "shiki-shi-ki",
+    "title": "SHI-KI",
+    "composer": "",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "shiki-shi-ki.mid",
+        "original_filename": "Shiki OST - SHI-KI.mid",
+        "source_url": "https://www.youtube.com/watch?v=nInlwhHa2MY",
+        "source_sha256": "cc4ecb67c64bec9962df4813b47c596522610d54dbd7be9b782e4b94813bbddb",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAIE",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 6.6,
+          "peak_notes_per_second": 10.8,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "cc4ecb67c64bec9962df4813b47c596522610d54dbd7be9b782e4b94813bbddb",
+        "trim_start_ticks": 0,
+        "note_count": 2456,
+        "duration_seconds": 414.7135416666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "shiki-eau-de-vie",
+    "slug": "shiki-eau-de-vie",
+    "title": "Eau de Vie",
+    "composer": "",
+    "collection": "Shiki OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "shiki-eau-de-vie.mid",
+        "original_filename": "Shiki OST - Eau De Vie - Piano Tutorial_Sheet Music.mid",
+        "source_url": "https://www.youtube.com/watch?v=AxMJyHErwvE",
+        "source_sha256": "e448323391dfad998eaf6ba873b45f5c79efeadceabe08bdeb4f9148cae651de",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAIA",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 6.4,
+          "peak_notes_per_second": 7.8,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "e448323391dfad998eaf6ba873b45f5c79efeadceabe08bdeb4f9148cae651de",
+        "trim_start_ticks": 0,
+        "note_count": 962,
+        "duration_seconds": 156.515625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "red-alert-3-soviet-march",
+    "slug": "red-alert-3-soviet-march",
+    "title": "Soviet March",
+    "composer": "",
+    "collection": "Command & Conquer: Red Alert 3",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "red-alert-3-soviet-march.mid",
+        "original_filename": "Soviet March - Command & Conquer [Red Alert 3] (Piano solo).mid",
+        "source_url": "https://www.youtube.com/watch?v=oWgJdB6-sLs",
+        "source_sha256": "5b63f8e1ba7577af68f77c07c48528db769aab87d87019ed583af61f55625397",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQE",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 15.0,
+          "peak_notes_per_second": 19.4,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "5b63f8e1ba7577af68f77c07c48528db769aab87d87019ed583af61f55625397",
+        "trim_start_ticks": 0,
+        "note_count": 2386,
+        "duration_seconds": 163.92708333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "ivan-torrent-lion-heart",
+    "slug": "ivan-torrent-lion-heart",
+    "title": "Lion Heart",
+    "composer": "Ivan Torrent",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "behzad-bhandari",
+        "title": "Behzad Bhandari",
+        "performer": "Behzad Bhandari",
+        "filename": "ivan-torrent-lion-heart.mid",
+        "original_filename": "lion heart (ivan torrent) simple piano cover by behzad bhandari @IvanTorrent #lionheart.mid",
+        "source_url": "https://www.youtube.com/watch?v=FQ2ImA0AjYo",
+        "source_sha256": "9198d369880ff2ed7a9a1853cc35847527a860aa7e8be47ba044c6d6fc4f57a2",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQG",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.3,
+          "peak_notes_per_second": 6.2,
+          "peak_simultaneous_notes": 3
+        },
+        "sha256": "9198d369880ff2ed7a9a1853cc35847527a860aa7e8be47ba044c6d6fc4f57a2",
+        "trim_start_ticks": 0,
+        "note_count": 582,
+        "duration_seconds": 137.65104166666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "beethoven-moonlight-sonata-movement-3",
+    "slug": "beethoven-moonlight-sonata-movement-3",
+    "title": "Moonlight Sonata · III",
+    "composer": "Ludwig van Beethoven",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "beethoven-moonlight-sonata-movement-3.mid",
+        "original_filename": "Beethoven - Moonlight Sonata (3rd Movement).mid",
+        "source_url": "https://www.youtube.com/watch?v=BV7RkEL6oRc",
+        "source_sha256": "7398a3866d6e7d0c18869a083105cf640364829026390991c62a4bbc2b17cc93",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQA",
+        "difficulty": 5,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 14.8,
+          "peak_notes_per_second": 24.4,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "7398a3866d6e7d0c18869a083105cf640364829026390991c62a4bbc2b17cc93",
+        "trim_start_ticks": 0,
+        "note_count": 6424,
+        "duration_seconds": 449.1354166666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "moonlight-sonata",
+    "slug": "moonlight-sonata",
+    "title": "Moonlight Sonata · I",
+    "composer": "Ludwig van Beethoven",
+    "collection": "Sonata Op. 27 No. 2",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "beethoven-moonlight-sonata-movement-1.mid",
+        "original_filename": "Beethoven - Moonlight Sonata (1st Movement).mid",
+        "source_url": "https://www.youtube.com/watch?v=sbTVZMJ9Z2I",
+        "source_sha256": "64a5b0346fffe9ea6a68bfe10482ee701f4bf48b8d297801569b7f88e4101d7f",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQC",
+        "difficulty": 3,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.6,
+          "peak_notes_per_second": 3.6,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "64a5b0346fffe9ea6a68bfe10482ee701f4bf48b8d297801569b7f88e4101d7f",
+        "trim_start_ticks": 0,
+        "note_count": 1160,
+        "duration_seconds": 439.3802083333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "ode-to-joy",
+    "slug": "ode-to-joy",
+    "title": "Ode to Joy",
+    "composer": "Ludwig van Beethoven",
+    "collection": "Symphony No. 9 · piano reduction",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "beethoven-ode-to-joy.mid",
+        "original_filename": "Beethoven - Ode to Joy - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=VBqLrMqvWbg",
+        "source_sha256": "6333c6ec40d6810c6aa2988116a0275ec48e7515b56b053d9c1a7b5e0b5810db",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQD",
+        "difficulty": 4,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 4.776041666666666,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 11.8,
+          "peak_notes_per_second": 23.4,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "5abfd7207a65ae36d8532f88ad99a3efd341a1456bd0ad4dfe4af40598291f7e",
+        "trim_start_ticks": 917,
+        "note_count": 2063,
+        "duration_seconds": 169.40104166666666,
+        "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "rondo-alla-turca",
+    "slug": "rondo-alla-turca",
+    "title": "Rondo alla Turca",
+    "composer": "Wolfgang Amadeus Mozart",
+    "collection": "Sonata K. 331 · III",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "mozart-rondo-alla-turca.mid",
+        "original_filename": "Mozart - Rondo Alla Turca (Turkish March).mid",
+        "source_url": "https://www.youtube.com/watch?v=aeEmGvm7kDk",
+        "source_sha256": "2ac8f983d9c375f41a9d6c397a5e9ab6cc4880e897ce6f7f57760bba2c2fd228",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQM",
+        "difficulty": 4,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 13.4,
+          "peak_notes_per_second": 17.4,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "77ef182516bbdb03d79c7a35335e982a68b9ea87efc555c575bf7e1d8db4dc2c",
+        "trim_start_ticks": 0,
+        "note_count": 2482,
+        "duration_seconds": 186.5,
+        "omitted_note_count": 113,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "trim_end_seconds": 186.5,
+        "trim_end_reason": "Reviewed Rousseau video aeEmGvm7kDk: Rondo ends with the A-major chord at 181.93s, last release 182.495s. The channel end screen plays unrelated Fur Elise music from 188.578s. Cut at 186.5s leaves the complete Rondo and final decay; no retained note crosses the boundary.",
+        "trim_end_ticks": 35808,
+        "omitted_outro_note_count": 113
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-night-queen",
+    "slug": "two-steps-from-hell-night-queen",
+    "title": "Night Queen",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-night-queen.mid",
+        "original_filename": "Two Steps From Hell - Night Queen (Piano).mid",
+        "source_url": "https://www.youtube.com/watch?v=Wx7TUuNZQOY",
+        "source_sha256": "b6198225091f2b7cffc09e647abd740d1eda2ae89f3f5489a575e4cbc4a0082d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUE",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.0,
+          "peak_notes_per_second": 12.2,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "b6198225091f2b7cffc09e647abd740d1eda2ae89f3f5489a575e4cbc4a0082d",
+        "trim_start_ticks": 0,
+        "note_count": 1773,
+        "duration_seconds": 212.86458333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "beyonce-halo",
+    "slug": "beyonce-halo",
+    "title": "Halo",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "beyonce-halo.mid",
+        "original_filename": "BeyoncΘ - Halo Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=xs67pmHjH-Q",
+        "source_sha256": "6916867f03af558d7eef73ea85a828085b6940a85f7df23e8a459cb5b6c934e0",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUF",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.4,
+          "peak_notes_per_second": 10.4,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "6916867f03af558d7eef73ea85a828085b6940a85f7df23e8a459cb5b6c934e0",
+        "trim_start_ticks": 0,
+        "note_count": 1964,
+        "duration_seconds": 263.2083333333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "riyandi-kusuma",
+        "title": "Riyandi Kusuma",
+        "performer": "Riyandi Kusuma",
+        "filename": "beyonce-halo-riyandi-kusuma.mid",
+        "original_filename": "[Riyandi Kusuma arr.] Beyonce - Halo (Piano Version).mid",
+        "source_url": "https://www.youtube.com/watch?v=3fmoR7G6Uxc",
+        "source_sha256": "cf9230e03aa7bd8cc087600e992882436d8b5df16e492f095dd2a137681aec4f",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUH",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.2,
+          "peak_notes_per_second": 12.2,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "cf9230e03aa7bd8cc087600e992882436d8b5df16e492f095dd2a137681aec4f",
+        "trim_start_ticks": 0,
+        "note_count": 1994,
+        "duration_seconds": 227.11979166666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "depression",
+    "slug": "depression",
+    "title": "Depression",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "depression.mid",
+        "original_filename": "Sad Piano Music 'Depression' [Extremely Sad].mid",
+        "source_url": "https://www.youtube.com/watch?v=GKiLqHJFMK0",
+        "source_sha256": "f6ed0ab24785eeb4604605b62a3266d7e58a2a6c14c21a16b04d58119131dcd5",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUA",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 1.4,
+          "peak_notes_per_second": 5.4,
+          "peak_simultaneous_notes": 9
+        },
+        "sha256": "f6ed0ab24785eeb4604605b62a3266d7e58a2a6c14c21a16b04d58119131dcd5",
+        "trim_start_ticks": 0,
+        "note_count": 434,
+        "duration_seconds": 192.375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-senya",
+    "slug": "naruto-senya",
+    "title": "Senya",
+    "composer": "",
+    "collection": "Naruto Shippuden OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-senya.mid",
+        "original_filename": "IMPOSSIBLE! Senya (Itachi's Theme) - Naruto Shippuden OST (Epic Cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=X_dnCzkYJiY",
+        "source_sha256": "2b7073184d10f72f38819ba64f1737ba4e9b310be4de9a6b26c373540c6eda66",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUB",
+        "difficulty": 3,
+        "preview_start": 5.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.6,
+          "peak_notes_per_second": 4.4,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "2b7073184d10f72f38819ba64f1737ba4e9b310be4de9a6b26c373540c6eda66",
+        "trim_start_ticks": 0,
+        "note_count": 275,
+        "duration_seconds": 84.21875,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-hyouhaku-kokuten",
+    "slug": "naruto-hyouhaku-kokuten",
+    "title": "Hyouhaku / Kokuten",
+    "composer": "",
+    "collection": "Naruto Shippuden OST II",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-hyouhaku-kokuten.mid",
+        "original_filename": "Naruto Shippuden OST II - Sasuke's Theme _ _Hyouhaku_ + _Kokuten_ (Synthesia Piano Tutorial).mid",
+        "source_url": "https://www.youtube.com/watch?v=R3LC7zd-ZDg",
+        "source_sha256": "c3c8e0353886048d39383f00e85ed7a6b6b571d89c0b34be1b286d87acdd66c0",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUD",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.4,
+          "peak_notes_per_second": 20.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "c3c8e0353886048d39383f00e85ed7a6b6b571d89c0b34be1b286d87acdd66c0",
+        "trim_start_ticks": 0,
+        "note_count": 2247,
+        "duration_seconds": 251.38020833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "hes-a-pirate",
+    "slug": "hes-a-pirate",
+    "title": "He’s a Pirate",
+    "composer": "Klaus Badelt",
+    "collection": "Pirates of the Caribbean",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "pirates-of-the-caribbean-hes-a-pirate.mid",
+        "original_filename": "HeÆs a pirate _ Pirates of the Caribbean ().mid",
+        "source_url": "https://www.youtube.com/watch?v=C6ejkFXjvok",
+        "source_sha256": "88fe6f498ad570e3e315deb3664778b1d2564b06a179344a77f7a75f4806bfa9",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUM",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 10.8,
+          "peak_notes_per_second": 20.6,
+          "peak_simultaneous_notes": 39
+        },
+        "sha256": "88fe6f498ad570e3e315deb3664778b1d2564b06a179344a77f7a75f4806bfa9",
+        "trim_start_ticks": 0,
+        "note_count": 2128,
+        "duration_seconds": 191.94791666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "pirates-of-the-caribbean-hes-a-pirate-2.mid",
+        "original_filename": "Pirates of the Caribbean - He's A Pirate - Piano Tutorial + SHEETS.mid",
+        "source_url": "https://www.youtube.com/watch?v=vPmFZRcXOQk",
+        "source_sha256": "a01a6c58ca47b6d61219142678ee3630f17817ee75bb4566dc578fd67ab884e3",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAYA",
+        "difficulty": 4,
+        "preview_start": 12.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 5.979166666666666,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.6,
+          "peak_notes_per_second": 12.8,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "6518d8c2346cab341bb752f9cac292735018c5a0f2033f8ef82c3e6edcbab669",
+        "trim_start_ticks": 1148,
+        "note_count": 845,
+        "duration_seconds": 101.203125,
+        "omitted_note_count": 18,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-3",
+        "title": {
+          "uz": "Ijro 3",
+          "ru": "Исполнение 3",
+          "en": "Performance 3"
+        },
+        "performer": "",
+        "filename": "pirates-of-the-caribbean-hes-a-pirate-3.mid",
+        "original_filename": "PIRATES OF THE CARIBBEAN - HE'S A PIRATE - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=iElshgfm-WI",
+        "source_sha256": "d7f00d601f707f223eef4ba55aa738c38ecb8c58be3ca9f69dfcde58955d6e9d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMD",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 5.984375,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 13.0,
+          "peak_notes_per_second": 17.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "414e73ba69ec23cc5eb52cbeab35679a7d9a1ec87bf2d9da5cbb587f47249fc5",
+        "trim_start_ticks": 1149,
+        "note_count": 1127,
+        "duration_seconds": 89.84895833333333,
+        "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "winter-sonata-missing-you",
+    "slug": "winter-sonata-missing-you",
+    "title": "Winter Sonata — Missing You",
+    "composer": "",
+    "collection": "Winter Sonata OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "winter-sonata-missing-you.mid",
+        "original_filename": "Missing You - Winter Sonata OST.mid",
+        "source_url": "https://www.youtube.com/watch?v=CSgYhjtfRvc",
+        "source_sha256": "2ec0d34d77c299e884b2649075fdfbbe78852bac7c8be8e67bb4edaa4c24823c",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUN",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.2,
+          "peak_notes_per_second": 4.0,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "2ec0d34d77c299e884b2649075fdfbbe78852bac7c8be8e67bb4edaa4c24823c",
+        "trim_start_ticks": 0,
+        "note_count": 457,
+        "duration_seconds": 150.578125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "frozen-let-it-go",
+    "slug": "frozen-let-it-go",
+    "title": "Let It Go",
+    "composer": "",
+    "collection": "Frozen",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "frozen-let-it-go.mid",
+        "original_filename": "Disney's Frozen - Let It Go - Advanced Piano Tutorial + SHEETS.mid",
+        "source_url": "https://www.youtube.com/watch?v=oGsbIlpYqqc",
+        "source_sha256": "22c0c4258555d623de67175a300aa3657709309e2ceef906ec422027a81ecaef",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAYB",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 5.03125,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.6,
+          "peak_notes_per_second": 12.2,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "229543ebaffba3e0438b490bd4f4bec362db87c5dc3c78b475b2a7dc04ee880c",
+        "trim_start_ticks": 966,
+        "note_count": 1682,
+        "duration_seconds": 215.47395833333334,
+        "omitted_note_count": 18,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-victory",
+    "slug": "two-steps-from-hell-victory",
+    "title": "Victory",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-victory.mid",
+        "original_filename": "Two Steps From Hell - Victory - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=OaylVpNPFBs",
+        "source_sha256": "364aac3aa76de1e92c9614d1d5124e02909dbc0f016b342aaf83f9fa2b48bfb3",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAYC",
+        "difficulty": 4,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 3.4479166666666665,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 8.1,
+          "peak_notes_per_second": 15.2,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "5150468d8dbbc8b5a51e4a9d8fa4960b1f9aadb00c69ed268174d240d6d31756",
+        "trim_start_ticks": 662,
+        "note_count": 2564,
+        "duration_seconds": 304.375,
+        "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-victory-2.mid",
+        "original_filename": "Two Steps From Hell - Victory (Piano Cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=br2BNxU-H18",
+        "source_sha256": "64866fa8ce25f867b7fdd8eae4eb3a5ea6cdcdce09fbf147e252462bdf6301a1",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMN",
+        "difficulty": 4,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 8.2,
+          "peak_notes_per_second": 12.8,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "64866fa8ce25f867b7fdd8eae4eb3a5ea6cdcdce09fbf147e252462bdf6301a1",
+        "trim_start_ticks": 0,
+        "note_count": 2599,
+        "duration_seconds": 330.3697916666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-determination-gods-will",
+    "slug": "naruto-determination-gods-will",
+    "title": "Determination (God’s Will)",
+    "composer": "",
+    "collection": "Naruto Shippuden OST",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-determination-gods-will.mid",
+        "original_filename": "Naruto Shippden OST - Determination (God's Will).mid",
+        "source_url": "https://www.youtube.com/watch?v=ikJKmIlULDw",
+        "source_sha256": "fee32943af5956a4ebf9db97936fca8aac1c12d56d1cab04c77846cf0daa4121",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAYM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.7,
+          "peak_notes_per_second": 10.6,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "fee32943af5956a4ebf9db97936fca8aac1c12d56d1cab04c77846cf0daa4121",
+        "trim_start_ticks": 0,
+        "note_count": 574,
+        "duration_seconds": 115.98958333333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "my-heart-will-go-on",
+    "slug": "my-heart-will-go-on",
+    "title": "My Heart Will Go On",
+    "composer": "James Horner · Will Jennings",
+    "collection": "Titanic",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "titanic-my-heart-will-go-on.mid",
+        "original_filename": "Titanic - My Heart Will Go On (25th Anniversary EPIC piano cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=vnrXClJ4oXM",
+        "source_sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcE",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.6,
+          "peak_notes_per_second": 9.0,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
+        "trim_start_ticks": 0,
+        "note_count": 1901,
+        "duration_seconds": 358.8645833333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-i-have-seen-much",
+    "slug": "naruto-i-have-seen-much",
+    "title": "I Have Seen Much (Obito’s Theme)",
+    "composer": "",
+    "collection": "Naruto Shippuden · Obito’s Theme",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-i-have-seen-much.mid",
+        "original_filename": "Naruto Shippuden - Obito's Theme (I Have Seen Much) Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=tHPqN8RwFP4",
+        "source_sha256": "09682e471a885438c435f1646ab58bcb0ff95e1ad0010b2d1282b8720dfc7822",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcG",
+        "difficulty": 2,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.2,
+          "peak_notes_per_second": 4.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "09682e471a885438c435f1646ab58bcb0ff95e1ad0010b2d1282b8720dfc7822",
+        "trim_start_ticks": 0,
+        "note_count": 470,
+        "duration_seconds": 152.73958333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "naruto-obitos-theme.mid",
+        "original_filename": "Naruto Shippden OST - Obito's Theme.mid",
+        "source_url": "https://www.youtube.com/watch?v=P6n54-BsWHc",
+        "source_sha256": "df3b33b3454a19ea5f96b6786128e9db5b1461b531cec63d4dbc9fd1527dcef7",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAkF",
+        "difficulty": 3,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 6.6,
+          "peak_notes_per_second": 11.0,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "df3b33b3454a19ea5f96b6786128e9db5b1461b531cec63d4dbc9fd1527dcef7",
+        "trim_start_ticks": 0,
+        "note_count": 1093,
+        "duration_seconds": 190.27083333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "tedesco-creations",
+        "title": "TedescoCreations",
+        "performer": "TedescoCreations",
+        "filename": "naruto-obitos-theme-tedesco.mid",
+        "original_filename": "Naruto Shippuden OST 3 - Obito's Theme (Synthesia) __ TedescoCreations.mid",
+        "source_url": "https://www.youtube.com/watch?v=fU5rEnzx_m8",
+        "source_sha256": "aaf9e4997f5ecdd7b3f6949a5ec249e734aebdd06add2bf694543c0c0dcfcb21",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAB",
+        "difficulty": 3,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.9,
+          "peak_notes_per_second": 10.4,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "aaf9e4997f5ecdd7b3f6949a5ec249e734aebdd06add2bf694543c0c0dcfcb21",
+        "trim_start_ticks": 0,
+        "note_count": 811,
+        "duration_seconds": 147.609375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-unleashed",
+    "slug": "two-steps-from-hell-unleashed",
+    "title": "Unleashed",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-unleashed.mid",
+        "original_filename": "[AI Piano] Unleashed - Two Steps From Hell - Unleashed.mid",
+        "source_url": "https://www.youtube.com/watch?v=hZ1Vyhg5p8M",
+        "source_sha256": "e36ce9aeef5e8843241d4c59cb22a5853b8954d0ca283974a01d3279f49d65b8",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcH",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.8,
+          "peak_notes_per_second": 14.8,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "e36ce9aeef5e8843241d4c59cb22a5853b8954d0ca283974a01d3279f49d65b8",
+        "trim_start_ticks": 0,
+        "note_count": 1799,
+        "duration_seconds": 314.5677083333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "romance-damour",
+    "slug": "romance-damour",
+    "title": "Romance d’Amour",
+    "composer": "Anonymous",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "romance-damour.mid",
+        "original_filename": "Romance d'Amour (anonymous) - Piano.mid",
+        "source_url": "https://www.youtube.com/watch?v=PUXexPcajYo",
+        "source_sha256": "036143fd31d532f876e99b10b712c1549022df904721473d2732ed61d6c3df14",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 5.0,
+          "peak_simultaneous_notes": 3
+        },
+        "sha256": "036143fd31d532f876e99b10b712c1549022df904721473d2732ed61d6c3df14",
+        "trim_start_ticks": 0,
+        "note_count": 803,
+        "duration_seconds": 206.953125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "pirates-of-the-caribbean-davy-jones",
+    "slug": "pirates-of-the-caribbean-davy-jones",
+    "title": "Davy Jones",
+    "composer": "",
+    "collection": "Pirates of the Caribbean: Dead Man’s Chest",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "pirates-of-the-caribbean-davy-jones.mid",
+        "original_filename": "Pirates of the Caribbean 2 - Davy Jones Theme Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=G9u6qdg6B_o",
+        "source_sha256": "abf9d1214f03210123218b70ea1c8c121d9e11cf08f9317504390bbecd35ad2b",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcB",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.4,
+          "peak_notes_per_second": 6.2,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "abf9d1214f03210123218b70ea1c8c121d9e11cf08f9317504390bbecd35ad2b",
+        "trim_start_ticks": 0,
+        "note_count": 312,
+        "duration_seconds": 84.69270833333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "time",
+    "slug": "time",
+    "title": "Time",
+    "composer": "Hans Zimmer",
+    "collection": "Inception",
+    "replaces_existing": true,
+    "variants": [
+      {
+        "id": "patrik-pietschmann",
+        "title": "Patrik Pietschmann",
+        "performer": "Patrik Pietschmann",
+        "filename": "inception-time-patrik-pietschmann.mid",
+        "original_filename": "Inception - Time [Piano Tutorial Synthesia] (Patrik Pietschmann).mid",
+        "source_url": "https://www.youtube.com/watch?v=Q_55tKCrKVw",
+        "source_sha256": "79175009dc84f5cb41bbd9f9bb1dc45d8949ed652c367dda9f85eaa10ce9e159",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcD",
+        "difficulty": 4,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.2,
+          "peak_notes_per_second": 12.0,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "79175009dc84f5cb41bbd9f9bb1dc45d8949ed652c367dda9f85eaa10ce9e159",
+        "trim_start_ticks": 0,
+        "note_count": 1495,
+        "duration_seconds": 246.875,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "gladiator-honor-him-now-we-are-free",
+    "slug": "gladiator-honor-him-now-we-are-free",
+    "title": "Gladiator — Honor Him / Now We Are Free",
+    "composer": "",
+    "collection": "Gladiator",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "gladiator-honor-him-now-we-are-free.mid",
+        "original_filename": "Gladiator - Honor Him _ Now We Are Free (Piano Version) Hans Zimmer.mid",
+        "source_url": "https://www.youtube.com/watch?v=_0KhJPy7xzc",
+        "source_sha256": "609d6083df5b7fae212a5c96cd1bb80dcad89acb0937084faa3aab6a5eb46fb3",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcM",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.3,
+          "peak_notes_per_second": 22.2,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "609d6083df5b7fae212a5c96cd1bb80dcad89acb0937084faa3aab6a5eb46fb3",
+        "trim_start_ticks": 0,
+        "note_count": 1996,
+        "duration_seconds": 339.2760416666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "jacob",
+        "title": "Jacob",
+        "performer": "Jacob",
+        "filename": "gladiator-now-we-are-free-honor-him-jacob.mid",
+        "original_filename": "Now We Are Free _ Honor Him (from _Gladiator_) __ Hans Zimmer __ Jacob's Piano.mid",
+        "source_url": "https://www.youtube.com/watch?v=ghuyMVkITIE",
+        "source_sha256": "f45ffec948b822b973ad2df4d0a5891fb8ebfac0f84c796ff9fdeaf513501c4d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgF",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.0,
+          "peak_notes_per_second": 3.8,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "f45ffec948b822b973ad2df4d0a5891fb8ebfac0f84c796ff9fdeaf513501c4d",
+        "trim_start_ticks": 0,
+        "note_count": 519,
+        "duration_seconds": 187.30208333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-3",
+        "title": {
+          "uz": "Ijro 3",
+          "ru": "Исполнение 3",
+          "en": "Performance 3"
+        },
+        "performer": "",
+        "filename": "gladiator-now-we-are-free-honor-him-2.mid",
+        "original_filename": "Now We Are Free _ Honor Him (from _Gladiator_) - Hans Zimmer __ Synthesia Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=iS5_CCxLf4s",
+        "source_sha256": "73b79178d8c461ae365d830f5144faa732d84f4f486b842687f41136075c2d77",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgG",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.6,
+          "peak_notes_per_second": 4.2,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "73b79178d8c461ae365d830f5144faa732d84f4f486b842687f41136075c2d77",
+        "trim_start_ticks": 0,
+        "note_count": 524,
+        "duration_seconds": 193.41666666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-man-of-the-world",
+    "slug": "naruto-man-of-the-world",
+    "title": "Man of the World",
+    "composer": "",
+    "collection": "Naruto Shippuden",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-man-of-the-world.mid",
+        "original_filename": "Naruto Shippden OST - Man of the world (Piano).mid",
+        "source_url": "https://www.youtube.com/watch?v=Dv3QjfNx-3A",
+        "source_sha256": "c6905a51c43cd6bb7fcd904244e647203bfab3035209d386909d89202b48ed36",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcN",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.8,
+          "peak_notes_per_second": 6.8,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "c6905a51c43cd6bb7fcd904244e647203bfab3035209d386909d89202b48ed36",
+        "trim_start_ticks": 0,
+        "note_count": 622,
+        "duration_seconds": 182.4375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "thomas-bergersen-one-last-day",
+    "slug": "thomas-bergersen-one-last-day",
+    "title": "One Last Day",
+    "composer": "Thomas Bergersen",
+    "collection": "Thomas Bergersen · Humanity Chapter V",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "thomas-bergersen-one-last-day.mid",
+        "original_filename": "Thomas Bergersen - One Last Day (Humanity Chapter V) _ Piano Solo.mid",
+        "source_url": "https://www.youtube.com/watch?v=DxIvMNMIzNY",
+        "source_sha256": "3d618d0b09d4debb901285f2d30585d1ff3651183898c42fa254b386567154c2",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgE",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.0,
+          "peak_notes_per_second": 17.2,
+          "peak_simultaneous_notes": 10
+        },
+        "sha256": "3d618d0b09d4debb901285f2d30585d1ff3651183898c42fa254b386567154c2",
+        "trim_start_ticks": 0,
+        "note_count": 2487,
+        "duration_seconds": 268.2760416666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "end-of-silence-entropy",
+    "slug": "end-of-silence-entropy",
+    "title": "Entropy",
+    "composer": "",
+    "collection": "End of Silence · Dos Brains",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "end-of-silence-entropy.mid",
+        "original_filename": "Entropy - End of Silence, Dos Brains (Piano Arrangement).mid",
+        "source_url": "https://www.youtube.com/watch?v=4vT0VdlIICY",
+        "source_sha256": "c1cda725cddc327f6298673ec4a5cbd3c9e7c15be1f94f6d825bd4d4c627f65f",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgH",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 10.0,
+          "peak_notes_per_second": 17.0,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "c1cda725cddc327f6298673ec4a5cbd3c9e7c15be1f94f6d825bd4d4c627f65f",
+        "trim_start_ticks": 0,
+        "note_count": 2318,
+        "duration_seconds": 221.81770833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "thomas-bergersen-red",
+    "slug": "thomas-bergersen-red",
+    "title": "Red",
+    "composer": "Thomas Bergersen",
+    "collection": "Thomas Bergersen · Humanity Chapter III",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "thomas-bergersen-red.mid",
+        "original_filename": "Thomas Bergersen - Red (from Humanity Chapter III) Piano Arrangement.mid",
+        "source_url": "https://www.youtube.com/watch?v=KNiEvZan_6o",
+        "source_sha256": "30fa2ccba96cb78db1e3067442642f4e85babb2403b26c24414cc719f078eb62",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgB",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 6.8,
+          "peak_notes_per_second": 14.8,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "30fa2ccba96cb78db1e3067442642f4e85babb2403b26c24414cc719f078eb62",
+        "trim_start_ticks": 0,
+        "note_count": 2378,
+        "duration_seconds": 332.9739583333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "fate-stay-night-kodoku-na-junrei",
+    "slug": "fate-stay-night-kodoku-na-junrei",
+    "title": "Kodoku na Junrei",
+    "composer": "",
+    "collection": "Fate/Stay Night",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "fate-stay-night-kodoku-na-junrei.mid",
+        "original_filename": "Fate Stay Night - Kodoku na Junrei - Piano (Cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=YTc6qym58y0",
+        "source_sha256": "62bc63197470a62620d2e2b166c4ba35d149860870d5902a14c397dedecab35e",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.6,
+          "peak_notes_per_second": 6.2,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "62bc63197470a62620d2e2b166c4ba35d149860870d5902a14c397dedecab35e",
+        "trim_start_ticks": 0,
+        "note_count": 465,
+        "duration_seconds": 110.53125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "fate-stay-night-kishi-ou-no-hokori",
+    "slug": "fate-stay-night-kishi-ou-no-hokori",
+    "title": "Kishi Ou no Hokori",
+    "composer": "",
+    "collection": "Fate/Stay Night",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "fate-stay-night-kishi-ou-no-hokori.mid",
+        "original_filename": "Kishi Ou no Hokori - Fate_Stay Night OST Piano.mid",
+        "source_url": "https://www.youtube.com/watch?v=ktLMuhplk_M",
+        "source_sha256": "f2df3b3e736ab5dea6d6e66967afb254449d3d249e0c2068fa96463e5eb0fb1d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAgN",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.9,
+          "peak_notes_per_second": 10.6,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "f2df3b3e736ab5dea6d6e66967afb254449d3d249e0c2068fa96463e5eb0fb1d",
+        "trim_start_ticks": 0,
+        "note_count": 797,
+        "duration_seconds": 138.64583333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-maisou-burial",
+    "slug": "naruto-maisou-burial",
+    "title": "Maisou (Burial)",
+    "composer": "",
+    "collection": "Naruto Shippuden",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-maisou-burial.mid",
+        "original_filename": "Naruto Shippden OST - Maisou (Burial).mid",
+        "source_url": "https://www.youtube.com/watch?v=68imoEsMRyw",
+        "source_sha256": "982b67ac99f1adc0e3463807e293792a2ecfe3026ef30e4e2fd840d071e9b2ba",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwYA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.0,
+          "peak_notes_per_second": 9.2,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "982b67ac99f1adc0e3463807e293792a2ecfe3026ef30e4e2fd840d071e9b2ba",
+        "trim_start_ticks": 0,
+        "note_count": 1119,
+        "duration_seconds": 310.1302083333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-heart-of-courage",
+    "slug": "two-steps-from-hell-heart-of-courage",
+    "title": "Heart of Courage",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "patrik-pietschmann",
+        "title": "Patrik Pietschmann",
+        "performer": "Patrik Pietschmann",
+        "filename": "two-steps-from-hell-heart-of-courage-patrik-pietschmann.mid",
+        "original_filename": "Two Steps from Hell - Heart of Courage [Piano Tutorial Synthesia] (Patrik Pietschmann).mid",
+        "source_url": "https://www.youtube.com/watch?v=cZdxEyG8cfE",
+        "source_sha256": "cefc19f5ef21dde8f686b45e5be266ac4200d9555811c1ab25533fccb86637bf",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAkH",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 12.1,
+          "peak_notes_per_second": 25.6,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "cefc19f5ef21dde8f686b45e5be266ac4200d9555811c1ab25533fccb86637bf",
+        "trim_start_ticks": 0,
+        "note_count": 2057,
+        "duration_seconds": 188.453125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-heart-of-courage.mid",
+        "original_filename": "_Heart of courage _ Two steps from hell - Piano tutorial + Sheet music.mid",
+        "source_url": "https://www.youtube.com/watch?v=jUGTQJ2jK3U",
+        "source_sha256": "412264c7591ddf8be1ce6e32109fe9a4986182a39b7309c8939062ac395586c2",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwEB",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 8.0,
+          "peak_notes_per_second": 18.4,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "412264c7591ddf8be1ce6e32109fe9a4986182a39b7309c8939062ac395586c2",
+        "trim_start_ticks": 0,
+        "note_count": 1038,
+        "duration_seconds": 116.05208333333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-decision",
+    "slug": "naruto-decision",
+    "title": "Decision",
+    "composer": "",
+    "collection": "Naruto Shippuden",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-decision.mid",
+        "original_filename": "Naruto Shippuden OST - Decision (Piano Theme Cover).mid",
+        "source_url": "https://www.youtube.com/watch?v=bjHp3rTji9o",
+        "source_sha256": "7062d5af0ad4ac32c7b45ae447cf71f7234a7783908f19d93088b07e5007c890",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAkA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.8,
+          "peak_notes_per_second": 7.6,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "7062d5af0ad4ac32c7b45ae447cf71f7234a7783908f19d93088b07e5007c890",
+        "trim_start_ticks": 0,
+        "note_count": 742,
+        "duration_seconds": 183.0625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "naruto-decision-2.mid",
+        "original_filename": "Naruto Shippden OST - Decision (Synthesia).mid",
+        "source_url": "https://www.youtube.com/watch?v=o44R64CjYzA",
+        "source_sha256": "c74cb2d1f7d8a756559eff762695f9f2b551ff0c15982ba00db7b8f37e74b2cc",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMF",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.2,
+          "peak_notes_per_second": 5.0,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "c74cb2d1f7d8a756559eff762695f9f2b551ff0c15982ba00db7b8f37e74b2cc",
+        "trim_start_ticks": 0,
+        "note_count": 672,
+        "duration_seconds": 203.38541666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-my-mother-and-my-father",
+    "slug": "naruto-my-mother-and-my-father",
+    "title": "My Mother and My Father",
+    "composer": "",
+    "collection": "Naruto Shippuden OST III",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-my-mother-and-my-father.mid",
+        "original_filename": "Naruto Shippden OST III - My Mother and My Father.mid",
+        "source_url": "https://www.youtube.com/watch?v=C66lcrgR6Lc",
+        "source_sha256": "33f93a35fc9345268cca8ca801f206c7c06a6cc8e0eb12b6f28f0f6dcd1254a8",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAkD",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.8,
+          "peak_notes_per_second": 9.2,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "33f93a35fc9345268cca8ca801f206c7c06a6cc8e0eb12b6f28f0f6dcd1254a8",
+        "trim_start_ticks": 0,
+        "note_count": 1077,
+        "duration_seconds": 203.96354166666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "game-of-thrones-main-theme",
+    "slug": "game-of-thrones-main-theme",
+    "title": "Game of Thrones — Main Theme",
+    "composer": "",
+    "collection": "Game of Thrones",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "game-of-thrones-main-theme.mid",
+        "original_filename": "Game of Thrones - Main Theme __ Synthesia Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=RUgCFbaQROM",
+        "source_sha256": "e37d56bc17355a90a15dabf8fc53bc5d489d06af920e3756fee037eff130c17a",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAkN",
+        "difficulty": 3,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.2,
+          "peak_notes_per_second": 8.6,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "e37d56bc17355a90a15dabf8fc53bc5d489d06af920e3756fee037eff130c17a",
+        "trim_start_ticks": 0,
+        "note_count": 700,
+        "duration_seconds": 102.88541666666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "what-a-wonderful-world",
+    "slug": "what-a-wonderful-world",
+    "title": "What a Wonderful World",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "what-a-wonderful-world.mid",
+        "original_filename": "What a Wonderful World (Piano) __ ARMSTRONG.mid",
+        "source_url": "https://www.youtube.com/watch?v=gcR_mSLvoZ8",
+        "source_sha256": "58727f116a9908b30b7a33359d1009637774d29da8b0935efd4ff041111f9ec4",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAG",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.4,
+          "peak_notes_per_second": 6.6,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "58727f116a9908b30b7a33359d1009637774d29da8b0935efd4ff041111f9ec4",
+        "trim_start_ticks": 0,
+        "note_count": 881,
+        "duration_seconds": 173.63541666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-sadness-and-sorrow",
+    "slug": "naruto-sadness-and-sorrow",
+    "title": "Sadness and Sorrow",
+    "composer": "",
+    "collection": "Naruto",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-sadness-and-sorrow.mid",
+        "original_filename": "Naruto OST - Sadness and Sorrow.mid",
+        "source_url": "https://www.youtube.com/watch?v=eC7H4ReI1X4",
+        "source_sha256": "5343b224b6e8900b4cea1ab86d47952a194cf198fbfa46f70620889ce01eb1a8",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.4,
+          "peak_notes_per_second": 8.6,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "5343b224b6e8900b4cea1ab86d47952a194cf198fbfa46f70620889ce01eb1a8",
+        "trim_start_ticks": 0,
+        "note_count": 935,
+        "duration_seconds": 214.22395833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "thomas-bergersen-children-of-the-sun",
+    "slug": "thomas-bergersen-children-of-the-sun",
+    "title": "Children of the Sun",
+    "composer": "Thomas Bergersen",
+    "collection": "Thomas Bergersen",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "thomas-bergersen-children-of-the-sun.mid",
+        "original_filename": "Thomas Bergersen - Children of the Sun - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=BB_3AWAqdpg",
+        "source_sha256": "13953d7d9a3fa65de33322da028fc76609c401b4332c787a0613e57bfc7ca120",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAD",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 3.6875,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 10.6,
+          "peak_notes_per_second": 21.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "3a817b2183a37d89dad9eb9d9f4b15c01c0bfe9e1d2dfc33f4385a304d058e77",
+        "trim_start_ticks": 708,
+        "note_count": 3015,
+        "duration_seconds": 274.9635416666667,
+        "omitted_note_count": 12,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "skyrim-ancient-stones",
+    "slug": "skyrim-ancient-stones",
+    "title": "Ancient Stones",
+    "composer": "",
+    "collection": "The Elder Scrolls V: Skyrim",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "skyrim-ancient-stones.mid",
+        "original_filename": "Skyrim - Ancient Stones [Synthesia] (piano tutorial, midi download).mid",
+        "source_url": "https://www.youtube.com/watch?v=QkliJXgoeto",
+        "source_sha256": "ecb0bf902a4bfea6887a57341e7a93760bff32b0783c6a6cd7e62112fa537d78",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.4,
+          "peak_notes_per_second": 7.8,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "ecb0bf902a4bfea6887a57341e7a93760bff32b0783c6a6cd7e62112fa537d78",
+        "trim_start_ticks": 0,
+        "note_count": 760,
+        "duration_seconds": 142.4375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-sariel",
+    "slug": "two-steps-from-hell-sariel",
+    "title": "Sariel",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-sariel.mid",
+        "original_filename": "Two Steps From Hell - Sariel - Synthesia.mid",
+        "source_url": "https://www.youtube.com/watch?v=3Cb5ai9QrV0",
+        "source_sha256": "1cc35f84571d39abbef0e638e7037a75fcfedb469349e036291cae07ef863bd8",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwAN",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 10.5,
+          "peak_notes_per_second": 19.2,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "1cc35f84571d39abbef0e638e7037a75fcfedb469349e036291cae07ef863bd8",
+        "trim_start_ticks": 0,
+        "note_count": 1882,
+        "duration_seconds": 155.125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "the-last-of-the-mohicans",
+    "slug": "the-last-of-the-mohicans",
+    "title": "The Last of the Mohicans",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "the-last-of-the-mohicans.mid",
+        "original_filename": "The Last of the Mohicans -- Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=sLEHUE5_uG0",
+        "source_sha256": "f711ed4f6fd8f309a5f5a4f0c4349d5093928e2d3487179728444dbfd103c0fb",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwEG",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.8,
+          "peak_notes_per_second": 8.8,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "f711ed4f6fd8f309a5f5a4f0c4349d5093928e2d3487179728444dbfd103c0fb",
+        "trim_start_ticks": 0,
+        "note_count": 1404,
+        "duration_seconds": 284.625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "ievan-polkka",
+    "slug": "ievan-polkka",
+    "title": "Ievan Polkka",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "ievan-polkka.mid",
+        "original_filename": "IEVAN POLKKA (LOITUMA POLKKA) - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=1JQv8SbDlwY",
+        "source_sha256": "0576837dfc4e7768abf6e9c2a8f8f77d8ab2704c1cd850bbaf63e79fbfb58f6d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwEA",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 4.265625,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.6,
+          "peak_notes_per_second": 16.8,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "15f470f10ddec2ca69bd56622f87a5c143719071f65905cd3e5604ef11940ba5",
+        "trim_start_ticks": 819,
+        "note_count": 1736,
+        "duration_seconds": 172.921875,
+        "omitted_note_count": 14,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "hate",
+    "slug": "hate",
+    "title": "Hate",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "hate.mid",
+        "original_filename": "Dark Piano - Hate _ Synthesia Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=D4rC6ui06ZU",
+        "source_sha256": "fce21a76d01f66ee8211d67a369a528cd8e5a4bd855ec7baecbd63e271bfe49d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwED",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 2.0,
+          "peak_notes_per_second": 6.8,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "fce21a76d01f66ee8211d67a369a528cd8e5a4bd855ec7baecbd63e271bfe49d",
+        "trim_start_ticks": 0,
+        "note_count": 714,
+        "duration_seconds": 263.9635416666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "pachelbel-canon-in-d",
+    "slug": "pachelbel-canon-in-d",
+    "title": "Canon in D",
+    "composer": "Johann Pachelbel",
+    "collection": "Johann Pachelbel",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "pachelbel-canon-in-d.mid",
+        "original_filename": "Johann Pachelbel - Canon in D __ Synthesia Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=vvceGaZvgbs",
+        "source_sha256": "a43a7a6f290e28212426067f04564093264227e1286e908a260fc35f17a46a46",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwEM",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 6.2,
+          "peak_notes_per_second": 9.4,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "a43a7a6f290e28212426067f04564093264227e1286e908a260fc35f17a46a46",
+        "trim_start_ticks": 0,
+        "note_count": 1028,
+        "duration_seconds": 176.71875,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "skyrim-from-past-to-present",
+    "slug": "skyrim-from-past-to-present",
+    "title": "From Past to Present",
+    "composer": "",
+    "collection": "The Elder Scrolls V: Skyrim",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "skyrim-from-past-to-present.mid",
+        "original_filename": "From Past to Present - The Elder Scrolls V_ Skyrim Piano Cover _ Sheet Music.mid",
+        "source_url": "https://www.youtube.com/watch?v=eAKirK-XMSQ",
+        "source_sha256": "3c63d0b2ae2f6dc4af1a76b3b4a0ac46cfea2460c4630667e369a066f34f8db7",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwIE",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.0,
+          "peak_notes_per_second": 6.4,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "3c63d0b2ae2f6dc4af1a76b3b4a0ac46cfea2460c4630667e369a066f34f8db7",
+        "trim_start_ticks": 0,
+        "note_count": 548,
+        "duration_seconds": 183.50520833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "skyrim-dragonborn",
+    "slug": "skyrim-dragonborn",
+    "title": "Dragonborn",
+    "composer": "",
+    "collection": "The Elder Scrolls V: Skyrim",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "skyrim-dragonborn.mid",
+        "original_filename": "DRAGONBORN - SKYRIM THEME - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=Pg3HKw7MHmU",
+        "source_sha256": "9c72d3ae7e8b8b1e75bd417bc5abc2d52758c7c078da4b5495113b9c4e3a7b78",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwIG",
+        "difficulty": 5,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 4.265625,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 10.2,
+          "peak_notes_per_second": 23.8,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "92fa83d6c44e9c76a8bb18b5c3b871681e43ae1e9c6f97702ac7c0cb83e7461d",
+        "trim_start_ticks": 819,
+        "note_count": 2252,
+        "duration_seconds": 243.578125,
+        "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-evergreen",
+    "slug": "two-steps-from-hell-evergreen",
+    "title": "Evergreen",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-evergreen.mid",
+        "original_filename": "Two Steps From Hell - Evergreen (Piano_Sheets).mid",
+        "source_url": "https://www.youtube.com/watch?v=50xsk58NVkM",
+        "source_sha256": "f13613e86461384adcbb5b6b7cc2fdee371a424820a2825e6006a9d007814f5c",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwIA",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 8.6,
+          "peak_notes_per_second": 22.2,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "f13613e86461384adcbb5b6b7cc2fdee371a424820a2825e6006a9d007814f5c",
+        "trim_start_ticks": 0,
+        "note_count": 1854,
+        "duration_seconds": 175.09375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      },
+      {
+        "id": "performance-2",
+        "title": {
+          "uz": "Ijro 2",
+          "ru": "Исполнение 2",
+          "en": "Performance 2"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-evergreen-2.mid",
+        "original_filename": "Evergreen by Two Steps From Hell Piano Cover.mid",
+        "source_url": "https://www.youtube.com/watch?v=GS7vqJ1KL-o",
+        "source_sha256": "6212b997098a69dcecf218842958c975682fb50da812fd2f561b765df3c01941",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMM",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.4,
+          "peak_notes_per_second": 14.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "6212b997098a69dcecf218842958c975682fb50da812fd2f561b765df3c01941",
+        "trim_start_ticks": 0,
+        "note_count": 1448,
+        "duration_seconds": 160.359375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "two-steps-from-hell-star-sky",
+    "slug": "two-steps-from-hell-star-sky",
+    "title": "Star Sky",
+    "composer": "",
+    "collection": "Two Steps From Hell",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "two-steps-from-hell-star-sky.mid",
+        "original_filename": "Two Steps From Hell - Star sky - Piano (hardcore).mid",
+        "source_url": "https://www.youtube.com/watch?v=sKBJQu-6LzU",
+        "source_sha256": "3011edb31cd47e767fd8d9ad86ad5d269d15b2a0f0945fc365588761bdd2b748",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwID",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.7,
+          "peak_notes_per_second": 18.2,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "3011edb31cd47e767fd8d9ad86ad5d269d15b2a0f0945fc365588761bdd2b748",
+        "trim_start_ticks": 0,
+        "note_count": 3540,
+        "duration_seconds": 326.8385416666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "horror-themes-medley",
+    "slug": "horror-themes-medley",
+    "title": "Horror Themes — Medley",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "horror-themes-medley.mid",
+        "original_filename": "10 CHILLING Horror Themes!.mid",
+        "source_url": "https://www.youtube.com/watch?v=OuaQDV_nSiM",
+        "source_sha256": "5378aaf349b6702c50893b205aab7e8e2101ffcd0869c8dfbc2202261ddfa5f6",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwIM",
+        "difficulty": 4,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.7,
+          "peak_notes_per_second": 11.2,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "5378aaf349b6702c50893b205aab7e8e2101ffcd0869c8dfbc2202261ddfa5f6",
+        "trim_start_ticks": 0,
+        "note_count": 961,
+        "duration_seconds": 197.125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "peder-b-helland-always",
+    "slug": "peder-b-helland-always",
+    "title": "Always",
+    "composer": "Peder B. Helland",
+    "collection": "Peder B. Helland",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "peder-b-helland-always.mid",
+        "original_filename": "Always - Peder B. Helland [Beautiful Piano Tutorial with Synthesia].mid",
+        "source_url": "https://www.youtube.com/watch?v=OW-vitOPATA",
+        "source_sha256": "ab95cdbe5643e3cfea212fabcc23f57424c36b5089c553880b8bbb5fea004e52",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwME",
+        "difficulty": 1,
+        "preview_start": 11.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 1.0,
+          "peak_notes_per_second": 2.8,
+          "peak_simultaneous_notes": 2
+        },
+        "sha256": "ab95cdbe5643e3cfea212fabcc23f57424c36b5089c553880b8bbb5fea004e52",
+        "trim_start_ticks": 0,
+        "note_count": 399,
+        "duration_seconds": 398.9270833333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "winter-sonata-from-the-beginning-until-now",
+    "slug": "winter-sonata-from-the-beginning-until-now",
+    "title": "Winter Sonata — From the Beginning Until Now",
+    "composer": "",
+    "collection": "Winter Sonata",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "winter-sonata-from-the-beginning-until-now.mid",
+        "original_filename": "Winter Sonata -   (From The Beginning Until Now) (Instrumental).mid",
+        "source_url": "https://www.youtube.com/watch?v=STUBM6yrUqY",
+        "source_sha256": "e51e9eee3262fe096783b737050c3c5c72ce0c40605ea08761d0980df790f23d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMA",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 4.8,
+          "peak_notes_per_second": 9.4,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "e51e9eee3262fe096783b737050c3c5c72ce0c40605ea08761d0980df790f23d",
+        "trim_start_ticks": 0,
+        "note_count": 1293,
+        "duration_seconds": 264.0520833333333,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "maksim-mrvica-croatian-rhapsody",
+    "slug": "maksim-mrvica-croatian-rhapsody",
+    "title": "Croatian Rhapsody",
+    "composer": "",
+    "collection": "Maksim Mrvica",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "maksim-mrvica-croatian-rhapsody.mid",
+        "original_filename": "Croatian Rhapsody Maksim Mrvica piano tutorial 100%.mid",
+        "source_url": "https://www.youtube.com/watch?v=1Zr6BkJ3t-Y",
+        "source_sha256": "e1580890e1e74fa1921d98859f7b3b15a505b3b406139e91ae625491bd2e726d",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMB",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 8.8,
+          "peak_notes_per_second": 13.4,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "e1580890e1e74fa1921d98859f7b3b15a505b3b406139e91ae625491bd2e726d",
+        "trim_start_ticks": 0,
+        "note_count": 1869,
+        "duration_seconds": 210.65625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-girei",
+    "slug": "naruto-girei",
+    "title": "Girei (Pain’s Theme)",
+    "composer": "",
+    "collection": "Naruto Shippuden",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-girei.mid",
+        "original_filename": "Naruto Shippden OST - Pain's Theme (Girei).mid",
+        "source_url": "https://www.youtube.com/watch?v=ehY5rdnmv0o",
+        "source_sha256": "40705b068a0e603fbf9ad4239c442495fedb9607579aabfab1d2c997bf36b85c",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwMC",
+        "difficulty": 3,
+        "preview_start": 16.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 5.8,
+          "peak_notes_per_second": 10.8,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "40705b068a0e603fbf9ad4239c442495fedb9607579aabfab1d2c997bf36b85c",
+        "trim_start_ticks": 0,
+        "note_count": 932,
+        "duration_seconds": 146.19270833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "chariots-of-fire",
+    "slug": "chariots-of-fire",
+    "title": "Chariots of Fire",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "chariots-of-fire.mid",
+        "original_filename": "INSPIRING PIANO MUSIC - CHARIOTS OF FIRE - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=n0vjHSfyc_o",
+        "source_sha256": "1a273cd07350d8b2b64b6c8ff71ea541ac7ae31e48d861145ecc255a174a9f41",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQE",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 4.328125,
+        "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.8,
+          "peak_notes_per_second": 12.0,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "6dffa3ea5da1c29c24e9b696188af2b4db916fc0d9e603355381189d1e6ccba3",
+        "trim_start_ticks": 831,
+        "note_count": 1642,
+        "duration_seconds": 211.10416666666666,
+        "omitted_note_count": 13,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "dream",
+    "slug": "dream",
+    "title": "Dream",
+    "composer": "",
+    "collection": "",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "dream.mid",
+        "original_filename": "Dream - Amazing Sad Song - Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=a--sT2Btojs",
+        "source_sha256": "e3141ea39a7a48bc53c37153cc99d6f70db065a0b66c4b2ee828d58eb8441b28",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQF",
+        "difficulty": 2,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 3.4,
+          "peak_notes_per_second": 6.4,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "e3141ea39a7a48bc53c37153cc99d6f70db065a0b66c4b2ee828d58eb8441b28",
+        "trim_start_ticks": 0,
+        "note_count": 555,
+        "duration_seconds": 151.22395833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-shutsujin",
+    "slug": "naruto-shutsujin",
+    "title": "Shutsujin (Departure to the Front Lines)",
+    "composer": "",
+    "collection": "Naruto Shippuden",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-shutsujin.mid",
+        "original_filename": "Naruto Shippuden - Shutsujin (Departure To The Front Lines) Piano Tutorial.mid",
+        "source_url": "https://www.youtube.com/watch?v=oNk7WEabQRA",
+        "source_sha256": "9db800d5933e9f04377cb7462c2e3fa0022ba762883590881203be063646aca1",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQH",
+        "difficulty": 4,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 9.4,
+          "peak_notes_per_second": 22.6,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "9db800d5933e9f04377cb7462c2e3fa0022ba762883590881203be063646aca1",
+        "trim_start_ticks": 0,
+        "note_count": 1448,
+        "duration_seconds": 131.51041666666666,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "boruto-spin-and-burst-reverse-situation",
+    "slug": "boruto-spin-and-burst-reverse-situation",
+    "title": "Spin and Burst / Reverse Situation",
+    "composer": "",
+    "collection": "Boruto · Episode 65",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "boruto-spin-and-burst-reverse-situation.mid",
+        "original_filename": "_Spin and Burst_ _ _Reverse Situation_ - Boruto Episode 65 OST (Synthesia Piano Tutorial).mid",
+        "source_url": "https://www.youtube.com/watch?v=G6H9wsyZlxM",
+        "source_sha256": "1d2fb172438ebc3c3cda65b956cadd2dcaff17b7d2e9440db840e0ed271d8361",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQB",
+        "difficulty": 5,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 13.9,
+          "peak_notes_per_second": 21.4,
+          "peak_simultaneous_notes": 7
+        },
+        "sha256": "1d2fb172438ebc3c3cda65b956cadd2dcaff17b7d2e9440db840e0ed271d8361",
+        "trim_start_ticks": 0,
+        "note_count": 2459,
+        "duration_seconds": 187.53125,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-the-raising-fighting-spirit",
+    "slug": "naruto-the-raising-fighting-spirit",
+    "title": "The Raising Fighting Spirit",
+    "composer": "",
+    "collection": "Naruto",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-the-raising-fighting-spirit.mid",
+        "original_filename": "The Raising Fighting Spirit (Naruto) _ Piano Cover + Sheet Music.mid",
+        "source_url": "https://www.youtube.com/watch?v=CwJ_L8ldNbg",
+        "source_sha256": "ea66336c233c7d6cda2552c46b6abfdc1b2b76009163e2d41c9a3f5477e57fc1",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQM",
+        "difficulty": 5,
+        "preview_start": 0.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 11.6,
+          "peak_notes_per_second": 19.2,
+          "peak_simultaneous_notes": 8
+        },
+        "sha256": "ea66336c233c7d6cda2552c46b6abfdc1b2b76009163e2d41c9a3f5477e57fc1",
+        "trim_start_ticks": 0,
+        "note_count": 1076,
+        "duration_seconds": 85.734375,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "naruto-wind",
+    "slug": "naruto-wind",
+    "title": "Wind",
+    "composer": "",
+    "collection": "Naruto · Ending 1",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "performance-1",
+        "title": {
+          "uz": "Ijro 1",
+          "ru": "Исполнение 1",
+          "en": "Performance 1"
+        },
+        "performer": "",
+        "filename": "naruto-wind.mid",
+        "original_filename": "Naruto Ending 1_ Wind - Piano Tutorial [2 Hands].mid",
+        "source_url": "https://www.youtube.com/watch?v=8FmfEIzv3uw",
+        "source_sha256": "fd674caca3405efb547304643e185a2e560e8e9d1135d3f9d76223b0d9b97c7e",
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCwQN",
+        "difficulty": 3,
+        "preview_start": 8.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "difficulty_review": {
+          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "median_notes_per_second": 7.2,
+          "peak_notes_per_second": 10.0,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "fd674caca3405efb547304643e185a2e560e8e9d1135d3f9d76223b0d9b97c7e",
+        "trim_start_ticks": 0,
+        "note_count": 1390,
+        "duration_seconds": 207.765625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        }
+      }
+    ]
+  },
+  {
+    "code": "youth",
+    "slug": "what-is-a-youth",
+    "title": "What Is a Youth",
+    "composer": "Nino Rota",
+    "collection": "Romeo & Juliet · 1968",
+    "replaces_existing": false,
+    "base_variant": {
+      "id": "original",
+      "title": {
+        "uz": "Darslar varianti",
+        "ru": "Версия уроков",
+        "en": "Lesson edition"
+      },
+      "description": {
+        "uz": "Mavjud darslar shu original MIDI asosida tayyorlangan.",
+        "ru": "Существующие уроки подготовлены по этой исходной MIDI-версии.",
+        "en": "The existing lessons follow this original MIDI edition."
+      }
+    },
+    "variants": [
+      {
+        "id": "fabrizio-caligaris",
+        "title": "A Time for Us · Fabrizio Caligaris",
+        "description": {
+          "uz": "Romeo & Juliet muhabbat mavzusining Fabrizio Caligaris ijrosi. Darslar alohida original variantga tegishli.",
+          "ru": "Исполнение темы любви Romeo & Juliet от Fabrizio Caligaris. Уроки относятся к отдельной исходной версии.",
+          "en": "Fabrizio Caligaris's performance of the Romeo & Juliet love theme. The lessons follow the separate original edition."
+        },
+        "performer": "Fabrizio Caligaris",
+        "filename": "romeo-juliet-a-time-for-us-fabrizio-caligaris.mid",
+        "original_filename": "A Time For Us (Romeo And Juliet Love Theme) - Piano Tutorial - PDF.mid",
+        "source_url": "https://www.youtube.com/watch?v=HKgI8PPYfmg",
+        "source_sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
+        "difficulty": 4,
+        "preview_start": 3.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Melody over a moving broken-chord accompaniment; wide register shifts and a denser middle require independent hands and phrase control.",
+          "median_notes_per_second": 5.4,
+          "peak_notes_per_second": 10.6,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
+        "trim_start_ticks": 0,
+        "note_count": 944,
+        "duration_seconds": 174.30208333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUH"
+      }
+    ]
+  },
+  {
+    "code": "interstellar-main-theme",
+    "slug": "interstellar-main-theme",
+    "title": "Interstellar — Main Theme",
+    "composer": "Hans Zimmer",
+    "collection": "Interstellar",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "patrik-pietschmann",
+        "title": "Patrik Pietschmann",
+        "description": {
+          "uz": "Takroriy puls, keng registr va zichroq fakturali aranjirovka.",
+          "ru": "Аранжировка с повторяющимся пульсом, широким регистром и более плотной фактурой.",
+          "en": "An arrangement with a repeated pulse, broad register and denser texture."
+        },
+        "performer": "Patrik Pietschmann",
+        "filename": "interstellar-main-theme-patrik-pietschmann.mid",
+        "original_filename": "Interstellar - Main Theme [Piano Tutorial Synthesia] (Patrik Pietschmann).mid",
+        "source_url": "https://www.youtube.com/watch?v=HNPZ6KuJZYk",
+        "source_sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+        "difficulty": 4,
+        "preview_start": 33.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Repeated-note pulse must remain even under a sustained upper voice; later wide bass movement and dense rapid patterns require advanced coordination.",
+          "median_notes_per_second": 7.6,
+          "peak_notes_per_second": 13.6,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+        "trim_start_ticks": 0,
+        "note_count": 2046,
+        "duration_seconds": 280.2604166666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUC"
+      },
+      {
+        "id": "the-piano-lab",
+        "title": "The Piano Lab",
+        "description": {
+          "uz": "Ixchamroq fakturadagi, alohida ijro tempi va tuzilishiga ega variant.",
+          "ru": "Версия с более прозрачной фактурой, собственным темпом и формой исполнения.",
+          "en": "A more transparent texture with its own performance tempo and structure."
+        },
+        "performer": "The Piano Lab",
+        "filename": "interstellar-main-theme-the-piano-lab.mid",
+        "original_filename": "How To Play _Interstellar_ Main Theme by Hans Zimmer, Piano Tutorial, Synthesia [THE PIANO LAB].mid",
+        "source_url": "https://www.youtube.com/watch?v=MtTB0JJaZl8",
+        "source_sha256": "176d9d8a45f1135b2eed46d2b2970d285e9bf17e5b363d173f8f476e176c106c",
+        "difficulty": 3,
+        "preview_start": 22.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Fewer attacks and a narrower upper range than the Pietschmann performance; layered chords and melody still require steady pulse and hand balance.",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 8.6,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "176d9d8a45f1135b2eed46d2b2970d285e9bf17e5b363d173f8f476e176c106c",
+        "trim_start_ticks": 0,
+        "note_count": 911,
+        "duration_seconds": 209.59895833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUN"
+      }
+    ]
+  },
+  {
+    "code": "the-sound-of-silence",
+    "slug": "the-sound-of-silence",
+    "title": "The Sound of Silence",
+    "composer": "Paul Simon",
+    "collection": "Simon & Garfunkel",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "aldy-tutorials",
+        "title": "Aldy Tutorials",
+        "description": {
+          "uz": "Simon & Garfunkel qo‘shig‘i. Siz so‘raganidek yarim ton pastga transpozitsiya qilingan.",
+          "ru": "Песня Simon & Garfunkel. По вашему запросу транспонирована на полтона вниз.",
+          "en": "The Simon & Garfunkel song, transposed down one semitone as requested."
+        },
+        "performer": "Aldy Tutorials",
+        "filename": "the-sound-of-silence.mid",
+        "original_filename": "The Sound of Silence - Simon and Garfunkel (Piano Tutorial) (3).mid",
+        "source_url": "https://www.youtube.com/watch?v=LQApvGp3dJM",
+        "source_sha256": "64c4a57ead072c567ccc378a1b8f44cfc3abc692e107468cad08db19dc415afe",
+        "difficulty": 4,
+        "preview_start": 3.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Melody and repeated broken-chord accompaniment grow into a dense texture with bass shifts and multi-note voicing; requires independent balance and relaxed movement.",
+          "median_notes_per_second": 6.6,
+          "peak_notes_per_second": 14.2,
+          "peak_simultaneous_notes": 7
+        },
+        "transpose_semitones": -1,
+        "transpose_reason": "User requested minus one semitone. Ivory's toolbar transpose did not affect its Performance MIDI download; note-on/off pitches were shifted offline, retaining all original timing, holds, velocities and non-note messages.",
+        "sha256": "52303556647dc858d9e5ffc6ba0911fee6c83f61d88295c4bcadac868f55bfb9",
+        "trim_start_ticks": 0,
+        "note_count": 1282,
+        "duration_seconds": 178.0625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgYG"
+      }
+    ]
+  }
+]

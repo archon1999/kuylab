@@ -10,6 +10,8 @@ import hashlib
 
 from apps.scores.midi import parse_midi
 from .midi_authoring import SOURCE_SHA256, source_data
+from .curated_repertoire import active_entries, edition_source
+from .ivory_repertoire import GROUPS as IVORY_GROUPS, GROUP_BY_CODE as IVORY_BY_CODE, performance_source
 
 
 @dataclass(frozen=True)
@@ -46,17 +48,38 @@ SOURCES = (
     Source("memories", "Memories", "Memories (1).mid", "b61395b473e13d2ebf2a9070e8829e6d3aa7fba72b7d10b46ae994e1a2e672b7", "memories", collection=""),
     Source("all-in", "All in — Soundtrack", "All_In_Plus5_Full.mid", "13d5ad3db51d778d3268fddf7aebefcefded493aa2edafb6e0448ea84d0cecb8", "all-in-soundtrack", collection="All in / Va-bank", course_kind="package"),
 )
+SOURCES += tuple(Source(entry["code"], entry["title"], entry["code"] + ".mid", entry["sha256"],
+                        entry["slug"], entry["composer"], entry["collection"], "curated")
+                 for entry in active_entries())
+_existing_codes = {source.code for source in SOURCES}
+
+
+def ivory_source(group):
+    variant = group["variants"][0]
+    return Source(group["code"], group["title"], variant["filename"], variant["sha256"],
+                  group["slug"], group.get("composer", ""), group.get("collection", ""), "ivory")
+
+
+# Replacing an edition keeps its stable composition code, slug and database key.
+SOURCES = tuple(ivory_source(IVORY_BY_CODE[source.code])
+                if source.code in IVORY_BY_CODE and not IVORY_BY_CODE[source.code].get("base_variant")
+                else source for source in SOURCES)
+SOURCES += tuple(ivory_source(group) for group in IVORY_GROUPS if group["code"] not in _existing_codes)
 SOURCE_BY_CODE = {source.code: source for source in SOURCES}
 
 
-@lru_cache(maxsize=8)
+@lru_cache(maxsize=40)
 def repertoire_source(code):
+    if code in IVORY_BY_CODE and not IVORY_BY_CODE[code].get("base_variant"):
+        return performance_source(code)
     if code == "still":
         return source_data()
     if code == "all-in":
         from .all_in_package import package_source
         return package_source("All_In_Plus5_Full.mid")
     source = SOURCE_BY_CODE[code]
+    if source.course_kind == "curated":
+        return edition_source(code)
     content = (Path(__file__).with_name("assets") / f"{code}.mid").read_bytes()
     if hashlib.sha256(content).hexdigest() != source.sha256:
         raise ValueError(f"{source.code}: source changed; review and version its curriculum first.")

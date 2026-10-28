@@ -1,0 +1,162 @@
+[
+  {
+    "code": "still",
+    "variant": "original",
+    "sha256": "f0713b1de241c28522911a907a4464504ce7fbcaa8340ad9e1589881c2f3e7c8",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "youth",
+    "variant": "original",
+    "sha256": "816534970835b9b0d0d7543f0ba97c1fb68e7edd1583d5cf0bd40b082ae2cd00",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "premonition",
+    "variant": "original",
+    "sha256": "fca75f473fdb6b0ff2cf15ecba81b26705fc8ff03370c9382d495d796c9bacee",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 2,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "ode-to-joy",
+    "variant": "original",
+    "sha256": "5abfd7207a65ae36d8532f88ad99a3efd341a1456bd0ad4dfe4af40598291f7e",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 2,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "waltz-a-minor",
+    "variant": "original",
+    "sha256": "e28a6c52d4ef1e433223a6227544982e60fe69d261b5a4093fd45e4a4f45d7cc",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 21,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "experience",
+    "variant": "original",
+    "sha256": "e3b2a9bfc48bade532f271f997c60a8f5f32e8764f300cfafc532c39c2a7486b",
+    "duplicate_attacks": 1,
+    "same_voice_overlaps": 33,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "cornfield-chase",
+    "variant": "original",
+    "sha256": "e040b0219f3eaa2723b651f39f1635363797fa87dd5cd50ee48981dcccfb75c5",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 259,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "merry-go-round-of-life",
+    "variant": "original",
+    "sha256": "c6579739e4d968c3196a42d6a3e64ce6ff28a187a820ed7672bee21d8c3ee371",
+    "duplicate_attacks": 10,
+    "same_voice_overlaps": 10,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "mia-sebastians-theme",
+    "variant": "original",
+    "sha256": "dd760e0ec71fbf8b7d3b8cf820ff04c4896ed087c5d9054b4e23ee64f70142fa",
+    "duplicate_attacks": 8,
+    "same_voice_overlaps": 8,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "two-steps-from-hell-night-queen",
+    "variant": "original",
+    "sha256": "b6198225091f2b7cffc09e647abd740d1eda2ae89f3f5489a575e4cbc4a0082d",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "depression",
+    "variant": "original",
+    "sha256": "f6ed0ab24785eeb4604605b62a3266d7e58a2a6c14c21a16b04d58119131dcd5",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 2,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "frozen-let-it-go",
+    "variant": "original",
+    "sha256": "229543ebaffba3e0438b490bd4f4bec362db87c5dc3c78b475b2a7dc04ee880c",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "two-steps-from-hell-victory",
+    "variant": "original",
+    "sha256": "5150468d8dbbc8b5a51e4a9d8fa4960b1f9aadb00c69ed268174d240d6d31756",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "gladiator-honor-him-now-we-are-free",
+    "variant": "original",
+    "sha256": "609d6083df5b7fae212a5c96cd1bb80dcad89acb0937084faa3aab6a5eb46fb3",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "thomas-bergersen-one-last-day",
+    "variant": "original",
+    "sha256": "3d618d0b09d4debb901285f2d30585d1ff3651183898c42fa254b386567154c2",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 5,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "naruto-maisou-burial",
+    "variant": "original",
+    "sha256": "982b67ac99f1adc0e3463807e293792a2ecfe3026ef30e4e2fd840d071e9b2ba",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "the-last-of-the-mohicans",
+    "variant": "original",
+    "sha256": "f711ed4f6fd8f309a5f5a4f0c4349d5093928e2d3487179728444dbfd103c0fb",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "winter-sonata-from-the-beginning-until-now",
+    "variant": "original",
+    "sha256": "e51e9eee3262fe096783b737050c3c5c72ce0c40605ea08761d0980df790f23d",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 2,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "chariots-of-fire",
+    "variant": "original",
+    "sha256": "6dffa3ea5da1c29c24e9b696188af2b4db916fc0d9e603355381189d1e6ccba3",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 1,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  },
+  {
+    "code": "two-steps-from-hell-victory",
+    "variant": "performance-2",
+    "sha256": "64866fa8ce25f867b7fdd8eae4eb3a5ea6cdcdce09fbf147e252462bdf6301a1",
+    "duplicate_attacks": 0,
+    "same_voice_overlaps": 5,
+    "review_reason": "Retained source voice events. Tiny release/attack overlaps and simultaneous unison voices are not evidence of missing or extra musical notes. No global hold cap, retrigger or deduplication was applied. Re-review if these bytes or diagnostics change."
+  }
+]

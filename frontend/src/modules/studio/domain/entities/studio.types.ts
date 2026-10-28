@@ -19,7 +19,13 @@ export type StudyItem = {
   comparisons?: { id: string; title: string; instruction: string; score_id: number }[];
   ready_when?: string;
   stages?: StudyStage[];
-  source?: { start_seconds: number; end_seconds: number; transformation: string };
+  source?: {
+    start_seconds: number;
+    end_seconds: number;
+    transformation: string;
+    composition_variant_id?: string;
+    playback_revision?: string;
+  };
 };
 
 export type StudyStage = {
@@ -33,14 +39,19 @@ export type StudyStage = {
 };
 
 export type CompositionVariant = {
+  playback_revision?: string;
   id: string;
   title: string;
   description: string;
   score_id: number;
   duration_seconds: number;
+  difficulty?: number;
 };
 
 export type Composition = {
+  playback_revision?: string;
+  library_group?: { id: string; label: string };
+  library_collection?: { id: string; label: string };
   id: number;
   slug: string;
   title: string;
@@ -52,6 +63,35 @@ export type Composition = {
   variants?: CompositionVariant[];
   default_variant_id?: string;
   readable_holds?: boolean;
+  difficulty?: number;
+  collection?: string;
+  preview_start_seconds?: number;
+};
+
+export type CompositionPreview = {
+  composition_id: number;
+  score_id: number;
+  variant_id: string | null;
+  start_seconds: number;
+  duration_seconds: number;
+  notes: {
+    id: string;
+    pitch: number;
+    hand: 'left' | 'right';
+    onset: number;
+    duration: number;
+    soundDuration: number;
+    velocity: number;
+  }[];
+};
+
+export type CompositionFilter = {
+  query: string;
+  difficulty: number;
+  group: string;
+  collection: string;
+  favoritesOnly: boolean;
+  sort: 'curated' | 'title' | 'difficulty' | 'duration';
 };
 
 export type StudioCatalog = {

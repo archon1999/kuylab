@@ -1,6 +1,21 @@
 import { useSyncExternalStore } from 'react';
 import { parseRoute, routePath, type Page } from './paths.ts';
+import { isPlainLinkClick } from './linkIntent.ts';
+import { canonicalEntryState, isCanonicalEntry } from './historyState.ts';
+import type { MouseEvent } from 'react';
 export { routePath, type Page } from './paths.ts';
+export { isPlainLinkClick } from './linkIntent.ts';
+export function followRouteLink(event: MouseEvent<HTMLAnchorElement>) {
+  if (
+    !isPlainLinkClick(event) ||
+    (event.currentTarget.target && event.currentTarget.target !== '_self')
+  )
+    return;
+  const url = new URL(event.currentTarget.href, location.origin);
+  if (url.origin !== location.origin || event.currentTarget.hasAttribute('download')) return;
+  event.preventDefault();
+  visit(url.pathname + url.search + url.hash);
+}
 const initial = parseRoute(location.pathname, location.search);
 if (location.search.includes('page='))
   history.replaceState({}, '', routePath(initial.page, initial.params));
@@ -17,6 +32,8 @@ function visit(path: string) {
 }
 export function navigate(page: Page, values: Record<string, string | number | null> = {}) {
   const params = parseRoute(location.pathname, location.search).params;
+  if (page !== 'detail' || values.composition) params.delete('compositionSlug');
+  if (values.compositionSlug) params.delete('composition');
   params.delete('at');
   params.set('page', page);
   if (
@@ -56,6 +73,14 @@ export function navigate(page: Page, values: Record<string, string | number | nu
     if (value === null) params.delete(key);
     else params.set(key, String(value));
   visit(routePath(page, params));
+}
+/** Canonical aliases replace history, so Back cannot enter a redirect loop. */
+export function replaceRoute(page: Page, values: Record<string, string | number | null>) {
+  const path = routePath(page, values);
+  const changed = location.pathname + location.search !== path;
+  if (!changed && isCanonicalEntry(history.state, path)) return;
+  history.replaceState(canonicalEntryState(history.state, path), '', path + location.hash);
+  if (changed) notify();
 }
 export function openPractice(composition?: number) {
   const values: Record<string, string | number | null> = {
@@ -112,6 +137,7 @@ export function useRoute() {
   return {
     page,
     params,
+    canonical: isCanonicalEntry(history.state, search),
     compositionId: positiveId(params.get('composition'), 1),
     lessonId: positiveId(params.get('lesson'), 0),
   };

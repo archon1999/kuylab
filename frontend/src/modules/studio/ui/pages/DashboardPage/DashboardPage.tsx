@@ -10,16 +10,18 @@ import {
 } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
-import { navigate } from '@shared/routing';
+import { followRouteLink, navigate, routePath } from '@shared/routing';
 import { useStudio } from '../../../application';
-import { durationLabel, studyCountLabel } from '../../../domain';
 import {
-  ContentRow,
-  Heading,
-  SectionTitle,
-  StudyCard,
-  openComposition,
-} from '../../shared/StudioParts';
+  allStudyItems,
+  durationLabel,
+  studyCountLabel,
+  selectResumeStudy,
+  selectCompositionVariant,
+  compositionResumePosition,
+  studyMatchesPerformance,
+} from '../../../domain';
+import { ContentRow, Heading, SectionTitle, StudyCard } from '../../shared/StudioParts';
 import '../../studio.css';
 import RecentNotes from '../../shared/RecentNotes';
 import { StudyStatusBadge } from '../../shared/StudyStatus';
@@ -34,6 +36,18 @@ export default function DashboardPage() {
   const composition =
     catalog.compositions.find((value) => `composition:${value.id}` === currentId) ||
     catalog.compositions[0];
+  const variant = selectCompositionVariant(
+    composition,
+    null,
+    lastStages[`composition:${composition?.id}:variant`],
+  );
+  const resumePosition = composition
+    ? compositionResumePosition(composition, positions, variant?.id)
+    : 0;
+  const lessonCount = composition
+    ? catalog.lessons.filter((item) => studyMatchesPerformance(item, composition, variant?.id))
+        .length
+    : 0;
   const validIds = new Set([
     ...catalog.compositions.map((value) => `composition:${value.id}`),
     ...catalog.lessons.map((value) => value.id),
@@ -42,14 +56,10 @@ export default function DashboardPage() {
     ...(catalog.journeys || []).map((value) => value.id),
   ]);
   const recent = recents.filter((value) => validIds.has(value.id)).slice(0, 4);
-  const lastStudy = [
-    ...catalog.lessons,
-    ...catalog.exercises,
-    ...catalog.theory,
-    ...(catalog.journeys || []),
-  ].find((item) => item.id === recent[0]?.id);
-  const lastStage = lastStudy?.stages?.find((stage) => stage.id === lastStages[lastStudy.id]);
-  const lastProgress = lastStudy && progress[lastStage?.id || lastStudy.id];
+  const resume = selectResumeStudy(allStudyItems(catalog), recents, progress, lastStages);
+  const lastStudy = resume?.item;
+  const lastStage = resume?.stage;
+  const lastProgress = resume?.status;
   const saved = favorites.filter((value) => validIds.has(value)).slice(0, 4);
   return (
     <div className="studio-page studio-dashboard">
@@ -58,26 +68,27 @@ export default function DashboardPage() {
         <section className="studio-hero">
           <div>
             <p className="studio-eyebrow">
-              {tr(
-                positions[`composition:${composition.id}`]
-                  ? 'Davom etish'
-                  : 'Bugun pianino chalamiz',
-              )}
+              {tr(resumePosition ? 'Davom etish' : 'Bugun pianino chalamiz')}
             </p>
             <h2>{composition.title}</h2>
             <p className="studio-hero-caption">
-              {durationLabel(composition.duration_seconds)} ·{' '}
-              {studyCountLabel(composition.lesson_ids.length, 'lesson', language)}
+              {durationLabel(variant?.duration_seconds ?? composition.duration_seconds)} ·{' '}
+              {studyCountLabel(lessonCount, 'lesson', language)}
             </p>
             <div className="studio-actions">
               <Button
+                component="a"
+                href={routePath('practice', {
+                  composition: composition.id,
+                  variant: variant?.id ?? null,
+                })}
                 variant="contained"
                 startIcon={<PlayArrowRounded />}
-                onClick={() => openComposition(composition)}
+                onClick={followRouteLink}
               >
-                {tr(positions[`composition:${composition.id}`] ? 'Davom etish' : 'Playerni ochish')}
+                {tr(resumePosition ? 'Davom etish' : 'Playerni ochish')}
               </Button>
-              <Button onClick={() => navigate('detail', { composition: composition.id })}>
+              <Button onClick={() => navigate('detail', { compositionSlug: composition.slug })}>
                 {tr('Darslar')}
                 <ArrowForwardRounded sx={{ ml: 1, fontSize: 18 }} />
               </Button>

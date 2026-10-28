@@ -1,5 +1,14 @@
 import type { StudioCatalog, StudyItem } from '../../domain/entities/studio.types.ts';
 import type { StudioCatalogDto, StudyItemDto } from '../dto/studio.dto.ts';
+function withPlaybackRevision<T extends { playback_revision?: string }>(item: T) {
+  const { playback_revision, ...value } = item;
+  return {
+    ...value,
+    ...(typeof playback_revision === 'string' && /^[a-f0-9]{16}$/.test(playback_revision)
+      ? { playback_revision }
+      : {}),
+  };
+}
 export function mapStudyItem(dto: StudyItemDto): StudyItem {
   return {
     ...dto,
@@ -21,9 +30,11 @@ export function mapStudioCatalog(dto: StudioCatalogDto): StudioCatalog {
   return {
     revision: dto.revision,
     compositions: dto.compositions.map((item) => ({
-      ...item,
+      ...withPlaybackRevision(item),
+      library_group: item.library_group ? { ...item.library_group } : undefined,
+      library_collection: item.library_collection ? { ...item.library_collection } : undefined,
       lesson_ids: [...item.lesson_ids],
-      variants: item.variants?.map((variant) => ({ ...variant })),
+      variants: item.variants?.map(withPlaybackRevision),
     })),
     lessons: dto.lessons.map(mapStudyItem),
     journeys: (dto.journeys || []).map(mapStudyItem),

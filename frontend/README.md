@@ -65,6 +65,19 @@ MIDI stages. Main playback remains separate from lesson explanations. Player
 preferences and playback positions persist independently; playback stops at the
 end and the timeline is used for seeking.
 
+On narrow screens the keyboard initially shows a readable portion of all 88
+keys. Wheel input or a horizontal drag pans the keys and falling notes together;
+two-finger pinch changes the visible range. The Display settings slider selects
+12–88 visible keys and persists across players for the current account. Canvas
+resolution stays bounded by the viewport rather than the zoomed keyboard width.
+Mobile transport uses a compact speed popover and a secondary actions menu;
+settings open as a bottom sheet.
+
+The prerendered landing page uses local musical SVG patterns, a pausable preview
+animation and progressive section reveals. Public content stays visible without
+JavaScript or IntersectionObserver, and reduced-motion preferences disable
+decorative movement. No React runtime is needed for public pages.
+
 Offline content caching remains available after content has loaded. The UI does
 not display an offline-ready badge. The production service worker and local piano
 sample bank remain part of the build.

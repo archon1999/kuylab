@@ -1,6 +1,7 @@
 """SMF tests assert musical facts, not a copy of the parser's implementation."""
 import hashlib
 import io
+import json
 from pathlib import Path
 import mido
 from django.test import SimpleTestCase
@@ -34,6 +35,22 @@ def control(number, value, time=0, channel=0):
 
 
 class MidiParserTests(SimpleTestCase):
+    def test_nul_padded_display_metadata_is_portable_without_changing_performance(self):
+        raw = midi_bytes([
+            mido.MetaMessage("track_name", name="Right hand\x00\x00"),
+            mido.MetaMessage("copyright", text="Edition credit\x00"),
+            on(pitch=69, velocity=83), off(pitch=69, time=720), end(),
+        ])
+        parsed = parse_midi(raw, "Piano\x00 study")
+        self.assertEqual(parsed["metadata"]["title"], "Piano study")
+        self.assertEqual(parsed["parts"][0]["name"], "Right hand")
+        self.assertEqual(parsed["metadata"]["copyright"], ["Edition credit"])
+        self.assertNotIn("\\u0000", json.dumps(parsed))
+        event = parsed["events"][0]
+        self.assertEqual((event["pitch"]["midi"], event["velocity"], event["hand"]), (69, 83, "right"))
+        self.assertEqual((event["onset_seconds"], event["duration_seconds"]), (0, .75))
+        self.assertIn("original MIDI bytes are unchanged", parsed["warnings"][0])
+
     def test_malformed_truncated_async_and_missing_boundaries_are_rejected(self):
         valid = midi_bytes([on(), off(), end()])
         for content in [b"", b"not MIDI", valid[:-1], valid[:20],

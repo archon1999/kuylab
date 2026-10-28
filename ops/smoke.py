@@ -107,9 +107,26 @@ try:
     assert b.request("/api/auth/player-preferences/")[1] == {}
     status, catalog, headers = a.request("/api/studio/catalog/")
     assert status == 200 and "no-store" in headers["Cache-Control"]
-    assert len(catalog["compositions"]) == 8 and len(catalog["lessons"]) == 57 and len(catalog["journeys"]) == 61
+    from apps.studio.repertoire import SOURCES
+    from apps.studio.content import all_items
+    from apps.studio.ivory_repertoire import GROUPS as IVORY_GROUPS
+    definitions = all_items()
+    assert len(catalog["compositions"]) == len(SOURCES)
+    assert len(catalog["lessons"]) == sum(item["kind"] == "lesson" for item in definitions)
+    assert len(catalog["journeys"]) == sum(item["kind"] == "journey" for item in definitions)
+    assert len(IVORY_GROUPS) == 72
+    assert sum(len(group["variants"]) for group in IVORY_GROUPS) == 87
+    assert sum(variant["trim_start_seconds"] > 0 for group in IVORY_GROUPS for variant in group["variants"]) == 9
     assert len(catalog["exercises"]) == 48 and len(catalog["theory"]) == 24
     assert sum(len(item["challenges"]) for item in catalog["theory"]) == 49
+    for piece in catalog["compositions"]:
+        assert piece["difficulty"] in range(1, 6)
+        assert a.request(f"/compositions/{piece['slug']}")[0] == 200
+        status, excerpt, _ = a.request(f"/api/studio/compositions/{piece['id']}/preview/")
+        assert status == 200 and excerpt["score_id"] == piece["score_id"]
+        assert excerpt["notes"], "Reviewed sparse passages remain valid previews"
+        assert {note["hand"] for note in excerpt["notes"]} <= {"left", "right"}
+        assert b.request(f"/api/studio/compositions/{piece['id']}/preview/")[0] == 200
     assert all(task.get("preparation") for item in catalog["theory"] for task in item["challenges"])
     compound = next(item for item in catalog["theory"] if item["id"] == "theory:compound-meter")
     assert len(compound["comparisons"]) == 2 and compound["ready_when"]
@@ -149,8 +166,24 @@ try:
         assert status == 200 and hashlib.sha256(original_bytes).hexdigest() == source.sha256
         piece = next(item for item in catalog["compositions"] if item["id"] == source_score.arrangement.composition_id)
         paths = [item for item in catalog["journeys"] if item["composition_id"] == piece["id"]]
-        assert (len(piece["lesson_ids"]), len(paths)) == ((9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8))
-        assert paths[-1]["stages"][-1]["score_id"] == source_score.pk
+        scoped = [item for item in definitions if item.get("_composition", "still") == source.code]
+        expected = tuple(sum(item["kind"] == kind for item in scoped) for kind in ("lesson", "journey"))
+        actual = (len(piece["lesson_ids"]), len(paths))
+        assert actual == expected, (source.code, actual, expected)
+        if paths:
+            assert paths[-1]["stages"][-1]["score_id"] == source_score.pk
+        if source.code in {group["code"] for group in IVORY_GROUPS}:
+            from apps.studio.ivory_repertoire import GROUP_BY_CODE
+            group = GROUP_BY_CODE[source.code]
+            reviewed = group["variants"]
+            for variant in piece.get("variants", []):
+                is_base = group.get("base_variant", {}).get("id") == variant["id"]
+                digest = source.sha256 if is_base else next(value["sha256"] for value in reviewed if value["id"] == variant["id"])
+                status, data, _ = a.request(f"/api/scores/{variant['score_id']}/file/")
+                assert status == 200 and hashlib.sha256(data).hexdigest() == digest
+                status, excerpt, _ = a.request(f"/api/studio/compositions/{piece['id']}/preview/?variant={variant['id']}")
+                assert status == 200 and excerpt["score_id"] == variant["score_id"] and excerpt["notes"]
+                assert a.request(f"/practice/{piece['id']}/variants/{variant['id']}")[0] == 200
         if source.code == "all-in":
             assert len(piece["variants"]) == 2 and piece["default_variant_id"] == "easy"
             for variant in piece["variants"]:
@@ -187,7 +220,7 @@ try:
     assert a.request("/media/private.json")[0] == 404, "Media directory must stay private"
     assert a.request("/api/auth/logout/", "POST", {})[0] == 200
     assert a.request("/api/auth/session/")[1]["user"] is None
-    print("Production smoke passed: secure cookies, CSRF, two-user isolation, notes, stage progress, variant-scoped preferences, eight compositions, Easy/Hard MIDI files, complete paths, clean URLs and logout.")
+    print(f"Production smoke passed: secure cookies, CSRF, account isolation, notes, stage progress, {len(catalog['compositions'])} compositions, 87 Ivory MIDI performances, 9 intro cuts, variant files/previews, complete paths, clean URLs and logout.")
 finally:
     users = get_user_model().objects.filter(username__in=names)
     ids = {str(value) for value in users.values_list("pk", flat=True)}

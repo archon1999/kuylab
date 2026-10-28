@@ -1,0 +1,651 @@
+{
+  "beyonce-halo": {
+    "source_sha256": "6916867f03af558d7eef73ea85a828085b6940a85f7df23e8a459cb5b6c934e0",
+    "lessons": {
+      "opening-voices": {
+        "right": [
+          "T0:C0:N2",
+          "T0:C0:N5",
+          "T0:C0:N9",
+          "T0:C0:N13"
+        ],
+        "left": []
+      },
+      "bass-octaves": {
+        "right": [],
+        "left": [
+          "T1:C0:N10",
+          "T1:C0:N14",
+          "T1:C0:N18",
+          "T1:C0:N22"
+        ]
+      },
+      "moving-texture": {
+        "right": [
+          "T0:C0:N987",
+          "T0:C0:N989",
+          "T0:C0:N991",
+          "T0:C0:N993",
+          "T0:C0:N1007",
+          "T0:C0:N1031",
+          "T0:C0:N1061",
+          "T0:C0:N1100",
+          "T0:C0:N1141",
+          "T0:C0:N1181"
+        ],
+        "left": [
+          "T1:C0:N596",
+          "T1:C0:N598",
+          "T1:C0:N601",
+          "T1:C0:N604",
+          "T1:C0:N618",
+          "T1:C0:N640",
+          "T1:C0:N662",
+          "T1:C0:N682",
+          "T1:C0:N704",
+          "T1:C0:N726"
+        ]
+      }
+    }
+  },
+  "my-heart-will-go-on": {
+    "source_sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
+    "lessons": {
+      "melody-arrivals": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N6",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N14",
+          "T0:C0:N17",
+          "T0:C0:N23",
+          "T0:C0:N31",
+          "T0:C0:N36",
+          "T0:C0:N45"
+        ],
+        "left": []
+      },
+      "bass-route": {
+        "right": [],
+        "left": [
+          "T1:C0:N8",
+          "T1:C0:N12",
+          "T1:C0:N16",
+          "T1:C0:N18"
+        ]
+      },
+      "semitone-and-balance": {
+        "right": [
+          "T0:C0:N807",
+          "T0:C0:N809",
+          "T0:C0:N811",
+          "T0:C0:N813",
+          "T0:C0:N817",
+          "T0:C0:N827",
+          "T0:C0:N843",
+          "T0:C0:N853",
+          "T0:C0:N863",
+          "T0:C0:N879"
+        ],
+        "left": [
+          "T1:C0:N736",
+          "T1:C0:N738",
+          "T1:C0:N740",
+          "T1:C0:N742",
+          "T1:C0:N754",
+          "T1:C0:N774",
+          "T1:C0:N792",
+          "T1:C0:N810",
+          "T1:C0:N830",
+          "T1:C0:N848"
+        ]
+      }
+    }
+  },
+  "time": {
+    "source_sha256": "79175009dc84f5cb41bbd9f9bb1dc45d8949ed652c367dda9f85eaa10ce9e159",
+    "lessons": {
+      "repeated-foundation": {
+        "right": [],
+        "left": [
+          "T1:C0:N1",
+          "T1:C0:N5",
+          "T1:C0:N9",
+          "T1:C0:N12",
+          "T1:C0:N18",
+          "T1:C0:N25",
+          "T1:C0:N36",
+          "T1:C0:N42",
+          "T1:C0:N49"
+        ]
+      },
+      "sustained-upper-line": {
+        "right": [
+          "T0:C0:N17",
+          "T0:C0:N19",
+          "T0:C0:N21",
+          "T0:C0:N23",
+          "T0:C0:N25",
+          "T0:C0:N27",
+          "T0:C0:N29",
+          "T0:C0:N31",
+          "T0:C0:N39",
+          "T0:C0:N52",
+          "T0:C0:N63",
+          "T0:C0:N73"
+        ],
+        "left": []
+      },
+      "dense-arrivals": {
+        "right": [
+          "T0:C0:N735",
+          "T0:C0:N737",
+          "T0:C0:N741",
+          "T0:C0:N743",
+          "T0:C0:N767",
+          "T0:C0:N799",
+          "T0:C0:N839",
+          "T0:C0:N865",
+          "T0:C0:N899",
+          "T0:C0:N929"
+        ],
+        "left": [
+          "T1:C0:N620",
+          "T1:C0:N624",
+          "T1:C0:N629",
+          "T1:C0:N633",
+          "T1:C0:N641",
+          "T1:C0:N658",
+          "T1:C0:N674",
+          "T1:C0:N699",
+          "T1:C0:N720",
+          "T1:C0:N739"
+        ]
+      }
+    }
+  },
+  "romance-damour": {
+    "source_sha256": "036143fd31d532f876e99b10b712c1549022df904721473d2732ed61d6c3df14",
+    "lessons": {
+      "melody-over-pattern": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N17",
+          "T0:C0:N21",
+          "T0:C0:N25",
+          "T0:C0:N31"
+        ],
+        "left": []
+      },
+      "broken-chord-path": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N14",
+          "T1:C0:N28",
+          "T1:C0:N44",
+          "T1:C0:N58",
+          "T1:C0:N72",
+          "T1:C0:N86"
+        ]
+      },
+      "changed-colour": {
+        "right": [
+          "T0:C0:N479",
+          "T0:C0:N481",
+          "T0:C0:N483",
+          "T0:C0:N485",
+          "T0:C0:N501",
+          "T0:C0:N521",
+          "T0:C0:N543",
+          "T0:C0:N565",
+          "T0:C0:N587",
+          "T0:C0:N609"
+        ],
+        "left": [
+          "T1:C0:N334",
+          "T1:C0:N336",
+          "T1:C0:N338",
+          "T1:C0:N340",
+          "T1:C0:N344",
+          "T1:C0:N348",
+          "T1:C0:N350",
+          "T1:C0:N354"
+        ]
+      }
+    }
+  },
+  "hes-a-pirate": {
+    "source_sha256": "88fe6f498ad570e3e315deb3664778b1d2564b06a179344a77f7a75f4806bfa9",
+    "lessons": {
+      "high-melody": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N23",
+          "T0:C0:N33",
+          "T0:C0:N43",
+          "T0:C0:N58",
+          "T0:C0:N71"
+        ],
+        "left": []
+      },
+      "fifths-to-octaves": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N10",
+          "T1:C0:N20",
+          "T1:C0:N30",
+          "T1:C0:N40",
+          "T1:C0:N50",
+          "T1:C0:N61"
+        ]
+      },
+      "octave-texture": {
+        "right": [
+          "T0:C0:N1003",
+          "T0:C0:N1008",
+          "T0:C0:N1011",
+          "T0:C0:N1019",
+          "T0:C0:N1043",
+          "T0:C0:N1082",
+          "T0:C0:N1124",
+          "T0:C0:N1175",
+          "T0:C0:N1200",
+          "T0:C0:N1223"
+        ],
+        "left": [
+          "T1:C0:N584",
+          "T1:C0:N586",
+          "T1:C0:N588",
+          "T1:C0:N590",
+          "T1:C0:N604",
+          "T1:C0:N622",
+          "T1:C0:N642",
+          "T1:C0:N663",
+          "T1:C0:N706",
+          "T1:C0:N739"
+        ]
+      }
+    }
+  },
+  "rondo-alla-turca": {
+    "source_sha256": "77ef182516bbdb03d79c7a35335e982a68b9ea87efc555c575bf7e1d8db4dc2c",
+    "lessons": {
+      "opening-turn": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N15",
+          "T0:C0:N27",
+          "T0:C0:N41",
+          "T0:C0:N58",
+          "T0:C0:N79",
+          "T0:C0:N107"
+        ],
+        "left": []
+      },
+      "bass-and-chord": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N6",
+          "T1:C0:N10",
+          "T1:C0:N24",
+          "T1:C0:N46",
+          "T1:C0:N75",
+          "T1:C0:N94",
+          "T1:C0:N118",
+          "T1:C0:N141"
+        ]
+      },
+      "octave-returns": {
+        "right": [
+          "T0:C0:N1464",
+          "T0:C0:N1468",
+          "T0:C0:N1472",
+          "T0:C0:N1476",
+          "T0:C0:N1519",
+          "T0:C0:N1576",
+          "T0:C0:N1613",
+          "T0:C0:N1639",
+          "T0:C0:N1684",
+          "T0:C0:N1719"
+        ],
+        "left": [
+          "T1:C0:N1240",
+          "T1:C0:N1242",
+          "T1:C0:N1244",
+          "T1:C0:N1249",
+          "T1:C0:N1278",
+          "T1:C0:N1314",
+          "T1:C0:N1352",
+          "T1:C0:N1394",
+          "T1:C0:N1434",
+          "T1:C0:N1474"
+        ]
+      }
+    }
+  },
+  "ode-to-joy": {
+    "source_sha256": "5abfd7207a65ae36d8532f88ad99a3efd341a1456bd0ad4dfe4af40598291f7e",
+    "lessons": {
+      "opening-pairs": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N5",
+          "T0:C0:N10",
+          "T0:C0:N14",
+          "T0:C0:N17",
+          "T0:C0:N22",
+          "T0:C0:N25",
+          "T0:C0:N47",
+          "T0:C0:N83",
+          "T0:C0:N114",
+          "T0:C0:N145",
+          "T0:C0:N173"
+        ],
+        "left": []
+      },
+      "bass-under-theme": {
+        "right": [],
+        "left": [
+          "T1:C0:N190",
+          "T1:C0:N192",
+          "T1:C0:N194",
+          "T1:C0:N196",
+          "T1:C0:N226",
+          "T1:C0:N264",
+          "T1:C0:N298",
+          "T1:C0:N333",
+          "T1:C0:N376",
+          "T1:C0:N412"
+        ]
+      },
+      "chromatic-travel": {
+        "right": [
+          "T0:C0:N987",
+          "T0:C0:N989",
+          "T0:C0:N991",
+          "T0:C0:N993",
+          "T0:C0:N1013",
+          "T0:C0:N1039",
+          "T0:C0:N1065",
+          "T0:C0:N1091",
+          "T0:C0:N1153",
+          "T0:C0:N1229"
+        ],
+        "left": [
+          "T1:C0:N881",
+          "T1:C0:N885",
+          "T1:C0:N889",
+          "T1:C0:N893",
+          "T1:C0:N912",
+          "T1:C0:N942",
+          "T1:C0:N964",
+          "T1:C0:N987",
+          "T1:C0:N1010",
+          "T1:C0:N1028"
+        ]
+      }
+    }
+  },
+  "interstellar-main-theme": {
+    "source_sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+    "lessons": {
+      "repeated-e": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N21",
+          "T0:C0:N33",
+          "T0:C0:N45",
+          "T0:C0:N63",
+          "T0:C0:N79"
+        ],
+        "left": []
+      },
+      "slow-lower-line": {
+        "right": [],
+        "left": [
+          "T1:C0:N38",
+          "T1:C0:N40",
+          "T1:C0:N42",
+          "T1:C0:N44",
+          "T1:C0:N50",
+          "T1:C0:N56",
+          "T1:C0:N64",
+          "T1:C0:N70",
+          "T1:C0:N76"
+        ]
+      },
+      "upper-repetitions": {
+        "right": [
+          "T0:C0:N1037",
+          "T0:C0:N1039",
+          "T0:C0:N1041",
+          "T0:C0:N1043",
+          "T0:C0:N1061",
+          "T0:C0:N1083",
+          "T0:C0:N1105",
+          "T0:C0:N1129",
+          "T0:C0:N1153",
+          "T0:C0:N1193"
+        ],
+        "left": [
+          "T1:C0:N240",
+          "T1:C0:N242",
+          "T1:C0:N244",
+          "T1:C0:N246",
+          "T1:C0:N274",
+          "T1:C0:N310",
+          "T1:C0:N344",
+          "T1:C0:N380",
+          "T1:C0:N416",
+          "T1:C0:N450"
+        ]
+      }
+    }
+  },
+  "the-sound-of-silence": {
+    "source_sha256": "52303556647dc858d9e5ffc6ba0911fee6c83f61d88295c4bcadac868f55bfb9",
+    "lessons": {
+      "melody-steps": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N25",
+          "T0:C0:N37",
+          "T0:C0:N47",
+          "T0:C0:N61",
+          "T0:C0:N73"
+        ],
+        "left": []
+      },
+      "accompaniment-pulse": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N16",
+          "T1:C0:N34",
+          "T1:C0:N52",
+          "T1:C0:N68",
+          "T1:C0:N84",
+          "T1:C0:N102"
+        ]
+      },
+      "fuller-voicing": {
+        "right": [
+          "T0:C0:N649",
+          "T0:C0:N655",
+          "T0:C0:N661",
+          "T0:C0:N665",
+          "T0:C0:N673",
+          "T0:C0:N700",
+          "T0:C0:N736",
+          "T0:C0:N761",
+          "T0:C0:N781",
+          "T0:C0:N797"
+        ],
+        "left": [
+          "T1:C0:N502",
+          "T1:C0:N509",
+          "T1:C0:N512",
+          "T1:C0:N514",
+          "T1:C0:N524",
+          "T1:C0:N544",
+          "T1:C0:N560",
+          "T1:C0:N584",
+          "T1:C0:N604",
+          "T1:C0:N620"
+        ]
+      }
+    }
+  },
+  "shiki-blue-bell": {
+    "source_sha256": "914559dfcf9087c455bff1c0a5dfa9fb456e3302f031a4cc0b0576f013238af5",
+    "lessons": {
+      "opening-upper-line": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N9",
+          "T0:C0:N11",
+          "T0:C0:N13",
+          "T0:C0:N17",
+          "T0:C0:N19"
+        ],
+        "left": []
+      },
+      "e-g-then-b": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N6",
+          "T1:C0:N12",
+          "T1:C0:N17",
+          "T1:C0:N1"
+        ]
+      },
+      "wide-registers": {
+        "right": [
+          "T0:C0:N85",
+          "T0:C0:N88",
+          "T0:C0:N91",
+          "T0:C0:N93",
+          "T0:C0:N95",
+          "T0:C0:N99",
+          "T0:C0:N101",
+          "T0:C0:N105",
+          "T0:C0:N109"
+        ],
+        "left": [
+          "T1:C0:N184",
+          "T1:C0:N186",
+          "T1:C0:N188",
+          "T1:C0:N190",
+          "T1:C0:N194",
+          "T1:C0:N210",
+          "T1:C0:N220",
+          "T1:C0:N230",
+          "T1:C0:N242",
+          "T1:C0:N252"
+        ]
+      }
+    }
+  },
+  "naruto-maisou-burial": {
+    "source_sha256": "982b67ac99f1adc0e3463807e293792a2ecfe3026ef30e4e2fd840d071e9b2ba",
+    "lessons": {
+      "octave-melody": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N4",
+          "T0:C0:N9",
+          "T0:C0:N13",
+          "T0:C0:N17",
+          "T0:C0:N22",
+          "T0:C0:N25"
+        ],
+        "left": []
+      },
+      "bass-to-support": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N7",
+          "T1:C0:N12",
+          "T1:C0:N17"
+        ]
+      },
+      "pulse-and-octaves": {
+        "right": [
+          "T0:C0:N367",
+          "T0:C0:N372",
+          "T0:C0:N375",
+          "T0:C0:N380",
+          "T0:C0:N387",
+          "T0:C0:N399",
+          "T0:C0:N405",
+          "T0:C0:N413",
+          "T0:C0:N427"
+        ],
+        "left": [
+          "T1:C0:N364",
+          "T1:C0:N366",
+          "T1:C0:N368",
+          "T1:C0:N372",
+          "T1:C0:N400",
+          "T1:C0:N420",
+          "T1:C0:N440",
+          "T1:C0:N464",
+          "T1:C0:N484",
+          "T1:C0:N504"
+        ]
+      }
+    }
+  }
+}

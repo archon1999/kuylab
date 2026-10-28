@@ -1,5 +1,10 @@
 export const studioLabels = {
   uz: {
+    viewport: 'Klaviatura ko‘rinishi',
+    visibleKeys: 'Ko‘rinadigan klavishlar',
+    panHint:
+      'Sichqoncha g‘ildiragi yoki yon tomonga surish bilan klaviaturani ko‘ring. Ikki barmoq bilan masshtabni o‘zgartirish ham mumkin.',
+    more: 'Boshqa amallar',
     compactNoteLengths: 'Uzun notalarni ixcham ko‘rsatish',
     compactNoteLengthsHint:
       'Faqat ko‘rinish qisqaradi; ovoz davomiyligi o‘zgarmaydi. Bu aniq barmoq ushlash ko‘rsatmasi emas.',
@@ -46,6 +51,11 @@ export const studioLabels = {
     reset: 'Boshidan',
   },
   ru: {
+    viewport: 'Вид клавиатуры',
+    visibleKeys: 'Видимые клавиши',
+    panHint:
+      'Листайте клавиатуру колёсиком мыши или сдвигайте в сторону. Масштаб можно менять двумя пальцами.',
+    more: 'Другие действия',
     compactNoteLengths: 'Компактное отображение длинных нот',
     compactNoteLengthsHint:
       'Сокращается только изображение, длительность звука сохраняется. Это не точная инструкция удержания пальцем.',
@@ -92,6 +102,11 @@ export const studioLabels = {
     reset: 'С начала',
   },
   en: {
+    viewport: 'Keyboard view',
+    visibleKeys: 'Visible keys',
+    panHint:
+      'Pan with the mouse wheel or drag sideways. Pinch with two fingers to change the visible range.',
+    more: 'More actions',
     compactNoteLengths: 'Compact long notes',
     compactNoteLengthsHint:
       'Only the display is shortened; sound duration stays unchanged. This is not an exact fingering hold guide.',

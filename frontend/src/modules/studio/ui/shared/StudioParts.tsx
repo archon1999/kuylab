@@ -9,14 +9,20 @@ import {
 } from '@mui/icons-material';
 import { Button, IconButton, Tooltip } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
-import { navigate } from '@shared/routing';
+import { followRouteLink, navigate, routePath } from '@shared/routing';
 import { useStudio } from '../../application';
 import { StudyStatusBadge } from './StudyStatus';
+import CompositionPreview from './CompositionPreview';
+import DifficultyStars from './DifficultyStars';
+import '../compositionLibrary.css';
 import {
   durationLabel,
   studyCountLabel,
   studyProgress,
   allStudyItems,
+  libraryVariant,
+  compositionAttribution,
+  studyMatchesPerformance,
   type Composition,
   type StudyItem,
 } from '../../domain';
@@ -103,10 +109,7 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
       <a
         href={`/study/${encodeURIComponent(item.id)}`}
         className="studio-study-link"
-        onClick={(event) => {
-          event.preventDefault();
-          navigate('study', { item: item.id, composition: item.composition_id ?? null });
-        }}
+        onClick={followRouteLink}
       >
         <h3>{item.title}</h3>
         <p>{item.subtitle}</p>
@@ -140,44 +143,61 @@ export function StudyCard({ item, number }: { item: StudyItem; number?: number }
     </article>
   );
 }
-export function CompositionCard({ composition }: { composition: Composition }) {
+export function CompositionCard({
+  composition,
+  difficulty = 0,
+}: {
+  composition: Composition;
+  difficulty?: number;
+}) {
   const tr = useTranslation();
   const { language } = usePreferences();
+  const variant = libraryVariant(composition, difficulty);
+  const { catalog } = useStudio();
+  const lessonCount =
+    catalog?.lessons.filter((item) => studyMatchesPerformance(item, composition, variant?.id))
+      .length || 0;
+  const attribution = compositionAttribution(composition);
   return (
     <article className="studio-composition-card">
-      <div className="studio-composition-art" aria-hidden="true">
-        <MusicNoteRounded />
-        <span>{composition.title.replace('Winter Sonata — ', '')}</span>
-        <div className="studio-art-keys">
-          {Array.from({ length: 14 }, (_, index) => (
-            <i key={index} />
-          ))}
-        </div>
-      </div>
+      <CompositionPreview composition={composition} variant={variant?.id} />
       <div className="studio-composition-content">
         <div className="studio-card-top">
-          <span className="studio-card-category">{composition.subtitle}</span>
+          <span className="studio-card-category">{attribution.category}</span>
           <Favorite id={`composition:${composition.id}`} />
         </div>
         <h2>{composition.title}</h2>
-        <p>{composition.composer}</p>
+        {attribution.composer && <p>{attribution.composer}</p>}
+        <div className="composition-difficulty-row">
+          <DifficultyStars value={variant?.difficulty || composition.difficulty} />
+          {variant && <span className="composition-current-variant">{variant.title}</span>}
+        </div>
         <div className="studio-composition-meta">
-          <span>{durationLabel(composition.duration_seconds)}</span>
-          <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
+          <span>{durationLabel(variant?.duration_seconds || composition.duration_seconds)}</span>
+          {!!lessonCount && <span>{studyCountLabel(lessonCount, 'lesson', language)}</span>}
           {!!composition.variants?.length && (
             <span>{composition.variants.map((variant) => variant.title).join(' / ')}</span>
           )}
         </div>
         <div className="studio-actions">
           <Button
+            component="a"
+            href={routePath('practice', {
+              composition: composition.id,
+              variant: variant?.id || null,
+            })}
             variant="contained"
             startIcon={<PlayArrowRounded />}
-            onClick={() => openComposition(composition)}
+            onClick={followRouteLink}
           >
             {tr('Playerni ochish')}
           </Button>
-          <Button onClick={() => navigate('detail', { composition: composition.id })}>
-            {tr('Darslar')}
+          <Button
+            component="a"
+            href={routePath('detail', { compositionSlug: composition.slug })}
+            onClick={followRouteLink}
+          >
+            {tr(composition.lesson_ids.length ? 'Darslar' : 'Batafsil')}
           </Button>
         </div>
       </div>

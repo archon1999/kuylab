@@ -40,7 +40,7 @@ jobs:
       - run: npm run build
   backend:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 35
     strategy:
       fail-fast: false
       matrix:
@@ -57,6 +57,7 @@ jobs:
           --health-cmd "pg_isready -U kuylab -d kuylab_test"
           --health-interval 10s --health-timeout 5s --health-retries 5
     env:
+      PYTHONUNBUFFERED: '1'
       TEST_POSTGRES: ${{ matrix.database == 'postgres' && '1' || '0' }}
       POSTGRES_DB: kuylab_test
       POSTGRES_USER: kuylab
@@ -73,7 +74,10 @@ jobs:
       - run: poetry check --lock
       - run: poetry install --no-interaction --no-root
       - run: poetry run python manage.py makemigrations --check --dry-run --settings=config.settings.test
-      - run: poetry run python manage.py test tests --settings=config.settings.test --noinput
+      - name: Audit pinned MIDI performances
+        if: matrix.database == 'sqlite'
+        run: poetry run python manage.py audit_midi_catalog --settings=config.settings.test
+      - run: poetry run python manage.py test tests --settings=config.settings.test --noinput --parallel 2 --verbosity 2
       - name: Audit locked Python dependencies
         if: matrix.database == 'sqlite'
         run: |
@@ -108,6 +112,8 @@ jobs:
           docker compose up -d --wait db
           docker compose run --rm backend python manage.py migrate --noinput
           docker compose run --rm backend python manage.py createcachetable
+          docker compose run --rm backend python manage.py seed_studio
+          # Exercise the existing-score path under the same memory limit.
           docker compose run --rm backend python manage.py seed_studio
           docker compose up -d --no-build --wait --wait-timeout 120
           docker compose exec -T backend python manage.py shell < ops/smoke.py

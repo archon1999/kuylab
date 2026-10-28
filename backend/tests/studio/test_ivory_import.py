@@ -265,7 +265,12 @@ class IvorySeedTests(TestCase):
         profile = Profile.objects.get()
         lesson_id = 'lesson:ode-to-joy:melody'
         old_journey = 'journey:ode-to-joy:complete:stage:combined-slow'
-        StudioAsset.objects.update_or_create(key=old_journey,defaults={'score':legacy,'revision':'retired-edition'})
+        legacy_journey = Score.objects.create(arrangement=asset.score.arrangement,
+            version=legacy.version+1,file_format='midi',title='Previous full-piece study',
+            original_filename='previous-study.mid',content_sha256=legacy.content_sha256,
+            parsed=old_parsed,source_provenance={'kind':'previous_curated_study'},rights_confirmed_at=timezone.now())
+        legacy_journey.musicxml.save('previous-study.mid',ContentFile(old_bytes))
+        StudioAsset.objects.update_or_create(key=old_journey,defaults={'score':legacy_journey,'revision':'retired-edition'})
         library = PersonalLibrary.objects.create(profile=profile,
             favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered',old_journey:'mastered'},
             positions={f'composition:{composition_id}':12.5,old_journey:42.5})
@@ -279,7 +284,7 @@ class IvorySeedTests(TestCase):
         library.refresh_from_db()
         self.assertEqual(library.progress,{lesson_id:'mastered',old_journey:'mastered'})
         self.assertEqual(library.positions[old_journey],42.5)
-        self.assertEqual(StudioAsset.objects.get(pk=old_journey).score_id,legacy.pk)
+        self.assertEqual(StudioAsset.objects.get(pk=old_journey).score_id,legacy_journey.pk)
         self.assertEqual(StudioAsset.objects.get(pk=old_journey).revision,'retired-edition')
         self.assertEqual(library.favorites,[f'composition:{composition_id}',lesson_id])
         note.refresh_from_db()

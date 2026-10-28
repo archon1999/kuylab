@@ -14,8 +14,8 @@ from apps.studio.repertoire import SOURCES
 class CuratedRepertoireTests(SimpleTestCase):
     def test_all_thirty_editions_are_pinned_playable_and_have_both_display_layers(self):
         self.assertEqual(len(ENTRIES), 30)
-        self.assertEqual(len(SOURCES), 38)
-        self.assertEqual(len({source.slug for source in SOURCES}), 38)
+        self.assertEqual(len(SOURCES), 101)
+        self.assertEqual(len({source.slug for source in SOURCES}), 101)
         for entry in ENTRIES:
             raw, parsed = edition_source(entry["code"])
             self.assertEqual(hashlib.sha256(raw).hexdigest(), entry["sha256"])
@@ -48,10 +48,12 @@ class CuratedRepertoireTests(SimpleTestCase):
 
     def test_every_piece_has_localized_theory_actual_note_examples_and_a_complete_finale(self):
         items = curated_items()
-        self.assertEqual(len(items), 120)
-        self.assertEqual(len({item["id"] for item in items}), 120)
+        self.assertEqual(len(items), 96)
+        self.assertEqual(len({item["id"] for item in items}), 96)
         self.assertEqual(len({entry["learning_focus"]["en"] for entry in ENTRIES}), 30)
         for entry in ENTRIES:
+            if not any(source.code == entry["code"] and source.course_kind == "curated" for source in SOURCES):
+                continue
             selected = [item for item in items if item["_composition"] == entry["code"]]
             self.assertEqual([item["kind"] for item in selected], ["lesson"] * 3 + ["journey"])
             self.assertTrue(selected[-1]["stages"][-1]["_reuse_original"])

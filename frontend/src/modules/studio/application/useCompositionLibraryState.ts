@@ -42,8 +42,11 @@ export function useCompositionLibraryState() {
     setSize(size: number) {
       commit({ ...state, size, page: 1 });
     },
+    setView(view: CompositionLibraryState['view']) {
+      commit({ ...state, view });
+    },
     reset() {
-      commit(normalizeLibraryState({ size: state.size }));
+      commit(normalizeLibraryState({ size: state.size, view: state.view }));
     },
     canonical: libraryQuery(state),
   };

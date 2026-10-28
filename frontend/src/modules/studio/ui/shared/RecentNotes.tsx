@@ -1,9 +1,9 @@
 import { usePracticeNotes } from '@modules/activity';
 import { BookmarkBorderRounded, ArrowForwardRounded } from '@mui/icons-material';
 import { useTranslation } from '@shared/i18n';
-import { navigate } from '@shared/routing';
+import { followRouteLink, routePath } from '@shared/routing';
 import { useStudio } from '../../application';
-import { allStudyItems, durationLabel } from '../../domain';
+import { allStudyItems, compositionNoteTarget, durationLabel } from '../../domain';
 import { SectionTitle } from './StudioParts';
 export default function RecentNotes() {
   const { catalog } = useStudio();
@@ -12,9 +12,7 @@ export default function RecentNotes() {
   if (!catalog || !notes.length) return null;
   const targets = notes
     .map((note) => {
-      const composition = catalog.compositions.find(
-        (value) => `composition:${value.id}` === note.contentId,
-      );
+      const performance = compositionNoteTarget(catalog.compositions, note.contentId);
       const item = allStudyItems(catalog).find(
         (value) =>
           value.id === note.contentId ||
@@ -23,7 +21,8 @@ export default function RecentNotes() {
       );
       return {
         note,
-        composition,
+        composition: performance?.composition,
+        performance,
         item,
         stage: item?.stages?.find((value) => value.id === note.contentId),
         example: item?.comparisons?.find((value) => value.id === note.contentId),
@@ -36,30 +35,40 @@ export default function RecentNotes() {
     <section>
       <SectionTitle title={tr('Oxirgi qaydlar')} />
       <div className="studio-list-surface">
-        {targets.map(({ note, composition, item, stage, example }) => (
-          <button
+        {targets.map(({ note, composition, performance, item, stage, example }) => (
+          <a
             className="studio-note-link"
             key={note.id}
-            onClick={() =>
+            href={
               composition
-                ? navigate('practice', { composition: composition.id, at: note.position })
-                : navigate('study', {
+                ? performance?.currentSource
+                  ? routePath('practice', {
+                      composition: composition.id,
+                      variant: performance.variant?.id || null,
+                      at: note.position,
+                    })
+                  : routePath('detail', { compositionSlug: composition.slug })
+                : routePath('study', {
                     item: item!.id,
                     stage: stage?.id || null,
                     example: example?.id || null,
                     at: note.position,
                   })
             }
+            onClick={followRouteLink}
           >
             <BookmarkBorderRounded />
             <span>
               <strong>
-                {composition?.title || item?.title} · {durationLabel(note.position)}
+                {composition?.title || item?.title}
+                {performance?.variant && ` · ${performance.variant.title}`}
+                {performance && !performance.currentSource && ` · ${tr('Oldingi ijro')}`} ·{' '}
+                {durationLabel(note.position)}
               </strong>
               <small>{note.text}</small>
             </span>
             <ArrowForwardRounded />
-          </button>
+          </a>
         ))}
       </div>
     </section>

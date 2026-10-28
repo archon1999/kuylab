@@ -6,7 +6,14 @@ import { useTranslation } from '@shared/i18n';
 import { navigate, useRoute } from '@shared/routing';
 import { useEffect } from 'react';
 import { useStudio, useStudyScore } from '../../../application';
-import { compositionPlaybackContext, selectCompositionVariant } from '../../../domain';
+import {
+  compositionNotebookContext,
+  compositionPlaybackContext,
+  compositionPositionKeys,
+  compositionResumePosition,
+  compositionVariantStartPosition,
+  selectCompositionVariant,
+} from '../../../domain';
 import CompositionVariants from '../../shared/CompositionVariants';
 import { Loading, StudioError } from '../../shared/StudioParts';
 import '../../studio.css';
@@ -74,7 +81,7 @@ export default function PlayerPage() {
                       navigate('practice', {
                         composition: composition.id,
                         variant: next,
-                        at: Number(position.toFixed(3)),
+                        at: compositionVariantStartPosition(composition, next, position),
                       });
                     }}
                   />
@@ -82,7 +89,12 @@ export default function PlayerPage() {
               : undefined
           }
           notebook={(position, seek, close) => (
-            <PracticeNotebook contentId={id!} position={position} onSeek={seek} onClose={close} />
+            <PracticeNotebook
+              contentId={compositionNotebookContext(composition, variant?.id)}
+              position={position}
+              onSeek={seek}
+              onClose={close}
+            />
           )}
           score={score}
           markers={catalog?.lessons
@@ -99,11 +111,11 @@ export default function PlayerPage() {
           initialPosition={
             params.has('at')
               ? Number(params.get('at'))
-              : (positions[context] ?? positions[id!] ?? 0)
+              : compositionResumePosition(composition, positions, variant?.id)
           }
           onPositionChange={(seconds) => {
-            setPosition(context, seconds);
-            if (context !== id) setPosition(id!, seconds);
+            for (const key of compositionPositionKeys(composition, variant?.id))
+              setPosition(key, seconds);
           }}
           onPlaybackChange={setPlaying}
         />

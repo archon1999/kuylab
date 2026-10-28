@@ -1,5 +1,5 @@
 import { useId, useMemo, type CSSProperties } from 'react';
-import { PauseRounded, PlayArrowRounded, ReplayRounded } from '@mui/icons-material';
+import { MusicNoteRounded, PauseRounded, ReplayRounded } from '@mui/icons-material';
 import { CircularProgress, IconButton, Tooltip, useMediaQuery } from '@mui/material';
 import { useTranslation } from '@shared/i18n';
 import { pianoKeyLayout, type StudioNote } from '../../domain/studioTransport';
@@ -241,7 +241,7 @@ export default function PianoRollPreview({
           ) : running ? (
             <PauseRounded fontSize="small" />
           ) : (
-            <PlayArrowRounded fontSize="small" />
+            <MusicNoteRounded fontSize="small" />
           )}
         </IconButton>
       </Tooltip>

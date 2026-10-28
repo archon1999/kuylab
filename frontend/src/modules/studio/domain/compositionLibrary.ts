@@ -3,6 +3,7 @@ import type { Composition, CompositionFilter } from './entities/studio.types.ts'
 export const emptyCompositionFilter: CompositionFilter = {
   query: '',
   difficulty: 0,
+  group: '',
   collection: '',
   favoritesOnly: false,
   sort: 'curated',
@@ -13,6 +14,61 @@ const searchable = (value: string) =>
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[‘’ʼ`]/g, "'")
     .toLocaleLowerCase();
+
+const matchesCollection = (item: Composition, collection: string) =>
+  item.library_collection?.id === collection || (item.collection || '__other__') === collection;
+
+export function compositionGroups(items: Composition[]) {
+  return [
+    ...new Map(
+      items.flatMap((item) =>
+        item.library_group ? [[item.library_group.id, item.library_group] as const] : [],
+      ),
+    ).values(),
+  ].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+export function compositionCollections(items: Composition[], group: string) {
+  if (!group) return [];
+  return [
+    ...new Map(
+      items
+        .filter((item) => item.library_group?.id === group)
+        .flatMap((item) =>
+          item.library_collection
+            ? [[item.library_collection.id, item.library_collection] as const]
+            : [],
+        ),
+    ).values(),
+  ].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/** Old album-name URLs still work without adding a group parameter to their links. */
+export function inferCompositionGroup(items: Composition[], collection: string) {
+  if (!collection) return '';
+  const groups = new Set(
+    items
+      .filter((item) => matchesCollection(item, collection))
+      .map((item) => item.library_group?.id)
+      .filter((id): id is string => Boolean(id)),
+  );
+  return groups.size === 1 ? [...groups][0] : '';
+}
+
+export function collectionForGroup(items: Composition[], group: string, collection: string) {
+  return group &&
+    collection &&
+    items.some((item) => item.library_group?.id === group && matchesCollection(item, collection))
+    ? collection
+    : '';
+}
+
+export function compositionCollectionLabel(items: Composition[], collection: string) {
+  return (
+    items.find((item) => matchesCollection(item, collection))?.library_collection?.label ||
+    collection
+  );
+}
 
 export function libraryVariant(composition: Composition, difficulty = 0) {
   const variants = composition.variants || [];
@@ -31,14 +87,15 @@ export function filterCompositions(
   const terms = searchable(filter.query).trim().split(/\s+/).filter(Boolean);
   const shown = items.filter((item) => {
     const haystack = searchable(
-      `${item.title} ${item.composer} ${item.collection || ''} ${item.subtitle}`,
+      `${item.title} ${item.composer} ${item.collection || ''} ${item.subtitle} ${item.library_group?.label || ''} ${item.library_collection?.label || ''}`,
     );
     return (
       terms.every((word) => haystack.includes(word)) &&
       (!filter.difficulty ||
         item.difficulty === filter.difficulty ||
         item.variants?.some((value) => value.difficulty === filter.difficulty)) &&
-      (!filter.collection || (item.collection || '__other__') === filter.collection) &&
+      (!filter.group || item.library_group?.id === filter.group) &&
+      (!filter.collection || matchesCollection(item, filter.collection)) &&
       (!filter.favoritesOnly || favorites.includes(`composition:${item.id}`))
     );
   });

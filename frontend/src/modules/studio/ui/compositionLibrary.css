@@ -1,6 +1,6 @@
 .composition-library-filters {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.1fr 1.1fr;
+  grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 6px;
 }
@@ -9,6 +9,102 @@
 }
 .composition-library-meta {
   margin-block: 22px;
+}
+.composition-course-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--soft);
+}
+.composition-course-note > svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+  font-size: 29px;
+  color: var(--accent);
+}
+.composition-course-note h2 {
+  margin: 0 0 6px;
+  font: 600 17px/1.4 var(--font-ui);
+}
+.composition-course-note p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--secondary);
+}
+.composition-view-switch.MuiToggleButtonGroup-root {
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--soft);
+}
+.composition-view-switch .MuiToggleButton-root {
+  min-width: 40px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 7px !important;
+  color: var(--secondary);
+}
+.composition-view-switch .MuiToggleButton-root.Mui-selected {
+  color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.composition-view-switch .MuiToggleButton-root:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.studio-compositions-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.studio-compositions-grid .studio-composition-card {
+  flex-direction: column;
+  min-width: 0;
+}
+.studio-compositions-grid .composition-preview {
+  width: 100%;
+  height: 220px;
+  min-height: 220px;
+  border-right: 0;
+  border-bottom: 1px solid var(--border);
+}
+.studio-compositions-grid .studio-composition-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 22px;
+}
+.studio-compositions-grid .studio-composition-content h2 {
+  font-size: 25px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  margin-top: 12px;
+}
+.studio-compositions-grid .studio-composition-meta {
+  gap: 8px 14px;
+  margin-block: 16px 20px;
+}
+.studio-compositions-grid .studio-actions {
+  margin-top: auto;
+  gap: 6px;
+}
+.studio-compositions-grid .studio-actions .MuiButton-root {
+  padding-inline: 14px;
+}
+@media (max-width: 1450px) {
+  .studio-compositions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 800px) {
+  .studio-compositions-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .composition-preview {
   width: 280px;
@@ -87,6 +183,9 @@
 @media (max-width: 1100px) {
   .composition-library-filters {
     grid-template-columns: 1fr 1fr;
+  }
+  .composition-library-filters > :first-child {
+    grid-column: 1 / -1;
   }
   .composition-preview {
     width: 230px;

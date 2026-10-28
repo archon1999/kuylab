@@ -15,6 +15,7 @@ from apps.studio.models import StudioAsset
 from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
 from apps.studio.all_in_package import additional_assets, package_source, study_file, HASHES
 from apps.studio.curated_repertoire import ENTRY_BY_CODE, edition_provenance
+from apps.studio.ivory_repertoire import GROUP_BY_CODE as IVORY_BY_CODE, additional_assets as ivory_assets, performance_provenance, performance_source
 
 ORIGINAL_KEY = "composition:still:original"
 
@@ -30,6 +31,9 @@ def prepared_assets():
     })]
     for source in SOURCES[1:]:
         content, source_parsed = repertoire_source(source.code)
+        if source.course_kind == "ivory":
+            assets.append((source.asset_key, source.title, content, source_parsed, performance_provenance(source.code)))
+            continue
         if source.course_kind == "curated":
             assets.append((source.asset_key, source.title, content, source_parsed, edition_provenance(source.code)))
             continue
@@ -53,6 +57,7 @@ def prepared_assets():
             "note_release_basis": "User's replacement performance export without pedal-extended note durations; no CC64 events supplied.",
         }))
     assets.extend(additional_assets())
+    assets.extend(ivory_assets())
     for item in all_items():
         provenance = {"kind":"original_authored_study", "catalog_id":item["id"], "revision":REVISION}
         if item["kind"] in {"lesson", "journey"}:
@@ -130,6 +135,7 @@ class Command(BaseCommand):
                 if options["replace_compositions"]:
                     others.delete()
                 arrangements = {}
+                variant_arrangements = {}
                 for source in SOURCES:
                     composition, _ = Composition.objects.update_or_create(seed_key=source.composition_key, defaults={
                         "title":source.title, "composer":source.composer,
@@ -142,6 +148,32 @@ class Command(BaseCommand):
                         "tempo_beat_unit":"quarter","key_signature":"","time_signature":"","arranger":"",
                         "full_score_format":"midi","full_score_verified_at":None})
                     arrangements[source.code] = arrangement
+                    if source.course_kind == "ivory":
+                        for index, variant in enumerate(IVORY_BY_CODE[source.code]["variants"]):
+                            _, parsed = performance_source(source.code, variant["id"])
+                            title = variant["title"]
+                            label = title["uz"] if isinstance(title, dict) else title
+                            defaults = {"composition": composition, "is_default": index == 0,
+                                "title": source.title + " · " + label,
+                                "source_url": variant["source_url"], "reference_video_url": variant["source_url"],
+                                "source_kind": "own", "rights_status": "user_owned",
+                                "rights_note": "Owner-supplied Ivory Performance MIDI; owner instructed import. Original musical rights retained.",
+                                "arranger": variant.get("performer", "")[:120],
+                                "exact_version_confirmed": True, "workflow_status": "curated_studio",
+                                "tempo_bpm": round(parsed["metadata"]["tempo"]["quarter_bpm"]),
+                                "tempo_beat_unit": "quarter", "key_signature": "", "time_signature": "",
+                                "full_score_format": "midi", "full_score_verified_at": None}
+                            if index == 0:
+                                for field, value in defaults.items():
+                                    setattr(arrangement, field, value)
+                                arrangement.save(update_fields=list(defaults))
+                                selected_arrangement = arrangement
+                            else:
+                                key = f"studio-{source.code}-{variant['id']}"
+                                if len(key) > 80:
+                                    key = f"studio-{source.code[:48]}-{hashlib.sha256(variant['id'].encode()).hexdigest()[:16]}"
+                                selected_arrangement, _ = Arrangement.objects.update_or_create(seed_key=key, defaults=defaults)
+                            variant_arrangements[(source.code, variant["id"])] = selected_arrangement
                     if source.course_kind == "curated":
                         entry = ENTRY_BY_CODE[source.code]
                         arrangement.source_url = entry["source_url"]
@@ -161,7 +193,7 @@ class Command(BaseCommand):
                         arrangement.save(update_fields=["tempo_bpm", "key_signature", "time_signature"])
                 for key, title, content, parsed, provenance in assets:
                     source = SOURCE_BY_CODE[provenance.get("composition_code", "still")]
-                    arrangement = arrangements[source.code]
+                    arrangement = variant_arrangements.get((source.code, provenance.get("variant_id")), arrangements[source.code])
                     digest = hashlib.sha256(content).hexdigest()
                     old = StudioAsset.objects.select_related("score").filter(pk=key).first()
                     # Teaching copy can change without changing a MIDI version.
@@ -176,9 +208,10 @@ class Command(BaseCommand):
                         continue
                     version = (Score.objects.filter(arrangement=arrangement).aggregate(last=Max("version"))["last"] or 0)+1
                     score = Score(arrangement=arrangement,version=version,file_format="midi",title=title,
-                                  original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") else key.replace(":","-")+".mid",
+                                  source_url=provenance.get("source_url", ""),
+                                  original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") or source.course_kind == "ivory" else key.replace(":","-")+".mid",
                                   content_sha256=digest,source_provenance=provenance,parsed=parsed,
-                                  rights_note=(ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
+                                  rights_note=(ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "Owner-supplied Ivory performance; original musical rights retained. Only a separately documented channel intro may be omitted." if source.course_kind == "ivory" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
                     score.musicxml.save("source.mid", ContentFile(content),save=False)
@@ -193,4 +226,4 @@ class Command(BaseCommand):
             raise
         items = all_items()
         counts = {kind: sum(item["kind"] == kind for item in items) for kind in ("lesson", "journey", "exercise", "theory")}
-        self.stdout.write(self.style.SUCCESS(f"Curated studio ready: {len(SOURCES)} compositions (All in: Easy/Hard), {counts['lesson']} lessons, {counts['journey']} continuity studies, {counts['exercise']} exercises, {counts['theory']} theory topics. Users and existing sources preserved."))
+        self.stdout.write(self.style.SUCCESS(f"Curated studio ready: {len(SOURCES)} compositions, {sum(len(group['variants']) for group in IVORY_BY_CODE.values())} Ivory performances, {counts['lesson']} lessons, {counts['journey']} continuity studies, {counts['exercise']} exercises, {counts['theory']} theory topics. Users and historical sources preserved."))

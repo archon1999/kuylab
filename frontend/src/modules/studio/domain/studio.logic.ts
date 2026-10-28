@@ -11,14 +11,29 @@ export function selectStudyStage(item: StudyItem | undefined, requested: string 
   return item?.stages?.find((stage) => stage.id === requested) || item?.stages?.[0];
 }
 
+/** Added recordings do not change the identity of an existing lesson edition. */
+function retainedBaseVariant(composition: Composition | undefined) {
+  const base = composition?.variants?.find(
+    (variant) => variant.id === composition.default_variant_id,
+  );
+  return base &&
+    !base.playback_revision &&
+    !composition?.playback_revision &&
+    composition?.variants?.some((variant) => variant.playback_revision)
+    ? base
+    : undefined;
+}
+
 export function selectCompositionVariant(
   composition: Composition | undefined,
   requested?: string | null,
   remembered?: string,
+  hasTimestamp = false,
 ) {
   const variants = composition?.variants || [];
   return (
     variants.find((variant) => variant.id === requested) ||
+    (!requested && hasTimestamp ? retainedBaseVariant(composition) : undefined) ||
     variants.find((variant) => variant.id === remembered) ||
     variants.find((variant) => variant.id === composition?.default_variant_id) ||
     variants[0]
@@ -27,6 +42,8 @@ export function selectCompositionVariant(
 
 export function compositionPlaybackContext(composition: Composition, variantId?: string) {
   const id = `composition:${composition.id}`;
+  const base = retainedBaseVariant(composition);
+  if (base && base.id === variantId) return id;
   const revision =
     composition.variants?.find((variant) => variant.id === variantId)?.playback_revision ||
     composition.playback_revision;
@@ -64,7 +81,9 @@ export function compositionVariantStartPosition(
   currentPosition: number,
 ) {
   const target = composition.variants?.find((variant) => variant.id === targetVariantId);
-  return target?.playback_revision || composition.playback_revision
+  return target?.playback_revision ||
+    composition.playback_revision ||
+    composition.variants?.some((variant) => variant.playback_revision)
     ? null
     : Number(currentPosition.toFixed(3));
 }
@@ -77,7 +96,11 @@ export function compositionNoteTarget(compositions: Composition[], contentId: st
   if (!composition) return undefined;
   const suffix = match[2];
   if (!suffix)
-    return { composition, variant: undefined, currentSource: !composition.playback_revision };
+    return {
+      composition,
+      variant: retainedBaseVariant(composition),
+      currentSource: !composition.playback_revision,
+    };
   if (suffix.startsWith('source:')) {
     const revision = suffix.slice('source:'.length);
     const variant = composition.variants?.find((item) => item.playback_revision === revision);

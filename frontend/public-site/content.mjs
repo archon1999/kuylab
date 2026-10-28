@@ -74,7 +74,7 @@ export const content = {
       ],
       [
         'Hozir qaysi asardan boshlash mumkin?',
-        'Studiyada 101 ta kompozitsiya va 129 ta kompozitsiya darsi bor. Winter Sonata, Nino Rota, Yiruma, Chopin va Beethoven asarlaridan boshlash mumkin. Bir asarning turli ijrolarini bitta playerda variant sifatida oching. All in — Soundtrack uchun Easy va Hard variantlari hamda 9 ta umumiy dars mavjud. Darslari tayyor asarlarda soddalashtirilgan mashqlar original ijroga bosqichma-bosqich olib boradi.',
+        'Studiyada 103 ta kompozitsiya va 129 ta kompozitsiya darsi bor. Winter Sonata, Nino Rota, Yiruma, Chopin va Beethoven asarlaridan boshlash mumkin. Bir asarning turli ijrolarini bitta playerda variant sifatida oching. All in — Soundtrack uchun Easy va Hard variantlari hamda 9 ta umumiy dars mavjud. Darslari tayyor asarlarda soddalashtirilgan mashqlar original ijroga bosqichma-bosqich olib boradi.',
       ],
     ],
     about:
@@ -287,7 +287,7 @@ export const content = {
       ],
       [
         'Какое произведение уже доступно?',
-        'В студии 101 произведение и 129 уроков по композициям. Начните с музыки Winter Sonata, Нино Роты, Yiruma, Шопена или Бетховена. Разные исполнения одного произведения доступны как варианты в одном плеере. У All in — Soundtrack есть Easy и Hard и 9 общих уроков. В подготовленных курсах упрощённые упражнения постепенно приводят к оригинальному исполнению.',
+        'В студии 103 произведение и 129 уроков по композициям. Начните с музыки Winter Sonata, Нино Роты, Yiruma, Шопена или Бетховена. Разные исполнения одного произведения доступны как варианты в одном плеере. У All in — Soundtrack есть Easy и Hard и 9 общих уроков. В подготовленных курсах упрощённые упражнения постепенно приводят к оригинальному исполнению.',
       ],
     ],
     about:
@@ -500,7 +500,7 @@ export const content = {
       ],
       [
         'Which piece is available now?',
-        'The studio includes 101 pieces and 129 composition lessons. Start with Winter Sonata, Nino Rota, Yiruma, Chopin or Beethoven. Different performances of a piece are available as variants in one player. All in — Soundtrack has Easy and Hard versions with 9 shared lessons. In the prepared courses, simplified studies build towards the original performance.',
+        'The studio includes 103 pieces and 129 composition lessons. Start with Winter Sonata, Nino Rota, Yiruma, Chopin or Beethoven. Different performances of a piece are available as variants in one player. All in — Soundtrack has Easy and Hard versions with 9 shared lessons. In the prepared courses, simplified studies build towards the original performance.',
       ],
     ],
     about:

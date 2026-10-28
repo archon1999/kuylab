@@ -56,7 +56,7 @@ class CompositionShowcaseTests(TestCase):
 
     def test_each_current_arrangement_has_a_reviewed_rating_and_source_landmark(self):
         pieces = self.catalog()
-        self.assertEqual(len(pieces),101)
+        self.assertEqual(len(pieces),103)
         for piece in pieces:
             self.assertIn(piece['difficulty'],range(1,6))
             self.assertGreaterEqual(piece['preview_start_seconds'],0)

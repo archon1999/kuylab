@@ -14,8 +14,8 @@ from apps.studio.repertoire import SOURCES
 class CuratedRepertoireTests(SimpleTestCase):
     def test_all_thirty_editions_are_pinned_playable_and_have_both_display_layers(self):
         self.assertEqual(len(ENTRIES), 30)
-        self.assertEqual(len(SOURCES), 101)
-        self.assertEqual(len({source.slug for source in SOURCES}), 101)
+        self.assertEqual(len(SOURCES), 103)
+        self.assertEqual(len({source.slug for source in SOURCES}), 103)
         for entry in ENTRIES:
             raw, parsed = edition_source(entry["code"])
             self.assertEqual(hashlib.sha256(raw).hexdigest(), entry["sha256"])

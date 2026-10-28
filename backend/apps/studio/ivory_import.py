@@ -14,6 +14,25 @@ from apps.scores.midi import parse_midi
 MAX_REVIEWED_NOTE_ADDITIONS = 8
 
 
+def transpose_performance(data, semitones):
+    """Shift note-on/off pitches only, retaining every track and event time."""
+    if type(semitones) is not int or not -24 <= semitones <= 24:
+        raise ValueError("A reviewed transposition must be an integer within two octaves.")
+    if semitones == 0:
+        return data
+    midi = mido.MidiFile(file=io.BytesIO(data))
+    for track in midi.tracks:
+        for index, message in enumerate(track):
+            if message.type in {"note_on", "note_off"}:
+                pitch = message.note + semitones
+                if message.channel == 9 or not 0 <= pitch <= 127:
+                    raise ValueError("Transposition cannot change percussion or move a note outside MIDI range.")
+                track[index] = message.copy(note=pitch)
+    buffer = io.BytesIO()
+    midi.save(file=buffer)
+    return buffer.getvalue()
+
+
 def add_reviewed_notes(data, additions):
     """Add bounded, documented notes without moving any original event.
 
@@ -196,11 +215,13 @@ def display_roles(parsed):
             "evidence":"curated_C4_display_layer_split_not_physical_hands"}
 
 
-def build_catalog(plan, source_dir, target_dir, expected_count=83):
+def build_catalog(plan, source_dir, target_dir, expected_count=None):
     source_dir, target_dir = Path(source_dir).resolve(), Path(target_dir).resolve()
     groups = plan["groups"] if isinstance(plan, dict) else plan
     download_manifest = json.loads((source_dir/"manifest.json").read_text(encoding="utf-8"))
     downloads = {item["filename"]:item for item in download_manifest["items"]}
+    if expected_count is None:
+        expected_count = len(downloads)
     selected = [variant for group in groups for variant in group["variants"]]
     if len(selected) != expected_count or {item["filename"] for item in selected} != set(downloads):
         raise ValueError("Import plan must account for every supplied MIDI exactly once.")
@@ -214,6 +235,14 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             raise ValueError("Each composition needs uniquely identified performances.")
         entry = {key:group[key] for key in ("code","slug","title","composer","collection")}
         entry["replaces_existing"] = bool(group.get("existing_code") or group.get("replaces_existing"))
+        if group.get("base_variant"):
+            base = group["base_variant"]
+            if (entry["replaces_existing"] or not isinstance(base, dict)
+                or set(base) != {"id", "title", "description"}
+                or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", base["id"])
+                or base["id"] in {variant["id"] for variant in group["variants"]}):
+                raise ValueError("A retained lesson edition must have a distinct base variant.")
+            entry["base_variant"] = base
         entry["variants"] = []
         for variant in group["variants"]:
             name, identifier = variant["filename"],variant["id"]
@@ -226,10 +255,14 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             digest = sha256(data).hexdigest()
             if digest!=original["validation"]["sha256"] or digest!=variant.get("source_sha256",digest):
                 raise ValueError(f"{name}: supplied checksum changed.")
+            semitones = variant.get("transpose_semitones", 0)
+            if semitones and not variant.get("transpose_reason"):
+                raise ValueError("A transposition needs an explicit review reason.")
+            transposed = transpose_performance(data, semitones)
             start = float(variant.get("trim_start_seconds",0))
             if start<0 or start and not variant.get("trim_reason"):
                 raise ValueError("Only an explicitly reviewed channel-intro cut is supported.")
-            content, tick, actual_start = trim_channel_intro(data,start)
+            content, tick, actual_start = trim_channel_intro(transposed,start)
             retained_source_count = len(parse_midi(content,group["title"])["events"])
             omitted_count = original["validation"]["note_count"] - retained_source_count
             if omitted_count < 0:
@@ -257,7 +290,7 @@ def build_catalog(plan, source_dir, target_dir, expected_count=83):
             if original.get("performer") and not value.get("performer"):
                 value["performer"] = original["performer"]
             prepared[name] = content
-            if start or additions:
+            if start or additions or semitones:
                 original_files[name] = data
             entry["variants"].append(value)
         output_groups.append(entry)

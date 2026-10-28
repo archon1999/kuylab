@@ -37,7 +37,7 @@ COLLECTIONS = {
     "romeo-juliet": ("film", "Romeo & Juliet", ("youth",)),
     "amelie": ("film", "Amélie", ("comptine", "la-valse-d-amelie")),
     "love-story": ("film", "Love Story", ("love-story",)),
-    "interstellar": ("film", "Interstellar", ("cornfield-chase",)),
+    "interstellar": ("film", "Interstellar", ("cornfield-chase", "interstellar-main-theme")),
     "inception": ("film", "Inception", ("time",)),
     "pirates-of-the-caribbean": ("film", "Pirates of the Caribbean", ("hes-a-pirate", "pirates-of-the-caribbean-davy-jones")),
     "titanic": ("film", "Titanic", ("my-heart-will-go-on",)),
@@ -65,6 +65,7 @@ COLLECTIONS = {
     "hindi-songs": ("songs", label("Hind qo‘shiqlari", "Индийские песни", "Hindi songs"), ("tum-hi-ho",)),
     "beyonce": ("songs", "Beyoncé", ("beyonce-halo",)),
     "armstrong": ("songs", "Louis Armstrong", ("what-a-wonderful-world",)),
+    "simon-garfunkel": ("songs", "Simon & Garfunkel", ("the-sound-of-silence",)),
     "traditional": ("folk", label("An’anaviy kuylar", "Традиционные мелодии", "Traditional melodies"), ("romance-damour", "ievan-polkka")),
 }
 

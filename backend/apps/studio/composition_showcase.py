@@ -30,12 +30,15 @@ SHOWCASE.update({entry["code"]: {"difficulty": entry["difficulty"], "start": ent
                                   "duration": entry["preview_duration"]} for entry in active_entries()})
 SHOWCASE.update({group["code"]: {"difficulty": group["variants"][0]["difficulty"],
                                   "start": group["variants"][0]["preview_start"],
-                                  "duration": group["variants"][0]["preview_duration"]} for group in IVORY_GROUPS})
+                                  "duration": group["variants"][0]["preview_duration"]}
+                 for group in IVORY_GROUPS if not group.get("base_variant")})
 
 
 def presentation(code, variant=None):
     value = SHOWCASE[code]
-    if code in IVORY_BY_CODE:
+    group = IVORY_BY_CODE.get(code)
+    is_base = group and group.get("base_variant") and variant in {None, group["base_variant"]["id"]}
+    if group and not is_base:
         selected = variant_entry(code, variant)
         return {"difficulty": selected["difficulty"], "collection": SOURCE_BY_CODE[code].collection,
                 "preview_start_seconds": selected["preview_start"], "playback_revision": selected["sha256"][:16]}
@@ -84,7 +87,9 @@ def composition_preview(composition_id, variant=None):
             raise NotFound("Performance variant not found")
     else:
         score = original.score
-    if source.code in IVORY_BY_CODE:
+    group = IVORY_BY_CODE.get(source.code)
+    is_base = group and group.get("base_variant") and selected and selected["id"] == group["base_variant"]["id"]
+    if group and not is_base:
         reviewed = variant_entry(source.code, selected["id"] if selected else None)
         start, excerpt_duration = reviewed["preview_start"], reviewed["preview_duration"]
     else:

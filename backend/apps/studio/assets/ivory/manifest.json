@@ -3978,5 +3978,218 @@
         }
       }
     ]
+  },
+  {
+    "code": "youth",
+    "slug": "what-is-a-youth",
+    "title": "What Is a Youth",
+    "composer": "Nino Rota",
+    "collection": "Romeo & Juliet · 1968",
+    "replaces_existing": false,
+    "base_variant": {
+      "id": "original",
+      "title": {
+        "uz": "Darslar varianti",
+        "ru": "Версия уроков",
+        "en": "Lesson edition"
+      },
+      "description": {
+        "uz": "Mavjud darslar shu original MIDI asosida tayyorlangan.",
+        "ru": "Существующие уроки подготовлены по этой исходной MIDI-версии.",
+        "en": "The existing lessons follow this original MIDI edition."
+      }
+    },
+    "variants": [
+      {
+        "id": "fabrizio-caligaris",
+        "title": "A Time for Us · Fabrizio Caligaris",
+        "description": {
+          "uz": "Romeo & Juliet muhabbat mavzusining Fabrizio Caligaris ijrosi. Darslar alohida original variantga tegishli.",
+          "ru": "Исполнение темы любви Romeo & Juliet от Fabrizio Caligaris. Уроки относятся к отдельной исходной версии.",
+          "en": "Fabrizio Caligaris's performance of the Romeo & Juliet love theme. The lessons follow the separate original edition."
+        },
+        "performer": "Fabrizio Caligaris",
+        "filename": "romeo-juliet-a-time-for-us-fabrizio-caligaris.mid",
+        "original_filename": "A Time For Us (Romeo And Juliet Love Theme) - Piano Tutorial - PDF.mid",
+        "source_url": "https://www.youtube.com/watch?v=HKgI8PPYfmg",
+        "source_sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
+        "difficulty": 4,
+        "preview_start": 3.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Melody over a moving broken-chord accompaniment; wide register shifts and a denser middle require independent hands and phrase control.",
+          "median_notes_per_second": 5.4,
+          "peak_notes_per_second": 10.6,
+          "peak_simultaneous_notes": 5
+        },
+        "sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
+        "trim_start_ticks": 0,
+        "note_count": 944,
+        "duration_seconds": 174.30208333333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUH"
+      }
+    ]
+  },
+  {
+    "code": "interstellar-main-theme",
+    "slug": "interstellar-main-theme",
+    "title": "Interstellar — Main Theme",
+    "composer": "Hans Zimmer",
+    "collection": "Interstellar",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "patrik-pietschmann",
+        "title": "Patrik Pietschmann",
+        "description": {
+          "uz": "Takroriy puls, keng registr va zichroq fakturali aranjirovka.",
+          "ru": "Аранжировка с повторяющимся пульсом, широким регистром и более плотной фактурой.",
+          "en": "An arrangement with a repeated pulse, broad register and denser texture."
+        },
+        "performer": "Patrik Pietschmann",
+        "filename": "interstellar-main-theme-patrik-pietschmann.mid",
+        "original_filename": "Interstellar - Main Theme [Piano Tutorial Synthesia] (Patrik Pietschmann).mid",
+        "source_url": "https://www.youtube.com/watch?v=HNPZ6KuJZYk",
+        "source_sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+        "difficulty": 4,
+        "preview_start": 33.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Repeated-note pulse must remain even under a sustained upper voice; later wide bass movement and dense rapid patterns require advanced coordination.",
+          "median_notes_per_second": 7.6,
+          "peak_notes_per_second": 13.6,
+          "peak_simultaneous_notes": 4
+        },
+        "sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+        "trim_start_ticks": 0,
+        "note_count": 2046,
+        "duration_seconds": 280.2604166666667,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUC"
+      },
+      {
+        "id": "the-piano-lab",
+        "title": "The Piano Lab",
+        "description": {
+          "uz": "Ixchamroq fakturadagi, alohida ijro tempi va tuzilishiga ega variant.",
+          "ru": "Версия с более прозрачной фактурой, собственным темпом и формой исполнения.",
+          "en": "A more transparent texture with its own performance tempo and structure."
+        },
+        "performer": "The Piano Lab",
+        "filename": "interstellar-main-theme-the-piano-lab.mid",
+        "original_filename": "How To Play _Interstellar_ Main Theme by Hans Zimmer, Piano Tutorial, Synthesia [THE PIANO LAB].mid",
+        "source_url": "https://www.youtube.com/watch?v=MtTB0JJaZl8",
+        "source_sha256": "176d9d8a45f1135b2eed46d2b2970d285e9bf17e5b363d173f8f476e176c106c",
+        "difficulty": 3,
+        "preview_start": 22.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Fewer attacks and a narrower upper range than the Pietschmann performance; layered chords and melody still require steady pulse and hand balance.",
+          "median_notes_per_second": 4.2,
+          "peak_notes_per_second": 8.6,
+          "peak_simultaneous_notes": 6
+        },
+        "sha256": "176d9d8a45f1135b2eed46d2b2970d285e9bf17e5b363d173f8f476e176c106c",
+        "trim_start_ticks": 0,
+        "note_count": 911,
+        "duration_seconds": 209.59895833333334,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgUN"
+      }
+    ]
+  },
+  {
+    "code": "the-sound-of-silence",
+    "slug": "the-sound-of-silence",
+    "title": "The Sound of Silence",
+    "composer": "Paul Simon",
+    "collection": "Simon & Garfunkel",
+    "replaces_existing": false,
+    "variants": [
+      {
+        "id": "aldy-tutorials",
+        "title": "Aldy Tutorials",
+        "description": {
+          "uz": "Simon & Garfunkel qo‘shig‘i. Siz so‘raganidek yarim ton pastga transpozitsiya qilingan.",
+          "ru": "Песня Simon & Garfunkel. По вашему запросу транспонирована на полтона вниз.",
+          "en": "The Simon & Garfunkel song, transposed down one semitone as requested."
+        },
+        "performer": "Aldy Tutorials",
+        "filename": "the-sound-of-silence.mid",
+        "original_filename": "The Sound of Silence - Simon and Garfunkel (Piano Tutorial) (3).mid",
+        "source_url": "https://www.youtube.com/watch?v=LQApvGp3dJM",
+        "source_sha256": "64c4a57ead072c567ccc378a1b8f44cfc3abc692e107468cad08db19dc415afe",
+        "difficulty": 4,
+        "preview_start": 3.0,
+        "preview_duration": 16.0,
+        "trim_start_seconds": 0.0,
+        "trim_reason": "",
+        "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
+        "difficulty_review": {
+          "basis": "Melody and repeated broken-chord accompaniment grow into a dense texture with bass shifts and multi-note voicing; requires independent balance and relaxed movement.",
+          "median_notes_per_second": 6.6,
+          "peak_notes_per_second": 14.2,
+          "peak_simultaneous_notes": 7
+        },
+        "transpose_semitones": -1,
+        "transpose_reason": "User requested minus one semitone. Ivory's toolbar transpose did not affect its Performance MIDI download; note-on/off pitches were shifted offline, retaining all original timing, holds, velocities and non-note messages.",
+        "sha256": "52303556647dc858d9e5ffc6ba0911fee6c83f61d88295c4bcadac868f55bfb9",
+        "trim_start_ticks": 0,
+        "note_count": 1282,
+        "duration_seconds": 178.0625,
+        "omitted_note_count": 0,
+        "added_note_count": 0,
+        "note_additions": [],
+        "hand_roles": {
+          "method": "tracks",
+          "tracks": {
+            "1": "left",
+            "0": "right"
+          },
+          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+        },
+        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBCgYG"
+      }
+    ]
   }
 ]

@@ -111,17 +111,24 @@ Google Search Console uses DNS ownership verification; retain its root TXT recor
 Submit `https://kuylab.uz/sitemap.xml` and inspect public URLs after deployment.
 Check PageSpeed on mobile and desktop; lab scores are separate from field data.
 
-The curated repertoire contains 101 compositions: the original eight, 24 retained
-classical/contemporary editions, and 69 works grouped from 83 owner-supplied Ivory
-performances. [The Ivory manifest](backend/apps/studio/assets/ivory/manifest.json)
+The curated repertoire contains 103 compositions: the original eight, 24 retained
+classical/contemporary editions, and 71 additional works. The 87 owner-supplied
+Ivory performances form 72 work groups, including an additional recording for
+the existing What Is a Youth course. [The Ivory manifest](backend/apps/studio/assets/ivory/manifest.json)
 pins each arrangement, difficulty, preview, source attribution and import hash.
 Multiple performances share one composition and expose separate player variants.
 Ode to Joy, Moonlight Sonata I, Rondo alla Turca, Time, He’s a Pirate and My Heart
 Will Go On use the replacement performances while retaining their composition IDs
-and slugs. Nine confirmed channel jingles are omitted; 73 exports retain their
+and slugs. Nine confirmed channel jingles are omitted; 76 exports retain their
 original bytes, and Blue Bell's first performance has one documented user-directed
 B5 addition after G5. Original downloads, precise cuts and editorial provenance
 remain available for audit.
+The Sound of Silence is transposed down one semitone in the MIDI itself; its
+untransposed download is retained alongside exact timing/velocity verification.
+Interstellar Main Theme has Pietschmann and The Piano Lab variants, separate from
+Cornfield Chase. A Time for Us is a Fabrizio Caligaris recording of the Romeo &
+Juliet theme; the original What Is a Youth edition and its six lessons remain
+the default, with their existing IDs, saved positions and timestamp notes intact.
 The earlier source-specific lessons for replaced editions are retired from the
 active catalog; learner history is preserved. New imports do not claim to have
 newly authored lessons. The 24 retained editions in

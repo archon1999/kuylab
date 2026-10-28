@@ -16,7 +16,7 @@ from apps.studio.models import StudioAsset
 from apps.studio.repertoire import SOURCES, SOURCE_BY_CODE, repertoire_source
 from apps.studio.all_in_package import additional_assets, package_source, study_file, HASHES
 from apps.studio.curated_repertoire import ENTRY_BY_CODE, edition_provenance, edition_source
-from apps.studio.ivory_repertoire import GROUP_BY_CODE as IVORY_BY_CODE, additional_assets as ivory_assets, performance_provenance, performance_source
+from apps.studio.ivory_repertoire import GROUP_BY_CODE as IVORY_BY_CODE, additional_assets as ivory_assets, performance_provenance, performance_source, asset_key as ivory_asset_key
 
 ORIGINAL_KEY = "composition:still:original"
 
@@ -205,12 +205,14 @@ class Command(BaseCommand):
                         "tempo_beat_unit":"quarter","key_signature":"","time_signature":"","arranger":"",
                         "full_score_format":"midi","full_score_verified_at":None})
                     arrangements[source.code] = arrangement
-                    if source.course_kind == "ivory":
-                        for index, variant in enumerate(IVORY_BY_CODE[source.code]["variants"]):
-                            asset_key = source.asset_key if index == 0 else f"composition:{source.code}:{variant['id']}"
+                    if source.code in IVORY_BY_CODE:
+                        group = IVORY_BY_CODE[source.code]
+                        for index, variant in enumerate(group["variants"]):
+                            primary = not group.get("base_variant") and index == 0
+                            asset_key = ivory_asset_key(source.code, variant)
                             title = variant["title"]
                             label = title["uz"] if isinstance(title, dict) else title
-                            defaults = {"composition": composition, "is_default": index == 0,
+                            defaults = {"composition": composition, "is_default": primary,
                                 "title": source.title + " · " + label,
                                 "source_url": variant["source_url"], "reference_video_url": variant["source_url"],
                                 "source_kind": "own", "rights_status": "user_owned",
@@ -220,7 +222,7 @@ class Command(BaseCommand):
                                 "tempo_bpm": round(validated[asset_key]["quarter_bpm"]),
                                 "tempo_beat_unit": "quarter", "key_signature": "", "time_signature": "",
                                 "full_score_format": "midi", "full_score_verified_at": None}
-                            if index == 0:
+                            if primary:
                                 for field, value in defaults.items():
                                     setattr(arrangement, field, value)
                                 arrangement.save(update_fields=list(defaults))
@@ -267,9 +269,9 @@ class Command(BaseCommand):
                     version = (Score.objects.filter(arrangement=arrangement).aggregate(last=Max("version"))["last"] or 0)+1
                     score = Score(arrangement=arrangement,version=version,file_format="midi",title=title,
                                   source_url=provenance.get("source_url", ""),
-                                  original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") or source.course_kind == "ivory" else key.replace(":","-")+".mid",
+                                  original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") or provenance["kind"] == "owner_supplied_ivory_performance" else key.replace(":","-")+".mid",
                                   content_sha256=digest,source_provenance=provenance,parsed=parsed,
-                                  rights_note=(ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "Owner-supplied Ivory performance; original musical rights retained. Only a separately documented channel intro may be omitted." if source.course_kind == "ivory" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
+                                  rights_note="Owner-supplied Ivory performance; original musical rights retained. Only a separately documented channel intro may be omitted." if provenance["kind"] == "owner_supplied_ivory_performance" else (ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
                     score.musicxml.save("source.mid", ContentFile(content),save=False)

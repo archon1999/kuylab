@@ -61,14 +61,16 @@ def ivory_source(group):
 
 
 # Replacing an edition keeps its stable composition code, slug and database key.
-SOURCES = tuple(ivory_source(IVORY_BY_CODE[source.code]) if source.code in IVORY_BY_CODE else source for source in SOURCES)
+SOURCES = tuple(ivory_source(IVORY_BY_CODE[source.code])
+                if source.code in IVORY_BY_CODE and not IVORY_BY_CODE[source.code].get("base_variant")
+                else source for source in SOURCES)
 SOURCES += tuple(ivory_source(group) for group in IVORY_GROUPS if group["code"] not in _existing_codes)
 SOURCE_BY_CODE = {source.code: source for source in SOURCES}
 
 
 @lru_cache(maxsize=40)
 def repertoire_source(code):
-    if code in IVORY_BY_CODE:
+    if code in IVORY_BY_CODE and not IVORY_BY_CODE[code].get("base_variant"):
         return performance_source(code)
     if code == "still":
         return source_data()

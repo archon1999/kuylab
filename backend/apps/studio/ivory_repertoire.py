@@ -19,14 +19,17 @@ GROUP_BY_CODE = {group["code"]: group for group in GROUPS}
 
 def asset_key(code, variant):
     group = GROUP_BY_CODE[code]
-    return f"composition:{code}:original" if variant["id"] == group["variants"][0]["id"] else f"composition:{code}:{variant['id']}"
+    primary = not group.get("base_variant") and variant["id"] == group["variants"][0]["id"]
+    return f"composition:{code}:original" if primary else f"composition:{code}:{variant['id']}"
 
 
 def variant_definitions(code):
     group = GROUP_BY_CODE.get(code)
-    if not group or len(group["variants"]) < 2:
+    if not group or (not group.get("base_variant") and len(group["variants"]) < 2):
         return []
-    return [{"id": variant["id"], "title": variant["title"],
+    base = group.get("base_variant")
+    values = [{**base, "_asset_key": f"composition:{code}:original"}] if base else []
+    return values + [{"id": variant["id"], "title": variant["title"],
              "description": variant.get("description", {"uz": "", "ru": "", "en": ""}),
              "_asset_key": asset_key(code, variant)} for variant in group["variants"]]
 
@@ -65,11 +68,11 @@ def performance_source(code, variant_id=None):
 
 def performance_provenance(code, variant_id=None):
     entry = variant_entry(code, variant_id)
-    return {"kind": "owner_supplied_ivory_performance", "composition_code": code,
+    value = {"kind": "owner_supplied_ivory_performance", "composition_code": code,
             "variant_id": entry["id"], "filename": entry["filename"],
             "source_url": entry["source_url"], "ivory_player_url": entry.get("ivory_player_url", ""),
             "source_sha256": entry["source_sha256"], "import_sha256": entry["sha256"],
-            "preserved_original_bytes": entry["trim_start_seconds"] == 0 and not entry.get("added_note_count", 0),
+            "preserved_original_bytes": entry["trim_start_seconds"] == 0 and not entry.get("added_note_count", 0) and not entry.get("transpose_semitones", 0),
             "trim_start_seconds": entry["trim_start_seconds"],
             "trim_start_ticks": entry.get("trim_start_ticks", 0),
             "trim_reason": entry.get("trim_reason", ""),
@@ -82,10 +85,16 @@ def performance_provenance(code, variant_id=None):
             "pedal_extended": False, "hand_assignment": entry["hand_roles"]["evidence"],
             "completeness_scope": "All source performance notes after the explicitly reviewed channel-intro boundary, plus any separately documented user-directed editorial note additions; no musical introduction is automatically removed.",
             "permission_basis": "Owner supplied these files and instructed import; original rights retained."}
+    if entry.get("transpose_semitones"):
+        value.update({"transpose_semitones": entry["transpose_semitones"],
+                      "transpose_reason": entry["transpose_reason"],
+                      "transpose_scope": "Every note-on/off pitch; original rhythm, key-hold duration, velocity and non-note events retained."})
+    return value
 
 
 def additional_assets():
     for group in GROUPS:
-        for variant in group["variants"][1:]:
+        variants = group["variants"] if group.get("base_variant") else group["variants"][1:]
+        for variant in variants:
             content, parsed = performance_source(group["code"], variant["id"])
             yield asset_key(group["code"], variant), group["title"], content, parsed, performance_provenance(group["code"], variant["id"])

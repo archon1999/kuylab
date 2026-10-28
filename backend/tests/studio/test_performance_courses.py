@@ -94,6 +94,7 @@ class PerformanceCourseTests(SimpleTestCase):
         items = performance_items()
         self.assertEqual(Counter(i['kind'] for i in items), {'lesson': 33, 'journey': 11})
         self.assertEqual(len({i['_composition'] for i in items}), 11)
+        self.assertTrue(all(i['id'].endswith(':performance-complete') for i in items if i['kind'] == 'journey'))
         ids = {i['id'] for i in all_items()}
         for item in items:
             self.assertTrue(all(key in ids for key in item['related_ids']))

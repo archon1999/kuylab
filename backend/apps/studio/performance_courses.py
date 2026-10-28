@@ -128,7 +128,10 @@ def performance_items():
                 "stages": variants, "source": {**source_window(start, end), **source_binding},
                 "ready_when": READY, "related_ids": related_ids(plan["related"]),
             })
-        key = f"journey:{code}:complete"
+        # A retired curated edition can still own :complete progress, positions
+        # and historical assets. This is a newly reviewed recording, not a
+        # continuation of that edition's full-piece study.
+        key = f"journey:{code}:performance-complete"
         # A full performance should keep all notes even at the slowest speed;
         # sparse introductions belong to the short, focused lessons above.
         complete = midi_titles(source, stages(source, parsed, key, 0, duration, "coordination", complete=True))[2:]

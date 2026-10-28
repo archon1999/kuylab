@@ -264,9 +264,11 @@ class IvorySeedTests(TestCase):
         asset.save(update_fields=['score'])
         profile = Profile.objects.get()
         lesson_id = 'lesson:ode-to-joy:melody'
+        old_journey = 'journey:ode-to-joy:complete:stage:combined-slow'
+        StudioAsset.objects.update_or_create(key=old_journey,defaults={'score':legacy,'revision':'retired-edition'})
         library = PersonalLibrary.objects.create(profile=profile,
-            favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered'},
-            positions={f'composition:{composition_id}':12.5})
+            favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered',old_journey:'mastered'},
+            positions={f'composition:{composition_id}':12.5,old_journey:42.5})
         note = PracticeNote.objects.create(profile=profile,content_id=lesson_id,
             position_seconds=2,text='Keep my old edition note')
         call_command('seed_studio',stdout=io.StringIO())
@@ -275,7 +277,10 @@ class IvorySeedTests(TestCase):
         self.assertNotEqual(asset.score_id,legacy.pk)
         self.assertEqual(asset.score.content_sha256,SOURCE_BY_CODE['ode-to-joy'].sha256)
         library.refresh_from_db()
-        self.assertEqual(library.progress,{lesson_id:'mastered'})
+        self.assertEqual(library.progress,{lesson_id:'mastered',old_journey:'mastered'})
+        self.assertEqual(library.positions[old_journey],42.5)
+        self.assertEqual(StudioAsset.objects.get(pk=old_journey).score_id,legacy.pk)
+        self.assertEqual(StudioAsset.objects.get(pk=old_journey).revision,'retired-edition')
         self.assertEqual(library.favorites,[f'composition:{composition_id}',lesson_id])
         note.refresh_from_db()
         self.assertEqual(note.text,'Keep my old edition note')

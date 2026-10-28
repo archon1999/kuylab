@@ -1,4 +1,12 @@
 export const studioMessages: Record<string, { ru: string; en: string }> = {
+  'Bu ijro varianti uchun alohida darslar hali tayyorlanmagan.': {
+    ru: 'Для этого варианта исполнения отдельные уроки пока не подготовлены.',
+    en: 'Separate lessons have not been prepared for this performance yet.',
+  },
+  'Darsli ijro variantiga o‘tish': {
+    ru: 'Перейти к варианту с уроками',
+    en: 'Switch to the performance with lessons',
+  },
   'Kompozitsiyalar ko‘rinishi': { ru: 'Вид каталога', en: 'Library view' },
   'Ro‘yxat ko‘rinishi': { ru: 'Список', en: 'List view' },
   'Katakli ko‘rinish': { ru: 'Сетка', en: 'Grid view' },

@@ -100,6 +100,10 @@ def iter_prepared_assets():
                                              "note_release_basis": "Source note-on/off timing, uniformly scaled; sustain is not baked into key holds."})
                 if source_code == "all-in":
                     stage_provenance["source_variant"] = stage["_source_variant"]
+                if item.get("source", {}).get("playback_revision"):
+                    stage_provenance.update({"source_playback_revision": item["source"]["playback_revision"],
+                                             "source_variant": item["source"].get("composition_variant_id"),
+                                             "note_release_basis": "Reviewed Ivory key holds, uniformly scaled; no pedal tail is baked into the holds."})
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
                 yield (stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance)
             continue
@@ -271,7 +275,7 @@ class Command(BaseCommand):
                                   source_url=provenance.get("source_url", ""),
                                   original_filename=provenance.get("filename", source.filename) if provenance.get("preserved_original_bytes") or provenance["kind"] == "owner_supplied_ivory_performance" else key.replace(":","-")+".mid",
                                   content_sha256=digest,source_provenance=provenance,parsed=parsed,
-                                  rights_note="Owner-supplied Ivory performance; original musical rights retained. Only a separately documented channel intro may be omitted." if provenance["kind"] == "owner_supplied_ivory_performance" else (ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
+                                  rights_note="Owner-supplied Ivory performance; original musical rights retained. Every reviewed cut, note restoration or transposition is recorded in source provenance; the complete original download is retained." if provenance["kind"] == "owner_supplied_ivory_performance" else (ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
                     score.musicxml.save("source.mid", ContentFile(content),save=False)

@@ -3,6 +3,7 @@ from collections import Counter, defaultdict, deque
 from hashlib import sha256
 import io
 import json
+import math
 from pathlib import Path
 import re
 from statistics import median
@@ -12,6 +13,52 @@ from apps.scores.midi import parse_midi
 
 
 MAX_REVIEWED_NOTE_ADDITIONS = 8
+
+
+def trim_channel_outro(data, end_seconds):
+    """Remove a documented non-musical suffix without clipping a held note."""
+    if end_seconds is None:
+        return data, None, None
+    parsed = parse_midi(data)
+    if (isinstance(end_seconds, bool) or not isinstance(end_seconds, (int, float))
+            or not math.isfinite(end_seconds) or not 0 < end_seconds < parsed["metadata"]["duration_seconds"]):
+        raise ValueError("An outro boundary must lie inside the source timeline.")
+    original = mido.MidiFile(file=io.BytesIO(data))
+    elapsed, last_tick, tempo, cut_tick = 0.0, 0, 500000, None
+    for message in mido.merge_tracks(original.tracks):
+        tick = last_tick + message.time
+        seconds = elapsed + mido.tick2second(message.time, original.ticks_per_beat, tempo)
+        if seconds >= end_seconds:
+            cut_tick = last_tick + round(mido.second2tick(end_seconds-elapsed, original.ticks_per_beat, tempo))
+            break
+        elapsed, last_tick = seconds, tick
+        if message.type == "set_tempo":
+            tempo = message.tempo
+    if cut_tick is None:
+        raise ValueError("An outro boundary lies beyond the MIDI.")
+    actual_seconds = round(elapsed + mido.tick2second(cut_tick-last_tick, original.ticks_per_beat, tempo), 9)
+    if not cut_tick or not any(e["start_ticks"] < cut_tick for e in parsed["events"]):
+        raise ValueError("An outro cut must retain a nonempty musical prefix.")
+    if any(e["start_ticks"] < cut_tick < e["sound_end_ticks"] for e in parsed["events"]):
+        raise ValueError("An outro cut must not clip a retained note or pedal tail.")
+    output = mido.MidiFile(type=original.type, ticks_per_beat=original.ticks_per_beat, charset=original.charset)
+    for source_track in original.tracks:
+        tick, previous = 0, 0
+        track = mido.MidiTrack()
+        output.tracks.append(track)
+        for message in source_track:
+            tick += message.time
+            if tick > cut_tick:
+                break
+            if tick == cut_tick and message.type == "note_on" and message.velocity:
+                continue
+            if message.type != "end_of_track":
+                track.append(message.copy(time=tick-previous))
+                previous = tick
+        track.append(mido.MetaMessage("end_of_track", time=cut_tick-previous))
+    buffer = io.BytesIO()
+    output.save(file=buffer)
+    return buffer.getvalue(), cut_tick, actual_seconds
 
 
 def transpose_performance(data, semitones):
@@ -263,6 +310,12 @@ def build_catalog(plan, source_dir, target_dir, expected_count=None):
             if start<0 or start and not variant.get("trim_reason"):
                 raise ValueError("Only an explicitly reviewed channel-intro cut is supported.")
             content, tick, actual_start = trim_channel_intro(transposed,start)
+            end = variant.get("trim_end_seconds")
+            if end is not None and (isinstance(end, bool) or not isinstance(end, (int, float)) or not math.isfinite(end)):
+                raise ValueError("An outro boundary must be a finite time in seconds.")
+            if end is not None and not variant.get("trim_end_reason"):
+                raise ValueError("An outro cut needs an explicit review reason.")
+            content, end_tick, actual_end = trim_channel_outro(content, None if end is None else end-actual_start)
             retained_source_count = len(parse_midi(content,group["title"])["events"])
             omitted_count = original["validation"]["note_count"] - retained_source_count
             if omitted_count < 0:
@@ -289,8 +342,12 @@ def build_catalog(plan, source_dir, target_dir, expected_count=None):
                      "ivory_player_url":original["ivory_player_url"]}
             if original.get("performer") and not value.get("performer"):
                 value["performer"] = original["performer"]
+            if actual_end is not None:
+                value.update({"trim_end_seconds": actual_end+actual_start,
+                              "trim_end_ticks": end_tick+tick,
+                              "omitted_outro_note_count": sum(e["start_ticks"] >= end_tick+tick for e in parse_midi(data)["events"])})
             prepared[name] = content
-            if start or additions or semitones:
+            if start or additions or semitones or end is not None:
                 original_files[name] = data
             entry["variants"].append(value)
         output_groups.append(entry)

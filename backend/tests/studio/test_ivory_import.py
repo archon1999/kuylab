@@ -148,7 +148,10 @@ class IvorySourceTests(SimpleTestCase):
         for code in codes:
             self.assertEqual(SOURCE_BY_CODE[code].course_kind,'ivory')
             self.assertEqual(SOURCE_BY_CODE[code].slug,GROUP_BY_CODE[code]['slug'])
-        self.assertFalse(any(item.get('_composition') in codes for item in all_items()))
+        for item in all_items():
+            if item.get('_composition') in codes:
+                self.assertEqual(item['source']['playback_revision'],SOURCE_BY_CODE[item['_composition']].sha256[:16])
+                self.assertNotIn(item['id'].split(':')[-1], {'melody', 'bass', 'coordination'})
 
 
 class IvorySeedTests(TestCase):
@@ -180,7 +183,8 @@ class IvorySeedTests(TestCase):
                 self.assertEqual(len(piece['lesson_ids']),6)
                 self.assertNotIn('playback_revision',piece)
             else:
-                self.assertEqual(piece['lesson_ids'],[])
+                from apps.studio.performance_course_plans import PLANS
+                self.assertEqual(len(piece['lesson_ids']),3 if group['code'] in PLANS else 0)
                 self.assertEqual(piece['playback_revision'],group['variants'][0]['sha256'][:16])
             variants = piece.get('variants',[])
             self.assertEqual(len(variants),len(group['variants']) + bool(base) if base or len(group['variants'])>1 else 0)

@@ -9,6 +9,7 @@ import { useStudio } from '../../../application';
 import {
   filterByStudyStatus,
   selectCompositionVariant,
+  studyMatchesPerformance,
   compositionAttribution,
   type StudyStatusFilter as StatusFilter,
 } from '../../../domain';
@@ -43,9 +44,14 @@ export default function DetailPage() {
     requestedVariant,
     lastStages[`composition:${composition.id}:variant`],
   );
-  const lessons = catalog?.lessons.filter((item) => composition.lesson_ids.includes(item.id)) || [];
+  const allLessons =
+    catalog?.lessons.filter((item) => composition.lesson_ids.includes(item.id)) || [];
+  const lessons = allLessons.filter((item) =>
+    studyMatchesPerformance(item, composition, variant?.id),
+  );
   const journeys =
-    catalog?.journeys?.filter((item) => item.composition_id === composition.id) || [];
+    catalog?.journeys?.filter((item) => studyMatchesPerformance(item, composition, variant?.id)) ||
+    [];
   const shownLessons = filterByStudyStatus(lessons, status, progress);
   const shownJourneys = filterByStudyStatus(journeys, status, progress);
   return (
@@ -133,7 +139,27 @@ export default function DetailPage() {
           <PianoOutlined aria-hidden="true" />
           <div>
             <h2>{tr('Playerda o‘rganish')}</h2>
-            <p>{tr('Bu kompozitsiya uchun alohida darslar hali tayyorlanmagan.')}</p>
+            <p>
+              {tr(
+                allLessons.length
+                  ? 'Bu ijro varianti uchun alohida darslar hali tayyorlanmagan.'
+                  : 'Bu kompozitsiya uchun alohida darslar hali tayyorlanmagan.',
+              )}
+            </p>
+            {!!allLessons.length && (
+              <Button
+                onClick={() => {
+                  const target =
+                    allLessons[0].source?.composition_variant_id || composition.default_variant_id;
+                  if (target) {
+                    setRequestedVariant(target);
+                    setStage(`composition:${composition.id}:variant`, target);
+                  }
+                }}
+              >
+                {tr('Darsli ijro variantiga o‘tish')}
+              </Button>
+            )}
           </div>
         </div>
       )}

@@ -12,7 +12,15 @@ import { Button } from '@mui/material';
 import { usePreferences, useTranslation } from '@shared/i18n';
 import { followRouteLink, navigate, routePath } from '@shared/routing';
 import { useStudio } from '../../../application';
-import { allStudyItems, durationLabel, studyCountLabel, selectResumeStudy } from '../../../domain';
+import {
+  allStudyItems,
+  durationLabel,
+  studyCountLabel,
+  selectResumeStudy,
+  selectCompositionVariant,
+  compositionResumePosition,
+  studyMatchesPerformance,
+} from '../../../domain';
 import { ContentRow, Heading, SectionTitle, StudyCard } from '../../shared/StudioParts';
 import '../../studio.css';
 import RecentNotes from '../../shared/RecentNotes';
@@ -28,6 +36,18 @@ export default function DashboardPage() {
   const composition =
     catalog.compositions.find((value) => `composition:${value.id}` === currentId) ||
     catalog.compositions[0];
+  const variant = selectCompositionVariant(
+    composition,
+    null,
+    lastStages[`composition:${composition?.id}:variant`],
+  );
+  const resumePosition = composition
+    ? compositionResumePosition(composition, positions, variant?.id)
+    : 0;
+  const lessonCount = composition
+    ? catalog.lessons.filter((item) => studyMatchesPerformance(item, composition, variant?.id))
+        .length
+    : 0;
   const validIds = new Set([
     ...catalog.compositions.map((value) => `composition:${value.id}`),
     ...catalog.lessons.map((value) => value.id),
@@ -48,26 +68,25 @@ export default function DashboardPage() {
         <section className="studio-hero">
           <div>
             <p className="studio-eyebrow">
-              {tr(
-                positions[`composition:${composition.id}`]
-                  ? 'Davom etish'
-                  : 'Bugun pianino chalamiz',
-              )}
+              {tr(resumePosition ? 'Davom etish' : 'Bugun pianino chalamiz')}
             </p>
             <h2>{composition.title}</h2>
             <p className="studio-hero-caption">
-              {durationLabel(composition.duration_seconds)} ·{' '}
-              {studyCountLabel(composition.lesson_ids.length, 'lesson', language)}
+              {durationLabel(variant?.duration_seconds ?? composition.duration_seconds)} ·{' '}
+              {studyCountLabel(lessonCount, 'lesson', language)}
             </p>
             <div className="studio-actions">
               <Button
                 component="a"
-                href={routePath('practice', { composition: composition.id })}
+                href={routePath('practice', {
+                  composition: composition.id,
+                  variant: variant?.id ?? null,
+                })}
                 variant="contained"
                 startIcon={<PlayArrowRounded />}
                 onClick={followRouteLink}
               >
-                {tr(positions[`composition:${composition.id}`] ? 'Davom etish' : 'Playerni ochish')}
+                {tr(resumePosition ? 'Davom etish' : 'Playerni ochish')}
               </Button>
               <Button onClick={() => navigate('detail', { compositionSlug: composition.slug })}>
                 {tr('Darslar')}

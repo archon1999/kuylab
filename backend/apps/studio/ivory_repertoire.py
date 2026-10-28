@@ -72,7 +72,7 @@ def performance_provenance(code, variant_id=None):
             "variant_id": entry["id"], "filename": entry["filename"],
             "source_url": entry["source_url"], "ivory_player_url": entry.get("ivory_player_url", ""),
             "source_sha256": entry["source_sha256"], "import_sha256": entry["sha256"],
-            "preserved_original_bytes": entry["trim_start_seconds"] == 0 and not entry.get("added_note_count", 0) and not entry.get("transpose_semitones", 0),
+            "preserved_original_bytes": entry["trim_start_seconds"] == 0 and not entry.get("added_note_count", 0) and not entry.get("transpose_semitones", 0) and entry.get("trim_end_seconds") is None,
             "trim_start_seconds": entry["trim_start_seconds"],
             "trim_start_ticks": entry.get("trim_start_ticks", 0),
             "trim_reason": entry.get("trim_reason", ""),
@@ -89,6 +89,12 @@ def performance_provenance(code, variant_id=None):
         value.update({"transpose_semitones": entry["transpose_semitones"],
                       "transpose_reason": entry["transpose_reason"],
                       "transpose_scope": "Every note-on/off pitch; original rhythm, key-hold duration, velocity and non-note events retained."})
+    if entry.get("trim_end_seconds") is not None:
+        value.update({"trim_end_seconds": entry["trim_end_seconds"],
+                      "trim_end_ticks": entry["trim_end_ticks"],
+                      "trim_end_reason": entry["trim_end_reason"],
+                      "omitted_outro_note_count": entry["omitted_outro_note_count"],
+                      "completeness_scope": "Every source note before the explicitly reviewed channel-outro boundary, with pitches, attacks, holds and velocities preserved. The unrelated end-card music is omitted; the complete download is retained."})
     return value
 
 

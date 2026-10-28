@@ -111,7 +111,7 @@
     "title": "Gymnopédie No. 1",
     "composer": "Erik Satie",
     "collection": "Trois Gymnopédies",
-    "sha256": "09ce7337b4bf42ba12e1aa64b4c7dc7fcfa6455f1070cb12f8880a755df97384",
+    "sha256": "e6e0bc5e23c16ec55aedb0e5f1e5e521201df2552851342f90ca92628b1fe3ea",
     "note_count": 282,
     "duration_seconds": 141.0,
     "storage": "public",
@@ -156,7 +156,27 @@
         "start": 32,
         "end": 56
       }
-    ]
+    ],
+    "source_cleanup": {
+      "original_sha256": "09ce7337b4bf42ba12e1aa64b4c7dc7fcfa6455f1070cb12f8880a755df97384",
+      "removed_orphan_releases": [
+        {
+          "track_index": 1,
+          "message_index": 106,
+          "tick": 13824,
+          "channel": 0,
+          "pitch": 66
+        },
+        {
+          "track_index": 1,
+          "message_index": 109,
+          "tick": 13824,
+          "channel": 0,
+          "pitch": 66
+        }
+      ],
+      "reason": "Two duplicate zero-velocity F#4 releases at tick 13824 had no active note. All 282 attacks, pitches, velocities, holds and absolute message times are unchanged; the complete original download is retained."
+    }
   },
   {
     "code": "moonlight-sonata",

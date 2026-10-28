@@ -941,11 +941,11 @@
           "peak_notes_per_second": 17.4,
           "peak_simultaneous_notes": 8
         },
-        "sha256": "2ac8f983d9c375f41a9d6c397a5e9ab6cc4880e897ce6f7f57760bba2c2fd228",
+        "sha256": "77ef182516bbdb03d79c7a35335e982a68b9ea87efc555c575bf7e1d8db4dc2c",
         "trim_start_ticks": 0,
-        "note_count": 2595,
-        "duration_seconds": 206.6875,
-        "omitted_note_count": 0,
+        "note_count": 2482,
+        "duration_seconds": 186.5,
+        "omitted_note_count": 113,
         "added_note_count": 0,
         "note_additions": [],
         "hand_roles": {
@@ -955,7 +955,11 @@
             "0": "right"
           },
           "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
-        }
+        },
+        "trim_end_seconds": 186.5,
+        "trim_end_reason": "Reviewed Rousseau video aeEmGvm7kDk: Rondo ends with the A-major chord at 181.93s, last release 182.495s. The channel end screen plays unrelated Fur Elise music from 188.578s. Cut at 186.5s leaves the complete Rondo and final decay; no retained note crosses the boundary.",
+        "trim_end_ticks": 35808,
+        "omitted_outro_note_count": 113
       }
     ]
   },

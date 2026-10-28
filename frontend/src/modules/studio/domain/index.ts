@@ -19,6 +19,7 @@ export {
   compositionPlaybackContext,
   compositionPositionKeys,
   compositionResumePosition,
+  studyMatchesPerformance,
   compositionNotebookContext,
   compositionVariantStartPosition,
   compositionNoteTarget,

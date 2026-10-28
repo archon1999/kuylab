@@ -19,7 +19,13 @@ export type StudyItemDto = {
   comparisons?: { id: string; title: string; instruction: string; score_id: number }[];
   ready_when?: string;
   stages?: StudyStageDto[];
-  source?: { start_seconds: number; end_seconds: number; transformation: string };
+  source?: {
+    start_seconds: number;
+    end_seconds: number;
+    transformation: string;
+    composition_variant_id?: string;
+    playback_revision?: string;
+  };
 };
 
 export type StudyStageDto = {

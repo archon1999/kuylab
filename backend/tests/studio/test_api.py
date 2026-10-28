@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,129,48,24))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),201)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,162,48,24))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),234)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)
@@ -123,7 +123,8 @@ class StudioTests(TestCase):
             self.assertEqual(original.content_sha256, source.sha256)
             lessons = [item for item in catalog["lessons"] if item["id"] in composition["lesson_ids"]]
             journeys = [item for item in catalog["journeys"] if item["composition_id"] == composition["id"]]
-            expected = (0, 0) if source.course_kind == "ivory" else (3, 1) if source.course_kind == "curated" else (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8)
+            from apps.studio.performance_course_plans import PLANS
+            expected = (3, 1) if source.code in PLANS or source.course_kind == "curated" else (0, 0) if source.course_kind == "ivory" else (9, 5) if source.code == "all-in" else (12 if source.code == "still" else 6, 8)
             self.assertEqual((len(lessons), len(journeys)), expected)
             for item in lessons + journeys:
                 self.assertEqual(item["composition_id"], composition["id"])

@@ -148,7 +148,10 @@ class IvorySourceTests(SimpleTestCase):
         for code in codes:
             self.assertEqual(SOURCE_BY_CODE[code].course_kind,'ivory')
             self.assertEqual(SOURCE_BY_CODE[code].slug,GROUP_BY_CODE[code]['slug'])
-        self.assertFalse(any(item.get('_composition') in codes for item in all_items()))
+        for item in all_items():
+            if item.get('_composition') in codes:
+                self.assertEqual(item['source']['playback_revision'],SOURCE_BY_CODE[item['_composition']].sha256[:16])
+                self.assertNotIn(item['id'].split(':')[-1], {'melody', 'bass', 'coordination'})
 
 
 class IvorySeedTests(TestCase):
@@ -180,7 +183,8 @@ class IvorySeedTests(TestCase):
                 self.assertEqual(len(piece['lesson_ids']),6)
                 self.assertNotIn('playback_revision',piece)
             else:
-                self.assertEqual(piece['lesson_ids'],[])
+                from apps.studio.performance_course_plans import PLANS
+                self.assertEqual(len(piece['lesson_ids']),3 if group['code'] in PLANS else 0)
                 self.assertEqual(piece['playback_revision'],group['variants'][0]['sha256'][:16])
             variants = piece.get('variants',[])
             self.assertEqual(len(variants),len(group['variants']) + bool(base) if base or len(group['variants'])>1 else 0)
@@ -260,9 +264,16 @@ class IvorySeedTests(TestCase):
         asset.save(update_fields=['score'])
         profile = Profile.objects.get()
         lesson_id = 'lesson:ode-to-joy:melody'
+        old_journey = 'journey:ode-to-joy:complete:stage:combined-slow'
+        legacy_journey = Score.objects.create(arrangement=asset.score.arrangement,
+            version=legacy.version+1,file_format='midi',title='Previous full-piece study',
+            original_filename='previous-study.mid',content_sha256=legacy.content_sha256,
+            parsed=old_parsed,source_provenance={'kind':'previous_curated_study'},rights_confirmed_at=timezone.now())
+        legacy_journey.musicxml.save('previous-study.mid',ContentFile(old_bytes))
+        StudioAsset.objects.update_or_create(key=old_journey,defaults={'score':legacy_journey,'revision':'retired-edition'})
         library = PersonalLibrary.objects.create(profile=profile,
-            favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered'},
-            positions={f'composition:{composition_id}':12.5})
+            favorites=[f'composition:{composition_id}',lesson_id],progress={lesson_id:'mastered',old_journey:'mastered'},
+            positions={f'composition:{composition_id}':12.5,old_journey:42.5})
         note = PracticeNote.objects.create(profile=profile,content_id=lesson_id,
             position_seconds=2,text='Keep my old edition note')
         call_command('seed_studio',stdout=io.StringIO())
@@ -271,7 +282,10 @@ class IvorySeedTests(TestCase):
         self.assertNotEqual(asset.score_id,legacy.pk)
         self.assertEqual(asset.score.content_sha256,SOURCE_BY_CODE['ode-to-joy'].sha256)
         library.refresh_from_db()
-        self.assertEqual(library.progress,{lesson_id:'mastered'})
+        self.assertEqual(library.progress,{lesson_id:'mastered',old_journey:'mastered'})
+        self.assertEqual(library.positions[old_journey],42.5)
+        self.assertEqual(StudioAsset.objects.get(pk=old_journey).score_id,legacy_journey.pk)
+        self.assertEqual(StudioAsset.objects.get(pk=old_journey).revision,'retired-edition')
         self.assertEqual(library.favorites,[f'composition:{composition_id}',lesson_id])
         note.refresh_from_db()
         self.assertEqual(note.text,'Keep my old edition note')

@@ -69,6 +69,24 @@ export function compositionResumePosition(
   return 0;
 }
 
+/** Lesson seconds belong to the reviewed recording; aligned package editions share them. */
+export function studyMatchesPerformance(
+  item: StudyItem,
+  composition: Composition,
+  variantId?: string,
+) {
+  if (item.composition_id !== composition.id || !item.source) return false;
+  const selected = selectCompositionVariant(composition, variantId);
+  const revision = selected?.playback_revision ?? composition.playback_revision;
+  const source = item.source;
+  if (source.playback_revision)
+    return (
+      source.playback_revision === revision &&
+      (!source.composition_variant_id || source.composition_variant_id === selected?.id)
+    );
+  return !revision;
+}
+
 export function compositionNotebookContext(composition: Composition, variantId?: string) {
   const context = compositionPlaybackContext(composition, variantId);
   return context.includes(':source:') ? context : `composition:${composition.id}`;

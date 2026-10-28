@@ -74,6 +74,9 @@ jobs:
       - run: poetry check --lock
       - run: poetry install --no-interaction --no-root
       - run: poetry run python manage.py makemigrations --check --dry-run --settings=config.settings.test
+      - name: Audit pinned MIDI performances
+        if: matrix.database == 'sqlite'
+        run: poetry run python manage.py audit_midi_catalog --settings=config.settings.test
       - run: poetry run python manage.py test tests --settings=config.settings.test --noinput --parallel 2 --verbosity 2
       - name: Audit locked Python dependencies
         if: matrix.database == 'sqlite'

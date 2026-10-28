@@ -60,7 +60,7 @@ def edition_source(code):
 
 def edition_provenance(code):
     entry = ENTRY_BY_CODE[code]
-    return {"kind": "curated_public_edition" if entry["rights_basis"] == "published_open_license" else "owner_authorized_edition",
+    value = {"kind": "curated_public_edition" if entry["rights_basis"] == "published_open_license" else "owner_authorized_edition",
             "composition_code": code, "filename": code + ".mid", "source_sha256": entry["sha256"],
             "preserved_original_bytes": not entry.get("rendered_from_musicxml", False), "source_url": entry["source_url"],
             "credit": entry["credit"], "license": entry["license"],
@@ -71,3 +71,7 @@ def edition_provenance(code):
             "permission_basis": entry["rights_basis"],
             "source_document_sha256": entry.get("source_document_sha256", ""),
             "edition_note": entry["edition_note"]}
+    if entry.get("source_cleanup"):
+        value.update({"preserved_original_bytes": False, "source_cleanup": entry["source_cleanup"],
+                      "original_sha256": entry["source_cleanup"]["original_sha256"]})
+    return value

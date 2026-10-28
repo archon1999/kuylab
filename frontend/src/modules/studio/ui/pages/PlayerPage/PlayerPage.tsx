@@ -13,6 +13,7 @@ import {
   compositionResumePosition,
   compositionVariantStartPosition,
   selectCompositionVariant,
+  studyMatchesPerformance,
 } from '../../../domain';
 import CompositionVariants from '../../shared/CompositionVariants';
 import { Loading, StudioError } from '../../shared/StudioParts';
@@ -99,12 +100,7 @@ export default function PlayerPage() {
           )}
           score={score}
           markers={catalog?.lessons
-            .filter(
-              (item) =>
-                item.composition_id === composition.id &&
-                item.source &&
-                !variant?.playback_revision,
-            )
+            .filter((item) => studyMatchesPerformance(item, composition, variant?.id))
             .filter(
               (item, index, array) =>
                 array.findIndex(

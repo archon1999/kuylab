@@ -22,6 +22,7 @@ import {
   allStudyItems,
   libraryVariant,
   compositionAttribution,
+  studyMatchesPerformance,
   type Composition,
   type StudyItem,
 } from '../../domain';
@@ -152,6 +153,10 @@ export function CompositionCard({
   const tr = useTranslation();
   const { language } = usePreferences();
   const variant = libraryVariant(composition, difficulty);
+  const { catalog } = useStudio();
+  const lessonCount =
+    catalog?.lessons.filter((item) => studyMatchesPerformance(item, composition, variant?.id))
+      .length || 0;
   const attribution = compositionAttribution(composition);
   return (
     <article className="studio-composition-card">
@@ -169,9 +174,7 @@ export function CompositionCard({
         </div>
         <div className="studio-composition-meta">
           <span>{durationLabel(variant?.duration_seconds || composition.duration_seconds)}</span>
-          {!!composition.lesson_ids.length && (
-            <span>{studyCountLabel(composition.lesson_ids.length, 'lesson', language)}</span>
-          )}
+          {!!lessonCount && <span>{studyCountLabel(lessonCount, 'lesson', language)}</span>}
           {!!composition.variants?.length && (
             <span>{composition.variants.map((variant) => variant.title).join(' / ')}</span>
           )}

@@ -199,7 +199,7 @@ These transparent reductions do not infer chord roots. All variants preserve the
 selected source pitches, velocities, onsets and clipped holds under uniform time
 scaling. The last complete-file stage reuses the original score and its bytes.
 
-The complete catalog has 8 compositions, 57 lessons, 61 continuity studies, 48
+The complete catalog has 103 compositions, 162 lessons, 96 continuity studies, 48
 independent exercises and 24 theory topics with 49 optional activities. The catalog
 queries IDs and small scalar source metadata rows, avoiding every study's parsed graph.
 Tests verify the exact musical landmarks, all 420 stage selections for these six

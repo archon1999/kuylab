@@ -2,6 +2,7 @@
 **/__pycache__/
 *.py[cod]
 backend/db.sqlite3*
+backend/default_*.sqlite3*
 backend/media/
 backend/staticfiles/
 frontend/node_modules/

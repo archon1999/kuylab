@@ -74,6 +74,11 @@ export default function StudioPlayerView(
   }, [settings.speed]);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const mobile = useMediaQuery('(max-width: 680px)');
+  const overflowToolbar = useMediaQuery('(max-width: 1000px)');
+  useEffect(() => {
+    if (!mobile) setSpeedAnchor(null);
+    if (!overflowToolbar) setMoreAnchor(null);
+  }, [mobile, overflowToolbar]);
   const { volume, reverb, leftVolume, rightVolume } = settings;
   const [full, setFull] = useState(false);
   const element = useRef<HTMLElement>(null);
@@ -311,8 +316,8 @@ export default function StudioPlayerView(
         )}
       </div>
       <Popover
-        open={!!speedAnchor}
-        anchorEl={speedAnchor}
+        open={mobile && !!speedAnchor}
+        anchorEl={mobile ? speedAnchor : null}
         onClose={() => setSpeedAnchor(null)}
         container={() => element.current || document.body}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -349,8 +354,8 @@ export default function StudioPlayerView(
         </div>
       </Popover>
       <Menu
-        open={!!moreAnchor}
-        anchorEl={moreAnchor}
+        open={overflowToolbar && !!moreAnchor}
+        anchorEl={overflowToolbar ? moreAnchor : null}
         onClose={() => setMoreAnchor(null)}
         container={() => element.current || document.body}
         slotProps={{ paper: { className: 'studio-actions-menu' } }}

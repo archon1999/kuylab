@@ -110,9 +110,11 @@ def player_preferences(request):
         value = request.data
         if not isinstance(value, dict) or len(json.dumps(value)) > 4096:
             return Response({"detail": "Invalid preferences."}, status=400)
-        allowed = {"noteNames", "keyNames", "shadows", "particles", "velocityGradients", "left", "right", "leftColor", "rightColor", "lookahead", "volume", "reverb", "speed", "leftVolume", "rightVolume", "countIn", "focusKeys", "compactNoteLengths", "keyboardZoom", "visibleKeys"}
+        allowed = {"noteNames", "keyNames", "shadows", "particles", "velocityGradients", "left", "right", "leftColor", "rightColor", "lookahead", "volume", "reverb", "speed", "leftVolume", "rightVolume", "countIn", "focusKeys", "compactNoteLengths", "keyboardZoom", "visibleKeys", "midiSound"}
         if set(value) - allowed:
             return Response({"detail": "Unknown preference."}, status=400)
+        if "midiSound" in value and value["midiSound"] not in ("instrument", "browser"):
+            return Response({"detail": "Invalid MIDI sound source."}, status=400)
         if context:
             with transaction.atomic():
                 profile = Profile.objects.select_for_update().get(pk=profile.pk)

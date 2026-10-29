@@ -23,6 +23,7 @@ export const defaultStudioPreferences: Readonly<StudioPreferences> = {
   focusKeys: false,
   visibleKeys: 0,
   compactNoteLengths: true,
+  midiSound: 'instrument',
 };
 
 /** Persist only personal settings; score identity and position cannot leak into this record. */
@@ -59,6 +60,7 @@ export function normalizeStudioPreferences(value: unknown): StudioPreferences {
     return Math.round(Math.max(minimum, Math.min(maximum, current)) / step) * step;
   };
   return {
+    midiSound: raw.midiSound === 'browser' ? 'browser' : 'instrument',
     leftVolume: number('leftVolume', 0, 100, 1),
     rightVolume: number('rightVolume', 0, 100, 1),
     countIn: [2, 3].includes(Number(raw.countIn)) ? Number(raw.countIn) : 0,

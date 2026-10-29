@@ -6,6 +6,26 @@ reference; no Deenly template components or licensed Minimal assets are copied.
 
 ## Development
 
+USB MIDI input is shared across the signed-in studio, including composition and
+lesson players, the free piano, and visible keyboard challenges. Use **Connect
+piano** in the header or **Settings > MIDI** in a player. Access is requested only
+after a click, without SysEx; only the selected input is opened. MIDI output is
+never sent to the instrument. Unplugging, changing inputs, hiding the tab or
+signing out clears held notes and pedal sound.
+
+The default sound source is the instrument itself. **KuyLab Grand** uses the
+browser sample bank with input velocity and CC64 sustain. Disable Local Control
+on the instrument when choosing browser sound to prevent doubled audio. Sound
+source, master volume and reverb use the same account preferences as all players.
+MIDI input does not pause composition playback. In keyboard challenges, single
+notes and chords accumulate until cleared; key release and repeated pitches do
+not erase the selection. Checking and progress updates still require **Check**.
+
+Test the adapter/controller without hardware with `npm test`. Physical acceptance
+on Yamaha YDP-145 / Windows / USB covers permission, selected input, repeated
+notes with pedal held, unplug/replug, and audible latency. Web MIDI requires HTTPS
+(localhost is allowed); Chrome/Edge on Windows is the target setup.
+
 Run the Django API on `127.0.0.1:8000`. In this directory:
 
 ```powershell

@@ -18,6 +18,7 @@ export default function PianoPageView({ preferences }: { preferences: StudioPref
   const [open, setOpen] = useState(false);
   const [visibleKeys, setVisibleKeys] = useState(88);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const mobile = useMediaQuery('(max-width: 680px)');
   const text = studioLabels[language];
   return (
     <div className="free-piano-page">
@@ -59,11 +60,15 @@ export default function PianoPageView({ preferences }: { preferences: StudioPref
         <span>C4 — C5</span>
       </div>
       <Drawer
-        anchor="right"
+        anchor={mobile ? 'bottom' : 'right'}
         open={open}
         onClose={() => setOpen(false)}
         slotProps={{
-          paper: { className: 'studio-settings', role: 'dialog', 'aria-label': text.settings },
+          paper: {
+            className: `studio-settings-panel ${mode === 'dark' ? 'is-dark' : ''}`,
+            role: 'dialog',
+            'aria-label': text.settings,
+          },
         }}
       >
         <StudioSettings

@@ -77,7 +77,7 @@ self.addEventListener('fetch', event => {
     event.respondWith((async () => {
       const cache = await caches.open(shell);
       // A public homepage must never replace the authenticated React shell.
-      const appPath = /^\/(studio(?:\.html)?|compositions|practice|lessons|study|exercises|theory|statistics|settings|404)(\/|$)/.test(url.pathname);
+      const appPath = /^\/(studio(?:\.html)?|compositions|practice|piano|lessons|study|exercises|theory|statistics|settings|404)(\/|$)/.test(url.pathname);
       const cacheKey = request.mode === 'navigate' ? (appPath ? '/studio.html' : url.pathname) : request;
       try {
         const response = await fetch(request);

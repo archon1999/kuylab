@@ -202,3 +202,7 @@ PLANS = {
                tr("Qalin oktavalar bassni shoshirmasin; bir marta to‘xtasangiz, ikkala qatlamni ham sekinroq qayta ulang.", "Плотные октавы не должны торопить бас; после остановки соедините оба слоя медленнее.", "Full octaves should not rush the bass; after a stop, reconnect both layers at a slower speed."), ["coordination", "balance"]),
     ],
 }
+
+from .expanded_performance_course_plans import PLANS as EXPANDED_PLANS
+
+PLANS.update(EXPANDED_PLANS)

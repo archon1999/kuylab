@@ -60,6 +60,7 @@ test('public page navigation cannot poison the app HTML used by an offline deep 
   assert.equal(await (await w.navigate('/musiqa-nazariyasi/')).text(), 'public guide');
   offline = true;
   assert.equal(await (await w.navigate('/practice/8')).text(), 'private app');
+  assert.equal(await (await w.navigate('/piano')).text(), 'private app');
   assert.equal(await (await w.navigate('/')).text(), 'public guide');
   assert.equal(await (await w.navigate('/musiqa-nazariyasi/')).text(), 'public guide');
   await assert.rejects(w.navigate('/never-cached/'), /Offline/);

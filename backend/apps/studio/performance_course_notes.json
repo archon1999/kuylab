@@ -647,5 +647,668 @@
         ]
       }
     }
+  },
+  "moonlight-sonata": {
+    "source_sha256": "64a5b0346fffe9ea6a68bfe10482ee701f4bf48b8d297801569b7f88e4101d7f",
+    "lessons": {
+      "opening-broken-chord": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N11",
+          "T0:C0:N19",
+          "T0:C0:N29",
+          "T0:C0:N37",
+          "T0:C0:N47",
+          "T0:C0:N55",
+          "T0:C0:N65"
+        ],
+        "left": []
+      },
+      "descending-bass-octaves": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N5",
+          "T1:C0:N9",
+          "T1:C0:N12",
+          "T1:C0:N17"
+        ]
+      },
+      "register-shifts": {
+        "right": [
+          "T0:C0:N875",
+          "T0:C0:N877",
+          "T0:C0:N879",
+          "T0:C0:N885",
+          "T0:C0:N895",
+          "T0:C0:N905",
+          "T0:C0:N915",
+          "T0:C0:N925",
+          "T0:C0:N935",
+          "T0:C0:N945"
+        ],
+        "left": [
+          "T1:C0:N216"
+        ]
+      }
+    }
+  },
+  "passacaglia": {
+    "source_sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7",
+    "lessons": {
+      "upper-repeated-c": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N9",
+          "T0:C0:N17",
+          "T0:C0:N25",
+          "T0:C0:N31",
+          "T0:C0:N39",
+          "T0:C0:N47",
+          "T0:C0:N55"
+        ],
+        "left": []
+      },
+      "a-broken-support": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N16",
+          "T1:C0:N32",
+          "T1:C0:N56",
+          "T1:C0:N78",
+          "T1:C0:N99",
+          "T1:C0:N121",
+          "T1:C0:N145",
+          "T1:C0:N169"
+        ]
+      },
+      "repeats-over-moving-bass": {
+        "right": [
+          "T0:C0:N273",
+          "T0:C0:N275",
+          "T0:C0:N277",
+          "T0:C0:N279",
+          "T0:C0:N287",
+          "T0:C0:N293",
+          "T0:C0:N301",
+          "T0:C0:N307",
+          "T0:C0:N315",
+          "T0:C0:N321"
+        ],
+        "left": [
+          "T1:C0:N722",
+          "T1:C0:N747",
+          "T1:C0:N777",
+          "T1:C0:N799",
+          "T1:C0:N832",
+          "T1:C0:N859",
+          "T1:C0:N884",
+          "T1:C0:N904"
+        ]
+      }
+    }
+  },
+  "pachelbel-canon-in-d": {
+    "source_sha256": "a43a7a6f290e28212426067f04564093264227e1286e908a260fc35f17a46a46",
+    "lessons": {
+      "descending-opening-line": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N11",
+          "T0:C0:N15"
+        ],
+        "left": []
+      },
+      "bass-cycle": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N8",
+          "T1:C0:N16",
+          "T1:C0:N24",
+          "T1:C0:N32",
+          "T1:C0:N40",
+          "T1:C0:N48",
+          "T1:C0:N56"
+        ]
+      },
+      "melody-inside-pairs": {
+        "right": [
+          "T0:C0:N397",
+          "T0:C0:N399",
+          "T0:C0:N401",
+          "T0:C0:N405",
+          "T0:C0:N417",
+          "T0:C0:N425",
+          "T0:C0:N437",
+          "T0:C0:N445",
+          "T0:C0:N455",
+          "T0:C0:N463"
+        ],
+        "left": [
+          "T1:C0:N324",
+          "T1:C0:N332",
+          "T1:C0:N342",
+          "T1:C0:N350",
+          "T1:C0:N360",
+          "T1:C0:N368",
+          "T1:C0:N378",
+          "T1:C0:N386"
+        ]
+      }
+    }
+  },
+  "game-of-thrones-main-theme": {
+    "source_sha256": "e37d56bc17355a90a15dabf8fc53bc5d489d06af920e3756fee037eff130c17a",
+    "lessons": {
+      "minor-and-major-third": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N15",
+          "T0:C0:N27",
+          "T0:C0:N41",
+          "T0:C0:N55",
+          "T0:C0:N69",
+          "T0:C0:N81",
+          "T0:C0:N95"
+        ],
+        "left": []
+      },
+      "held-chords-to-moving-bass": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N4",
+          "T1:C0:N10",
+          "T1:C0:N14",
+          "T1:C0:N30",
+          "T1:C0:N34",
+          "T1:C0:N46",
+          "T1:C0:N70"
+        ]
+      },
+      "paired-theme-and-pulse": {
+        "right": [
+          "T0:C0:N284",
+          "T0:C0:N287",
+          "T0:C0:N292",
+          "T0:C0:N305",
+          "T0:C0:N323",
+          "T0:C0:N343",
+          "T0:C0:N375",
+          "T0:C0:N393",
+          "T0:C0:N409",
+          "T0:C0:N425"
+        ],
+        "left": [
+          "T1:C0:N294",
+          "T1:C0:N312",
+          "T1:C0:N332",
+          "T1:C0:N350",
+          "T1:C0:N368",
+          "T1:C0:N386",
+          "T1:C0:N406",
+          "T1:C0:N424"
+        ]
+      }
+    }
+  },
+  "naruto-sadness-and-sorrow": {
+    "source_sha256": "5343b224b6e8900b4cea1ab86d47952a194cf198fbfa46f70620889ce01eb1a8",
+    "lessons": {
+      "high-opening-breath": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N11",
+          "T0:C0:N15",
+          "T0:C0:N21",
+          "T0:C0:N25"
+        ],
+        "left": []
+      },
+      "broken-triads": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N10",
+          "T1:C0:N12",
+          "T1:C0:N14",
+          "T1:C0:N16",
+          "T1:C0:N22",
+          "T1:C0:N28",
+          "T1:C0:N36"
+        ]
+      },
+      "octaves-over-moving-support": {
+        "right": [
+          "T0:C0:N171",
+          "T0:C0:N175",
+          "T0:C0:N180",
+          "T0:C0:N183",
+          "T0:C0:N196",
+          "T0:C0:N207",
+          "T0:C0:N223",
+          "T0:C0:N229",
+          "T0:C0:N240",
+          "T0:C0:N253"
+        ],
+        "left": [
+          "T1:C0:N232",
+          "T1:C0:N252",
+          "T1:C0:N268",
+          "T1:C0:N284",
+          "T1:C0:N298",
+          "T1:C0:N314",
+          "T1:C0:N330",
+          "T1:C0:N348"
+        ]
+      }
+    }
+  },
+  "naruto-senya": {
+    "source_sha256": "2b7073184d10f72f38819ba64f1737ba4e9b310be4de9a6b26c373540c6eda66",
+    "lessons": {
+      "c-minor-route": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N13",
+          "T0:C0:N19",
+          "T0:C0:N25",
+          "T0:C0:N31",
+          "T0:C0:N37",
+          "T0:C0:N47"
+        ],
+        "left": []
+      },
+      "low-c-and-octave": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N12",
+          "T1:C0:N14"
+        ]
+      },
+      "crossing-layer-registers": {
+        "right": [
+          "T0:C0:N195",
+          "T0:C0:N197",
+          "T0:C0:N199",
+          "T0:C0:N201",
+          "T0:C0:N207",
+          "T0:C0:N213",
+          "T0:C0:N219",
+          "T0:C0:N225",
+          "T0:C0:N231",
+          "T0:C0:N237"
+        ],
+        "left": [
+          "T1:C0:N50",
+          "T1:C0:N60",
+          "T1:C0:N68",
+          "T1:C0:N82",
+          "T1:C0:N90",
+          "T1:C0:N100",
+          "T1:C0:N108",
+          "T1:C0:N119"
+        ]
+      }
+    }
+  },
+  "shiki-epitaph": {
+    "source_sha256": "c7d0991aa4d00256d7e4ced93a83a3c9cc73deaca944c9b2c76eb4bff32e995a",
+    "lessons": {
+      "sparse-opening-voices": {
+        "right": [
+          "T0:C0:N2",
+          "T0:C0:N5",
+          "T0:C0:N8",
+          "T0:C0:N13"
+        ],
+        "left": []
+      },
+      "low-line-and-rests": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N10",
+          "T1:C0:N12",
+          "T1:C0:N16"
+        ]
+      },
+      "inner-voices-and-low-bass": {
+        "right": [
+          "T0:C0:N243",
+          "T0:C0:N245",
+          "T0:C0:N247",
+          "T0:C0:N251",
+          "T0:C0:N266",
+          "T0:C0:N275",
+          "T0:C0:N284",
+          "T0:C0:N297",
+          "T0:C0:N305",
+          "T0:C0:N313"
+        ],
+        "left": [
+          "T1:C0:N284",
+          "T1:C0:N296",
+          "T1:C0:N310",
+          "T1:C0:N322",
+          "T1:C0:N332",
+          "T1:C0:N344",
+          "T1:C0:N356",
+          "T1:C0:N368"
+        ]
+      }
+    }
+  },
+  "shiki-day-and-night": {
+    "source_sha256": "b84d4cf724e67220acd6c0dca6f36cda5836f01cc29db3edd82f33ebbe7dbc88",
+    "lessons": {
+      "melody-after-accompaniment": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N11",
+          "T0:C0:N17"
+        ],
+        "left": []
+      },
+      "six-tone-accompaniment": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N12",
+          "T1:C0:N16",
+          "T1:C0:N20",
+          "T1:C0:N24",
+          "T1:C0:N36",
+          "T1:C0:N48"
+        ]
+      },
+      "held-triads-over-pattern": {
+        "right": [
+          "T0:C0:N195",
+          "T0:C0:N197",
+          "T0:C0:N201",
+          "T0:C0:N218",
+          "T0:C0:N223",
+          "T0:C0:N231",
+          "T0:C0:N245",
+          "T0:C0:N250"
+        ],
+        "left": [
+          "T1:C0:N448",
+          "T1:C0:N464",
+          "T1:C0:N478",
+          "T1:C0:N494",
+          "T1:C0:N510",
+          "T1:C0:N526",
+          "T1:C0:N540",
+          "T1:C0:N556"
+        ]
+      }
+    }
+  },
+  "winter-sonata-missing-you": {
+    "source_sha256": "2ec0d34d77c299e884b2649075fdfbbe78852bac7c8be8e67bb4edaa4c24823c",
+    "lessons": {
+      "falling-line-and-arrival": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N13",
+          "T0:C0:N19",
+          "T0:C0:N25",
+          "T0:C0:N31",
+          "T0:C0:N37",
+          "T0:C0:N43"
+        ],
+        "left": []
+      },
+      "bass-and-inner-pairs": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N9",
+          "T1:C0:N12",
+          "T1:C0:N18",
+          "T1:C0:N20",
+          "T1:C0:N28",
+          "T1:C0:N38",
+          "T1:C0:N54"
+        ]
+      },
+      "melody-an-octave-higher": {
+        "right": [
+          "T0:C0:N187",
+          "T0:C0:N189",
+          "T0:C0:N191",
+          "T0:C0:N193",
+          "T0:C0:N199",
+          "T0:C0:N205",
+          "T0:C0:N213",
+          "T0:C0:N219",
+          "T0:C0:N225",
+          "T0:C0:N231"
+        ],
+        "left": [
+          "T1:C0:N244",
+          "T1:C0:N252",
+          "T1:C0:N258",
+          "T1:C0:N266",
+          "T1:C0:N282",
+          "T1:C0:N292",
+          "T1:C0:N298",
+          "T1:C0:N306"
+        ]
+      }
+    }
+  },
+  "winter-sonata-from-the-beginning-until-now": {
+    "source_sha256": "e51e9eee3262fe096783b737050c3c5c72ce0c40605ea08761d0980df790f23d",
+    "lessons": {
+      "pickup-and-high-arrival": {
+        "right": [
+          "T0:C0:N1",
+          "T0:C0:N3",
+          "T0:C0:N5",
+          "T0:C0:N11",
+          "T0:C0:N21",
+          "T0:C0:N29",
+          "T0:C0:N39",
+          "T0:C0:N49",
+          "T0:C0:N59",
+          "T0:C0:N67"
+        ],
+        "left": []
+      },
+      "eb-and-f-accompaniment": {
+        "right": [],
+        "left": [
+          "T1:C0:N1",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N10",
+          "T1:C0:N26",
+          "T1:C0:N38",
+          "T1:C0:N50",
+          "T1:C0:N60"
+        ]
+      },
+      "expanded-melody-and-bass": {
+        "right": [
+          "T0:C0:N477",
+          "T0:C0:N481",
+          "T0:C0:N484",
+          "T0:C0:N491",
+          "T0:C0:N499",
+          "T0:C0:N509",
+          "T0:C0:N519",
+          "T0:C0:N529",
+          "T0:C0:N539",
+          "T0:C0:N549"
+        ],
+        "left": [
+          "T1:C0:N587",
+          "T1:C0:N600",
+          "T1:C0:N618",
+          "T1:C0:N628",
+          "T1:C0:N642",
+          "T1:C0:N652",
+          "T1:C0:N666",
+          "T1:C0:N678"
+        ]
+      }
+    }
+  },
+  "two-steps-from-hell-heart-of-courage": {
+    "source_sha256": "cefc19f5ef21dde8f686b45e5be266ac4200d9555811c1ab25533fccb86637bf",
+    "lessons": {
+      "inner-pulse-and-pairs": {
+        "right": [
+          "T0:C0:N2",
+          "T0:C0:N5",
+          "T0:C0:N7",
+          "T0:C0:N17",
+          "T0:C0:N38",
+          "T0:C0:N53",
+          "T0:C0:N68",
+          "T0:C0:N87",
+          "T0:C0:N105",
+          "T0:C0:N119"
+        ],
+        "left": []
+      },
+      "bass-register-repetition": {
+        "right": [],
+        "left": [
+          "T1:C0:N0",
+          "T1:C0:N2",
+          "T1:C0:N4",
+          "T1:C0:N6",
+          "T1:C0:N8",
+          "T1:C0:N10",
+          "T1:C0:N12",
+          "T1:C0:N17",
+          "T1:C0:N24",
+          "T1:C0:N30"
+        ]
+      },
+      "dense-chords-and-running-bass": {
+        "right": [
+          "T0:C0:N870",
+          "T0:C0:N873",
+          "T0:C0:N879",
+          "T0:C0:N906",
+          "T0:C0:N957",
+          "T0:C0:N1006",
+          "T0:C0:N1053",
+          "T0:C0:N1099",
+          "T0:C0:N1154",
+          "T0:C0:N1200"
+        ],
+        "left": [
+          "T1:C0:N635",
+          "T1:C0:N670",
+          "T1:C0:N698",
+          "T1:C0:N724",
+          "T1:C0:N748",
+          "T1:C0:N774",
+          "T1:C0:N800",
+          "T1:C0:N824"
+        ]
+      }
+    }
+  },
+  "gladiator-honor-him-now-we-are-free": {
+    "source_sha256": "609d6083df5b7fae212a5c96cd1bb80dcad89acb0937084faa3aab6a5eb46fb3",
+    "lessons": {
+      "quiet-fsharp-opening": {
+        "right": [
+          "T0:C0:N2",
+          "T0:C0:N5",
+          "T0:C0:N8",
+          "T0:C0:N19",
+          "T0:C0:N29",
+          "T0:C0:N34"
+        ],
+        "left": []
+      },
+      "open-fifths-and-bass-changes": {
+        "right": [],
+        "left": [
+          "T1:C0:N1",
+          "T1:C0:N4",
+          "T1:C0:N9",
+          "T1:C0:N12",
+          "T1:C0:N19",
+          "T1:C0:N22",
+          "T1:C0:N27"
+        ]
+      },
+      "moving-registers-and-octaves": {
+        "right": [
+          "T0:C0:N987",
+          "T0:C0:N989",
+          "T0:C0:N992",
+          "T0:C0:N1011",
+          "T0:C0:N1033",
+          "T0:C0:N1055",
+          "T0:C0:N1087",
+          "T0:C0:N1110",
+          "T0:C0:N1132",
+          "T0:C0:N1155"
+        ],
+        "left": [
+          "T1:C0:N640",
+          "T1:C0:N660",
+          "T1:C0:N678",
+          "T1:C0:N696",
+          "T1:C0:N716",
+          "T1:C0:N734",
+          "T1:C0:N756",
+          "T1:C0:N777"
+        ]
+      }
+    }
   }
 }

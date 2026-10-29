@@ -199,7 +199,7 @@ These transparent reductions do not infer chord roots. All variants preserve the
 selected source pitches, velocities, onsets and clipped holds under uniform time
 scaling. The last complete-file stage reuses the original score and its bytes.
 
-The complete catalog has 103 compositions, 162 lessons, 96 continuity studies, 48
+The complete catalog has 103 compositions, 198 lessons, 108 continuity studies, 48
 independent exercises and 24 theory topics with 49 optional activities. The catalog
 queries IDs and small scalar source metadata rows, avoiding every study's parsed graph.
 Tests verify the exact musical landmarks, all 420 stage selections for these six
@@ -207,6 +207,17 @@ pieces, release evidence, original hashes, piece ownership, localization,
 complete coverage and stable reseeding. An active source replacement creates a
 new immutable Score version and retargets StudioAsset; existing composition IDs,
 personal notes, progress, comfortable speeds and historical source files remain.
+
+## Reviewed performance courses
+
+The source-bound performance curriculum also covers 23 imported recordings.
+The second reviewed set adds 36 lessons and 12 full-piece paths for Moonlight I,
+Passacaglia, Canon in D, Game of Thrones, Sadness and Sorrow, Senya, Epitaph,
+Day and Night, Missing You, From the Beginning Until Now, Heart of Courage and
+the Gladiator medley. `expanded_performance_course_plans.py` authors their
+UZ/RU/EN explanations; `performance_course_notes.json` pins the exact reviewed
+source notes. All 204 new MIDI assets end in complete source passages and keep
+the established 60/80/100 percent progression. No original performance is edited.
 
 ## All in — Soundtrack: shared course and two arrangements
 

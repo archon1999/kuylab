@@ -54,7 +54,7 @@ export function findPage(pathname) {
   return pages.find((page) => page.path === pathname);
 }
 export function isAppPath(pathname) {
-  return /^\/(studio(?:\.html)?|compositions|practice|lessons|study|exercises|theory|statistics|settings|404)(\/|$)/.test(
+  return /^\/(studio(?:\.html)?|compositions|practice|piano|lessons|study|exercises|theory|statistics|settings|404)(\/|$)/.test(
     pathname,
   );
 }

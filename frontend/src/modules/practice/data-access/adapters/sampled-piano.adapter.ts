@@ -308,6 +308,17 @@ export function createSampledPiano(
       source.onended = () => disposeVoice(voice);
       source.start(start, sampleOffset);
       source.stop(end);
+      let released = false;
+      return () => {
+        if (released || !voices.has(voice) || !context) return;
+        released = true;
+        const releaseAt = Math.max(start, context.currentTime);
+        const releaseEnd = Math.min(end, releaseAt + RELEASE);
+        voice.gain.gain.cancelAndHoldAtTime(releaseAt);
+        voice.gain.gain.linearRampToValueAtTime(0, releaseEnd);
+        voice.source.stop(releaseEnd);
+        voice.end = releaseEnd;
+      };
     },
     volume(value) {
       if (!Number.isFinite(value)) return;

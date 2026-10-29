@@ -4,6 +4,14 @@ import { learningMessages } from './learningMessages';
 export const uiMessages: Record<string, { ru: string; en: string }> = {
   ...studioMessages,
   ...learningMessages,
+  Royal: { ru: 'Рояль', en: 'Grand piano' },
+  Pianino: { ru: 'Пианино', en: 'Piano' },
+  'Pianino chalish': { ru: 'Играть на пианино', en: 'Play the piano' },
+  'Klavishlarni bosib chaling. Bir nechta tovushni birga ushlash mumkin.': {
+    ru: 'Нажимайте клавиши и играйте. Можно удерживать несколько звуков вместе.',
+    en: 'Press the keys to play. Hold several notes together to play a chord.',
+  },
+  'Kompyuter klaviaturasi': { ru: 'Клавиатура компьютера', en: 'Computer keyboard' },
   'Hozircha sevimlilar yo‘q': { ru: 'Пока нет избранного', en: 'No favorites yet' },
   'Kompozitsiyalarni ko‘rish': { ru: 'Открыть композиции', en: 'Explore compositions' },
   'Birinchi kuy sizni kutmoqda': { ru: 'Начните с первой мелодии', en: 'Your first melody awaits' },

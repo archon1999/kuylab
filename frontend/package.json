@@ -10,8 +10,8 @@
     "test:score": "node --experimental-strip-types --test tests/scoreTimeline.test.mjs tests/midiTempo.test.mjs",
     "lint:architecture": "node scripts/check-architecture.mjs",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" vite.config.ts tsconfig.json package.json",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" vite.config.ts tsconfig.json package.json",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"public-site/**/*.{ts,mts,mjs,css}\" vite.config.ts tsconfig.json package.json",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"public-site/**/*.{ts,mts,mjs,css}\" vite.config.ts tsconfig.json package.json",
     "lint": "npm run lint:architecture && npm run format:check",
     "typecheck": "tsc --noEmit",
     "check:architecture": "node scripts/check-architecture.mjs"

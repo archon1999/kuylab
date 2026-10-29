@@ -23,9 +23,11 @@ const app = readFileSync(join(dist, 'index.html'), 'utf8').replace(
   '<meta name="robots" content="noindex,follow"><title>',
 );
 write('studio.html', app);
+const manifest = JSON.parse(readFileSync(join(dist, '.vite/manifest.json'), 'utf8'));
+const demoModuleUrl = '/' + manifest['public-site/demo.ts'].file;
 for (const asset of fontAssets) write(asset.path.slice(1), asset.bytes);
 for (const { language, key, path } of pages)
-  write(path.slice(1) + 'index.html', renderPage(language, key));
+  write(path.slice(1) + 'index.html', renderPage(language, key, { demoModuleUrl }));
 write('404.html', render404());
 write('robots.txt', renderRobots());
 write('sitemap.xml', renderSitemap());

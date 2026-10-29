@@ -14,22 +14,17 @@ import {
 } from '../public-site/site.mjs';
 import { motionDuration, motionEasing } from '../src/shared/ui/motion.ts';
 import { landingMotionScript } from '../public-site/motion.mjs';
+import { demoNotes, demoSource } from '../public-site/demo-score.mjs';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 
-test('landing motion can pause, stops in hidden tabs and reveals content without depending on React', () => {
+test('landing reveals public content progressively and respects a motion preference change', () => {
   const root = { dataset: {} },
-    preview = { dataset: {} },
     below = { dataset: {}, getBoundingClientRect: () => ({ top: 1500 }) };
-  const listeners = {},
-    attributes = {};
-  const toggle = {
-    dataset: { pauseLabel: 'Pause', resumeLabel: 'Resume' },
-    setAttribute: (name, value) => (attributes[name] = value),
-    addEventListener: (_event, callback) => (listeners.click = callback),
-  };
+  const listeners = {};
   const document = {
     documentElement: root,
     hidden: false,
-    querySelector: (selector) => (selector === '.preview' ? preview : toggle),
     querySelectorAll: (selector) => (selector.includes('pending') ? [below] : [below]),
     addEventListener: (name, callback) => (listeners[name] = callback),
   };
@@ -59,9 +54,6 @@ test('landing motion can pause, stops in hidden tabs and reveals content without
     innerHeight: 800,
   });
   assert.equal(below.dataset.reveal, 'pending');
-  listeners.click();
-  assert.equal(root.dataset.landingPaused, 'true');
-  assert.equal(attributes['aria-label'], 'Resume');
   observer.callback([{ isIntersecting: true, target: below }]);
   assert.equal(below.dataset.reveal, 'visible');
   document.hidden = true;
@@ -69,8 +61,42 @@ test('landing motion can pause, stops in hidden tabs and reveals content without
   assert.equal(root.dataset.landingHidden, 'true');
   media.matches = true;
   listeners.motion();
-  assert.equal(toggle.hidden, true);
   assert.equal(root.dataset.landingPaused, 'true');
+});
+
+test('public demo is an intentional, lazy enhancement with a real curated MIDI excerpt', () => {
+  const bytes = readFileSync(new URL('../../' + demoSource.path, import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), demoSource.sha256);
+  assert.equal(demoNotes.length, demoSource.noteCount);
+  assert.ok(
+    demoNotes.every(
+      ([pitch, onset, duration, velocity, hand, sound]) =>
+        pitch >= 21 &&
+        pitch <= 108 &&
+        onset >= 0 &&
+        onset < demoSource.duration &&
+        duration > 0 &&
+        sound >= duration &&
+        velocity > 0 &&
+        velocity <= 127 &&
+        [0, 1].includes(hand),
+    ),
+  );
+  for (const language of languages) {
+    const html = renderPage(language, 'home', { demoModuleUrl: '/assets/landing-demo-example.js' });
+    const document = parse(html);
+    const demo = elements(document, 'figure').find(
+      (node) => attribute(node, 'data-demo') !== undefined,
+    );
+    assert.equal(attribute(demo, 'data-state'), 'idle');
+    assert.ok(elements(demo, 'svg').some((node) => attribute(node, 'class') === 'demo-poster'));
+    assert.ok(html.includes('import("/assets/landing-demo-example.js")'));
+    assert.ok(!html.includes('/public-site/demo.ts'));
+    assert.equal(
+      elements(document, 'link').some((node) => attribute(node, 'rel') === 'modulepreload'),
+      false,
+    );
+  }
 });
 
 test('reduced motion or missing observers cannot hide public content; removed hero copy stays absent in every language', () => {

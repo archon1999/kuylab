@@ -19,5 +19,5 @@
       "@shared/*": ["src/shared/*"]
     }
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src", "public-site/*.ts", "vite.config.ts"]
 }

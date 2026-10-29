@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import publicSite from './public-site/vite.mjs';
 const apiOrigin = process.env.KUYLAB_API_PROXY || 'http://127.0.0.1:8000';
 const publicShell = [
@@ -38,12 +39,22 @@ export default defineConfig({
         });
       },
       generateBundle(_options, bundle) {
+        const demo = Object.values(bundle).find(
+          (item) =>
+            item.type === 'chunk' &&
+            item.isEntry &&
+            item.facadeModuleId?.replaceAll('\\', '/').endsWith('/public-site/demo.ts'),
+        );
+        if (demo?.type !== 'chunk' || !demo.exports.includes('mountLandingDemo'))
+          this.error('The public landing demo must retain its lazy mount API.');
         const paths = [
           ...new Set([
             '/',
             '/index.html',
             ...publicShell,
-            ...Object.keys(bundle).map((path) => '/' + path),
+            ...Object.keys(bundle)
+              .filter((path) => !path.startsWith('.'))
+              .map((path) => '/' + path),
           ]),
         ];
         const revision = createHash('sha256')
@@ -82,7 +93,14 @@ export default defineConfig({
   server: { port: 5173, proxy: { '/api': apiOrigin } },
   preview: { port: 4173, proxy: { '/api': apiOrigin } },
   build: {
+    manifest: true,
     rollupOptions: {
+      // The public page imports this API on demand, outside the HTML entry graph.
+      preserveEntrySignatures: 'exports-only',
+      input: {
+        app: fileURLToPath(new URL('./index.html', import.meta.url)),
+        'landing-demo': fileURLToPath(new URL('./public-site/demo.ts', import.meta.url)),
+      },
       output: {
         manualChunks(id) {
           // Keep the stable React runtime cached independently from product changes.

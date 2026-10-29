@@ -3,6 +3,14 @@ import test from 'node:test';
 import { normalizeStudioPreferences, defaultStudioPreferences } from '../src/modules/practice/domain/studioPreferences.ts';
 import { createStudioPreferences } from '../src/modules/practice/data-access/repository/studio-preferences.repository.impl.ts';
 
+test('MIDI sound defaults to the physical piano and is shared by all players for this account', () => {
+  assert.equal(normalizeStudioPreferences({}).midiSound,'instrument');
+  for(const midiSound of ['bad',null,{},false]) assert.equal(normalizeStudioPreferences({midiSound}).midiSound,'instrument');
+  const map=new Map(),storage={getItem:key=>map.get(key)||null,setItem:(key,value)=>map.set(key,value)};
+  createStudioPreferences(storage).write({...defaultStudioPreferences,midiSound:'browser'});
+  assert.equal(createStudioPreferences(storage).read().midiSound,'browser');
+});
+
 test('missing, malformed and non-object stored preferences restore safe defaults', () => {
   for (const input of [undefined, null, [], 42, 'bad']) assert.deepEqual(normalizeStudioPreferences(input), defaultStudioPreferences);
   const malformed = createStudioPreferences({ getItem: () => '{bad json', setItem() {} });

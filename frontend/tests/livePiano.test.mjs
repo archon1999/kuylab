@@ -28,6 +28,22 @@ test('two inputs on the same pitch hold one voice until the last input releases'
   t.piano.release('mouse'); assert.deepEqual(t.released,[]);
   t.piano.release('KeyA'); assert.deepEqual(t.released,[60]);
 });
+
+test('sustain retains sound but releases visual keys, retriggers the same pitch and lifts only pedal-held voices', async () => {
+  const t=setup(); t.piano.pedal(true);
+  await t.piano.press('midi:60',60,110); t.piano.release('midi:60');
+  assert.deepEqual(t.states.at(-1).pitches,[]); assert.deepEqual(t.released,[]);
+  await t.piano.press('midi:60',60,42);
+  assert.equal(t.played.length,2); assert.equal(t.played.at(-1).velocity,42);
+  t.piano.pedal(false); assert.deepEqual(t.released,[60]); assert.deepEqual(t.states.at(-1).pitches,[60]);
+  t.piano.release('midi:60'); assert.deepEqual(t.released,[60,60]);
+});
+
+test('a released pending sample never turns into a delayed pedal note', async () => {
+  const t=setup(); t.delay(); t.piano.pedal(true);
+  const note=t.piano.press('midi:60',60); t.piano.release('midi:60'); t.pending[0].resolve(); await note;
+  assert.deepEqual(t.played,[]); assert.deepEqual(t.states.at(-1).pitches,[]);
+});
 test('release, glissando and stop invalidate in-flight sample loads without ghost notes', async () => {
   const t=setup(); t.delay();
   const first=t.piano.press('finger',60);

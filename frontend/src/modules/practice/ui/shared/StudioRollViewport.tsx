@@ -16,6 +16,7 @@ import { pianoKeyboardHeight, pianoPitchName } from '../../domain/liveKeyboard';
 import PlayableKeyboard from './PlayableKeyboard';
 import { useTranslation } from '@shared/i18n';
 import { CircularProgress } from '@mui/material';
+import { useMidi } from '../../application/MidiProvider';
 
 type Point = { x: number; y: number };
 type Gesture = { view: KeyboardViewport; point: Point; distance: number };
@@ -45,6 +46,11 @@ export default function StudioRollViewport({
   const [height, setHeight] = useState(1);
   const tr = useTranslation();
   const piano = useScreenPiano(settings);
+  const midi = useMidi();
+  const livePitches = useMemo(
+    () => [...new Set([...piano.pitches, ...midi.pitches])],
+    [piano.pitches, midi.pitches],
+  );
   const [center, setCenter] = useState<number | null>(null);
   const range = useMemo(
     () =>
@@ -183,16 +189,19 @@ export default function StudioRollViewport({
           }
         }}
       >
-        <StudioRoll {...roll} settings={settings} viewport={view} livePitches={piano.pitches} />
+        <StudioRoll {...roll} settings={settings} viewport={view} livePitches={livePitches} />
         <PlayableKeyboard
           view={view}
           height={roll.keyboardSize ?? pianoKeyboardHeight(height)}
           piano={piano}
         />
-        {(piano.pitches.length > 0 || piano.loading) && (
+        {(livePitches.length > 0 || piano.loading || midi.pedal) && (
           <div className="piano-keyboard-feedback" role="status">
             {piano.loading && <CircularProgress size={14} />}
-            <span>{piano.pitches.map(pianoPitchName).join(' · ')}</span>
+            <span>
+              {livePitches.map(pianoPitchName).join(' · ')}
+              {midi.pedal && ` · ${tr('Pedal')}`}
+            </span>
           </div>
         )}
         {piano.error && (

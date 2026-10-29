@@ -3,6 +3,7 @@ import { usePreferences } from '@shared/i18n';
 import { useMemo } from 'react';
 import { motionDurations, motionEasing } from '@shared/ui/motion';
 import AppLayout from '../layouts/studio/AppLayout';
+import { MidiConnectionDialog } from '@modules/practice';
 
 export default function ThemedApp() {
   const { mode } = usePreferences();
@@ -74,6 +75,7 @@ export default function ThemedApp() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppLayout />
+      <MidiConnectionDialog />
     </ThemeProvider>
   );
 }

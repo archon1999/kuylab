@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { usePianoAudition } from '@modules/practice';
+import { usePianoAudition, useMidi, MidiButton } from '@modules/practice';
 import { useActivity, challengeResultKey, challengeSummary } from '@modules/activity';
 import { Alert, Button, Chip, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import {
@@ -11,7 +11,11 @@ import {
   ErrorOutlineRounded,
 } from '@mui/icons-material';
 import { useTranslation } from '@shared/i18n';
-import { checkChallenge, type TheoryChallenge as Challenge } from '../../domain/theoryChallenges';
+import {
+  checkChallenge,
+  collectKeyboardAnswer,
+  type TheoryChallenge as Challenge,
+} from '../../domain/theoryChallenges';
 const keyName = (pitch: number) =>
   ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'][pitch % 12] +
   (Math.floor(pitch / 12) - 1);
@@ -39,8 +43,10 @@ export default function TheoryChallenge({
   const [checked, setChecked] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const piano = usePianoAudition();
+  const midi = useMidi();
   const question = challenges[index] || challenges[0];
   const section = useRef<HTMLElement>(null);
+  const keyboard = useRef<HTMLDivElement>(null);
   const previousQuestion = useRef(question.id);
   useEffect(() => {
     piano.stop();
@@ -58,6 +64,24 @@ export default function TheoryChallenge({
       previousQuestion.current = question.id;
     }
   }, [question.id, piano.stop]);
+  useEffect(() => {
+    if (question.mode !== 'keyboard') return;
+    return midi.subscribe((event) => {
+      if (event.type !== 'note' || !event.down || document.hidden) return;
+      const box = keyboard.current?.getBoundingClientRect();
+      // Notes played while reading another section must not silently change this answer.
+      if (!box || box.bottom <= 0 || box.top >= window.innerHeight) return;
+      if (
+        document.activeElement?.closest(
+          'input,textarea,select,[contenteditable="true"],[role="dialog"]',
+        )
+      )
+        return;
+      setPitches((value) => collectKeyboardAnswer(value, event.pitch));
+      setChecked(false);
+      setRevealed(false);
+    });
+  }, [midi.subscribe, question.id, question.mode]);
   const correct = checkChallenge(question, pitches, choice);
   const highest = Math.max(72, ...(question.answerPitches || []));
   const lastKey = 60 + Math.ceil((highest - 60) / 12) * 12;
@@ -147,11 +171,15 @@ export default function TheoryChallenge({
       )}
       {question.mode === 'keyboard' ? (
         <>
-          <p className="theory-challenge-hint">
-            {tr('Klavishlarni tanlang, keyin javobni tekshiring.')}
-          </p>
+          <div className="challenge-midi-input">
+            <p className="theory-challenge-hint">
+              {tr('Klavishlarni tanlang, keyin javobni tekshiring.')}
+            </p>
+            <MidiButton compact />
+          </div>
           <div
             className="challenge-keyboard"
+            ref={keyboard}
             role="group"
             aria-label={tr('Pianino klavishlari')}
             style={{ maxWidth: white.length * 46 }}

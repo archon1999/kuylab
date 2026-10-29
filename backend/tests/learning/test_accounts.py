@@ -84,6 +84,18 @@ class AccountTests(TestCase):
         self.assertEqual(response.status_code,400)
         self.assertFalse(get_user_model().objects.exists())
 
+    def test_midi_sound_preference_is_validated_and_isolated_per_account(self):
+        self.register(self.a, 'midi_learner_a')
+        self.register(self.b, 'midi_learner_b')
+        for value in ('browser', 'instrument'):
+            response = self.patch(self.a, '/api/auth/player-preferences/', {'midiSound': value, 'volume': 70})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(self.a.get('/api/auth/player-preferences/').json()['midiSound'], value)
+            self.assertEqual(self.b.get('/api/auth/player-preferences/').json(), {})
+        for value in ('bad', [], {}, None, 1):
+            self.assertEqual(self.patch(self.a, '/api/auth/player-preferences/', {'midiSound': value}).status_code, 400)
+        self.assertEqual(self.a.get('/api/auth/player-preferences/').json()['midiSound'], 'instrument')
+
     def test_all_private_responses_are_not_cacheable(self):
         self.register(self.a,'learner_a')
         for url in ['/api/auth/session/','/api/profile/','/api/activity/state/']:

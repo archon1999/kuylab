@@ -11,3 +11,6 @@ export { PianoRollPreview } from './preview';
 export { usePianoAudition } from './audition';
 export type { StudioPlayerProps } from './application/useStudioPlayer';
 export { PIANO_SAMPLE_FILES } from './data-access/adapters/sampled-piano.adapter';
+export { MidiProvider } from './midi';
+export { useMidi } from './application/MidiProvider';
+export { MidiButton, MidiConnectionDialog } from './ui/shared/MidiConnection';

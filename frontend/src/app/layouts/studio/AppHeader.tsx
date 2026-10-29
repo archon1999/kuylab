@@ -1,4 +1,5 @@
 import { useAuth } from '@modules/auth';
+import { MidiButton } from '@modules/practice';
 import type { Profile } from '@modules/profile';
 import {
   DarkModeOutlined,
@@ -63,6 +64,7 @@ export default function AppHeader({
         </a>
       </div>
       <div className="header-actions">
+        <MidiButton />
         <Button
           className="language-control"
           startIcon={<LanguageRounded />}

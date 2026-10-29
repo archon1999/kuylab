@@ -18,6 +18,7 @@ export type StudioPreferences = {
   focusKeys: boolean;
   visibleKeys: number;
   compactNoteLengths: boolean;
+  midiSound: 'instrument' | 'browser';
 };
 
 export type RollSettings = Pick<

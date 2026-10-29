@@ -6,10 +6,12 @@ export type LivePianoState = { pitches: number[]; loading: boolean; error: boole
 export function createLivePiano(audio: StudioAudioPort, changed: (state: LivePianoState) => void) {
   const inputs = new Map<string, number>();
   const voices = new Map<number, { release?: () => void; pending: boolean }>();
+  const sustained = new Set<{ release?: () => void; pending: boolean }>();
+  let pedalDown = false;
   let error = false;
   const publish = () =>
     changed({
-      pitches: [...voices.keys()],
+      pitches: [...new Set(inputs.values())],
       loading: [...voices.values()].some((v) => v.pending),
       error,
     });
@@ -18,7 +20,16 @@ export function createLivePiano(audio: StudioAudioPort, changed: (state: LivePia
     if (pitch === undefined) return;
     inputs.delete(input);
     if (![...inputs.values()].includes(pitch)) {
-      voices.get(pitch)?.release?.();
+      const voice = voices.get(pitch);
+      if (voice && pedalDown && !voice.pending) {
+        sustained.add(voice);
+        // Bound retained release handles even during very long pedal holds.
+        if (sustained.size > 256) {
+          const oldest = sustained.values().next().value!;
+          oldest.release?.();
+          sustained.delete(oldest);
+        }
+      } else voice?.release?.();
       voices.delete(pitch);
     }
     publish();
@@ -50,8 +61,17 @@ export function createLivePiano(audio: StudioAudioPort, changed: (state: LivePia
   const stop = () => {
     inputs.clear();
     voices.clear();
+    sustained.clear();
+    pedalDown = false;
     audio.stop();
     publish();
   };
-  return { press, release, stop };
+  const pedal = (down: boolean) => {
+    pedalDown = down;
+    if (!down) {
+      for (const voice of sustained) voice.release?.();
+      sustained.clear();
+    }
+  };
+  return { press, release, pedal, stop };
 }

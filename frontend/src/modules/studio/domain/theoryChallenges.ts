@@ -1,4 +1,10 @@
 export type ChallengeNote = { pitch: number; onset: number; duration: number; velocity: number };
+/** Physical releases do not clear an answer; replaying a note never toggles it off. */
+export function collectKeyboardAnswer(pitches: number[], pitch: number) {
+  return Number.isInteger(pitch) && pitch >= 21 && pitch <= 108 && !pitches.includes(pitch)
+    ? [...pitches, pitch]
+    : pitches;
+}
 export type TheoryChallenge = {
   id: string;
   mode: 'keyboard' | 'choice';

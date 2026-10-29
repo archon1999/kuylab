@@ -12,6 +12,7 @@ import {
 import { useId, useState } from 'react';
 import type { StudioPreferences } from '../../domain/studioPreferences';
 import { studioLabels } from './studioLabels';
+import { MidiConnectionPanel } from './MidiConnection';
 
 type ToggleKey =
   | 'noteNames'
@@ -78,8 +79,17 @@ export default function StudioSettings({
       >
         <Tab id={`${id}-visual-tab`} aria-controls={`${id}-visual`} label={text.view} />
         <Tab id={`${id}-sound-tab`} aria-controls={`${id}-sound`} label={text.sound} />
+        <Tab id={`${id}-midi-tab`} aria-controls={`${id}-midi`} label="MIDI" />
       </Tabs>
       <div className="studio-settings-body">
+        <div
+          role="tabpanel"
+          id={`${id}-midi`}
+          aria-labelledby={`${id}-midi-tab`}
+          hidden={tab !== 2}
+        >
+          {tab === 2 && <MidiConnectionPanel />}
+        </div>
         <div
           role="tabpanel"
           id={`${id}-visual`}

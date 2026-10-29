@@ -1,9 +1,11 @@
 import { studioMessages } from './studioMessages';
 import { learningMessages } from './learningMessages';
+import { midiMessages } from './midiMessages';
 /** Complete Russian and English catalog. Source keys and placeholders are stable. */
 export const uiMessages: Record<string, { ru: string; en: string }> = {
   ...studioMessages,
   ...learningMessages,
+  ...midiMessages,
   Royal: { ru: 'Рояль', en: 'Grand piano' },
   Pianino: { ru: 'Пианино', en: 'Piano' },
   'Pianino chalish': { ru: 'Играть на пианино', en: 'Play the piano' },

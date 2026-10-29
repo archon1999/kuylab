@@ -1,6 +1,6 @@
 export const languages = ['uz', 'ru', 'en'];
 export const origin = 'https://kuylab.uz';
-export const reviewed = '2026-10-28';
+export const reviewed = '2026-10-30';
 export const paths = {
   home: { uz: '/', ru: '/ru/', en: '/en/' },
   piano: { uz: '/pianino-organish/', ru: '/ru/uchitsya-igrat-na-pianino/', en: '/en/learn-piano/' },
@@ -62,7 +62,7 @@ export const content = {
       ],
       [
         'Pianinoni kompyuterga ulash kerakmi?',
-        'Yo‘q. KuyLab’ni brauzerda ochib, playerga qarab o‘z pianinongizda mashq qilishingiz mumkin. USB yoki MIDI ulanish o‘rganishni boshlash sharti emas.',
+        'Yo‘q. KuyLab’ni brauzerda ochib, playerga qarab o‘z pianinongizda mashq qilishingiz mumkin. USB MIDI orqali ulasangiz, bosgan klavishlaringiz playerda ko‘rinadi va nazariya topshiriqlariga pianinoda javob bera olasiz.',
       ],
       [
         'Oddiy nota yozuvini bilishim kerakmi?',
@@ -74,7 +74,7 @@ export const content = {
       ],
       [
         'Hozir qaysi asardan boshlash mumkin?',
-        'Studiyada 103 ta kompozitsiya va 129 ta kompozitsiya darsi bor. Winter Sonata, Nino Rota, Yiruma, Chopin va Beethoven asarlaridan boshlash mumkin. Bir asarning turli ijrolarini bitta playerda variant sifatida oching. All in — Soundtrack uchun Easy va Hard variantlari hamda 9 ta umumiy dars mavjud. Darslari tayyor asarlarda soddalashtirilgan mashqlar original ijroga bosqichma-bosqich olib boradi.',
+        'Studiyada 103 ta kompozitsiya va 198 ta kompozitsiya darsi bor. Winter Sonata, Nino Rota, Yiruma, Chopin va Beethoven asarlaridan boshlash mumkin. Bir asarning turli ijrolarini bitta playerda variant sifatida oching. All in — Soundtrack uchun Easy va Hard variantlari hamda 9 ta umumiy dars mavjud. Darslari tayyor asarlarda soddalashtirilgan mashqlar original ijroga bosqichma-bosqich olib boradi.',
       ],
     ],
     about:
@@ -275,7 +275,7 @@ export const content = {
       ],
       [
         'Нужно ли подключать инструмент?',
-        'Нет. Можно открыть KuyLab в браузере, смотреть на плеер и заниматься за своим инструментом. USB- или MIDI-подключение не является условием начала занятий.',
+        'Нет. Можно открыть KuyLab в браузере, смотреть на плеер и заниматься за своим инструментом. Если подключить инструмент по USB MIDI, нажатия появятся в плеере, а на задания по теории можно будет отвечать на пианино.',
       ],
       [
         'Нужно ли уметь читать ноты?',
@@ -287,7 +287,7 @@ export const content = {
       ],
       [
         'Какое произведение уже доступно?',
-        'В студии 103 произведение и 129 уроков по композициям. Начните с музыки Winter Sonata, Нино Роты, Yiruma, Шопена или Бетховена. Разные исполнения одного произведения доступны как варианты в одном плеере. У All in — Soundtrack есть Easy и Hard и 9 общих уроков. В подготовленных курсах упрощённые упражнения постепенно приводят к оригинальному исполнению.',
+        'В студии 103 произведения и 198 уроков по композициям. Начните с музыки Winter Sonata, Нино Роты, Yiruma, Шопена или Бетховена. Разные исполнения одного произведения доступны как варианты в одном плеере. У All in — Soundtrack есть Easy и Hard и 9 общих уроков. В подготовленных курсах упрощённые упражнения постепенно приводят к оригинальному исполнению.',
       ],
     ],
     about:
@@ -488,7 +488,7 @@ export const content = {
       ],
       [
         'Do I need to connect my piano?',
-        'No. Open KuyLab in a browser, follow the player and practise on your own instrument. A USB or MIDI connection is not required to get started.',
+        'No. Open KuyLab in a browser, follow the player and practise on your own instrument. With a USB MIDI connection, your key presses appear in the player and you can answer theory tasks on your piano.',
       ],
       [
         'Do I need to read staff notation?',
@@ -500,7 +500,7 @@ export const content = {
       ],
       [
         'Which piece is available now?',
-        'The studio includes 103 pieces and 129 composition lessons. Start with Winter Sonata, Nino Rota, Yiruma, Chopin or Beethoven. Different performances of a piece are available as variants in one player. All in — Soundtrack has Easy and Hard versions with 9 shared lessons. In the prepared courses, simplified studies build towards the original performance.',
+        'The studio includes 103 pieces and 198 composition lessons. Start with Winter Sonata, Nino Rota, Yiruma, Chopin or Beethoven. Different performances of a piece are available as variants in one player. All in — Soundtrack has Easy and Hard versions with 9 shared lessons. In the prepared courses, simplified studies build towards the original performance.',
       ],
     ],
     about:

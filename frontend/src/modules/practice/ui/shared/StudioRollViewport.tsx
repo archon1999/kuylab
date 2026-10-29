@@ -11,6 +11,11 @@ import type { StudioPreferences } from '../../domain/studioPreferences';
 import type { StudioNote } from '../../domain/studioTransport';
 import StudioRoll from './StudioRoll';
 import { studioLabels } from './studioLabels';
+import { useScreenPiano } from '../../live';
+import { pianoKeyboardHeight, pianoPitchName } from '../../domain/liveKeyboard';
+import PlayableKeyboard from './PlayableKeyboard';
+import { useTranslation } from '@shared/i18n';
+import { CircularProgress } from '@mui/material';
 
 type Point = { x: number; y: number };
 type Gesture = { view: KeyboardViewport; point: Point; distance: number };
@@ -32,10 +37,14 @@ export default function StudioRollViewport({
   text: typeof studioLabels.uz;
   onZoom: (zoom: number) => void;
   onVisibleKeysChange: (count: number) => void;
+  keyboardSize?: number;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const hint = useId();
   const [width, setWidth] = useState(1);
+  const [height, setHeight] = useState(1);
+  const tr = useTranslation();
+  const piano = useScreenPiano(settings);
   const [center, setCenter] = useState<number | null>(null);
   const range = useMemo(
     () =>
@@ -93,7 +102,10 @@ export default function StudioRollViewport({
   useEffect(() => {
     const element = host.current;
     if (!element) return;
-    const observer = new ResizeObserver(() => setWidth(element.clientWidth));
+    const observer = new ResizeObserver(() => {
+      setWidth(element.clientWidth);
+      setHeight(element.clientHeight);
+    });
     observer.observe(element);
     const wheel = (event: WheelEvent) => {
       const live = current.current.view;
@@ -130,6 +142,7 @@ export default function StudioRollViewport({
         aria-describedby={hint}
         tabIndex={0}
         onPointerDown={(event) => {
+          if ((event.target as HTMLElement).closest('.playable-keyboard')) return;
           if (event.button !== 0 || pointers.current.size >= 2) return;
           event.currentTarget.setPointerCapture(event.pointerId);
           pointers.current.set(event.pointerId, point(event));
@@ -170,7 +183,23 @@ export default function StudioRollViewport({
           }
         }}
       >
-        <StudioRoll {...roll} settings={settings} viewport={view} />
+        <StudioRoll {...roll} settings={settings} viewport={view} livePitches={piano.pitches} />
+        <PlayableKeyboard
+          view={view}
+          height={roll.keyboardSize ?? pianoKeyboardHeight(height)}
+          piano={piano}
+        />
+        {(piano.pitches.length > 0 || piano.loading) && (
+          <div className="piano-keyboard-feedback" role="status">
+            {piano.loading && <CircularProgress size={14} />}
+            <span>{piano.pitches.map(pianoPitchName).join(' · ')}</span>
+          </div>
+        )}
+        {piano.error && (
+          <div className="piano-keyboard-feedback error" role="alert">
+            {tr('Ovozni yuklab bo‘lmadi. Qayta urinib ko‘ring.')}
+          </div>
+        )}
       </div>
       <span id={hint} className="studio-viewport-hint">
         {text.panHint}

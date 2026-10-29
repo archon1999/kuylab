@@ -54,6 +54,13 @@ class StreamingSeedTests(TestCase):
             write.assert_not_called()
         self.assert_no_persistent_writes()
 
+    def test_oversized_revision_fails_before_validation_or_writes_on_every_database(self):
+        with patch.object(seed_studio,'REVISION','x'*41), patch.object(seed_studio,'validate_assets') as validate:
+            with self.assertRaisesMessage(CommandError,'Catalog revision exceeds the storage limit'):
+                self.run_seed(lambda:iter((self.asset,)))
+            validate.assert_not_called()
+        self.assert_no_persistent_writes()
+
     def test_complete_validation_precedes_transactional_streaming(self):
         baseline = len(connection.atomic_blocks)
         passes = []

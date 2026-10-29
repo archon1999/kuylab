@@ -1,0 +1,49 @@
+.playable-keyboard {
+  position: absolute;
+  inset: auto 0 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: pointer;
+}
+.playable-key {
+  position: absolute;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0 0 4px 4px;
+  background: transparent;
+  color: transparent;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.playable-key.black {
+  z-index: 1;
+}
+.playable-key:hover {
+  background: #a5734520;
+}
+.playable-key:focus-visible {
+  outline: 2px solid var(--studio-accent, #a57345);
+  outline-offset: -3px;
+  background: #a5734520;
+}
+.piano-keyboard-feedback {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: var(--studio-toolbar, var(--surface));
+  color: var(--studio-ink, var(--ink));
+  pointer-events: none;
+  font-size: 12px;
+}
+.piano-keyboard-feedback.error {
+  pointer-events: auto;
+}

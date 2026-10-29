@@ -88,8 +88,8 @@ class StudioTests(TestCase):
         response=self.client.get("/api/studio/catalog/")
         self.assertEqual(response.status_code,200)
         data=response.json()
-        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,162,48,24))
-        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),234)
+        self.assertEqual((len(data["compositions"]),len(data["lessons"]),len(data["exercises"]),len(data["theory"])),(103,198,48,24))
+        self.assertEqual(len({item["id"] for kind in ["lessons","exercises","theory"] for item in data[kind]}),270)
         for kind in ["lessons","exercises","theory"]:
             for item in data[kind]:
                 self.assertGreater(len(item["explanation"][0]["text"]),50)

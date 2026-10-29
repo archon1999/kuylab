@@ -55,6 +55,7 @@ export default function AppLayout() {
       detail: 'Kompozitsiyalar',
       lesson: 'Darslar',
       practice: 'Player',
+      piano: 'Pianino',
       theory: 'Nazariya',
       settings: 'Sozlamalar',
       exercises: 'Mashqlar',
@@ -98,7 +99,7 @@ export default function AppLayout() {
     </>
   );
   const content =
-    page === 'settings' || page === 'notFound' ? (
+    page === 'settings' || page === 'notFound' || page === 'piano' ? (
       <Router />
     ) : !catalog && loading ? (
       <RouteLoading page={page} />

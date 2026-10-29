@@ -1,0 +1,73 @@
+.free-piano-page {
+  display: grid;
+  gap: 24px;
+}
+.free-piano-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.free-piano-heading h1 {
+  margin: 0 0 12px;
+}
+.free-piano-heading p {
+  margin: 0;
+  color: var(--secondary);
+  line-height: 1.6;
+}
+.free-piano-heading .MuiButton-root {
+  flex-shrink: 0;
+}
+.free-piano-instrument.studio-player {
+  height: min(54dvh, 480px);
+  min-height: 300px;
+  border: 1px solid var(--studio-line);
+  border-radius: 20px;
+}
+.free-piano-emblem {
+  position: absolute;
+  inset: auto 0 190px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  color: var(--studio-accent);
+  opacity: 0.45;
+  pointer-events: none;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+.free-piano-emblem .MuiSvgIcon-root {
+  font-size: 56px;
+}
+.free-piano-shortcuts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--secondary);
+  font-size: 12px;
+}
+.free-piano-shortcuts kbd {
+  font: inherit;
+  word-spacing: 0.5em;
+  color: var(--text);
+}
+@media (max-width: 680px) {
+  .free-piano-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .free-piano-heading h1 {
+    font-size: 32px;
+  }
+  .free-piano-instrument.studio-player {
+    min-height: 300px;
+    height: 46dvh;
+    border-radius: 16px;
+  }
+  .free-piano-shortcuts {
+    display: none;
+  }
+}

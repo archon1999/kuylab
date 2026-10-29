@@ -5,6 +5,7 @@ export const pagePaths = {
   lesson: '/lessons',
   study: '/study',
   practice: '/practice',
+  piano: '/piano',
   theory: '/theory',
   exercises: '/exercises',
   statistics: '/statistics',

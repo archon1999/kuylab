@@ -92,8 +92,8 @@ class ReviewedCleanupTests(SimpleTestCase):
 class PerformanceCourseTests(SimpleTestCase):
     def test_course_coverage_localizations_and_links_are_complete(self):
         items = performance_items()
-        self.assertEqual(Counter(i['kind'] for i in items), {'lesson': 33, 'journey': 11})
-        self.assertEqual(len({i['_composition'] for i in items}), 11)
+        self.assertEqual(Counter(i['kind'] for i in items), {'lesson': 69, 'journey': 23})
+        self.assertEqual(len({i['_composition'] for i in items}), 23)
         self.assertTrue(all(i['id'].endswith(':performance-complete') for i in items if i['kind'] == 'journey'))
         ids = {i['id'] for i in all_items()}
         for item in items:

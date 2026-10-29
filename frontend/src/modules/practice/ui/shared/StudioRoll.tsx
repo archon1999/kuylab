@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { pianoKeyLayout, type StudioNote } from '../../domain/studioTransport';
 import type { RollSettings } from '../../domain/studioPreferences';
 import type { KeyboardViewport } from '../../domain/keyboardViewport';
+import { pianoKeyboardHeight } from '../../domain/liveKeyboard';
 import {
   allowsStrikeEffects,
   brighten,
@@ -22,6 +23,8 @@ export default function StudioRoll({
   dark,
   label,
   viewport,
+  livePitches = [],
+  keyboardSize,
 }: {
   notes: StudioNote[];
   position: number;
@@ -31,14 +34,34 @@ export default function StudioRoll({
   dark: boolean;
   label: string;
   viewport: KeyboardViewport;
+  livePitches?: number[];
+  keyboardSize?: number;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const frames = useMemo(
     () => notes.map((note) => ({ ...note, end: note.onset + note.duration })),
     [notes],
   );
-  const current = useRef({ position, playing, reducedMotion, settings, dark, viewport });
-  current.current = { position, playing, reducedMotion, settings, dark, viewport };
+  const current = useRef({
+    position,
+    playing,
+    reducedMotion,
+    settings,
+    dark,
+    viewport,
+    livePitches,
+    keyboardSize,
+  });
+  current.current = {
+    position,
+    playing,
+    reducedMotion,
+    settings,
+    dark,
+    viewport,
+    livePitches,
+    keyboardSize,
+  };
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
@@ -54,6 +77,7 @@ export default function StudioRoll({
     let lastSettings: RollSettings | null = null;
     let lastViewport: KeyboardViewport | null = null;
     let dirty = true;
+    let lastLivePitches: number[] = [];
     let particlesVisible = false;
     let keys = pianoKeyLayout(0);
     let whiteKeys = keys.filter((key) => key.white);
@@ -82,7 +106,16 @@ export default function StudioRoll({
     const fontFamily = getComputedStyle(element).fontFamily;
     const render = (milliseconds: number) => {
       const now = milliseconds / 1000;
-      const { position, playing, reducedMotion, settings, dark, viewport } = current.current;
+      const {
+        position,
+        playing,
+        reducedMotion,
+        settings,
+        dark,
+        viewport,
+        livePitches,
+        keyboardSize,
+      } = current.current;
       if (viewport !== lastViewport || dirty) {
         keys = pianoKeyLayout(viewport.worldWidth, viewport.low, viewport.high).map((key) => ({
           ...key,
@@ -94,7 +127,11 @@ export default function StudioRoll({
         for (const key of keys) byPitch[key.pitch] = key;
         particles.clear();
       }
-      const effects = allowsStrikeEffects(playing, settings.particles, reducedMotion);
+      const effects = allowsStrikeEffects(
+        playing || livePitches.length > 0,
+        settings.particles,
+        reducedMotion,
+      );
       const moved = position !== lastPosition;
       const continuous = isContinuousStep(lastPosition, position);
       const freshStart = playing && !lastPlaying && position < 0.05;
@@ -103,6 +140,7 @@ export default function StudioRoll({
       const changed =
         particlesVisible !== activeParticles ||
         dirty ||
+        livePitches !== lastLivePitches ||
         viewport !== lastViewport ||
         moved ||
         settings !== lastSettings ||
@@ -135,6 +173,8 @@ export default function StudioRoll({
       lastSettings = settings;
       lastMotion = reducedMotion;
       lastViewport = viewport;
+      const liveAttacks = livePitches.filter((pitch) => !lastLivePitches.includes(pitch));
+      lastLivePitches = livePitches;
       dirty = false;
       particlesVisible = activeParticles;
       const ratio = Math.min(devicePixelRatio || 1, 2);
@@ -146,10 +186,23 @@ export default function StudioRoll({
       background.addColorStop(1, dark ? '#2b2143' : '#f4f0ea');
       ctx.fillStyle = background;
       ctx.fillRect(0, 0, width, height);
-      const keyboardHeight = Math.max(86, Math.min(152, height * 0.23));
+      const keyboardHeight = keyboardSize ?? pianoKeyboardHeight(height);
       const keyboardTop = height - keyboardHeight;
       const pixels = keyboardTop / settings.lookahead;
       pressed.fill(undefined);
+      if (effects)
+        for (const pitch of liveAttacks) {
+          const key = byPitch[pitch];
+          if (key)
+            particles.emit(
+              key.x + key.width / 2,
+              keyboardTop,
+              dark ? '#eba165' : '#b47a49',
+              88,
+              now,
+              key.width,
+            );
+        }
       ctx.save();
       ctx.beginPath();
       ctx.rect(0, 0, width, keyboardTop);
@@ -215,6 +268,7 @@ export default function StudioRoll({
         }
         if (note.onset <= position && note.end > position) pressed[note.pitch] = shade.bottom;
       }
+      for (const pitch of livePitches) pressed[pitch] = dark ? '#eba165' : '#b47a49';
       for (const key of keys) {
         const held = pressed[key.pitch];
         if (!held) continue;

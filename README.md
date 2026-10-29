@@ -132,13 +132,13 @@ Cornfield Chase. A Time for Us is a Fabrizio Caligaris recording of the Romeo &
 Juliet theme; the original What Is a Youth edition and its six lessons remain
 the default, with their existing IDs, saved positions and timestamp notes intact.
 The earlier source-specific lessons for replaced editions are retired from the
-active catalog; learner history is preserved. Eleven reviewed recordings now
+active catalog; learner history is preserved. Twenty-three reviewed recordings now
 have three focused UZ/RU/EN lessons each, five progressive MIDI stages per lesson,
 and a complete-piece path at 60%, 80% and the original speed. These courses pin
 their exact source hash and note selections; another performance does not inherit
 their timestamps. The 24 retained editions in
 [the earlier catalog manifest](backend/apps/studio/assets/catalog/manifest.json)
-keep their reviewed UZ/RU/EN courses. There are 162 composition lessons and 96
+keep their reviewed UZ/RU/EN courses. There are 198 composition lessons and 108
 continuity paths in total. The library supports list and grid views, with the
 selected view, filters and pagination retained in URLs and per-account sessions.
 Browsing groups are independent of source albums: Classical groups editions by
@@ -162,6 +162,15 @@ playback at the same timestamp; resume positions are scoped per variant.
 Player settings, including speed, volume, hand balance, reverb and appearance,
 are shared across all compositions, lessons and previews within the same account.
 Other open player tabs receive changes through account-scoped browser storage.
+The `/piano` page is a playable 88-key recorded grand piano. The keyboards in
+composition and lesson players are playable too. Mouse holds and glissando,
+independent multi-touch chords, and the focused computer keyboard are supported.
+The A/W/S/E… row starts at C4; arrow keys move focus and Space/Enter play the
+focused key. Wheel scrolling and dragging above the keyboard retain viewport
+panning. Manual playing takes audio focus and pauses an active demonstration;
+key releases, blur, hidden tabs and navigation release its voices. Pending sample
+loads cannot play a note after its input was released. Volume and reverb remain
+the account's shared player settings.
 Its optional compact note display abbreviates overlapping long blocks
 without changing sound or claiming to reconstruct finger releases. The six
 earlier replacement exports each include six source-specific lessons and eight continuity studies,

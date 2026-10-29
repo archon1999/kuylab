@@ -143,6 +143,26 @@ test('recorded piano loads four local velocity layers at the nearest anchor, onc
   }
 });
 
+test('a live key release reschedules only its own voice with a smooth recorded decay', async () => {
+  const environment = fakeAudio();
+  const piano=createSampledPiano();
+  try {
+    await piano.prepare([60,64]);
+    const release=piano.sound(60,10,120,88);
+    piano.sound(64,10,120,88);
+    const voices=environment.nodes.filter(n=>n.kind==='sample');
+    const otherStop=[...voices[1].stopped];
+    environment.contexts[0].currentTime=10.2;
+    release();
+    assert.deepEqual(voices[0].stopped,[10.7]);
+    assert.deepEqual(voices[1].stopped,otherStop);
+    const gain=voices[0].connections[0].kind==='filter' ? voices[0].connections[0].connections[0] : voices[0].connections[0];
+    assert.deepEqual(gain.gain.calls.slice(-2),[['hold',10.2],['ramp',0,10.7]]);
+    release(); assert.equal(gain.gain.calls.filter(c=>c[0]==='hold').length,1);
+    piano.stop(); assert.doesNotThrow(release);
+  } finally { piano.close(); environment.restore(); }
+});
+
 test('a closed preview piano accepts shared hand levels and can prepare again', async () => {
   const environment = fakeAudio();
   const piano = createSampledPiano();

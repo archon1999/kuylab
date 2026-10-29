@@ -95,6 +95,8 @@ try:
     assert status == 404 and b"noindex" in missing, "Unknown public URLs need a real branded 404"
     status, studio, studio_headers = public.request("/studio")
     assert status == 200 and b"boot-screen" in studio and "noindex" in studio_headers["X-Robots-Tag"]
+    status, piano_page, piano_headers = public.request("/piano")
+    assert status == 200 and b"boot-screen" in piano_page and "noindex" in piano_headers["X-Robots-Tag"]
     for browser, name in zip(browsers, names):
         assert browser.request("/api/auth/session/")[0] == 200
         assert browser.request("/api/auth/register/", "POST", {}, csrf=False)[0] == 403

@@ -61,7 +61,18 @@ type Catalog = {
 
 Category and goal values on study items are IDs resolved through their catalog arrays. Item IDs are stable strings, for example `lesson:still:opening-left`, `exercise:scales:easy` and `theory:inversions`. `minutes` is an approximate reading/practice suggestion, not an enforced task duration.
 
-The current catalog revision is `reviewed-performance-courses-2026-10-v15`: 103 compositions, 162 composition lessons, 96 continuity studies, 48 independent exercises and 24 theory topics. Forty-three compositions have reviewed courses; the remaining works are available in the player. A study's top-level `score_id` points to its first stage; each stage has its own score and personal playback position. Focused performance lessons progress through selected landmarks at 60%, the complete focused layer at 80%, both full layers at 60%, 80% and 100%. Full-piece paths retain every note at all three speeds and reuse the original score at the last stage. Existing Still/package courses retain their established stage IDs and structure. Composition lessons and continuity studies have `composition_id`; general exercises/theory remain independent. A source-bound course carries its exact `playback_revision` and, when applicable, `composition_variant_id`. The player, detail page and lesson-to-source link use that binding; aligned All in variants retain their shared course.
+The current catalog revision is `piano-courses-2026-10-v16`: 103 compositions, 198 composition lessons, 108 continuity studies, 48 independent exercises and 24 theory topics. Fifty-five compositions have reviewed courses; the remaining works are available in the player. A study's top-level `score_id` points to its first stage; each stage has its own score and personal playback position. Focused performance lessons progress through selected landmarks at 60%, the complete focused layer at 80%, both full layers at 60%, 80% and 100%. Full-piece paths retain every note at all three speeds and reuse the original score at the last stage. Existing Still/package courses retain their established stage IDs and structure. Composition lessons and continuity studies have `composition_id`; general exercises/theory remain independent. A source-bound course carries its exact `playback_revision` and, when applicable, `composition_variant_id`. The player, detail page and lesson-to-source link use that binding; aligned All in variants retain their shared course.
+
+`/piano` is a private app route with a live sampled grand piano. The same input
+layer covers the keyboard of each composition/lesson player. Each pointer or
+computer key owns a hold; multiple inputs on one pitch share a voice until the
+last release. Individual releases ramp down only that sample. Pending loads are
+invalidated by release or stop; blur, hidden tabs and unmount stop manual voices.
+The focused computer mapping starts at C4 (A/W/S/E…); arrows move note focus,
+Space/Enter hold that note, and Escape releases every manual note. Keys receive
+multi-touch/glissando while the roll above retains pan/pinch gestures. Manual
+playing claims audio focus, pausing another demonstration rather than overlapping
+two transports. Shared account volume/reverb and visible-key settings apply.
 
 `GET /api/scores/<id>/` returns the existing Score domain object and parsed MIDI timeline. `GET /api/scores/<id>/file/` serves the actual MIDI. The original composition preserves all supplied bytes; lesson adaptations carry explicit source and transformation provenance. Missing seed assets return 503 instead of a placeholder catalog.
 

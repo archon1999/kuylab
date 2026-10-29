@@ -29,6 +29,7 @@ export default function StudioSettings({
   readableHolds,
   onClose,
   visibleKeys,
+  freePiano = false,
 }: {
   settings: StudioPreferences;
   update: <K extends keyof StudioPreferences>(
@@ -40,6 +41,7 @@ export default function StudioSettings({
   readableHolds?: boolean;
   onClose: () => void;
   visibleKeys: number;
+  freePiano?: boolean;
 }) {
   const [tab, setTab] = useState(0);
   const id = useId();
@@ -86,7 +88,7 @@ export default function StudioSettings({
         >
           <fieldset>
             <legend>{text.labels}</legend>
-            {toggle('noteNames', text.noteNames)}
+            {!freePiano && toggle('noteNames', text.noteNames)}
             {toggle('keyNames', text.keyNames)}
             {readableHolds && (
               <>
@@ -116,54 +118,58 @@ export default function StudioSettings({
           <fieldset>
             <legend>{text.effects}</legend>
             {toggle('shadows', text.shadows)}
-            {toggle('velocityGradients', text.velocityGradients)}
+            {!freePiano && toggle('velocityGradients', text.velocityGradients)}
             {toggle('particles', text.particles, reducedMotion)}
             {reducedMotion && <p className="studio-settings-hint">{text.reducedMotion}</p>}
           </fieldset>
-          <label className="studio-setting-slider">
-            <span className="studio-setting-slider-heading">
-              <span>{text.lookahead}</span>
-              <output>
-                {settings.lookahead} {text.seconds}
-              </output>
-            </span>
-            <Slider
-              aria-label={text.lookahead}
-              min={2}
-              max={15}
-              step={1}
-              value={settings.lookahead}
-              onChange={(_, value) => update('lookahead', value as number)}
-            />
-          </label>
-          <fieldset className="studio-hand-fieldset">
-            <legend>{text.hands}</legend>
-            <div className="studio-hand-settings">
-              {(['left', 'right'] as const).map((hand) => (
-                <div className="studio-hand-row" key={hand}>
-                  <input
-                    type="color"
-                    aria-label={`${text[hand]} · ${text.view}`}
-                    value={settings[hand === 'left' ? 'leftColor' : 'rightColor']}
-                    onChange={(event) =>
-                      update(hand === 'left' ? 'leftColor' : 'rightColor', event.target.value)
-                    }
-                  />
-                  <FormControlLabel
-                    label={text[hand]}
-                    labelPlacement="start"
-                    control={
-                      <Switch
-                        size="small"
-                        checked={settings[hand]}
-                        onChange={(_, checked) => update(hand, checked)}
+          {!freePiano && (
+            <>
+              <label className="studio-setting-slider">
+                <span className="studio-setting-slider-heading">
+                  <span>{text.lookahead}</span>
+                  <output>
+                    {settings.lookahead} {text.seconds}
+                  </output>
+                </span>
+                <Slider
+                  aria-label={text.lookahead}
+                  min={2}
+                  max={15}
+                  step={1}
+                  value={settings.lookahead}
+                  onChange={(_, value) => update('lookahead', value as number)}
+                />
+              </label>
+              <fieldset className="studio-hand-fieldset">
+                <legend>{text.hands}</legend>
+                <div className="studio-hand-settings">
+                  {(['left', 'right'] as const).map((hand) => (
+                    <div className="studio-hand-row" key={hand}>
+                      <input
+                        type="color"
+                        aria-label={`${text[hand]} · ${text.view}`}
+                        value={settings[hand === 'left' ? 'leftColor' : 'rightColor']}
+                        onChange={(event) =>
+                          update(hand === 'left' ? 'leftColor' : 'rightColor', event.target.value)
+                        }
                       />
-                    }
-                  />
+                      <FormControlLabel
+                        label={text[hand]}
+                        labelPlacement="start"
+                        control={
+                          <Switch
+                            size="small"
+                            checked={settings[hand]}
+                            onChange={(_, checked) => update(hand, checked)}
+                          />
+                        }
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </fieldset>
+              </fieldset>
+            </>
+          )}
         </div>
         <div
           role="tabpanel"
@@ -171,38 +177,42 @@ export default function StudioSettings({
           aria-labelledby={`${id}-sound-tab`}
           hidden={tab !== 1}
         >
-          <fieldset>
-            <legend>{text.countIn}</legend>
-            <ToggleButtonGroup
-              size="small"
-              exclusive
-              value={settings.countIn}
-              onChange={(_, value) => value !== null && update('countIn', value)}
-            >
-              {[0, 2, 3].map((value) => (
-                <ToggleButton key={value} value={value}>
-                  {value === 0 ? text.off : `${value} ${text.seconds}`}
-                </ToggleButton>
+          {!freePiano && (
+            <>
+              <fieldset>
+                <legend>{text.countIn}</legend>
+                <ToggleButtonGroup
+                  size="small"
+                  exclusive
+                  value={settings.countIn}
+                  onChange={(_, value) => value !== null && update('countIn', value)}
+                >
+                  {[0, 2, 3].map((value) => (
+                    <ToggleButton key={value} value={value}>
+                      {value === 0 ? text.off : `${value} ${text.seconds}`}
+                    </ToggleButton>
+                  ))}
+                </ToggleButtonGroup>
+              </fieldset>
+              {(['left', 'right'] as const).map((hand) => (
+                <label key={hand} className="studio-setting-slider">
+                  <span className="studio-setting-slider-heading">
+                    <span>{text[hand]}</span>
+                    <output>{settings[hand === 'left' ? 'leftVolume' : 'rightVolume']}%</output>
+                  </span>
+                  <Slider
+                    aria-label={`${text[hand]} · ${text.volume}`}
+                    value={settings[hand === 'left' ? 'leftVolume' : 'rightVolume']}
+                    min={0}
+                    max={100}
+                    onChange={(_, value) =>
+                      update(hand === 'left' ? 'leftVolume' : 'rightVolume', value as number)
+                    }
+                  />
+                </label>
               ))}
-            </ToggleButtonGroup>
-          </fieldset>
-          {(['left', 'right'] as const).map((hand) => (
-            <label key={hand} className="studio-setting-slider">
-              <span className="studio-setting-slider-heading">
-                <span>{text[hand]}</span>
-                <output>{settings[hand === 'left' ? 'leftVolume' : 'rightVolume']}%</output>
-              </span>
-              <Slider
-                aria-label={`${text[hand]} · ${text.volume}`}
-                value={settings[hand === 'left' ? 'leftVolume' : 'rightVolume']}
-                min={0}
-                max={100}
-                onChange={(_, value) =>
-                  update(hand === 'left' ? 'leftVolume' : 'rightVolume', value as number)
-                }
-              />
-            </label>
-          ))}
+            </>
+          )}
           <label className="studio-setting-slider">
             <span className="studio-setting-slider-heading">
               <span>{text.volume}</span>
@@ -231,21 +241,23 @@ export default function StudioSettings({
           </label>
         </div>
       </div>
-      <details className="studio-shortcuts">
-        <summary>{text.shortcuts}</summary>
-        <div>
-          <kbd>Space</kbd>
-          <span>{text.space}</span>
-        </div>
-        <div>
-          <kbd>← →</kbd>
-          <span>{text.arrows}</span>
-        </div>
-        <div>
-          <kbd>− +</kbd>
-          <span>{text.rate}</span>
-        </div>
-      </details>
+      {!freePiano && (
+        <details className="studio-shortcuts">
+          <summary>{text.shortcuts}</summary>
+          <div>
+            <kbd>Space</kbd>
+            <span>{text.space}</span>
+          </div>
+          <div>
+            <kbd>← →</kbd>
+            <span>{text.arrows}</span>
+          </div>
+          <div>
+            <kbd>− +</kbd>
+            <span>{text.rate}</span>
+          </div>
+        </details>
+      )}
     </>
   );
 }

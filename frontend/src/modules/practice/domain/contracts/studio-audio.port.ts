@@ -18,7 +18,7 @@ export type StudioAudioPort = {
     velocity: number,
     offset?: number,
     hand?: 'left' | 'right',
-  ): void;
+  ): void | (() => void);
   volume(value: number): void;
   reverb(value: number): void;
   stop(): void;

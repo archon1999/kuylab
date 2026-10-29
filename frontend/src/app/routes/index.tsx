@@ -11,6 +11,7 @@ const pages = {
   lesson: lazy(() => import('@modules/studio/ui/pages/StudyPage')),
   study: lazy(() => import('@modules/studio/ui/pages/StudyPage')),
   practice: lazy(() => import('@modules/studio/ui/pages/PlayerPage')),
+  piano: lazy(() => import('@modules/practice/ui/pages/PianoPage')),
   theory: lazy(() => import('@modules/studio/ui/pages/StudyLibraryPage')),
   exercises: lazy(() => import('@modules/studio/ui/pages/StudyLibraryPage')),
   statistics: lazy(() => import('@modules/studio/ui/pages/StatisticsPage')),

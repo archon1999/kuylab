@@ -2,6 +2,10 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { parseRoute, routePath } from '../src/shared/routing/paths.ts';
 import { accountStorage, setAccountScope, scopedKey } from '../src/shared/lib/accountScope.ts';
+test('free piano has its own clean route', () => {
+  assert.equal(routePath('piano'), '/piano');
+  assert.equal(parseRoute('/piano').page, 'piano');
+});
 test('route identity round trips through clean shareable URLs', () => {
   for(const [page,values] of [['dashboard',{}],['detail',{composition:8}],['practice',{composition:8}],['study',{item:'lesson:still:opening-listen',stage:'lesson:still:opening-listen:1'}],['study',{item:'theory:legato',example:'theory:legato:connected'}],['exercises',{}],['statistics',{}]]) {
     const url = routePath(page,values), route = parseRoute(url);

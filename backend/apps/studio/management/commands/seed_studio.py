@@ -185,6 +185,9 @@ class Command(BaseCommand):
         parser.add_argument("--replace-compositions", action="store_true", help="Explicitly delete other compositions and their dependent records.")
 
     def handle(self, *args, **options):
+        # SQLite does not enforce varchar lengths; fail identically on both DBs.
+        if len(REVISION) > StudioAsset._meta.get_field('revision').max_length:
+            raise CommandError('Catalog revision exceeds the storage limit; shorten its identifier.')
         # Validate every byte and teaching example before a destructive transaction.
         validated = validate_assets()
         others = Composition.objects.exclude(seed_key__in=[source.composition_key for source in SOURCES])

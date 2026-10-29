@@ -49,7 +49,8 @@ function SummaryRow() {
 export function PageSkeleton({
   variant = 'page',
 }: {
-  variant?: 'page' | 'library' | 'collection' | 'detail' | 'study' | 'settings' | 'statistics';
+  variant?:
+    'page' | 'library' | 'collection' | 'detail' | 'study' | 'settings' | 'statistics' | 'piano';
 }) {
   const tr = useTranslation();
   return (
@@ -65,7 +66,9 @@ export function PageSkeleton({
           <Skeleton className="skeleton-back" width={120} height={14} />
         )}
         <Skeleton className="skeleton-title" width="min(380px, 72%)" height={38} />
-        {variant === 'settings' ? (
+        {variant === 'piano' ? (
+          <PlayerSkeleton compact label={tr('Yuklanmoqda…')} />
+        ) : variant === 'settings' ? (
           <div className="skeleton-settings">
             <Skeleton width={145} height={20} />
             <div className="skeleton-form">
@@ -151,16 +154,17 @@ export function PageSkeleton({
   );
 }
 
-export function PlayerSkeleton({ compact = false }: { compact?: boolean }) {
+export function PlayerSkeleton({ compact = false, label }: { compact?: boolean; label?: string }) {
   const tr = useTranslation();
+  const description = label || tr('MIDI yuklanmoqda…');
   return (
     <div
       className={`player-skeleton ${compact ? 'compact' : ''}`}
       role="status"
-      aria-label={tr('MIDI yuklanmoqda…')}
+      aria-label={description}
       aria-busy="true"
     >
-      <span className="sr-only">{tr('MIDI yuklanmoqda…')}</span>
+      <span className="sr-only">{description}</span>
       <div className="skeleton-transport loading-visual" aria-hidden="true">
         <BrandMark />
         <Skeleton variant="circular" width={34} height={34} />

@@ -19,6 +19,7 @@ const mainListItems = [
   { id: 'library' as Page, text: 'Kompozitsiyalar', icon: <MusicNoteRounded /> },
   { id: 'exercises' as Page, text: 'Mashqlar', icon: <PianoRounded /> },
   { id: 'theory' as Page, text: 'Nazariya', icon: <AutoStoriesRounded /> },
+  { id: 'piano' as Page, text: 'Pianino', icon: <PianoRounded /> },
 ];
 const secondaryListItems = [
   { id: 'statistics' as Page, text: 'Statistika', icon: <BarChartRounded /> },

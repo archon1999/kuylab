@@ -187,7 +187,7 @@ try:
                 assert status == 200 and excerpt["score_id"] == variant["score_id"] and excerpt["notes"]
                 assert a.request(f"/practice/{piece['id']}/variants/{variant['id']}")[0] == 200
         if source.code == "all-in":
-            assert len(piece["variants"]) == 2 and piece["default_variant_id"] == "easy"
+            assert len(piece["variants"]) == 2 and piece["default_variant_id"] == "hard"
             for variant in piece["variants"]:
                 status, data, _ = a.request(f"/api/scores/{variant['score_id']}/file/")
                 assert status == 200 and data.startswith(b"MThd")

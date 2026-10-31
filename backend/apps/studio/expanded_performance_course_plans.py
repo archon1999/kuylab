@@ -31,23 +31,6 @@ PLANS = {
                tr("Bass kirishidan oldin pauza qiling va keyingi yuqori tovushni taxmin qiling. Sekin to‘liq variantda taxminni tekshiring.", "Поставьте паузу перед басом, предскажите следующий верхний тон и проверьте в медленном полном варианте.", "Pause before a bass entry, predict the next upper tone, then check with the slow complete version."),
                tr("G bilan G♯ ni bir tovush deb olmang; harfga qo‘shilgan belgini ham tekshiring.", "Не путайте G и G♯: проверяйте знак рядом с буквой.", "Distinguish G from G♯; read the accidental as well as the letter."), ["keyboard", "coordination"]),
     ],
-    "passacaglia": [
-        lesson("upper-repeated-c", 4, 16, "melody",
-               tr("C takrorlari va registr", "Повторы C и регистр", "Repeated C and register"),
-               tr("Takror — bir klavishning yangi vaqtda yana bosilishi. Bu yozuvda C5 dan C6 ga chiqib, yuqori C bir necha marta qaytadi; keyin B atrofidagi yo‘l ochiladi. C5 va C6 bir harfli, lekin oktava bilan ajralgan ikki klavish. Uzoq C bilan qisqa qayta bosilgan C ni ajrating. Darsdagi yuqori qatlam import qilingan yozuvning roli; u har doim alohida bitta kuy ovoziga teng emas.", "Повтор — новая атака той же клавиши. В записи C5 переходит к C6, высокий C возвращается несколько раз, затем линия подходит к B. C5 и C6 одноимённы, но разделены октавой. Различайте долгое C и короткие повторные нажатия. Верхний слой — роль в импортированном MIDI, а не обязательно один отдельный мелодический голос.", "A repetition is a new attack on the same key. C5 moves to C6, high C repeats, then the route approaches B. C5 and C6 share a letter but lie an octave apart. Distinguish a held C from short restrikes. The imported upper layer is a display role and does not necessarily equal one isolated melodic voice."),
-               tr("Bitta C6 ni bosib, qo‘yib yuboring va keyingi kirishga tayyorlaning. To‘liq yuqori qatlamda registr almashishini saqlang.", "Нажмите и отпустите C6, подготовив следующее вступление. В полном верху сохраняйте смену регистра.", "Press and release one C6 before its next entry. Preserve register changes in the complete upper layer."),
-               tr("Bir xil harf qaytganida klavishni uzluksiz ushlab qolmang.", "Не заменяйте повторяющуюся букву непрерывным удержанием.", "Do not replace repeated letters with one continuous hold."), ["articulation", "keyboard"]),
-        lesson("a-broken-support", 0, 18, "bass",
-               tr("A–E–C jo‘rligini yig‘ish", "Собрать сопровождение A–E–C", "Building the A–E–C accompaniment"),
-               tr("Jo‘rlik asosiy yo‘lni qo‘llab turadi. Kirishda A2–A3–E4–C4–A4 ketma-ketligi registrni kengaytiradi. A–C kichik tersiya, uch yarim ton; A–E kvinta, yetti yarim ton: bu A minor rangiga tayanch. Barcha tovushni bir vaqtda bosish shart emas. Ularni birin-ketin qo‘shganda bassdan yuqoriga va yana ichkariga qaytish eshitilsin.", "Сопровождение поддерживает основную линию. A2–A3–E4–C4–A4 расширяет регистр. A–C — малая терция, три полутона; A–E — квинта, семь: это опора ля-минорной окраски. Не нужно брать все тоны сразу. Услышьте путь от баса вверх и обратно внутрь фактуры.", "Accompaniment supports the main line. A2–A3–E4–C4–A4 opens the register. A–C is a minor third of three semitones; A–E a fifth of seven, supporting an A-minor colour. These tones need not sound together. Hear the route rise from the bass and return inside the texture."),
-               tr("Avval faqat pastki A tayanchlarini tinglang. Keyin ular orasidagi E va C ni asta qaytaring; vaqt bo‘shliqlari saqlansin.", "Сначала слушайте нижние опоры A. Затем верните E и C между ними, сохраняя временные промежутки.", "Hear the low A landmarks first, then restore E and C between them without compressing the gaps."),
-               tr("Pastki deb nomlangan qatlamda yuqori tovush ham bor: rangni majburiy qo‘l taqsimoti deb qabul qilmang.", "В нижнем слое бывают высокие ноты: цвет не предписывает обязательное распределение рук.", "The lower layer can contain high notes; its colour is not mandatory hand allocation."), ["arpeggio", "triads"]),
-        lesson("repeats-over-moving-bass", 68, 84, "coordination",
-               tr("Takrorlar ostidagi o‘zgaruvchi bass", "Меняющийся бас под повторами", "A changing bass below repetitions"),
-               tr("Bir xil yuqori takror bass o‘zgarganda boshqacha rang oladi. Bu joyda C5 va B4 atrofidagi qaytishlar ostida D va G tayanchlari paydo bo‘ladi. G5–F5 kabi yuqoriroq tovushlar qatlamni kengaytiradi. Muvofiqlashtirish — ikkala qo‘lni doim birga bosish emas, har birining kirish vaqtini saqlash. Yangi bass bilan qaysi yuqori tovush mos kelishini oldindan eshiting.", "Одинаковый верхний повтор меняет окраску с новым басом. Под возвратами около C5 и B4 появляются опоры D и G; G5–F5 расширяет верх. Координация означает сохранение времени каждой партии, а не обязательную совместную атаку. Заранее слышьте верхний тон у нового баса.", "The same upper repetition changes colour over a new bass. D and G supports appear below returns around C5 and B4, while G5–F5 widens the upper range. Coordination preserves each part's timing rather than forcing simultaneous attacks. Anticipate which upper tone meets a new bass."),
-               tr("Siyrak ikkala qatlamda yangi D va G kelishini belgilang. To‘liq variantda shu tayanchlarni yuqori takrorlardan ajratib eshiting.", "Отметьте новые D и G в редких опорах двух слоёв. В полной версии слышьте их отдельно от верхних повторов.", "Mark new D and G entries in the sparse two-layer stage, then hear them beneath the complete upper repetitions."),
-               tr("Jo‘rlik zichlashgani uchun barcha notani birdek kuchli urg‘ulamang.", "Не акцентируйте все ноты одинаково из-за уплотнения сопровождения.", "A denser accompaniment does not require equally strong accents on every note."), ["coordination", "balance"]),
-    ],
     "pachelbel-canon-in-d": [
         lesson("descending-opening-line", 0, 16, "melody",
                tr("F♯ dan boshlanuvchi sokin kuy", "Спокойная мелодия от F♯", "The quiet line from F♯"),
@@ -219,3 +202,8 @@ PLANS = {
                tr("Kuchli qismga kelganda avtomatik tezlashmang; tovush kuchi bilan temp boshqa narsalar.", "Не ускоряйтесь автоматически в насыщенном разделе: громкость и темп — разные параметры.", "Do not accelerate automatically in the fuller section; loudness and tempo are different."), ["coordination", "balance"]),
     ],
 }
+
+
+from .passacaglia_course_plans import PLANS as PASSACAGLIA_PLANS
+
+PLANS["passacaglia"] = PASSACAGLIA_PLANS

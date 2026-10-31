@@ -104,6 +104,10 @@ def iter_prepared_assets():
                     stage_provenance.update({"source_playback_revision": item["source"]["playback_revision"],
                                              "source_variant": item["source"].get("composition_variant_id"),
                                              "note_release_basis": "Reviewed Ivory key holds, uniformly scaled; no pedal tail is baked into the holds."})
+                if notation := IVORY_BY_CODE.get(source_code, {}).get("variants", [{}])[0].get("notation_source"):
+                    stage_provenance.update({"notation_source": notation,
+                                             "source_url": notation["page"],
+                                             "note_release_basis": "Source notation key holds, uniformly scaled; no pedal extensions. Hand roles follow the two written staves."})
                 title = item["title"]["uz"] + " · " + stage["title"]["uz"]
                 yield (stage["_asset_key"], title, data, parse_midi(data,title), stage_provenance)
             continue
@@ -229,6 +233,11 @@ class Command(BaseCommand):
                                 "tempo_bpm": round(validated[asset_key]["quarter_bpm"]),
                                 "tempo_beat_unit": "quarter", "key_signature": "", "time_signature": "",
                                 "full_score_format": "midi", "full_score_verified_at": None}
+                            if notation := variant.get("notation_source"):
+                                defaults.update({"reference_video_url": "", "source_kind": "public_domain",
+                                                 "rights_status": "public_domain",
+                                                 "rights_note": notation["license"] + ". " + notation["credit"],
+                                                 "arranger": "TruuMoo", "key_signature": "A minor", "time_signature": "4/4"})
                             if primary:
                                 for field, value in defaults.items():
                                     setattr(arrangement, field, value)
@@ -281,6 +290,8 @@ class Command(BaseCommand):
                                   rights_note="Owner-supplied Ivory performance; original musical rights retained. Every reviewed cut, note restoration or transposition is recorded in source provenance; the complete original download is retained." if provenance["kind"] == "owner_supplied_ivory_performance" else (ENTRY_BY_CODE[source.code]["license"] + ". " + ENTRY_BY_CODE[source.code]["credit"]) if source.course_kind == "curated" else "User-provided source, preserved without modification." if provenance.get("preserved_original_bytes") else "Teaching adaptation of the user's source; not a publisher edition." if provenance["kind"] == "teaching_adaptation" else "User-supplied course drill; separate percussion track omitted for piano study." if provenance["kind"] == "supplied_course_drill" else "Original practice example authored for this studio.",
                                   rights_confirmed_at=timezone.now(),exact_version_confirmed=True,
                                   completeness_verified_at=None)
+                    if notation := provenance.get("notation_source"):
+                        score.rights_note = notation["license"] + ". " + notation["credit"]
                     score.musicxml.save("source.mid", ContentFile(content),save=False)
                     newly_written.append(score.musicxml.name)
                     score.save()
@@ -293,4 +304,4 @@ class Command(BaseCommand):
             raise
         items = all_items()
         counts = {kind: sum(item["kind"] == kind for item in items) for kind in ("lesson", "journey", "exercise", "theory")}
-        self.stdout.write(self.style.SUCCESS(f"Curated studio ready: {len(SOURCES)} compositions, {sum(len(group['variants']) for group in IVORY_BY_CODE.values())} Ivory performances, {counts['lesson']} lessons, {counts['journey']} continuity studies, {counts['exercise']} exercises, {counts['theory']} theory topics. Users and historical sources preserved."))
+        self.stdout.write(self.style.SUCCESS(f"Curated studio ready: {len(SOURCES)} compositions, {sum(len(group['variants']) for group in IVORY_BY_CODE.values())} imported editions, {counts['lesson']} lessons, {counts['journey']} continuity studies, {counts['exercise']} exercises, {counts['theory']} theory topics. Users and historical sources preserved."))

@@ -63,7 +63,13 @@ class CompositionShowcaseTests(TestCase):
             for variant in piece.get('variants',[]):
                 self.assertIn(variant['difficulty'],range(1,6))
         package = next(piece for piece in pieces if piece['slug']=='all-in-soundtrack')
-        self.assertEqual([(v['id'],v['difficulty']) for v in package['variants']],[('easy',2),('hard',4)])
+        self.assertEqual([(v['id'],v['difficulty']) for v in package['variants']],[('easy',3),('hard',4)])
+        self.assertEqual(package['difficulty'], 4)
+        self.assertEqual(package['default_variant_id'], 'hard')
+        hard = next(v for v in package['variants'] if v['id'] == 'hard')
+        self.assertEqual(package['score_id'], hard['score_id'])
+        preview = self.client.get(f"/api/studio/compositions/{package['id']}/preview/").json()
+        self.assertEqual((preview['variant_id'], preview['score_id']), ('hard', hard['score_id']))
 
     def test_every_preview_contains_all_overlapping_source_notes_in_both_hands(self):
         before = (StudioAsset.objects.count(),Score.objects.count())

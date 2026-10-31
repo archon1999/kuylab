@@ -1,0 +1,3013 @@
+{
+  "reviewed_on": "2026-10-31",
+  "scale": {
+    "1": "Sparse elementary patterns with ample preparation time.",
+    "2": "Simple two-hand accompaniment and short predictable patterns.",
+    "3": "Intermediate independent melody/accompaniment, recurring arpeggios and moderate register changes.",
+    "4": "Advanced continuous patterns, wide transfers, ornaments or sustained dense texture.",
+    "5": "The most demanding current arrangements: fast dense passages, difficult coordination and substantial register/chord work."
+  },
+  "basis": "Editorial review of each exact MIDI edition at 100% source tempo, calibrated to the learner-requested examples. Not an examination grade, a judgement of the composition title, or a note-density formula. Hand statistics describe source layers, not mandatory fingering.",
+  "editions": [
+    {
+      "code": "still",
+      "variant": null,
+      "rating": 3,
+      "duration": 214.6,
+      "notes": 1092,
+      "median_nps": 5.0,
+      "peak_nps": 9.5,
+      "hands": {
+        "left": {
+          "notes": 561,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 40
+        },
+        "right": {
+          "notes": 531,
+          "max_chord": 3,
+          "max_span": 13,
+          "rapid_leaps": 8
+        }
+      },
+      "source_sha256": "f0713b1de241c28522911a907a4464504ce7fbcaa8340ad9e1589881c2f3e7c8",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "youth",
+      "variant": "original",
+      "rating": 3,
+      "duration": 179.4,
+      "notes": 833,
+      "median_nps": 4.0,
+      "peak_nps": 13.5,
+      "hands": {
+        "left": {
+          "notes": 433,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 6
+        },
+        "right": {
+          "notes": 400,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "816534970835b9b0d0d7543f0ba97c1fb68e7edd1583d5cf0bd40b082ae2cd00",
+      "review_note": "Learner calibration 3/5: moderate flowing accompaniment and a clear singing melody; local embellishments do not make the whole arrangement a virtuoso study."
+    },
+    {
+      "code": "youth",
+      "variant": "fabrizio-caligaris",
+      "rating": 3,
+      "duration": 174.3,
+      "notes": 944,
+      "median_nps": 5.5,
+      "peak_nps": 11.0,
+      "hands": {
+        "left": {
+          "notes": 424,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 36
+        },
+        "right": {
+          "notes": 520,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 19
+        }
+      },
+      "source_sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
+      "review_note": "Learner calibration 3/5: moderate flowing accompaniment and a clear singing melody; local embellishments do not make the whole arrangement a virtuoso study."
+    },
+    {
+      "code": "star",
+      "variant": null,
+      "rating": 3,
+      "duration": 207.7,
+      "notes": 597,
+      "median_nps": 3.0,
+      "peak_nps": 6.0,
+      "hands": {
+        "left": {
+          "notes": 292,
+          "max_chord": 3,
+          "max_span": 15,
+          "rapid_leaps": 5
+        },
+        "right": {
+          "notes": 305,
+          "max_chord": 3,
+          "max_span": 25,
+          "rapid_leaps": 18
+        }
+      },
+      "source_sha256": "12f3da5ccdb9ed4d0e4c80934a51d72f2fffdf7fd93cd94bff24c07b1b33ffd4",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "tears",
+      "variant": null,
+      "rating": 3,
+      "duration": 198.4,
+      "notes": 688,
+      "median_nps": 3.5,
+      "peak_nps": 9.0,
+      "hands": {
+        "left": {
+          "notes": 366,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 9
+        },
+        "right": {
+          "notes": 322,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "26c9b8d40d93af50a75684824d47e33067fa6daa237f97d9b7a0bf3d80662570",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "my-memory",
+      "variant": null,
+      "rating": 3,
+      "duration": 272.1,
+      "notes": 1058,
+      "median_nps": 4.0,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 637,
+          "max_chord": 4,
+          "max_span": 15,
+          "rapid_leaps": 71
+        },
+        "right": {
+          "notes": 421,
+          "max_chord": 3,
+          "max_span": 17,
+          "rapid_leaps": 22
+        }
+      },
+      "source_sha256": "fa9282b92aa5c69ec9499a7a983d701382ce86bbc7f7b653c707d609257fa835",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "premonition",
+      "variant": null,
+      "rating": 3,
+      "duration": 229.1,
+      "notes": 784,
+      "median_nps": 3.0,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 355,
+          "max_chord": 2,
+          "max_span": 19,
+          "rapid_leaps": 17
+        },
+        "right": {
+          "notes": 429,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "fca75f473fdb6b0ff2cf15ecba81b26705fc8ff03370c9382d495d796c9bacee",
+      "review_note": "Learner calibration 3/5: recurring accompaniment and moderate melodic motion, with manageable local register shifts."
+    },
+    {
+      "code": "memories",
+      "variant": null,
+      "rating": 2,
+      "duration": 176.0,
+      "notes": 500,
+      "median_nps": 2.5,
+      "peak_nps": 7.0,
+      "hands": {
+        "left": {
+          "notes": 271,
+          "max_chord": 2,
+          "max_span": 5,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 229,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "b61395b473e13d2ebf2a9070e8829e6d3aa7fba72b7d10b46ae994e1a2e672b7",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "all-in",
+      "variant": "easy",
+      "rating": 3,
+      "duration": 287.8,
+      "notes": 1473,
+      "median_nps": 4.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 424,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 1049,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "aca8ef5983df8a3378153d4db09f04d65e4e4ee6418d71a38c629b25cd7026c3",
+      "review_note": "Full/Hard 4/5 for wide continuous arpeggios and the complete right-hand part. Easy 3/5 retains that right hand while simplifying only the left; it is not a beginner one-note arrangement."
+    },
+    {
+      "code": "all-in",
+      "variant": "hard",
+      "rating": 4,
+      "duration": 287.8,
+      "notes": 2220,
+      "median_nps": 7.5,
+      "peak_nps": 15.5,
+      "hands": {
+        "left": {
+          "notes": 1171,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 72
+        },
+        "right": {
+          "notes": 1049,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "13d5ad3db51d778d3268fddf7aebefcefded493aa2edafb6e0448ea84d0cecb8",
+      "review_note": "Full/Hard 4/5 for wide continuous arpeggios and the complete right-hand part. Easy 3/5 retains that right hand while simplifying only the left; it is not a beginner one-note arrangement."
+    },
+    {
+      "code": "ode-to-joy",
+      "variant": null,
+      "rating": 5,
+      "duration": 169.4,
+      "notes": 2063,
+      "median_nps": 12.0,
+      "peak_nps": 32.0,
+      "hands": {
+        "left": {
+          "notes": 926,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 15
+        },
+        "right": {
+          "notes": 1137,
+          "max_chord": 4,
+          "max_span": 16,
+          "rapid_leaps": 11
+        }
+      },
+      "source_sha256": "5abfd7207a65ae36d8532f88ad99a3efd341a1456bd0ad4dfe4af40598291f7e",
+      "review_note": "Learner calibration 5/5: this is the dense performance arrangement, not the familiar beginner single-line exercise; rapid passages and chordal texture determine its grade."
+    },
+    {
+      "code": "prelude-c-major",
+      "variant": null,
+      "rating": 2,
+      "duration": 140.0,
+      "notes": 549,
+      "median_nps": 4.0,
+      "peak_nps": 4.5,
+      "hands": {
+        "left": {
+          "notes": 134,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 415,
+          "max_chord": 3,
+          "max_span": 8,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "874e07d0479542971bfceaf420d6117da8d602d89d26eea4610e7dd1ef58bf26",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "gymnopedie-no-1",
+      "variant": null,
+      "rating": 2,
+      "duration": 141.0,
+      "notes": 282,
+      "median_nps": 2.0,
+      "peak_nps": 5.0,
+      "hands": {
+        "left": {
+          "notes": 101,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 181,
+          "max_chord": 5,
+          "max_span": 21,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "e6e0bc5e23c16ec55aedb0e5f1e5e521201df2552851342f90ca92628b1fe3ea",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "moonlight-sonata",
+      "variant": null,
+      "rating": 3,
+      "duration": 439.4,
+      "notes": 1160,
+      "median_nps": 2.5,
+      "peak_nps": 6.0,
+      "hands": {
+        "left": {
+          "notes": 234,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 926,
+          "max_chord": 3,
+          "max_span": 14,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "64a5b0346fffe9ea6a68bfe10482ee701f4bf48b8d297801569b7f88e4101d7f",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "fur-elise",
+      "variant": null,
+      "rating": 4,
+      "duration": 130.4,
+      "notes": 905,
+      "median_nps": 6.0,
+      "peak_nps": 16.5,
+      "hands": {
+        "left": {
+          "notes": 388,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 517,
+          "max_chord": 4,
+          "max_span": 9,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "1c12c21c7bbf4cf163896732672648a69d497636059837abd153c71abe50215a",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "prelude-e-minor",
+      "variant": null,
+      "rating": 3,
+      "duration": 108.2,
+      "notes": 600,
+      "median_nps": 6.0,
+      "peak_nps": 10.0,
+      "hands": {
+        "left": {
+          "notes": 521,
+          "max_chord": 6,
+          "max_span": 31,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 79,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "c1d7e05aa4e6e2baeec2e9108402a969c16d5df302b82fd66d110634697f2e3b",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "waltz-a-minor",
+      "variant": null,
+      "rating": 3,
+      "duration": 120.5,
+      "notes": 920,
+      "median_nps": 7.5,
+      "peak_nps": 11.5,
+      "hands": {
+        "left": {
+          "notes": 528,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 392,
+          "max_chord": 2,
+          "max_span": 1,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "e28a6c52d4ef1e433223a6227544982e60fe69d261b5a4093fd45e4a4f45d7cc",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "nocturne-op-9-no-2",
+      "variant": null,
+      "rating": 4,
+      "duration": 202.3,
+      "notes": 1242,
+      "median_nps": 6.0,
+      "peak_nps": 12.5,
+      "hands": {
+        "left": {
+          "notes": 771,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 159
+        },
+        "right": {
+          "notes": 471,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 5
+        }
+      },
+      "source_sha256": "e202d3941ce5f26397f57f59f0e2e4e3ad9e19061fa3c4dc596c5ee6a6a2548e",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "rondo-alla-turca",
+      "variant": null,
+      "rating": 4,
+      "duration": 186.5,
+      "notes": 2482,
+      "median_nps": 13.5,
+      "peak_nps": 19.5,
+      "hands": {
+        "left": {
+          "notes": 1187,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 23
+        },
+        "right": {
+          "notes": 1295,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 29
+        }
+      },
+      "source_sha256": "77ef182516bbdb03d79c7a35335e982a68b9ea87efc555c575bf7e1d8db4dc2c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "clair-de-lune",
+      "variant": null,
+      "rating": 5,
+      "duration": 322.5,
+      "notes": 1468,
+      "median_nps": 4.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 725,
+          "max_chord": 5,
+          "max_span": 19,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 743,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "4eee9a1546ffde1ff74cb9824ba0e57cbc821185a15185bfea9faed97820bf8c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "river-flows-in-you",
+      "variant": null,
+      "rating": 3,
+      "duration": 209.8,
+      "notes": 1124,
+      "median_nps": 6.0,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 379,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 34
+        },
+        "right": {
+          "notes": 745,
+          "max_chord": 3,
+          "max_span": 27,
+          "rapid_leaps": 11
+        }
+      },
+      "source_sha256": "8a31444abaaec5c9c3106e66a66e5ca962ab9d572361498606264943937aea2f",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "kiss-the-rain",
+      "variant": null,
+      "rating": 3,
+      "duration": 253.1,
+      "notes": 1432,
+      "median_nps": 6.0,
+      "peak_nps": 12.0,
+      "hands": {
+        "left": {
+          "notes": 491,
+          "max_chord": 4,
+          "max_span": 24,
+          "rapid_leaps": 4
+        },
+        "right": {
+          "notes": 941,
+          "max_chord": 5,
+          "max_span": 36,
+          "rapid_leaps": 31
+        }
+      },
+      "source_sha256": "7e9fe6cf369750ca5e4eebe484087f7eb80647ef5be8145dab48512e0f522d67",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "may-be",
+      "variant": null,
+      "rating": 3,
+      "duration": 256.9,
+      "notes": 1210,
+      "median_nps": 5.0,
+      "peak_nps": 11.5,
+      "hands": {
+        "left": {
+          "notes": 298,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 7
+        },
+        "right": {
+          "notes": 912,
+          "max_chord": 4,
+          "max_span": 31,
+          "rapid_leaps": 37
+        }
+      },
+      "source_sha256": "385064151f33c20505e0e8cee86ddf19c90891790915078d143d34b45dddf929",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "nuvole-bianche",
+      "variant": null,
+      "rating": 4,
+      "duration": 350.0,
+      "notes": 2650,
+      "median_nps": 7.5,
+      "peak_nps": 17.5,
+      "hands": {
+        "left": {
+          "notes": 1595,
+          "max_chord": 4,
+          "max_span": 31,
+          "rapid_leaps": 95
+        },
+        "right": {
+          "notes": 1055,
+          "max_chord": 3,
+          "max_span": 15,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "a81730fc44de10ad5540253c0468b0d66161ca71a0f4ba0a8e919f8bce3c8d29",
+      "review_note": "Raised to 4/5 for this complete arrangement: sustained accompaniment motion, wide transfers and the dense climax require more than its simple opening suggests."
+    },
+    {
+      "code": "una-mattina",
+      "variant": null,
+      "rating": 3,
+      "duration": 192.0,
+      "notes": 742,
+      "median_nps": 4.0,
+      "peak_nps": 7.5,
+      "hands": {
+        "left": {
+          "notes": 259,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 483,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "1e30f75928d3d5b5e023958526146de75f814375949cecc345cc5b531ed4ae9c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "experience",
+      "variant": null,
+      "rating": 4,
+      "duration": 350.0,
+      "notes": 2630,
+      "median_nps": 7.0,
+      "peak_nps": 11.0,
+      "hands": {
+        "left": {
+          "notes": 1036,
+          "max_chord": 3,
+          "max_span": 15,
+          "rapid_leaps": 19
+        },
+        "right": {
+          "notes": 1594,
+          "max_chord": 2,
+          "max_span": 0,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "e3b2a9bfc48bade532f271f997c60a8f5f32e8764f300cfafc532c39c2a7486b",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "i-giorni",
+      "variant": null,
+      "rating": 3,
+      "duration": 358.0,
+      "notes": 1969,
+      "median_nps": 5.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 715,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 17
+        },
+        "right": {
+          "notes": 1254,
+          "max_chord": 4,
+          "max_span": 24,
+          "rapid_leaps": 30
+        }
+      },
+      "source_sha256": "7569f1a6154b90daf9578e122f812e228a6436b227e98a05348a182d86f833cc",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "comptine",
+      "variant": null,
+      "rating": 3,
+      "duration": 141.3,
+      "notes": 811,
+      "median_nps": 5.0,
+      "peak_nps": 10.0,
+      "hands": {
+        "left": {
+          "notes": 421,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 390,
+          "max_chord": 3,
+          "max_span": 9,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "dfa7afaa963b4f8d344823d80241ea99ac3fcd650a2ce819aeac4a52aede7fb1",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "mariage-d-amour",
+      "variant": null,
+      "rating": 4,
+      "duration": 241.4,
+      "notes": 1137,
+      "median_nps": 4.5,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 474,
+          "max_chord": 2,
+          "max_span": 15,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 663,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "75bd923f1bd47851ec4b8d960edda9ee5a8d487b165550c553dc68c6aa24e818",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "ballade-pour-adeline",
+      "variant": null,
+      "rating": 3,
+      "duration": 169.6,
+      "notes": 844,
+      "median_nps": 4.5,
+      "peak_nps": 9.0,
+      "hands": {
+        "left": {
+          "notes": 141,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 703,
+          "max_chord": 4,
+          "max_span": 28,
+          "rapid_leaps": 20
+        }
+      },
+      "source_sha256": "ef167814f114074d1395334c72edb6dc4d879490a26ab8d203afe0ec4f07f81d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "cornfield-chase",
+      "variant": null,
+      "rating": 4,
+      "duration": 126.7,
+      "notes": 1311,
+      "median_nps": 12.5,
+      "peak_nps": 18.5,
+      "hands": {
+        "left": {
+          "notes": 509,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 16
+        },
+        "right": {
+          "notes": 802,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 14
+        }
+      },
+      "source_sha256": "e040b0219f3eaa2723b651f39f1635363797fa87dd5cd50ee48981dcccfb75c5",
+      "review_note": "Raised to 4/5 for this performance: sustained dense repeated motion and independent patterns in both hands, rather than a simplified theme."
+    },
+    {
+      "code": "time",
+      "variant": null,
+      "rating": 4,
+      "duration": 246.9,
+      "notes": 1495,
+      "median_nps": 5.5,
+      "peak_nps": 14.5,
+      "hands": {
+        "left": {
+          "notes": 709,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 28
+        },
+        "right": {
+          "notes": 786,
+          "max_chord": 5,
+          "max_span": 14,
+          "rapid_leaps": 13
+        }
+      },
+      "source_sha256": "79175009dc84f5cb41bbd9f9bb1dc45d8949ed652c367dda9f85eaa10ce9e159",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "hes-a-pirate",
+      "variant": "performance-1",
+      "rating": 5,
+      "duration": 191.9,
+      "notes": 2128,
+      "median_nps": 11.0,
+      "peak_nps": 24.5,
+      "hands": {
+        "left": {
+          "notes": 930,
+          "max_chord": 4,
+          "max_span": 15,
+          "rapid_leaps": 91
+        },
+        "right": {
+          "notes": 1198,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 11
+        }
+      },
+      "source_sha256": "88fe6f498ad570e3e315deb3664778b1d2564b06a179344a77f7a75f4806bfa9",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "hes-a-pirate",
+      "variant": "performance-2",
+      "rating": 4,
+      "duration": 101.2,
+      "notes": 845,
+      "median_nps": 9.5,
+      "peak_nps": 14.5,
+      "hands": {
+        "left": {
+          "notes": 268,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 577,
+          "max_chord": 5,
+          "max_span": 15,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "6518d8c2346cab341bb752f9cac292735018c5a0f2033f8ef82c3e6edcbab669",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "hes-a-pirate",
+      "variant": "performance-3",
+      "rating": 4,
+      "duration": 89.8,
+      "notes": 1127,
+      "median_nps": 13.0,
+      "peak_nps": 18.5,
+      "hands": {
+        "left": {
+          "notes": 489,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 34
+        },
+        "right": {
+          "notes": 638,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "414e73ba69ec23cc5eb52cbeab35679a7d9a1ec87bf2d9da5cbb587f47249fc5",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "one-summers-day",
+      "variant": null,
+      "rating": 4,
+      "duration": 225.0,
+      "notes": 960,
+      "median_nps": 4.0,
+      "peak_nps": 11.5,
+      "hands": {
+        "left": {
+          "notes": 236,
+          "max_chord": 3,
+          "max_span": 21,
+          "rapid_leaps": 3
+        },
+        "right": {
+          "notes": 724,
+          "max_chord": 5,
+          "max_span": 29,
+          "rapid_leaps": 12
+        }
+      },
+      "source_sha256": "d4764afb57ec85113f5d9200f5c8fb6218bf591703ef740b2e341e01f681beed",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "merry-go-round-of-life",
+      "variant": null,
+      "rating": 4,
+      "duration": 317.8,
+      "notes": 2344,
+      "median_nps": 7.5,
+      "peak_nps": 13.0,
+      "hands": {
+        "left": {
+          "notes": 624,
+          "max_chord": 3,
+          "max_span": 15,
+          "rapid_leaps": 201
+        },
+        "right": {
+          "notes": 1720,
+          "max_chord": 6,
+          "max_span": 29,
+          "rapid_leaps": 75
+        }
+      },
+      "source_sha256": "c6579739e4d968c3196a42d6a3e64ce6ff28a187a820ed7672bee21d8c3ee371",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "la-valse-d-amelie",
+      "variant": null,
+      "rating": 3,
+      "duration": 157.5,
+      "notes": 766,
+      "median_nps": 5.0,
+      "peak_nps": 8.0,
+      "hands": {
+        "left": {
+          "notes": 439,
+          "max_chord": 3,
+          "max_span": 11,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 327,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "2129b88850616c7782ca49ef8cd906c524ae0f7d567c925f897d7d445c3d169e",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "love-story",
+      "variant": null,
+      "rating": 3,
+      "duration": 143.9,
+      "notes": 742,
+      "median_nps": 4.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 276,
+          "max_chord": 5,
+          "max_span": 26,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 466,
+          "max_chord": 4,
+          "max_span": 21,
+          "rapid_leaps": 7
+        }
+      },
+      "source_sha256": "5a54e02e82abee2686238718b08cadb4441b7010afc3538e5d1489e9f905c166",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "mia-sebastians-theme",
+      "variant": null,
+      "rating": 3,
+      "duration": 123.6,
+      "notes": 572,
+      "median_nps": 4.5,
+      "peak_nps": 12.5,
+      "hands": {
+        "left": {
+          "notes": 131,
+          "max_chord": 4,
+          "max_span": 22,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 441,
+          "max_chord": 4,
+          "max_span": 28,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "dd760e0ec71fbf8b7d3b8cf820ff04c4896ed087c5d9054b4e23ee64f70142fa",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "schindlers-list",
+      "variant": null,
+      "rating": 4,
+      "duration": 96.0,
+      "notes": 816,
+      "median_nps": 8.0,
+      "peak_nps": 20.0,
+      "hands": {
+        "left": {
+          "notes": 385,
+          "max_chord": 4,
+          "max_span": 15,
+          "rapid_leaps": 25
+        },
+        "right": {
+          "notes": 431,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "ea131f0065570ef9adc518db4e97ac3010b7d0b77c769a573a4491827960c3a6",
+      "review_note": "Raised to 4/5 for this short but dense performance: ornamental melodic movement, chordal texture and bass transfers."
+    },
+    {
+      "code": "my-heart-will-go-on",
+      "variant": null,
+      "rating": 4,
+      "duration": 358.9,
+      "notes": 1901,
+      "median_nps": 5.5,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 948,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 109
+        },
+        "right": {
+          "notes": 953,
+          "max_chord": 4,
+          "max_span": 13,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
+      "review_note": "Learner calibration 4/5: the long epic cover combines independent moving bass, wide transfers and a progressively fuller melody."
+    },
+    {
+      "code": "shiki-epitaph",
+      "variant": null,
+      "rating": 3,
+      "duration": 226.0,
+      "notes": 902,
+      "median_nps": 4.0,
+      "peak_nps": 8.0,
+      "hands": {
+        "left": {
+          "notes": 488,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 23
+        },
+        "right": {
+          "notes": 414,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "c7d0991aa4d00256d7e4ced93a83a3c9cc73deaca944c9b2c76eb4bff32e995a",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "tum-hi-ho",
+      "variant": "vishal",
+      "rating": 4,
+      "duration": 309.3,
+      "notes": 2301,
+      "median_nps": 7.0,
+      "peak_nps": 15.0,
+      "hands": {
+        "left": {
+          "notes": 1040,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 87
+        },
+        "right": {
+          "notes": 1261,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 15
+        }
+      },
+      "source_sha256": "770fb7c1a283d47476be998714409a99b8381c2f530f9a32716250d35c790db4",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "tum-hi-ho",
+      "variant": "aakash-desai",
+      "rating": 3,
+      "duration": 208.8,
+      "notes": 774,
+      "median_nps": 4.0,
+      "peak_nps": 6.5,
+      "hands": {
+        "left": {
+          "notes": 364,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 8
+        },
+        "right": {
+          "notes": 410,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "2d9860f4df9a2a25198a1f408321f48ec7afbb04476e3abc79bb4faa1bd4af5c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "kara-sevda-anlatamam",
+      "variant": null,
+      "rating": 3,
+      "duration": 132.9,
+      "notes": 553,
+      "median_nps": 4.0,
+      "peak_nps": 7.5,
+      "hands": {
+        "left": {
+          "notes": 114,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 12
+        },
+        "right": {
+          "notes": 439,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "29fa18919f4378a4c4e482e46c4d88d6bd103296116b812b44da5860ddcad5b4",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "passacaglia",
+      "variant": null,
+      "rating": 4,
+      "duration": 136.6,
+      "notes": 1030,
+      "median_nps": 8.0,
+      "peak_nps": 9.0,
+      "hands": {
+        "left": {
+          "notes": 544,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 41
+        },
+        "right": {
+          "notes": 486,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 30
+        }
+      },
+      "source_sha256": "7c18d7d6bb30aab4431cb006679492dbe36f479e70b58ee331d29d77fd34f603",
+      "review_note": "Learner calibration 4/5: the complete 74-bar score has independent continuous eighths at quarter=130 and frequent octave/register transfers; source staves replace the incorrect inferred hands."
+    },
+    {
+      "code": "mohabbatein",
+      "variant": null,
+      "rating": 3,
+      "duration": 142.4,
+      "notes": 831,
+      "median_nps": 6.0,
+      "peak_nps": 11.0,
+      "hands": {
+        "left": {
+          "notes": 384,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 29
+        },
+        "right": {
+          "notes": 447,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "a9cc3335a0c3b343ccd890029351e8b5ac61ef3e6afa73971de61c9d3f75430d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "dae-jang-geum-apna",
+      "variant": null,
+      "rating": 3,
+      "duration": 191.2,
+      "notes": 1047,
+      "median_nps": 5.5,
+      "peak_nps": 11.0,
+      "hands": {
+        "left": {
+          "notes": 507,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 100
+        },
+        "right": {
+          "notes": 540,
+          "max_chord": 3,
+          "max_span": 19,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "75e1fb610a47a89d2b623fe0f582fbc48ab1e35dd542d573f66b5fba948e7720",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-day-and-night",
+      "variant": "shane-stapylton",
+      "rating": 3,
+      "duration": 153.5,
+      "notes": 639,
+      "median_nps": 4.5,
+      "peak_nps": 7.0,
+      "hands": {
+        "left": {
+          "notes": 452,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 64
+        },
+        "right": {
+          "notes": 187,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "b84d4cf724e67220acd6c0dca6f36cda5836f01cc29db3edd82f33ebbe7dbc88",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-day-and-night",
+      "variant": "performance-2",
+      "rating": 3,
+      "duration": 180.5,
+      "notes": 1021,
+      "median_nps": 5.5,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 669,
+          "max_chord": 2,
+          "max_span": 14,
+          "rapid_leaps": 158
+        },
+        "right": {
+          "notes": 352,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "80c0d41ac92fefe4a0ee2e8d8eeec19eec290023ff2ac8d4fbf71102c1956a0f",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-requiem",
+      "variant": null,
+      "rating": 3,
+      "duration": 188.2,
+      "notes": 729,
+      "median_nps": 4.5,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 466,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 34
+        },
+        "right": {
+          "notes": 263,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "b5f6870c1d7d67647c12ca13a35f5819cc890292e7a06aaecc6f05b0a73e9d17",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-blue-bell",
+      "variant": "performance-1",
+      "rating": 2,
+      "duration": 140.9,
+      "notes": 309,
+      "median_nps": 2.5,
+      "peak_nps": 4.0,
+      "hands": {
+        "left": {
+          "notes": 214,
+          "max_chord": 3,
+          "max_span": 9,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 95,
+          "max_chord": 2,
+          "max_span": 9,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "914559dfcf9087c455bff1c0a5dfa9fb456e3302f031a4cc0b0576f013238af5",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-blue-bell",
+      "variant": "pianodeuss",
+      "rating": 2,
+      "duration": 169.6,
+      "notes": 404,
+      "median_nps": 2.5,
+      "peak_nps": 4.0,
+      "hands": {
+        "left": {
+          "notes": 261,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 143,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "5eb2675c17d43a378dfb49d58553d0dc16145a8f6c14899f4a94fafdf1993a02",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-shi-ki",
+      "variant": null,
+      "rating": 4,
+      "duration": 414.7,
+      "notes": 2456,
+      "median_nps": 6.5,
+      "peak_nps": 12.0,
+      "hands": {
+        "left": {
+          "notes": 1673,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 25
+        },
+        "right": {
+          "notes": 783,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 16
+        }
+      },
+      "source_sha256": "cc4ecb67c64bec9962df4813b47c596522610d54dbd7be9b782e4b94813bbddb",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "shiki-eau-de-vie",
+      "variant": null,
+      "rating": 4,
+      "duration": 156.5,
+      "notes": 962,
+      "median_nps": 6.5,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 678,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 62
+        },
+        "right": {
+          "notes": 284,
+          "max_chord": 3,
+          "max_span": 9,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "e448323391dfad998eaf6ba873b45f5c79efeadceabe08bdeb4f9148cae651de",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "red-alert-3-soviet-march",
+      "variant": null,
+      "rating": 5,
+      "duration": 163.9,
+      "notes": 2386,
+      "median_nps": 15.0,
+      "peak_nps": 23.5,
+      "hands": {
+        "left": {
+          "notes": 1168,
+          "max_chord": 4,
+          "max_span": 17,
+          "rapid_leaps": 126
+        },
+        "right": {
+          "notes": 1218,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 6
+        }
+      },
+      "source_sha256": "5b63f8e1ba7577af68f77c07c48528db769aab87d87019ed583af61f55625397",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "ivan-torrent-lion-heart",
+      "variant": null,
+      "rating": 3,
+      "duration": 137.7,
+      "notes": 582,
+      "median_nps": 4.5,
+      "peak_nps": 7.0,
+      "hands": {
+        "left": {
+          "notes": 276,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 6
+        },
+        "right": {
+          "notes": 306,
+          "max_chord": 2,
+          "max_span": 7,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "9198d369880ff2ed7a9a1853cc35847527a860aa7e8be47ba044c6d6fc4f57a2",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "beethoven-moonlight-sonata-movement-3",
+      "variant": null,
+      "rating": 5,
+      "duration": 449.1,
+      "notes": 6424,
+      "median_nps": 15.0,
+      "peak_nps": 25.5,
+      "hands": {
+        "left": {
+          "notes": 3241,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 237
+        },
+        "right": {
+          "notes": 3183,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 21
+        }
+      },
+      "source_sha256": "7398a3866d6e7d0c18869a083105cf640364829026390991c62a4bbc2b17cc93",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-night-queen",
+      "variant": null,
+      "rating": 4,
+      "duration": 212.9,
+      "notes": 1773,
+      "median_nps": 8.5,
+      "peak_nps": 16.0,
+      "hands": {
+        "left": {
+          "notes": 876,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 41
+        },
+        "right": {
+          "notes": 897,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "b6198225091f2b7cffc09e647abd740d1eda2ae89f3f5489a575e4cbc4a0082d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "beyonce-halo",
+      "variant": "performance-1",
+      "rating": 3,
+      "duration": 263.2,
+      "notes": 1964,
+      "median_nps": 7.5,
+      "peak_nps": 12.5,
+      "hands": {
+        "left": {
+          "notes": 708,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 1256,
+          "max_chord": 3,
+          "max_span": 14,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "6916867f03af558d7eef73ea85a828085b6940a85f7df23e8a459cb5b6c934e0",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "beyonce-halo",
+      "variant": "riyandi-kusuma",
+      "rating": 4,
+      "duration": 227.1,
+      "notes": 1994,
+      "median_nps": 9.0,
+      "peak_nps": 15.0,
+      "hands": {
+        "left": {
+          "notes": 872,
+          "max_chord": 3,
+          "max_span": 16,
+          "rapid_leaps": 42
+        },
+        "right": {
+          "notes": 1122,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 12
+        }
+      },
+      "source_sha256": "cf9230e03aa7bd8cc087600e992882436d8b5df16e492f095dd2a137681aec4f",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "depression",
+      "variant": null,
+      "rating": 2,
+      "duration": 192.4,
+      "notes": 434,
+      "median_nps": 2.0,
+      "peak_nps": 6.5,
+      "hands": {
+        "left": {
+          "notes": 170,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 264,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "f6ed0ab24785eeb4604605b62a3266d7e58a2a6c14c21a16b04d58119131dcd5",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-senya",
+      "variant": null,
+      "rating": 3,
+      "duration": 84.2,
+      "notes": 275,
+      "median_nps": 3.5,
+      "peak_nps": 5.5,
+      "hands": {
+        "left": {
+          "notes": 125,
+          "max_chord": 2,
+          "max_span": 5,
+          "rapid_leaps": 10
+        },
+        "right": {
+          "notes": 150,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 9
+        }
+      },
+      "source_sha256": "2b7073184d10f72f38819ba64f1737ba4e9b310be4de9a6b26c373540c6eda66",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-hyouhaku-kokuten",
+      "variant": null,
+      "rating": 5,
+      "duration": 251.4,
+      "notes": 2247,
+      "median_nps": 8.0,
+      "peak_nps": 26.5,
+      "hands": {
+        "left": {
+          "notes": 1044,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 134
+        },
+        "right": {
+          "notes": 1203,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 76
+        }
+      },
+      "source_sha256": "c3c8e0353886048d39383f00e85ed7a6b6b571d89c0b34be1b286d87acdd66c0",
+      "review_note": "Learner calibration 5/5: quiet introduction gives way to dense fast passages, wide bass transfers and demanding independent hands."
+    },
+    {
+      "code": "winter-sonata-missing-you",
+      "variant": null,
+      "rating": 2,
+      "duration": 150.6,
+      "notes": 457,
+      "median_nps": 3.0,
+      "peak_nps": 5.5,
+      "hands": {
+        "left": {
+          "notes": 265,
+          "max_chord": 3,
+          "max_span": 8,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 192,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "2ec0d34d77c299e884b2649075fdfbbe78852bac7c8be8e67bb4edaa4c24823c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "frozen-let-it-go",
+      "variant": null,
+      "rating": 4,
+      "duration": 215.5,
+      "notes": 1682,
+      "median_nps": 8.0,
+      "peak_nps": 20.0,
+      "hands": {
+        "left": {
+          "notes": 785,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 3
+        },
+        "right": {
+          "notes": 897,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "229543ebaffba3e0438b490bd4f4bec362db87c5dc3c78b475b2a7dc04ee880c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-victory",
+      "variant": "performance-1",
+      "rating": 4,
+      "duration": 304.4,
+      "notes": 2564,
+      "median_nps": 8.5,
+      "peak_nps": 18.0,
+      "hands": {
+        "left": {
+          "notes": 1326,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 68
+        },
+        "right": {
+          "notes": 1238,
+          "max_chord": 4,
+          "max_span": 17,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "5150468d8dbbc8b5a51e4a9d8fa4960b1f9aadb00c69ed268174d240d6d31756",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-victory",
+      "variant": "performance-2",
+      "rating": 4,
+      "duration": 330.4,
+      "notes": 2599,
+      "median_nps": 8.2,
+      "peak_nps": 15.5,
+      "hands": {
+        "left": {
+          "notes": 1009,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 114
+        },
+        "right": {
+          "notes": 1590,
+          "max_chord": 6,
+          "max_span": 14,
+          "rapid_leaps": 12
+        }
+      },
+      "source_sha256": "64866fa8ce25f867b7fdd8eae4eb3a5ea6cdcdce09fbf147e252462bdf6301a1",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-determination-gods-will",
+      "variant": null,
+      "rating": 3,
+      "duration": 116.0,
+      "notes": 574,
+      "median_nps": 6.0,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 319,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 16
+        },
+        "right": {
+          "notes": 255,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "fee32943af5956a4ebf9db97936fca8aac1c12d56d1cab04c77846cf0daa4121",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-i-have-seen-much",
+      "variant": "performance-1",
+      "rating": 2,
+      "duration": 152.7,
+      "notes": 470,
+      "median_nps": 3.0,
+      "peak_nps": 6.0,
+      "hands": {
+        "left": {
+          "notes": 283,
+          "max_chord": 2,
+          "max_span": 7,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 187,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "09682e471a885438c435f1646ab58bcb0ff95e1ad0010b2d1282b8720dfc7822",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-i-have-seen-much",
+      "variant": "performance-2",
+      "rating": 3,
+      "duration": 190.3,
+      "notes": 1093,
+      "median_nps": 6.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 663,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 47
+        },
+        "right": {
+          "notes": 430,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "df3b33b3454a19ea5f96b6786128e9db5b1461b531cec63d4dbc9fd1527dcef7",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-i-have-seen-much",
+      "variant": "tedesco-creations",
+      "rating": 3,
+      "duration": 147.6,
+      "notes": 811,
+      "median_nps": 5.5,
+      "peak_nps": 12.5,
+      "hands": {
+        "left": {
+          "notes": 376,
+          "max_chord": 4,
+          "max_span": 16,
+          "rapid_leaps": 13
+        },
+        "right": {
+          "notes": 435,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "aaf9e4997f5ecdd7b3f6949a5ec249e734aebdd06add2bf694543c0c0dcfcb21",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-unleashed",
+      "variant": null,
+      "rating": 4,
+      "duration": 314.6,
+      "notes": 1799,
+      "median_nps": 4.5,
+      "peak_nps": 21.5,
+      "hands": {
+        "left": {
+          "notes": 852,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 19
+        },
+        "right": {
+          "notes": 947,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 7
+        }
+      },
+      "source_sha256": "e36ce9aeef5e8843241d4c59cb22a5853b8954d0ca283974a01d3279f49d65b8",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "romance-damour",
+      "variant": null,
+      "rating": 3,
+      "duration": 207.0,
+      "notes": 803,
+      "median_nps": 4.0,
+      "peak_nps": 5.5,
+      "hands": {
+        "left": {
+          "notes": 253,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 30
+        },
+        "right": {
+          "notes": 550,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 3
+        }
+      },
+      "source_sha256": "036143fd31d532f876e99b10b712c1549022df904721473d2732ed61d6c3df14",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "pirates-of-the-caribbean-davy-jones",
+      "variant": null,
+      "rating": 3,
+      "duration": 84.7,
+      "notes": 312,
+      "median_nps": 3.2,
+      "peak_nps": 9.5,
+      "hands": {
+        "left": {
+          "notes": 135,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 177,
+          "max_chord": 5,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "abf9d1214f03210123218b70ea1c8c121d9e11cf08f9317504390bbecd35ad2b",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "gladiator-honor-him-now-we-are-free",
+      "variant": "performance-1",
+      "rating": 4,
+      "duration": 339.3,
+      "notes": 1996,
+      "median_nps": 5.0,
+      "peak_nps": 24.0,
+      "hands": {
+        "left": {
+          "notes": 819,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 26
+        },
+        "right": {
+          "notes": 1177,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 5
+        }
+      },
+      "source_sha256": "609d6083df5b7fae212a5c96cd1bb80dcad89acb0937084faa3aab6a5eb46fb3",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "gladiator-honor-him-now-we-are-free",
+      "variant": "jacob",
+      "rating": 2,
+      "duration": 187.3,
+      "notes": 519,
+      "median_nps": 3.0,
+      "peak_nps": 5.5,
+      "hands": {
+        "left": {
+          "notes": 312,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 207,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "f45ffec948b822b973ad2df4d0a5891fb8ebfac0f84c796ff9fdeaf513501c4d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "gladiator-honor-him-now-we-are-free",
+      "variant": "performance-3",
+      "rating": 2,
+      "duration": 193.4,
+      "notes": 524,
+      "median_nps": 3.0,
+      "peak_nps": 5.5,
+      "hands": {
+        "left": {
+          "notes": 316,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 208,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "73b79178d8c461ae365d830f5144faa732d84f4f486b842687f41136075c2d77",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-man-of-the-world",
+      "variant": null,
+      "rating": 3,
+      "duration": 182.4,
+      "notes": 622,
+      "median_nps": 3.0,
+      "peak_nps": 8.0,
+      "hands": {
+        "left": {
+          "notes": 357,
+          "max_chord": 3,
+          "max_span": 16,
+          "rapid_leaps": 23
+        },
+        "right": {
+          "notes": 265,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "c6905a51c43cd6bb7fcd904244e647203bfab3035209d386909d89202b48ed36",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "thomas-bergersen-one-last-day",
+      "variant": null,
+      "rating": 5,
+      "duration": 268.3,
+      "notes": 2487,
+      "median_nps": 9.0,
+      "peak_nps": 18.0,
+      "hands": {
+        "left": {
+          "notes": 1164,
+          "max_chord": 5,
+          "max_span": 36,
+          "rapid_leaps": 24
+        },
+        "right": {
+          "notes": 1323,
+          "max_chord": 7,
+          "max_span": 38,
+          "rapid_leaps": 36
+        }
+      },
+      "source_sha256": "3d618d0b09d4debb901285f2d30585d1ff3651183898c42fa254b386567154c2",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "end-of-silence-entropy",
+      "variant": null,
+      "rating": 5,
+      "duration": 221.8,
+      "notes": 2318,
+      "median_nps": 11.0,
+      "peak_nps": 18.5,
+      "hands": {
+        "left": {
+          "notes": 997,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 15
+        },
+        "right": {
+          "notes": 1321,
+          "max_chord": 5,
+          "max_span": 14,
+          "rapid_leaps": 11
+        }
+      },
+      "source_sha256": "c1cda725cddc327f6298673ec4a5cbd3c9e7c15be1f94f6d825bd4d4c627f65f",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "thomas-bergersen-red",
+      "variant": null,
+      "rating": 4,
+      "duration": 333.0,
+      "notes": 2378,
+      "median_nps": 7.0,
+      "peak_nps": 16.5,
+      "hands": {
+        "left": {
+          "notes": 1480,
+          "max_chord": 4,
+          "max_span": 24,
+          "rapid_leaps": 77
+        },
+        "right": {
+          "notes": 898,
+          "max_chord": 5,
+          "max_span": 24,
+          "rapid_leaps": 19
+        }
+      },
+      "source_sha256": "30fa2ccba96cb78db1e3067442642f4e85babb2403b26c24414cc719f078eb62",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "fate-stay-night-kodoku-na-junrei",
+      "variant": null,
+      "rating": 3,
+      "duration": 110.5,
+      "notes": 465,
+      "median_nps": 4.5,
+      "peak_nps": 7.5,
+      "hands": {
+        "left": {
+          "notes": 261,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 9
+        },
+        "right": {
+          "notes": 204,
+          "max_chord": 2,
+          "max_span": 7,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "62bc63197470a62620d2e2b166c4ba35d149860870d5902a14c397dedecab35e",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "fate-stay-night-kishi-ou-no-hokori",
+      "variant": null,
+      "rating": 3,
+      "duration": 138.6,
+      "notes": 797,
+      "median_nps": 5.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 409,
+          "max_chord": 3,
+          "max_span": 14,
+          "rapid_leaps": 18
+        },
+        "right": {
+          "notes": 388,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "f2df3b3e736ab5dea6d6e66967afb254449d3d249e0c2068fa96463e5eb0fb1d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-maisou-burial",
+      "variant": null,
+      "rating": 3,
+      "duration": 310.1,
+      "notes": 1119,
+      "median_nps": 3.0,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 637,
+          "max_chord": 3,
+          "max_span": 16,
+          "rapid_leaps": 33
+        },
+        "right": {
+          "notes": 482,
+          "max_chord": 4,
+          "max_span": 14,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "982b67ac99f1adc0e3463807e293792a2ecfe3026ef30e4e2fd840d071e9b2ba",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-heart-of-courage",
+      "variant": "patrik-pietschmann",
+      "rating": 5,
+      "duration": 188.5,
+      "notes": 2057,
+      "median_nps": 11.0,
+      "peak_nps": 34.0,
+      "hands": {
+        "left": {
+          "notes": 817,
+          "max_chord": 5,
+          "max_span": 15,
+          "rapid_leaps": 83
+        },
+        "right": {
+          "notes": 1240,
+          "max_chord": 5,
+          "max_span": 15,
+          "rapid_leaps": 27
+        }
+      },
+      "source_sha256": "cefc19f5ef21dde8f686b45e5be266ac4200d9555811c1ab25533fccb86637bf",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-heart-of-courage",
+      "variant": "performance-2",
+      "rating": 4,
+      "duration": 116.1,
+      "notes": 1038,
+      "median_nps": 8.2,
+      "peak_nps": 19.5,
+      "hands": {
+        "left": {
+          "notes": 733,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 5
+        },
+        "right": {
+          "notes": 305,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "412264c7591ddf8be1ce6e32109fe9a4986182a39b7309c8939062ac395586c2",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-decision",
+      "variant": "performance-1",
+      "rating": 3,
+      "duration": 183.1,
+      "notes": 742,
+      "median_nps": 4.0,
+      "peak_nps": 10.0,
+      "hands": {
+        "left": {
+          "notes": 386,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 7
+        },
+        "right": {
+          "notes": 356,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "7062d5af0ad4ac32c7b45ae447cf71f7234a7783908f19d93088b07e5007c890",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-decision",
+      "variant": "performance-2",
+      "rating": 2,
+      "duration": 203.4,
+      "notes": 672,
+      "median_nps": 3.0,
+      "peak_nps": 6.5,
+      "hands": {
+        "left": {
+          "notes": 404,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 268,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "c74cb2d1f7d8a756559eff762695f9f2b551ff0c15982ba00db7b8f37e74b2cc",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-my-mother-and-my-father",
+      "variant": null,
+      "rating": 3,
+      "duration": 204.0,
+      "notes": 1077,
+      "median_nps": 5.5,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 665,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 38
+        },
+        "right": {
+          "notes": 412,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "33f93a35fc9345268cca8ca801f206c7c06a6cc8e0eb12b6f28f0f6dcd1254a8",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "game-of-thrones-main-theme",
+      "variant": null,
+      "rating": 3,
+      "duration": 102.9,
+      "notes": 700,
+      "median_nps": 7.0,
+      "peak_nps": 10.0,
+      "hands": {
+        "left": {
+          "notes": 367,
+          "max_chord": 3,
+          "max_span": 7,
+          "rapid_leaps": 7
+        },
+        "right": {
+          "notes": 333,
+          "max_chord": 3,
+          "max_span": 10,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "e37d56bc17355a90a15dabf8fc53bc5d489d06af920e3756fee037eff130c17a",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "what-a-wonderful-world",
+      "variant": null,
+      "rating": 3,
+      "duration": 173.6,
+      "notes": 881,
+      "median_nps": 5.5,
+      "peak_nps": 8.5,
+      "hands": {
+        "left": {
+          "notes": 438,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 2
+        },
+        "right": {
+          "notes": 443,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "58727f116a9908b30b7a33359d1009637774d29da8b0935efd4ff041111f9ec4",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-sadness-and-sorrow",
+      "variant": null,
+      "rating": 3,
+      "duration": 214.2,
+      "notes": 935,
+      "median_nps": 4.0,
+      "peak_nps": 9.0,
+      "hands": {
+        "left": {
+          "notes": 537,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 32
+        },
+        "right": {
+          "notes": 398,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "5343b224b6e8900b4cea1ab86d47952a194cf198fbfa46f70620889ce01eb1a8",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "thomas-bergersen-children-of-the-sun",
+      "variant": null,
+      "rating": 5,
+      "duration": 275.0,
+      "notes": 3015,
+      "median_nps": 10.5,
+      "peak_nps": 23.5,
+      "hands": {
+        "left": {
+          "notes": 1445,
+          "max_chord": 3,
+          "max_span": 16,
+          "rapid_leaps": 58
+        },
+        "right": {
+          "notes": 1570,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 6
+        }
+      },
+      "source_sha256": "3a817b2183a37d89dad9eb9d9f4b15c01c0bfe9e1d2dfc33f4385a304d058e77",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "skyrim-ancient-stones",
+      "variant": null,
+      "rating": 3,
+      "duration": 142.4,
+      "notes": 760,
+      "median_nps": 5.0,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 346,
+          "max_chord": 2,
+          "max_span": 7,
+          "rapid_leaps": 8
+        },
+        "right": {
+          "notes": 414,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "ecb0bf902a4bfea6887a57341e7a93760bff32b0783c6a6cd7e62112fa537d78",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-sariel",
+      "variant": null,
+      "rating": 4,
+      "duration": 155.1,
+      "notes": 1882,
+      "median_nps": 10.5,
+      "peak_nps": 22.5,
+      "hands": {
+        "left": {
+          "notes": 1242,
+          "max_chord": 3,
+          "max_span": 14,
+          "rapid_leaps": 8
+        },
+        "right": {
+          "notes": 640,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "1cc35f84571d39abbef0e638e7037a75fcfedb469349e036291cae07ef863bd8",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "the-last-of-the-mohicans",
+      "variant": null,
+      "rating": 3,
+      "duration": 284.6,
+      "notes": 1404,
+      "median_nps": 4.5,
+      "peak_nps": 11.5,
+      "hands": {
+        "left": {
+          "notes": 483,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 921,
+          "max_chord": 3,
+          "max_span": 9,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "f711ed4f6fd8f309a5f5a4f0c4349d5093928e2d3487179728444dbfd103c0fb",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "ievan-polkka",
+      "variant": null,
+      "rating": 4,
+      "duration": 172.9,
+      "notes": 1736,
+      "median_nps": 9.5,
+      "peak_nps": 18.0,
+      "hands": {
+        "left": {
+          "notes": 663,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 27
+        },
+        "right": {
+          "notes": 1073,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "15f470f10ddec2ca69bd56622f87a5c143719071f65905cd3e5604ef11940ba5",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "hate",
+      "variant": null,
+      "rating": 2,
+      "duration": 264.0,
+      "notes": 714,
+      "median_nps": 2.0,
+      "peak_nps": 7.5,
+      "hands": {
+        "left": {
+          "notes": 217,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 497,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 2
+        }
+      },
+      "source_sha256": "fce21a76d01f66ee8211d67a369a528cd8e5a4bd855ec7baecbd63e271bfe49d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "pachelbel-canon-in-d",
+      "variant": null,
+      "rating": 3,
+      "duration": 176.7,
+      "notes": 1028,
+      "median_nps": 6.2,
+      "peak_nps": 10.0,
+      "hands": {
+        "left": {
+          "notes": 524,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 6
+        },
+        "right": {
+          "notes": 504,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 6
+        }
+      },
+      "source_sha256": "a43a7a6f290e28212426067f04564093264227e1286e908a260fc35f17a46a46",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "skyrim-from-past-to-present",
+      "variant": null,
+      "rating": 3,
+      "duration": 183.5,
+      "notes": 548,
+      "median_nps": 3.0,
+      "peak_nps": 7.5,
+      "hands": {
+        "left": {
+          "notes": 369,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 11
+        },
+        "right": {
+          "notes": 179,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "3c63d0b2ae2f6dc4af1a76b3b4a0ac46cfea2460c4630667e369a066f34f8db7",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "skyrim-dragonborn",
+      "variant": null,
+      "rating": 5,
+      "duration": 243.6,
+      "notes": 2252,
+      "median_nps": 10.0,
+      "peak_nps": 24.5,
+      "hands": {
+        "left": {
+          "notes": 787,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 3
+        },
+        "right": {
+          "notes": 1465,
+          "max_chord": 5,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "92fa83d6c44e9c76a8bb18b5c3b871681e43ae1e9c6f97702ac7c0cb83e7461d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-evergreen",
+      "variant": "performance-1",
+      "rating": 5,
+      "duration": 175.1,
+      "notes": 1854,
+      "median_nps": 9.0,
+      "peak_nps": 28.5,
+      "hands": {
+        "left": {
+          "notes": 1005,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 5
+        },
+        "right": {
+          "notes": 849,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "f13613e86461384adcbb5b6b7cc2fdee371a424820a2825e6006a9d007814f5c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-evergreen",
+      "variant": "performance-2",
+      "rating": 4,
+      "duration": 160.4,
+      "notes": 1448,
+      "median_nps": 9.5,
+      "peak_nps": 22.5,
+      "hands": {
+        "left": {
+          "notes": 637,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 34
+        },
+        "right": {
+          "notes": 811,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 6
+        }
+      },
+      "source_sha256": "6212b997098a69dcecf218842958c975682fb50da812fd2f561b765df3c01941",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "two-steps-from-hell-star-sky",
+      "variant": null,
+      "rating": 5,
+      "duration": 326.8,
+      "notes": 3540,
+      "median_nps": 10.5,
+      "peak_nps": 19.0,
+      "hands": {
+        "left": {
+          "notes": 1800,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 48
+        },
+        "right": {
+          "notes": 1740,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 7
+        }
+      },
+      "source_sha256": "3011edb31cd47e767fd8d9ad86ad5d269d15b2a0f0945fc365588761bdd2b748",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "horror-themes-medley",
+      "variant": null,
+      "rating": 4,
+      "duration": 197.1,
+      "notes": 961,
+      "median_nps": 4.0,
+      "peak_nps": 19.0,
+      "hands": {
+        "left": {
+          "notes": 547,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 8
+        },
+        "right": {
+          "notes": 414,
+          "max_chord": 5,
+          "max_span": 13,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "5378aaf349b6702c50893b205aab7e8e2101ffcd0869c8dfbc2202261ddfa5f6",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "peder-b-helland-always",
+      "variant": null,
+      "rating": 1,
+      "duration": 398.9,
+      "notes": 399,
+      "median_nps": 1.0,
+      "peak_nps": 3.5,
+      "hands": {
+        "left": {
+          "notes": 202,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        },
+        "right": {
+          "notes": 197,
+          "max_chord": 1,
+          "max_span": 0,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "ab95cdbe5643e3cfea212fabcc23f57424c36b5089c553880b8bbb5fea004e52",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "winter-sonata-from-the-beginning-until-now",
+      "variant": null,
+      "rating": 3,
+      "duration": 264.1,
+      "notes": 1293,
+      "median_nps": 5.0,
+      "peak_nps": 10.5,
+      "hands": {
+        "left": {
+          "notes": 671,
+          "max_chord": 5,
+          "max_span": 24,
+          "rapid_leaps": 55
+        },
+        "right": {
+          "notes": 622,
+          "max_chord": 3,
+          "max_span": 24,
+          "rapid_leaps": 23
+        }
+      },
+      "source_sha256": "e51e9eee3262fe096783b737050c3c5c72ce0c40605ea08761d0980df790f23d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "maksim-mrvica-croatian-rhapsody",
+      "variant": null,
+      "rating": 4,
+      "duration": 210.7,
+      "notes": 1869,
+      "median_nps": 9.0,
+      "peak_nps": 15.0,
+      "hands": {
+        "left": {
+          "notes": 668,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 1
+        },
+        "right": {
+          "notes": 1201,
+          "max_chord": 4,
+          "max_span": 17,
+          "rapid_leaps": 17
+        }
+      },
+      "source_sha256": "e1580890e1e74fa1921d98859f7b3b15a505b3b406139e91ae625491bd2e726d",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-girei",
+      "variant": null,
+      "rating": 3,
+      "duration": 146.2,
+      "notes": 932,
+      "median_nps": 6.0,
+      "peak_nps": 12.0,
+      "hands": {
+        "left": {
+          "notes": 536,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 38
+        },
+        "right": {
+          "notes": 396,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "40705b068a0e603fbf9ad4239c442495fedb9607579aabfab1d2c997bf36b85c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "chariots-of-fire",
+      "variant": null,
+      "rating": 3,
+      "duration": 211.1,
+      "notes": 1642,
+      "median_nps": 8.0,
+      "peak_nps": 13.0,
+      "hands": {
+        "left": {
+          "notes": 926,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 24
+        },
+        "right": {
+          "notes": 716,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 12
+        }
+      },
+      "source_sha256": "6dffa3ea5da1c29c24e9b696188af2b4db916fc0d9e603355381189d1e6ccba3",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "dream",
+      "variant": null,
+      "rating": 2,
+      "duration": 151.2,
+      "notes": 555,
+      "median_nps": 4.0,
+      "peak_nps": 9.0,
+      "hands": {
+        "left": {
+          "notes": 283,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 9
+        },
+        "right": {
+          "notes": 272,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "e3141ea39a7a48bc53c37153cc99d6f70db065a0b66c4b2ee828d58eb8441b28",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-shutsujin",
+      "variant": null,
+      "rating": 4,
+      "duration": 131.5,
+      "notes": 1448,
+      "median_nps": 9.5,
+      "peak_nps": 27.0,
+      "hands": {
+        "left": {
+          "notes": 810,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 120
+        },
+        "right": {
+          "notes": 638,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "9db800d5933e9f04377cb7462c2e3fa0022ba762883590881203be063646aca1",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "boruto-spin-and-burst-reverse-situation",
+      "variant": null,
+      "rating": 5,
+      "duration": 187.5,
+      "notes": 2459,
+      "median_nps": 13.5,
+      "peak_nps": 27.0,
+      "hands": {
+        "left": {
+          "notes": 1225,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 212
+        },
+        "right": {
+          "notes": 1234,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 9
+        }
+      },
+      "source_sha256": "1d2fb172438ebc3c3cda65b956cadd2dcaff17b7d2e9440db840e0ed271d8361",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-the-raising-fighting-spirit",
+      "variant": null,
+      "rating": 5,
+      "duration": 85.7,
+      "notes": 1076,
+      "median_nps": 11.5,
+      "peak_nps": 24.0,
+      "hands": {
+        "left": {
+          "notes": 517,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 6
+        },
+        "right": {
+          "notes": 559,
+          "max_chord": 5,
+          "max_span": 16,
+          "rapid_leaps": 9
+        }
+      },
+      "source_sha256": "ea66336c233c7d6cda2552c46b6abfdc1b2b76009163e2d41c9a3f5477e57fc1",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "naruto-wind",
+      "variant": null,
+      "rating": 3,
+      "duration": 207.8,
+      "notes": 1390,
+      "median_nps": 7.0,
+      "peak_nps": 12.0,
+      "hands": {
+        "left": {
+          "notes": 824,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 132
+        },
+        "right": {
+          "notes": 566,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 4
+        }
+      },
+      "source_sha256": "fd674caca3405efb547304643e185a2e560e8e9d1135d3f9d76223b0d9b97c7e",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "interstellar-main-theme",
+      "variant": "patrik-pietschmann",
+      "rating": 4,
+      "duration": 280.3,
+      "notes": 2046,
+      "median_nps": 7.5,
+      "peak_nps": 14.0,
+      "hands": {
+        "left": {
+          "notes": 747,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 3
+        },
+        "right": {
+          "notes": 1299,
+          "max_chord": 2,
+          "max_span": 12,
+          "rapid_leaps": 82
+        }
+      },
+      "source_sha256": "674adab63374ef77905ddea3913f230a9dddc00b84ee9183a62f19f5a4b5b198",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "interstellar-main-theme",
+      "variant": "the-piano-lab",
+      "rating": 3,
+      "duration": 209.6,
+      "notes": 911,
+      "median_nps": 4.0,
+      "peak_nps": 9.5,
+      "hands": {
+        "left": {
+          "notes": 274,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 9
+        },
+        "right": {
+          "notes": 637,
+          "max_chord": 4,
+          "max_span": 19,
+          "rapid_leaps": 0
+        }
+      },
+      "source_sha256": "176d9d8a45f1135b2eed46d2b2970d285e9bf17e5b363d173f8f476e176c106c",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    },
+    {
+      "code": "the-sound-of-silence",
+      "variant": null,
+      "rating": 4,
+      "duration": 178.1,
+      "notes": 1282,
+      "median_nps": 6.5,
+      "peak_nps": 16.0,
+      "hands": {
+        "left": {
+          "notes": 549,
+          "max_chord": 3,
+          "max_span": 12,
+          "rapid_leaps": 15
+        },
+        "right": {
+          "notes": 733,
+          "max_chord": 4,
+          "max_span": 12,
+          "rapid_leaps": 1
+        }
+      },
+      "source_sha256": "52303556647dc858d9e5ffc6ba0911fee6c83f61d88295c4bcadac868f55bfb9",
+      "review_note": "Confirmed against the current source at its original tempo, considering recurring patterns, melodic/accompaniment independence, transfers and dense passages; the supporting metrics do not automatically determine this rating."
+    }
+  ]
+}

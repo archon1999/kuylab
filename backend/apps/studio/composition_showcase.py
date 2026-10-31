@@ -6,7 +6,7 @@ already held at the boundary. No melody-only sampling or invented MIDI is used.
 from django.http import Http404
 from rest_framework.exceptions import NotFound
 
-from .performance_variants import variant_definitions
+from .performance_variants import variant_definitions, default_variant_id
 from .models import StudioAsset
 from .repertoire import SOURCES, SOURCE_BY_CODE
 from .curated_repertoire import active_entries
@@ -17,14 +17,14 @@ from .ivory_repertoire import GROUPS as IVORY_GROUPS, GROUP_BY_CODE as IVORY_BY_
 # These five-star ratings describe these arrangements, not an examination grade.
 SHOWCASE = {
     "still": {"difficulty": 3, "start": 16, "duration": 16},
-    "youth": {"difficulty": 4, "start": 13, "duration": 16},
+    "youth": {"difficulty": 3, "start": 13, "duration": 16},
     "star": {"difficulty": 3, "start": 0, "duration": 16},
     "tears": {"difficulty": 3, "start": 48, "duration": 14},
     "my-memory": {"difficulty": 3, "start": 14, "duration": 16},
-    "premonition": {"difficulty": 4, "start": 30, "duration": 16},
+    "premonition": {"difficulty": 3, "start": 30, "duration": 16},
     "memories": {"difficulty": 2, "start": 11, "duration": 16},
-    "all-in": {"difficulty": 2, "start": 67.04, "duration": 16,
-               "variants": {"easy": 2, "hard": 4}},
+    "all-in": {"difficulty": 4, "start": 67.04, "duration": 16,
+               "variants": {"easy": 3, "hard": 4}},
 }
 SHOWCASE.update({entry["code"]: {"difficulty": entry["difficulty"], "start": entry["preview_start"],
                                   "duration": entry["preview_duration"]} for entry in active_entries()})
@@ -79,7 +79,7 @@ def composition_preview(composition_id, variant=None):
         raise NotFound("Performance variant not found")
     selected = next((item for item in variants if item["id"] == variant), None)
     if variants and selected is None:
-        selected = variants[0]
+        selected = next(item for item in variants if item["id"] == default_variant_id(source.code, variants))
     if selected:
         try:
             score = StudioAsset.objects.select_related("score").get(pk=selected["_asset_key"]).score

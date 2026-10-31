@@ -737,7 +737,7 @@
       "split_pitch": 60,
       "evidence": "curated_register_split_not_physical_hand_metadata"
     },
-    "difficulty": 3,
+    "difficulty": 4,
     "preview_start": 24,
     "preview_duration": 16,
     "learning_focus": {
@@ -1133,7 +1133,7 @@
       },
       "evidence": "reviewed_source_staff_roles_not_fingering"
     },
-    "difficulty": 3,
+    "difficulty": 4,
     "preview_start": 16,
     "preview_duration": 16,
     "learning_focus": {
@@ -1578,7 +1578,7 @@
       },
       "evidence": "reviewed_source_staff_roles_not_fingering"
     },
-    "difficulty": 3,
+    "difficulty": 4,
     "preview_start": 8,
     "preview_duration": 16,
     "learning_focus": {

@@ -1,4 +1,10 @@
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg"><img src="assets/banner-light.svg" alt="KuyLab" width="100%"></picture>
+
 # KuyLab
+
+[Website](https://kuylab.uz/) · [Product & architecture](https://github.com/archon1999/engineering-portfolio/blob/main/projects/kuylab.md) · [Nazarbek Baltabaev](https://github.com/archon1999)
+
+[![CI](https://github.com/archon1999/kuylab/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/archon1999/kuylab/actions/workflows/ci.yml)
 
 A composition-first piano learning studio built with Django, React, TypeScript and
 MUI. Learn with a falling-note MIDI player, separately authored composition

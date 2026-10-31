@@ -118,8 +118,7 @@ class StudioTests(TestCase):
         catalog = studio_catalog("en")
         for source, composition in zip(SOURCES, catalog["compositions"]):
             original = StudioAsset.objects.get(pk=source.asset_key).score
-            expected_score = StudioAsset.objects.get(pk="composition:all-in:easy").score_id if source.code == "all-in" else original.pk
-            self.assertEqual(composition["score_id"], expected_score)
+            self.assertEqual(composition["score_id"], original.pk)
             self.assertEqual(original.content_sha256, source.sha256)
             lessons = [item for item in catalog["lessons"] if item["id"] in composition["lesson_ids"]]
             journeys = [item for item in catalog["journeys"] if item["composition_id"] == composition["id"]]

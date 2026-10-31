@@ -192,41 +192,56 @@
       {
         "id": "performance-1",
         "title": {
-          "uz": "Ijro 1",
-          "ru": "Исполнение 1",
-          "en": "Performance 1"
+          "uz": "Partitura varianti",
+          "ru": "Версия по партитуре",
+          "en": "Score edition"
         },
-        "performer": "",
+        "performer": "TruuMoo (score arrangement)",
         "filename": "passacaglia.mid",
-        "original_filename": "Passacaglia û Handel_Halvorsen (Piano Solo).mid",
-        "source_url": "https://www.youtube.com/watch?v=GAIZxaToV2A",
-        "source_sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7",
-        "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAAM",
-        "difficulty": 3,
-        "preview_start": 8.0,
+        "original_filename": "Passacaglia - TruuMoo.mid",
+        "source_url": "https://vivace-music.org/sheets/passacaglia-handel-halvorsen-piano.html",
+        "source_sha256": "7c18d7d6bb30aab4431cb006679492dbe36f479e70b58ee331d29d77fd34f603",
+        "ivory_player_url": "",
+        "difficulty": 4,
+        "preview_start": 3.692304,
         "preview_duration": 16.0,
         "trim_start_seconds": 0.0,
         "trim_reason": "",
         "difficulty_review": {
-          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "basis": "Two independent continuous eighth-note parts at quarter=130, wide left-hand broken-chord travel and right-hand register shifts. Hands now follow the written staves.",
           "median_notes_per_second": 7.4,
           "peak_notes_per_second": 8.4,
-          "peak_simultaneous_notes": 4
+          "peak_simultaneous_notes": 4,
+          "reviewed_on": "2026-10-31"
         },
-        "sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7",
+        "sha256": "7c18d7d6bb30aab4431cb006679492dbe36f479e70b58ee331d29d77fd34f603",
         "trim_start_ticks": 0,
-        "note_count": 1024,
-        "duration_seconds": 155.984375,
+        "note_count": 1030,
+        "duration_seconds": 136.615248,
         "omitted_note_count": 0,
         "added_note_count": 0,
         "note_additions": [],
         "hand_roles": {
           "method": "tracks",
           "tracks": {
-            "1": "left",
-            "0": "right"
+            "1": "right",
+            "2": "left"
           },
-          "evidence": "reviewed_export_track_median_pitch_roles_not_fingering"
+          "evidence": "source_notation_staff_1_right_staff_2_left_no_pitch_split"
+        },
+        "reference_video_url": "",
+        "notation_source": {
+          "path": "notation/passacaglia.mxl",
+          "sha256": "a4cda46a2b0e980ea890feacb6ceb4be224107c16c7d1c79fb25dee8e5bb168a",
+          "url": "https://vivace-music.org/library/passacaglia-handel-halvorsen-piano/musicxml/passacaglia-handel-halvorsen.mxl",
+          "page": "https://vivace-music.org/sheets/passacaglia-handel-halvorsen-piano.html",
+          "license": "CC0-1.0",
+          "credit": "TruuMoo, MuseScore score 5889760; CC0 1.0, shared via PDMX; MusicXML supplied by Vivace Music.",
+          "measures": 74,
+          "tempo_quarter_bpm": 130,
+          "velocity_policy": "Authored playback balance: right hand 84, left hand 68. No recorded performance velocity is claimed.",
+          "pedal_policy": "Printed key holds retained exactly; no pedal messages or pedal-extended key durations are generated.",
+          "replaces_sha256": "937baa2ae57d9752619d35f208d09ca6dc24675eaeaff6bc63a31122b080bfe7"
         }
       }
     ]
@@ -880,16 +895,17 @@
         "source_url": "https://www.youtube.com/watch?v=VBqLrMqvWbg",
         "source_sha256": "6333c6ec40d6810c6aa2988116a0275ec48e7515b56b053d9c1a7b5e0b5810db",
         "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAQD",
-        "difficulty": 4,
+        "difficulty": 5,
         "preview_start": 16.0,
         "preview_duration": 16.0,
         "trim_start_seconds": 4.776041666666666,
         "trim_reason": "High-confidence repeated unrelated channel jingle; identical pitch/onset motif is present before multiple unrelated works, followed by silence and a separate musical entrance.",
         "difficulty_review": {
-          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "basis": "Reviewed against the current arrangement and learner-calibrated 1-5 scale; complete-hand independence, passagework and register changes considered, not title popularity or note density alone.",
           "median_notes_per_second": 11.8,
           "peak_notes_per_second": 23.4,
-          "peak_simultaneous_notes": 8
+          "peak_simultaneous_notes": 8,
+          "reviewed_on": "2026-10-31"
         },
         "sha256": "5abfd7207a65ae36d8532f88ad99a3efd341a1456bd0ad4dfe4af40598291f7e",
         "trim_start_ticks": 917,
@@ -1220,16 +1236,17 @@
         "source_url": "https://www.youtube.com/watch?v=R3LC7zd-ZDg",
         "source_sha256": "c3c8e0353886048d39383f00e85ed7a6b6b571d89c0b34be1b286d87acdd66c0",
         "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAUD",
-        "difficulty": 4,
+        "difficulty": 5,
         "preview_start": 8.0,
         "preview_duration": 16.0,
         "trim_start_seconds": 0.0,
         "trim_reason": "",
         "difficulty_review": {
-          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "basis": "Reviewed against the current arrangement and learner-calibrated 1-5 scale; complete-hand independence, passagework and register changes considered, not title popularity or note density alone.",
           "median_notes_per_second": 4.4,
           "peak_notes_per_second": 20.4,
-          "peak_simultaneous_notes": 6
+          "peak_simultaneous_notes": 6,
+          "reviewed_on": "2026-10-31"
         },
         "sha256": "c3c8e0353886048d39383f00e85ed7a6b6b571d89c0b34be1b286d87acdd66c0",
         "trim_start_ticks": 0,
@@ -1640,16 +1657,17 @@
         "source_url": "https://www.youtube.com/watch?v=vnrXClJ4oXM",
         "source_sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
         "ivory_player_url": "https://ivory-app.com/player?songId=AwYBBAcE",
-        "difficulty": 3,
+        "difficulty": 4,
         "preview_start": 8.0,
         "preview_duration": 16.0,
         "trim_start_seconds": 0.0,
         "trim_reason": "",
         "difficulty_review": {
-          "basis": "editorial arrangement review; supporting technical metrics are not a universal work grade",
+          "basis": "Reviewed against the current arrangement and learner-calibrated 1-5 scale; complete-hand independence, passagework and register changes considered, not title popularity or note density alone.",
           "median_notes_per_second": 5.6,
           "peak_notes_per_second": 9.0,
-          "peak_simultaneous_notes": 7
+          "peak_simultaneous_notes": 7,
+          "reviewed_on": "2026-10-31"
         },
         "sha256": "081de2c7bb922469121a949eedca499af09d0afa021a3daf23eb66ddebe84c95",
         "trim_start_ticks": 0,
@@ -4017,17 +4035,18 @@
         "original_filename": "A Time For Us (Romeo And Juliet Love Theme) - Piano Tutorial - PDF.mid",
         "source_url": "https://www.youtube.com/watch?v=HKgI8PPYfmg",
         "source_sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
-        "difficulty": 4,
+        "difficulty": 3,
         "preview_start": 3.0,
         "preview_duration": 16.0,
         "trim_start_seconds": 0.0,
         "trim_reason": "",
         "intro_review": "Opening belongs to the musical arrangement; no unrelated channel jingle identified.",
         "difficulty_review": {
-          "basis": "Melody over a moving broken-chord accompaniment; wide register shifts and a denser middle require independent hands and phrase control.",
+          "basis": "Reviewed against the current arrangement and learner-calibrated 1-5 scale; complete-hand independence, passagework and register changes considered, not title popularity or note density alone.",
           "median_notes_per_second": 5.4,
           "peak_notes_per_second": 10.6,
-          "peak_simultaneous_notes": 5
+          "peak_simultaneous_notes": 5,
+          "reviewed_on": "2026-10-31"
         },
         "sha256": "324d2139042c3376175f3c972c74b199b49bb324ae510c670192a1bd371a9960",
         "trim_start_ticks": 0,

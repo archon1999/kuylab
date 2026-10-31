@@ -175,7 +175,7 @@ class MidiQualityTests(SimpleTestCase):
     def test_all_performances_pass_without_erasing_legitimate_holds_or_voices(self):
         rows = audit_catalog()
         self.assertEqual(len(rows), 120)
-        self.assertEqual(sum(r['notes'] for r in rows), 156382)
+        self.assertEqual(sum(r['notes'] for r in rows), 156388)
         self.assertFalse(any(r['issues'] for r in rows))
         self.assertTrue(any(r['holds_at_least_eight_seconds'] for r in rows))
         self.assertTrue(any(r['duplicate_attacks'] for r in rows))

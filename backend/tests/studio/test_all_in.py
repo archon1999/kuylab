@@ -138,7 +138,7 @@ class AllInCatalogTests(TestCase):
             self.assertEqual(len(pieces), 1)
             piece = pieces[0]
             self.assertEqual(piece["title"], "All in — Soundtrack")
-            self.assertEqual(piece["default_variant_id"], "easy")
+            self.assertEqual(piece["default_variant_id"], "hard")
             self.assertTrue(piece["readable_holds"])
             self.assertEqual([v["id"] for v in piece["variants"]], ["easy", "hard"])
             self.assertEqual(len(piece["lesson_ids"]), 9)
@@ -151,7 +151,7 @@ class AllInCatalogTests(TestCase):
                 self.assertNotIn("_filename", variant)
                 self.assertNotIn("_asset_key", variant)
                 self.assertTrue(score.source_provenance["preserved_original_bytes"])
-            self.assertEqual(piece["score_id"], piece["variants"][0]["score_id"])
+            self.assertEqual(piece["score_id"], piece["variants"][1]["score_id"])
             paths = [i for i in catalog["journeys"] if i["composition_id"] == piece["id"]]
             self.assertEqual(len(paths), 5)
             complete = next(i for i in paths if i["id"] == "journey:all-in:complete")

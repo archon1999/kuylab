@@ -3,7 +3,7 @@ from .models import StudioAsset
 from .comparisons import definitions as comparison_definitions
 from .interactive import challenges
 from .repertoire import SOURCES, SOURCE_BY_CODE
-from .performance_variants import variant_definitions
+from .performance_variants import variant_definitions, default_variant_id
 from .composition_showcase import presentation
 from .library_taxonomy import taxonomy
 
@@ -71,9 +71,10 @@ def studio_catalog(language):
                  "duration_seconds": originals[value["_asset_key"]]["score__parsed__metadata__duration_seconds"]}
                 for value in variants
             ]
-            compositions[-1]["default_variant_id"] = variants[0]["id"]
+            preferred = next(value for value in variants if value["id"] == default_variant_id(source.code, variants))
+            compositions[-1]["default_variant_id"] = preferred["id"]
             compositions[-1]["readable_holds"] = source.code == "all-in"
-            compositions[-1]["score_id"] = assets[variants[0]["_asset_key"]]
+            compositions[-1]["score_id"] = assets[preferred["_asset_key"]]
     result = {"revision":REVISION,"compositions":compositions,"lessons":groups["lesson"],"exercises":groups["exercise"],"theory":groups["theory"],
         "journeys":groups["journey"],
         "categories":[{"id":key,"label":localize(label,language)} for key,label in CATEGORIES],

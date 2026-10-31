@@ -1,8 +1,10 @@
-"""Reviewed, owner-supplied Ivory performances and arrangement variants.
+"""Reviewed performances and arrangement variants, including pinned score replacements.
 
 The source recording and export are identified separately from a possible
 reviewed channel-intro cut. Display hand roles are layer inferences, not claims
-about the pianist's actual fingering. No music is downloaded at seed time.
+about the pianist's actual fingering. A notation_source explicitly identifies a
+staff-based replacement rather than an Ivory transcription. No music is
+downloaded at seed time.
 """
 from functools import lru_cache
 from hashlib import sha256
@@ -68,6 +70,15 @@ def performance_source(code, variant_id=None):
 
 def performance_provenance(code, variant_id=None):
     entry = variant_entry(code, variant_id)
+    if notation := entry.get("notation_source"):
+        return {"kind": "notation_rendered_midi", "composition_code": code,
+                "variant_id": entry["id"], "filename": entry["filename"],
+                "source_url": notation["page"], "source_sha256": notation["sha256"],
+                "import_sha256": entry["sha256"], "notation_source": notation,
+                "preserved_original_bytes": False, "pedal_extended": False,
+                "hand_assignment": entry["hand_roles"]["evidence"],
+                "completeness_scope": "Every pitched note of all 74 written measures, with separate tracks for the two source staves. No pitch-based hand split or recording transcription.",
+                "permission_basis": notation["license"] + ". " + notation["credit"]}
     value = {"kind": "owner_supplied_ivory_performance", "composition_code": code,
             "variant_id": entry["id"], "filename": entry["filename"],
             "source_url": entry["source_url"], "ivory_player_url": entry.get("ivory_player_url", ""),
